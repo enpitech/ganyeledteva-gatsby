@@ -15,7 +15,7 @@ const navigation = [
   { name: 'רישום לגן', href: '#', current: false },
 ];
 
-export default function MainLayout({ children, header }) {
+export default function MainLayout({ children }) {
   return (
     <div className="min-h-screen bg-gray-100">
       <Helmet>
@@ -96,14 +96,7 @@ export default function MainLayout({ children, header }) {
         )}
       </Disclosure>
 
-      <div className="py-10">
-        <header>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">{header}</div>
-        </header>
-        <main>
-          <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">{children}</div>
-        </main>
-      </div>
+      <div className="pb-10">{children}</div>
     </div>
   );
 }
