@@ -19,12 +19,16 @@ export default function HomeHeader() {
             <div className="grid grid-cols-2 z-50 relative pointer-events-none	">
               <div>
                 <div className="text-center">
-                  <img src={logo} className="mr-12 h-96 mt-16" alt="Logo" />
+                  <img
+                    src={logo}
+                    className="h-60 mt-24 sm:h-72 sm:mt-24 sm:-mr-8 md:h-64 md:mr-4 md:mt-34 lg:mr-16 lg:h-80 lg:mt-18 xl:mr-16 xl:h-96 xl:mt-14"
+                    alt="Logo"
+                  />
                 </div>
               </div>
               <div className="text-center">
                 <div
-                  className="text-2xl mt-32 xl:text-3xl xl:mt-24 font-bold"
+                  className="text-xl mt-32 xl:text-2xl xl:mt-24 font-bold"
                   style={{
                     color: '#63cccb',
                   }}
@@ -65,7 +69,7 @@ export default function HomeHeader() {
                       left: 400,
                       height: 155,
                     }}
-                    alt="placeholder"
+                    alt="home header cloud"
                   />
                   <img
                     src={bird}
@@ -75,7 +79,7 @@ export default function HomeHeader() {
                       left: 480,
                       height: 65,
                     }}
-                    alt="placeholder"
+                    alt="home header bird"
                   />
                   <img
                     src={bird}
@@ -85,7 +89,7 @@ export default function HomeHeader() {
                       left: 500,
                       height: 65,
                     }}
-                    alt="placeholder"
+                    alt="home header bird"
                   />
                   <img
                     src={cloudBig}
@@ -95,7 +99,7 @@ export default function HomeHeader() {
                       left: 100,
                       height: 155,
                     }}
-                    alt="placeholder"
+                    alt="home header cloud"
                   />
                   <img
                     src={bird}
@@ -105,7 +109,7 @@ export default function HomeHeader() {
                       left: 100,
                       height: 55,
                     }}
-                    alt="placeholder"
+                    alt="home header bird"
                   />
                   <img
                     src={bird}
@@ -115,7 +119,7 @@ export default function HomeHeader() {
                       left: 120,
                       height: 55,
                     }}
-                    alt="placeholder"
+                    alt="home header bird"
                   />
                   <img
                     src={treeLev}
@@ -125,7 +129,7 @@ export default function HomeHeader() {
                       left: 110,
                       height: 255,
                     }}
-                    alt="placeholder"
+                    alt="home header tree heart shape"
                   />
                   <img
                     src={treeLev}
@@ -135,7 +139,7 @@ export default function HomeHeader() {
                       left: 90,
                       height: 200,
                     }}
-                    alt="placeholder"
+                    alt="home header tree heart shape"
                   />
                   <img
                     src={treeTri}
@@ -145,7 +149,7 @@ export default function HomeHeader() {
                       left: 370,
                       height: 295,
                     }}
-                    alt="placeholder"
+                    alt="home header tree triangle shape"
                   />
                   <img
                     src={bird}
@@ -155,7 +159,7 @@ export default function HomeHeader() {
                       left: 410,
                       height: 75,
                     }}
-                    alt="placeholder"
+                    alt="home header bird"
                   />
                   <img
                     src={bird}
@@ -165,7 +169,7 @@ export default function HomeHeader() {
                       left: 500,
                       height: 75,
                     }}
-                    alt="placeholder"
+                    alt="home header bird"
                   />
                   <img
                     src={bird}
@@ -175,7 +179,7 @@ export default function HomeHeader() {
                       left: 530,
                       height: 75,
                     }}
-                    alt="placeholder"
+                    alt="home header bird"
                   />
                 </div>
               </div>
