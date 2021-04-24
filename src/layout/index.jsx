@@ -5,6 +5,7 @@ import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import config from '../../data/SiteConfig';
 import { classNames } from '../utils';
+import Footer from '../components/Footer/Footer';
 
 const navigation = [
   { name: 'דף הבית', href: '#', current: true },
@@ -97,6 +98,7 @@ export default function MainLayout({ children }) {
       </Disclosure>
 
       <div className="pb-10">{children}</div>
+      <Footer config={config} />
     </div>
   );
 }
