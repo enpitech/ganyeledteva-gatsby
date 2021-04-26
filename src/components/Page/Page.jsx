@@ -1,11 +1,11 @@
 import React from 'react';
 
 export default function Page({ children }) {
-  return <div>{children}</div>;
+  return <div className="bg-white">{children}</div>;
 }
 
 function Header({ children }) {
-  return <header>{children}</header>;
+  return children ? <header>{children}</header> : null;
 }
 
 function Main({ children }) {
