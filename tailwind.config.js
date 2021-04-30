@@ -13,6 +13,7 @@ module.exports = {
       fontFamily: {
         heebo: ['Heebo'],
       },
+      colors: {},
     },
   },
   variants: {

@@ -9,11 +9,7 @@ export default function PageHeader({
 }) {
   return (
     <Page.Header>
-      <div
-        className={`${
-          backgroundColorClass || 'bg-gradient-to-r from-blue-300 to-green-400'
-        } `}
-      >
+      <div className={`${backgroundColorClass || 'bg-green-gradient'} `}>
         <div
           className={`font-normal	 flex flex-col items-center justify-center h-auto py-12 ${
             backgroundPatternClass || 'bg-patt2'

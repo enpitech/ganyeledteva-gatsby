@@ -62,7 +62,7 @@ function Footer({ config }) {
   const { copyright } = config;
 
   return (
-    <footer className="bg-gray">
+    <footer className="bg-gray ">
       <div className="flex flex-col items-center mx-auto py-8 px-4 overflow-hidden sm:px-6 lg:px-8">
         <div className="flex flex-wrap justify-center mb-10">{treeImgs}</div>
         {copyright ? (
