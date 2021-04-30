@@ -3,7 +3,7 @@ import CMS from 'netlify-cms-app';
 CMS.init({
   config: {
     backend: {
-      name: 'git-gateway',
+      name: 'github',
       repo: 'nir2002/ganyeledteva-gatsby', // Path to your Github repository
       branch: 'main', // Branch to update
       // base_url: 'https://boring-jang-717b0a.netlify.app/.netlify/identity',
