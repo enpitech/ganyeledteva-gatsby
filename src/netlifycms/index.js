@@ -6,7 +6,9 @@ CMS.init({
       name: 'git-gateway',
       repo: 'nir2002/ganyeledteva-gatsby', // Path to your Github repository
       branch: 'main', // Branch to update
-      // base_url: https://auth-cms.herokuapp.com
+      base_url: 'https://boring-jang-717b0a.netlify.app/.netlify/identity',
+      // base_url: "https://auth-cms.herokuapp.com",
+
       media_folder: '/public/pics/uploads', // Media files will be stored in the repo under public/images/uploads
       public_folder: '/pics/uploads', // The src attribute for uploaded media will begin with /pics/uploads
       publish_mode: 'editorial_workflow',
