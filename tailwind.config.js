@@ -14,6 +14,11 @@ module.exports = {
         heebo: ['Heebo'],
       },
       colors: {},
+      borderColor: theme => ({
+        ...theme('colors'),
+         DEFAULT: theme('colors.gray.300', 'currentColor'),
+        'post': '##f7479e',
+       })
     },
   },
   variants: {

@@ -1,3 +1,46 @@
+// const path = require(`path`)
+
+// exports.createPages = async ({ actions, graphql, reporter }) => {
+//   const { createPage } = actions
+
+//   const bookTemplate = path.resolve(`src/templates/bookTemplate.js`)
+//   // const authorTemplate = path.resolve(`src/templates/authorTemplate.js`)
+
+//   const result = await graphql(`
+//     {
+//       allMarkdownRemark {
+//         edges {
+//           node {
+//             frontmatter {
+//               title
+//               cover
+//               category
+//               date
+//               path
+//               tags
+//             }
+//           }
+//         }
+//       }
+//     }
+//   `)
+
+//   if (result.errors) {
+//     reporter.panicOnBuild(`Error while running GraphQL query.`)
+//     return
+//   }
+
+//   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+//     const pageTemplate = bookTemplate
+//     console.log(node.frontmatter.path)
+//     createPage({
+//       path: node.frontmatter.path,
+//       component: pageTemplate,
+//       context: {}
+//     })
+//   })
+// }
+
 /* eslint "no-console": "off" */
 
 const path = require("path");
