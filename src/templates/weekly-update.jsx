@@ -39,23 +39,35 @@ function WeeklyUpdate({ data }) {
         >
         </PageHeader>
         <Page.Main>
-          <div className="flex justify-start h-60  mt-10 mb-20">
-            <div className="hidden nonmob:block w-2/12"></div>
-            <div className="w-full nonmob:w-1/2 pl-5">
-              <PostItem date={firstPost.date} title={firstPost.title} link={firstPost.path} first />
-            </div>
-            <div className="hidden nonmob:block w-1/3 p-2 mr-5">
+          
+          <Row height='h-60'>
+            <div className='w-11/12 flex'>
+            <FirstPost firstPost={firstPost}/>
+            <div className="hidden nonmob:block w-1/3">
+            {/* <div className="hidden nonmob:block w-1/2 p-2 mr-5"> */}
               <img className="h-full" src={"/logos/logo.png"} alt="Logo"/>
             </div>
-          </div>
-          <div className="grid grid-cols-4">
-            {postList.map((post,indx) => (
-              indx < 8 && //render only 8 items
-              <div>
-                <PostItem date={post.date} title={post.title} link={post.path} first={false}/>
-              </div>
-              ))}
             </div>
+          </Row>
+
+          {/* previous post header*/}
+          <Row height='h-10'>
+            <div className="w-full nonmob:w-1/2 border-r-4 border-purpleBorder">
+            <h2 className="pr-2 my-2">עדכונים קודמים</h2>
+            </div>
+            <div className="hidden nonmob:block w-1/12"></div>
+          </Row>
+
+              {/* previous posts grid */}
+          <Row>
+          <div className="flex-col nonmob:grid grid-cols-4 gap-10 w-11/12">
+              {postList.map((post,indx) => (
+                indx < 8 && //render only 8 items
+                  <PostItem date={post.date} title={post.title} link={post.path}/>
+                ))}
+            </div>
+          <div className="hidden nonmob:block w-1/12"></div>
+          </Row>
         </Page.Main>
       </Page>
       {/* <PostListing postEdges={postEdges} /> */}
@@ -65,17 +77,37 @@ function WeeklyUpdate({ data }) {
 
 export default WeeklyUpdate;
 
-const PostItem = ({date,title,link,first}) => {
+const PostItem = ({date,title,link}) => {
   return(
-    <div className="border-r-4 border-purpleBorder h-full flex items-center ">
-      <div className="mr-10">
-        <p>{date}</p>
-        <h1 className={`text-${first? '3xl' : 'xl'} mb-10 `}>{title}</h1>
+      <div className="border-2 mb-5 nonmob:m-5 h-80 float-right">
+        <p className='h-10 p-4'>{date}</p>
+        <h1 className='pb-10 p-4 text-2xl font-bold mb-10 h-40'>{title}</h1>
+        <div className="p-4">
         <Link className="rounded-full py-2 px-4 border-2 border-black bg-redLink text-white " to={link}>המשך קריאה ></Link>
-      </div>
+        </div>
     </div>
   )
+}
 
+const Row = ({children,height}) => {
+  return(
+    <div className={`flex pr-4 justify-start ${height} mt-10 mb-20`}>
+      <div className="hidden nonmob:block w-1/12"></div>
+      {children}
+    </div>
+  )
+}
+
+const FirstPost = ({firstPost}) => {
+  return(
+    <div className="w-full nonmob:w-2/3 pr-4 border-r-4 border-purpleBorder h-full">
+      <div className="pr-5">
+        <p className="mb-4">{firstPost.date}</p>
+        <h1 className='text-4xl mb-8'>{firstPost.title}</h1>
+        <Link className="mb-10 rounded-full py-2 px-4 border-2 border-black bg-redLink text-white " to={firstPost.path}>המשך קריאה ></Link>
+    </div>
+  </div>
+  )
 }
 
 
@@ -95,7 +127,6 @@ export const pageQuery = graphql`
           timeToRead
           frontmatter {
             title
-
             date(formatString: "MMMM DD, YYYY")
           }
           body
