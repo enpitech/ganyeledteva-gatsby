@@ -13,14 +13,15 @@ const siteConfig = require('./data/SiteConfig');
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   let slug;
-  if (node.internal.type === 'MarkdownRemark') {
+  // if (node.internal.type === 'MarkdownRemark') {
+  if (node.internal.type === 'Mdx') {
     const fileNode = getNode(node.parent);
     const parsedFilePath = path.parse(fileNode.relativePath);
     if (
       Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
       Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
     ) {
-      slug = `/${_.kebabCase(node.frontmatter.title)}`;
+      slug = `/${parsedFilePath.dir}/${_.kebabCase(node.frontmatter.title)}`;
     } else if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
       slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
     } else if (parsedFilePath.dir === '') {
@@ -41,6 +42,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       }
     }
     createNodeField({ node, name: 'slug', value: slug });
+    createNodeField({ node, name: 'dir', value: parsedFilePath.dir });
   }
 };
 
@@ -51,7 +53,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Get a full list of markdown posts
   const markdownQueryResult = await graphql(`
     {
-      allMarkdownRemark {
+      allMdx {
         edges {
           node {
             fields {
@@ -59,8 +61,9 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             frontmatter {
               title
-              date
+              date(formatString: "MMMM DD, YYYY")
             }
+            body
           }
         }
       }
@@ -73,7 +76,8 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // The relevant posts data
-  const postsEdges = markdownQueryResult.data.allMarkdownRemark.edges;
+  // const postsEdges = markdownQueryResult.data.allMarkdownRemark.edges;
+  const postsEdges = markdownQueryResult.data.allMdx.edges;
 
   // Sort posts
   postsEdges.sort((postA, postB) => {

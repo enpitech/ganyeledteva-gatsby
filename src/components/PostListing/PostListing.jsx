@@ -12,16 +12,18 @@ function PostListing({ postEdges }) {
       date: postEdge.node.fields.date,
       excerpt: postEdge.node.excerpt,
       timeToRead: postEdge.node.timeToRead,
+      dir: postEdge.node.fields.dir
     });
   });
-
   return (
+
     <div>
       {
         /* Your post list here. */
         postList.map((post) => (
           <Link to={post.path} key={post.title}>
             <h1>{post.title}</h1>
+            
           </Link>
         ))
       }
