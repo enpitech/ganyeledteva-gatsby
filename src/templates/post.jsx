@@ -41,15 +41,15 @@ export default function PostTemplate({ data, pageContext }) {
           />
           <Page.Main>
             <div className="flex justify-between">
-              <div className="hidden nonmob:block w-1/5"></div>
-              <div className="w-4/5">
+              <div className="hidden nonmob:block w-1/5 RIGHT_GAP"/>
+              <div className="nonmob:w-3/5 mb-10 MAIN_CONTENT">
                 <MDXProvider components={mdStyle}>
-              {/* eslint-disable-next-line react/no-danger */}
-              {/* <div dangerouslySetInnerHTML={{ __html: postNode.html }} /> */}
-              <MDXRenderer>{postNode.body}</MDXRenderer>
-              </MDXProvider>
+                  <MDXRenderer>{postNode.body}</MDXRenderer>
+                </MDXProvider>
+                {/* eslint-disable-next-line react/no-danger */}
+                {/* <div dangerouslySetInnerHTML={{ __html: postNode.html }} /> */}
               </div>
-              <div className="hidden nonmob:block w-1/5"></div>
+              <div className="hidden nonmob:block w-1/5 LEFT_GAP"/>
           </div>
           
         </Page.Main>
@@ -86,52 +86,26 @@ export const pageQuery = graphql`
   }
 `;
 
-const h1Style = props => <h1 {...props} className="border-r-4 border-purpleBorder mt-10 mb-5 pr-2"/>
-const h2Style = props => <h2 {...props} className="border-r-4 border-purpleBorder mt-10 mb-5 pr-2 text-2xl font-normal"/>
+/**
+ * defining the custom styling of md element to html elements 
+ */
+
+/* <blockqoute/> element  ref= https://www.coltborg.com/style-a-blockquote-using-tailwind-css/*/
+const Blockquote = props =>
+ <blockquote {...props} className='relative p-4 italic border-r-4 bg-neutral-100 text-neutral-600 border-neutral-500 quote'>
+    &ldquo;
+    {props.children}
+</blockquote>
+
+/* main style object, is passed to MDXRenderer  */
 const mdStyle = {
-  h1: h1Style,
-  h2: h2Style,
+  h1: props => <h1 {...props} className="text-4xl"/>,
+  h2: props => <h2 {...props} className="border-r-4 border-purpleBorder mt-12 mb-5 pr-2 text-3xl font-normal"/>,
   p: props => <p {...props} className="mb-3 text-lg"/>,
-  strong: props => <strong {...props} className="mt-8 text-lg inline-block"/>,
-  ul : props => <ul {...props} className="list-disc list-inside" /> 
-  // li : props => <li {...props} className="list-disc" /> 
-  
+  strong: props => <strong {...props} className="text-lg inline-block"/>,
+  ul : props => <ul {...props} className="list-disc list-outside mb-5 mr-5"/> ,
+  ol : props => <ol {...props} className="list-decimal list-outside mb-5 mr-5" /> ,
+  li: props => <li {...props} className="text-lg"/>,
+  a: props => <a {...props} className="text-blue-500"/>,
+  blockquote: Blockquote , 
 }
-/** 
-p	Paragraph	
-h1	Heading 1	#
-const h1Style = props => <h1 {...props} className="border-r-4 border-purpleBorder mt-10 mb-5 pr-2 text-2xl font-normal"/>
-h2	Heading 2	##
-const h2Style = props => <h2 {...props} className="border-r-4 border-purpleBorder mt-10 mb-5 pr-2 text-2xl font-normal"/>
-h3	Heading 3	###
-const h3Style = props => <h3 {...props} className="border-r-4 border-purpleBorder mt-10 mb-5 pr-2 text-2xl font-normal"/>
-h4	Heading 4	####
-const h4Style = props => <h4 {...props} className="border-r-4 border-purpleBorder mt-10 mb-5 pr-2 text-2xl font-normal"/>
-h5	Heading 5	#####
-const h5Style = props => <h5 {...props} className="border-r-4 border-purpleBorder mt-10 mb-5 pr-2 text-2xl font-normal"/>
-h6	Heading 6	######
-const h6Style = props => <h6 {...props} className=""/>
-thematicBreak	Thematic break	***
-const thematicBreak = props => <hr {...props} className=""/>
-blockquote	Blockquote	>
-const blockQuote = props => <blockquote {...props} className=""/>
-ul	List	-
-const list = props => <ul {...props} className="list-disc" /> 
-ol	Ordered list	1.
-const list = props => <ol {...props} className="list-disc" /> 
-li	List item	
-table	Table	`---
-tr	Table row	`This
-td/th	Table cell	
-pre	Pre	```js console.log()```
-code	Code	`console.log()`
-em	Emphasis	_emphasis_
-strong	Strong	**strong**
-const Strong = props => <strong {...props} className=""/>
-delete	Delete	~~strikethrough~~
-code	InlineCode	`console.log()`
-const InlineCode = props => <code {...props} className=""/>
-hr	Break	---
-a	Link	https://mdxjs.com or [MDX](https://mdxjs.com)
-img	Image	![alt](https://mdx-logo.now.sh)
-*/

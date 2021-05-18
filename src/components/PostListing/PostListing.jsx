@@ -23,7 +23,6 @@ function PostListing({ postEdges }) {
         postList.map((post) => (
           <Link to={post.path} key={post.title}>
             <h1>{post.title}</h1>
-            
           </Link>
         ))
       }
