@@ -7,6 +7,7 @@ import SEO from '../components/SEO/SEO';
 import config from '../../data/SiteConfig';
 import Page from '../components/Page/Page';
 import PageHeader from '../components/Page/PageHeader';
+import moment from 'moment'
 
 function WeeklyUpdate({ data }) {
   const postEdges = data.allMdx.edges;
@@ -39,7 +40,7 @@ function WeeklyUpdate({ data }) {
         >
         </PageHeader>
         <Page.Main>
-          
+          <div className='max-w-screen-lg m-auto'>
           <Row height='h-60'>
             <div className='w-11/12 flex'>
             <FirstPost firstPost={firstPost}/>
@@ -49,25 +50,25 @@ function WeeklyUpdate({ data }) {
             </div>
             </div>
           </Row>
-
           {/* previous post header*/}
-          <Row height='h-10'>
+          <Row height='h-10' mb='mb-5' withLeftGap>
             <div className="w-full nonmob:w-1/2 border-r-4 border-purpleBorder">
             <h2 className="pr-2 my-2">עדכונים קודמים</h2>
             </div>
-            <div className="hidden nonmob:block w-1/12"></div>
           </Row>
 
               {/* previous posts grid */}
-          <Row>
-          <div className="flex-col nonmob:grid grid-cols-4 gap-10 w-11/12">
+          <div className="pb-6">
+          <Row withLeftGap>
+          <div className="flex-col nonmob:grid grid-cols-4 gap-8 w-11/12">
               {postList.map((post,indx) => (
                 indx < 8 && //render only 8 items
-                  <PostItem date={post.date} title={post.title} link={post.path}/>
+                <PostItem date={post.date} title={post.title} link={post.path}/>
                 ))}
             </div>
-          <div className="hidden nonmob:block w-1/12"></div>
           </Row>
+          </div>
+          </div>
         </Page.Main>
       </Page>
       {/* <PostListing postEdges={postEdges} /> */}
@@ -79,21 +80,32 @@ export default WeeklyUpdate;
 
 const PostItem = ({date,title,link}) => {
   return(
-      <div className="border-2 mb-5 nonmob:m-5 h-80 float-right">
-        <p className='h-10 p-4'>{date}</p>
-        <h1 className='pb-10 p-4 text-2xl font-bold mb-10 h-40'>{title}</h1>
+    // <div className="nonmob:w-9/10 box-border border-2 mb-5 h-80 float-right hover:border-purpleBorder">
+    <div className="nonmob:w-full border h-80 float-right"> 
+    <div className="h-full border-transparent border-r-4 hover:border-purpleBorder">
+        {/* <div className="border-r-4 hover:border-purpleBorder"> */}
+        <Link to={link}>
+        <p className='h-10 p-4'>{moment(date).format("DD/MM/YYYY")}</p>
+        <h1 className='pb-10 p-4 text-3xl mb-10 h-40'>{title}</h1>
         <div className="p-4">
-        <Link className="rounded-full py-2 px-4 border-2 border-black bg-redLink text-white " to={link}>המשך קריאה ></Link>
+        <div className="w-36 rounded-full py-1 px-4 border-2 border-black bg-redLink text-white " >המשך קריאה ></div>
         </div>
+    </Link>
+    </div>
     </div>
   )
 }
 
-const Row = ({children,height}) => {
+const Row = ({children,height,mb,withLeftGap}) => {
   return(
-    <div className={`flex pr-4 justify-start ${height} mt-10 mb-20`}>
+    <div className="mr-10 nonmob:mr-0">
+   <div className={`flex justify-start ${height} mt-10 ${mb || 'mb-20'}`}>
       <div className="hidden nonmob:block w-1/12"></div>
       {children}
+      {withLeftGap && 
+        <div className="hidden nonmob:block w-1/12"></div>
+      }
+    </div>
     </div>
   )
 }
@@ -101,12 +113,15 @@ const Row = ({children,height}) => {
 const FirstPost = ({firstPost}) => {
   return(
     <div className="w-full nonmob:w-2/3 pr-4 border-r-4 border-purpleBorder h-full">
-      <div className="pr-5">
-        <p className="mb-4">{firstPost.date}</p>
-        <h1 className='text-4xl mb-8'>{firstPost.title}</h1>
-        <Link className="mb-10 rounded-full py-2 px-4 border-2 border-black bg-redLink text-white " to={firstPost.path}>המשך קריאה ></Link>
+        <Link to={firstPost.path}>
+        <div className="pr-5">
+          <p className="mb-4">{moment(firstPost.date).format("DD/MM/YYYY")}</p>
+          <h1 className='text-5xl mb-8'>{firstPost.title}</h1>
+          {/* <div className="rounded-full border-2 border-black bg-redLink text-white " >המשך קריאה ></div> */}
+          <div className="w-36 rounded-full py-1 px-4 border-2 border-black bg-redLink text-white " >המשך קריאה ></div>
+        </div>
+    </Link>
     </div>
-  </div>
   )
 }
 

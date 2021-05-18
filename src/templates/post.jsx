@@ -97,3 +97,41 @@ const mdStyle = {
   // li : props => <li {...props} className="list-disc" /> 
   
 }
+/** 
+p	Paragraph	
+h1	Heading 1	#
+const h1Style = props => <h1 {...props} className="border-r-4 border-purpleBorder mt-10 mb-5 pr-2 text-2xl font-normal"/>
+h2	Heading 2	##
+const h2Style = props => <h2 {...props} className="border-r-4 border-purpleBorder mt-10 mb-5 pr-2 text-2xl font-normal"/>
+h3	Heading 3	###
+const h3Style = props => <h3 {...props} className="border-r-4 border-purpleBorder mt-10 mb-5 pr-2 text-2xl font-normal"/>
+h4	Heading 4	####
+const h4Style = props => <h4 {...props} className="border-r-4 border-purpleBorder mt-10 mb-5 pr-2 text-2xl font-normal"/>
+h5	Heading 5	#####
+const h5Style = props => <h5 {...props} className="border-r-4 border-purpleBorder mt-10 mb-5 pr-2 text-2xl font-normal"/>
+h6	Heading 6	######
+const h6Style = props => <h6 {...props} className=""/>
+thematicBreak	Thematic break	***
+const thematicBreak = props => <hr {...props} className=""/>
+blockquote	Blockquote	>
+const blockQuote = props => <blockquote {...props} className=""/>
+ul	List	-
+const list = props => <ul {...props} className="list-disc" /> 
+ol	Ordered list	1.
+const list = props => <ol {...props} className="list-disc" /> 
+li	List item	
+table	Table	`---
+tr	Table row	`This
+td/th	Table cell	
+pre	Pre	```js console.log()```
+code	Code	`console.log()`
+em	Emphasis	_emphasis_
+strong	Strong	**strong**
+const Strong = props => <strong {...props} className=""/>
+delete	Delete	~~strikethrough~~
+code	InlineCode	`console.log()`
+const InlineCode = props => <code {...props} className=""/>
+hr	Break	---
+a	Link	https://mdxjs.com or [MDX](https://mdxjs.com)
+img	Image	![alt](https://mdx-logo.now.sh)
+*/
