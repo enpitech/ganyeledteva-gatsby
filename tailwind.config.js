@@ -16,11 +16,8 @@ module.exports = {
       colors: {
         purpleBorder : '#f7479e',
         redLink : '#ff3860',
+      },
 
-      },
-      screens: {
-        nonmob : '768px',
-      },
     },
   
   },

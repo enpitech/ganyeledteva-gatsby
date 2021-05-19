@@ -8,10 +8,4 @@ body {
   font-family: 'Heebo, sans-serif';
 }
 
-@screen sm {
-  .stylistic-quote-mark {
-    @apply block;
-  }
-}
-
 

@@ -7,14 +7,12 @@ import Disqus from '../components/Disqus/Disqus';
 import PostTags from '../components/PostTags/PostTags';
 import SocialLinks from '../components/SocialLinks/SocialLinks';
 import SEO from '../components/SEO/SEO';
-import Footer from '../components/Footer/Footer';
 import config from '../../data/SiteConfig';
-// import './post.css';
 import PageHeader from '../components/Page/PageHeader';
 import Page from '../components/Page/Page';
-import moment from 'moment'
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { formatDate } from '../utils';
 
 // This should be the weekly-update post page
 export default function PostTemplate({ data, pageContext }) {
@@ -31,25 +29,23 @@ export default function PostTemplate({ data, pageContext }) {
         <Helmet>
           <title>{`${post.title} | ${config.siteTitle}`}</title>
         </Helmet>
-        {/* <SEO postPath={slug} postNode={postNode} postSEO /> */}
+        <SEO postPath={slug} postNode={postNode} postSEO />
         <Page>
           <PageHeader 
             title={post.title} 
-            subtitle={moment(post.date).format("DD/MM/YYYY")}
+            subtitle={formatDate(post.date)}
             backgroundColorClass="bg-gradient-to-r from-yellow-200 to-green-300"
             backgroundPatternClass="bg-patt2"
           />
           <Page.Main>
             <div className="flex justify-between">
-              <div className="hidden nonmob:block w-1/5 RIGHT_GAP"/>
-              <div className="nonmob:w-3/5 mb-10 MAIN_CONTENT">
+              <div className="hidden md:block w-1/5 RIGHT_GAP"/>
+              <div className="md:w-3/5 mb-10 MAIN_CONTENT">
                 <MDXProvider components={mdStyle}>
                   <MDXRenderer>{postNode.body}</MDXRenderer>
                 </MDXProvider>
-                {/* eslint-disable-next-line react/no-danger */}
-                {/* <div dangerouslySetInnerHTML={{ __html: postNode.html }} /> */}
               </div>
-              <div className="hidden nonmob:block w-1/5 LEFT_GAP"/>
+              <div className="hidden md:block w-1/5 LEFT_GAP"/>
           </div>
           
         </Page.Main>
@@ -60,7 +56,7 @@ export default function PostTemplate({ data, pageContext }) {
             <SocialLinks postPath={slug} postNode={postNode} />
           </div>
           <UserInfo config={config} />
-          {/* <Disqus postNode={postNode} /> */}
+          <Disqus postNode={postNode} />
         </div>
       </div>
     </Layout>
@@ -92,7 +88,7 @@ export const pageQuery = graphql`
 
 /* <blockqoute/> element  ref= https://www.coltborg.com/style-a-blockquote-using-tailwind-css/*/
 const Blockquote = props =>
- <blockquote {...props} className='relative p-4 italic border-r-4 bg-neutral-100 text-neutral-600 border-neutral-500 quote'>
+ <blockquote {...props} className='p-4 italic border-r-4 bg-neutral-100 text-neutral-600 border-neutral-500 quote'>
     &ldquo;
     {props.children}
 </blockquote>

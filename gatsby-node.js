@@ -13,7 +13,6 @@ const siteConfig = require('./data/SiteConfig');
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   let slug;
-  // if (node.internal.type === 'MarkdownRemark') {
   if (node.internal.type === 'Mdx') {
     const fileNode = getNode(node.parent);
     const parsedFilePath = path.parse(fileNode.relativePath);
@@ -48,7 +47,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const postPage = path.resolve('src/templates/post.jsx'); // This should be weekly-update post page
+  const postPage = path.resolve('src/templates/WeeklyUpdatePostTemplate.jsx'); // This should be weekly-update post page
   const weeklyUpdatePage = path.resolve('./src/templates/weekly-update.jsx');
   // Get a full list of markdown posts
   const markdownQueryResult = await graphql(`
@@ -76,7 +75,6 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // The relevant posts data
-  // const postsEdges = markdownQueryResult.data.allMarkdownRemark.edges;
   const postsEdges = markdownQueryResult.data.allMdx.edges;
 
   // Sort posts
