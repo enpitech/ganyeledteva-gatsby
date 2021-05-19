@@ -8,6 +8,7 @@ import config from '../../data/SiteConfig';
 import Page from '../components/Page/Page';
 import PageHeader from '../components/Page/PageHeader';
 import { formatDate } from '../utils';
+import Logo from "../components/Logo/Logo"
 
 
 function WeeklyUpdate({ data }) {
@@ -26,8 +27,7 @@ function WeeklyUpdate({ data }) {
     });
   });
 
-  const [firstPost,...restPostList] = postList
-
+  const [firstPost, ...restPostList] = postList
   return (
     <Layout>
       <Helmet title={`העדכון השבועי | ${config.siteTitle}`} />
@@ -36,39 +36,33 @@ function WeeklyUpdate({ data }) {
         <PageHeader
           title='העדכון השבועי'
           subtitle='מתוך הכרה בחשיבות הקשר שבין המשולש- ילד/ה-בית-גן נשלח אליכם ההורים בכל סוף שבוע עדכון שבועי ובו אנו משתפות אתכם בחוויות המשותפות שלנו ממהלך השבוע, מעדכנות בפרטים חשובים ומאפשרות גם לכם להיות חלק מהעשייה בגן.'
-          backgroundColorClass="bg-gradient-to-r from-green-400 to-blue-300"
+          backgroundColorClass="bg-gradient-to-r from-green1weekly to-green2weekly"
           backgroundPatternClass="bg-patt3"
         >
         </PageHeader>
         <Page.Main>
-          <div className='max-w-screen-lg m-auto'>
-
-            <Row height='h-60'>
-              <div className='w-11/12 flex'>
-                <FirstPost firstPost={firstPost} />
-                <div className="hidden md:block w-1/3">
-                  <img className="h-full" src={"/logos/logo.png"} alt="Logo" />
-                </div>
+          <div className='md:grid grid-cols-9 gap-2 mr-5'>
+            <div className="col-span-9 h-10"></div>
+            <div className='md:col-span-4 md:col-start-2'>
+              <FirstPost firstPost={firstPost} />
+            </div>
+            <div className="hidden md:block col-span-4 h-60">
+              <Logo className="h-5/6 mx-auto my-5"/>
+            </div>
+            <div className="col-span-8 h-24"></div>
+            <div className="md:col-span-6 md:col-start-2 border-r-4 border-purple">
+              <h2 className="pr-5 my-2 ">עדכונים קודמים</h2>
+            </div>
+            <div className="md:col-span-7 md:col-start-2">
+              <div className="flex flex-col md:grid grid-cols-4 gap-6 py-12">
+                {restPostList.map((post, index) => (
+                  index < 8 && //render only 8 items
+                  <PostItem date={post.date} title={post.title} fullPostUrl={post.path} />
+                ))}
               </div>
-            </Row>
-
-            <Row height='h-10' mb='mb-5' withLeftGap>
-              <div className="w-full md:w-1/2 border-r-4 border-purpleBorder">
-                <h2 className="pr-2 my-2">עדכונים קודמים</h2>
-              </div>
-            </Row>
-
-            <div className="pb-6">
-              <Row withLeftGap>
-                <div className="flex-col md:grid grid-cols-4 gap-8 w-11/12">
-                  {restPostList.map((post, index) => (
-                    index < 8 && //render only 8 items
-                    <PostItem date={post.date} title={post.title} fullPostUrl={post.path} />
-                  ))}
-                </div>
-              </Row>
             </div>
           </div>
+   
         </Page.Main>
       </Page>
     </Layout>
@@ -79,14 +73,13 @@ export default WeeklyUpdate;
 
 const PostItem = ({ date, title, fullPostUrl }) => {
   return (
-    // <div className="md:w-9/10 box-border border-2 mb-5 h-80 float-right hover:border-purpleBorder">
-    <div className="md:w-full border h-80 float-right">
-      <div className="h-full border-transparent border-r-4 hover:border-purpleBorder">
+    <div className="w-2/3 md:w-11/12 border h-80 float-right">
+      <div className="h-full border-transparent border-r-4 hover:border-purple">
         <Link to={fullPostUrl}>
-          <p className='h-10 p-4'>{formatDate(date)}</p>
-          <h1 className='pb-10 p-4 text-3xl mb-10 h-40'>{title}</h1>
-          <div className="p-4">
-            <div className="w-36 rounded-full py-1 px-4 border-2 border-black bg-redLink text-white " >המשך קריאה ></div>
+          <div className='pr-4'>
+          <p className='h-10 pt-3'>{formatDate(date)}</p>
+          <h1 className='pb-10 text-3xl mb-10 h-40 pl-2'>{title}</h1>
+            <div className="w-32 rounded-full py-1 px-3 border-2 border-black bg-red text-white " >המשך קריאה ></div>
           </div>
         </Link>
       </div>
@@ -94,28 +87,15 @@ const PostItem = ({ date, title, fullPostUrl }) => {
   )
 }
 
-const Row = ({ children, height, mb, withLeftGap }) => {
-  return (
-    <div className="mr-10 md:mr-0">
-      <div className={`flex justify-start ${height} mt-10 ${mb || 'mb-20'}`}>
-        <div className="hidden md:block w-1/12"></div>
-        {children}
-        {withLeftGap &&
-          <div className="hidden md:block w-1/12"></div>
-        }
-      </div>
-    </div>
-  )
-}
 
 const FirstPost = ({ firstPost }) => {
   return (
-    <div className="w-full md:w-2/3 pr-4 border-r-4 border-purpleBorder h-full">
+    <div className="border-r-4 border-purple py-5 h-full">
       <Link to={firstPost.path}>
         <div className="pr-5">
-          <p className="mb-4">{formatDate(firstPost.date)}</p>
+          <p className='mb-4 pt-2'>{formatDate(firstPost.date)}</p>
           <h1 className='text-5xl mb-8'>{firstPost.title}</h1>
-          <div className="w-36 rounded-full py-1 px-4 border-2 border-black bg-redLink text-white " >המשך קריאה ></div>
+          <div className="w-32 rounded-full py-1 px-3 border-2 border-black bg-red text-white my-10" >המשך קריאה ></div>
         </div>
       </Link>
     </div>

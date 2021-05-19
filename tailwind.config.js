@@ -14,15 +14,16 @@ module.exports = {
         heebo: ['Heebo'],
       },
       colors: {
-        purpleBorder : '#f7479e',
-        redLink : '#ff3860',
+        purple : '#f7479e',
+        red : '#ff3860',
+        green1weekly : '#8cf8e7',
+        green2weekly: '#8ddad5',
       },
 
-    },
-  
   },
   variants: {
     extend: {},
   },
   plugins: [require('tailwindcss-rtl')],
+}
 };
