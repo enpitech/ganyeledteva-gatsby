@@ -15,7 +15,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { formatDate } from '../utils';
 
 // This should be the weekly-update post page
-export default function PostTemplate({ data, pageContext }) {
+export default function WeeklyUpdatePostTemplate({ data, pageContext }) {
   const { slug } = pageContext;
   const postNode = data.mdx;
   const post = postNode.frontmatter;
