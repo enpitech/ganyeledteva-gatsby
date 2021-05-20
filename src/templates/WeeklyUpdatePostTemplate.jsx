@@ -96,7 +96,7 @@ const Blockquote = props =>
 /* main style object, is passed to MDXRenderer  */
 const mdStyle = {
   h1: props => <h1 {...props} className="text-4xl"/>,
-  h2: props => <h2 {...props} className="border-r-4 border-purple mt-12 mb-5 pr-2 text-3xl font-normal"/>,
+  h2: props => <h2 {...props} className="border-r-4 border-purple-border mt-12 mb-5 pr-2 text-3xl font-normal"/>,
   p: props => <p {...props} className="mb-3 text-lg"/>,
   strong: props => <strong {...props} className="text-lg inline-block"/>,
   ul : props => <ul {...props} className="list-disc list-outside mb-5 mr-5"/> ,

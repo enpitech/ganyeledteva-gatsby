@@ -36,7 +36,7 @@ function WeeklyUpdate({ data }) {
         <PageHeader
           title='העדכון השבועי'
           subtitle='מתוך הכרה בחשיבות הקשר שבין המשולש- ילד/ה-בית-גן נשלח אליכם ההורים בכל סוף שבוע עדכון שבועי ובו אנו משתפות אתכם בחוויות המשותפות שלנו ממהלך השבוע, מעדכנות בפרטים חשובים ומאפשרות גם לכם להיות חלק מהעשייה בגן.'
-          backgroundColorClass="bg-gradient-to-r from-greenHeader1weekly to-greenHeader2weekly"
+          backgroundColorClass="bg-gradient-to-r from-green-header1weekly to-green-header2weekly"
           backgroundPatternClass="bg-patt3"
         >
         </PageHeader>
@@ -50,7 +50,7 @@ function WeeklyUpdate({ data }) {
               <Logo className="h-5/6 mx-auto my-5" />
             </div>
             <div className="col-span-9 h-24" />
-            <div className="md:col-span-6 md:col-start-2 border-r-4 border-purple mb-4">
+            <div className="md:col-span-6 md:col-start-2 border-r-4 border-purple-border mb-4">
               <h2 className="pr-5 my-2 ">עדכונים קודמים</h2>
             </div>
             <div className="md:col-span-7 md:col-start-2">
@@ -74,12 +74,12 @@ export default WeeklyUpdate;
 const PostItem = ({ date, title, fullPostUrl }) => {
   return (
     <div className="w-2/3 md:w-11/12 border h-80 float-right">
-      <div className="h-full border-transparent border-r-4 hover:border-purple">
+      <div className="h-full border-transparent border-r-4 hover:border-purple-border">
         <Link to={fullPostUrl}>
           <div className='pr-4'>
             <p className='h-10 pt-3'>{formatDate(date)}</p>
             <h1 className='pb-10 text-3xl mb-10 h-40 pl-2'>{title}</h1>
-            <div className="w-32 rounded-full py-1 px-3 border-2 border-black bg-red text-white " >המשך קריאה ></div>
+            <div className="w-32 rounded-full py-1 px-3 border-2 border-black bg-red-link text-white " >המשך קריאה ></div>
           </div>
         </Link>
       </div>
@@ -90,12 +90,12 @@ const PostItem = ({ date, title, fullPostUrl }) => {
 
 const FirstPost = ({ firstPost }) => {
   return (
-    <div className="border-r-4 border-purple py-5 h-full">
+    <div className="border-r-4 border-purple-border py-5 h-full">
       <Link to={firstPost.path}>
         <div className="px-5">
           <p className='mb-4 pt-2'>{formatDate(firstPost.date)}</p>
           <h1 className='text-5xl mb-8'>{firstPost.title}</h1>
-          <div className="w-32 rounded-full py-1 px-3 border-2 border-black bg-red text-white my-10" >המשך קריאה ></div>
+          <div className="w-32 rounded-full py-1 px-3 border-2 border-black bg-red-link text-white my-10" >המשך קריאה ></div>
         </div>
       </Link>
     </div>

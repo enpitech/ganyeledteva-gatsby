@@ -14,10 +14,16 @@ module.exports = {
         heebo: ['Heebo'],
       },
       colors: {
-        purple : '#f7479e',
-        red : '#ff3860',
-        greenHeader1weekly : '#8cf8e7',
-        greenHeader2weekly: '#8ddad5',
+        purple :{
+          border:'#f7479e',
+        } ,
+        red :{
+          link : '#ff3860',
+        },
+        green:{
+          header1weekly : '#8cf8e7' ,
+          header2weekly : '#8ddad5',
+        }
       },
 
   },
