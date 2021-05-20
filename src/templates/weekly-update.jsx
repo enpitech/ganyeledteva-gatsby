@@ -72,7 +72,7 @@ function WeeklyUpdate({ data }) {
 export default WeeklyUpdate;
 
 const GotoPostButton = props => {
-  let styling = 'absolute rounded-full text-base text-center py-1 px-3 border-2 border-black bg-red-link text-white '
+  let styling = 'inline-block rounded-full text-base text-center py-1 px-3 border-2 border-black bg-red-link text-white '
   if(props.className){
     styling += props.className
   }
