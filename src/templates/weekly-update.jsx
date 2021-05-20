@@ -88,7 +88,6 @@ const PostItem = ({ date, title, fullPostUrl }) => {
           <div className='pr-4'>
             <p className='h-10 pt-3'>{formatDate(date)}</p>
             <h1 className='pb-10 text-3xl mb-10 h-40 pl-2'>{title}</h1>
-            {/* <div className="rounded-full text-base text-center inline-flex py-1 px-3 border-2 border-black bg-red-link text-white " >המשך קריאה ></div> */}
             <GotoPostButton/>
           </div>
         </Link>
@@ -106,7 +105,6 @@ const FirstPost = ({ firstPost }) => {
           <p className='mb-4 pt-2'>{formatDate(firstPost.date)}</p>
           <h1 className='text-5xl mb-8'>{firstPost.title}</h1>
           <GotoPostButton className="my-5" />
-          {/* <div className="rounded-full text-base text-center inline-flex py-1 px-3 border-2 border-black bg-red-link text-white my-10" >המשך קריאה ></div> */}
         </div>
       </Link>
     </div>
