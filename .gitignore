@@ -60,3 +60,9 @@ bundle-stats.json
 
 # macOS
 .DS_Store
+
+#vs settings
+.vscode
+
+# toy file
+content\weekly-update\ניסיון.md
