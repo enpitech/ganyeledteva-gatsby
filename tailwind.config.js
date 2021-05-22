@@ -13,11 +13,23 @@ module.exports = {
       fontFamily: {
         heebo: ['Heebo'],
       },
-      colors: {},
-    },
+      colors: {
+        purple :{
+          border:'#f7479e',
+        } ,
+        red :{
+          link : '#ff3860',
+        },
+        green:{
+          header1weekly : '#8cf8e7' ,
+          header2weekly : '#8ddad5',
+        }
+      },
+
   },
   variants: {
     extend: {},
   },
   plugins: [require('tailwindcss-rtl')],
+}
 };

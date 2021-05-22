@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Footer.css';
-import treeLev from '../../../static/pics/icons/tree_lev.svg';
-import treeTri from '../../../static/pics/icons/tree_tri.svg';
+import treeLev from '../../../static/img/pics/icons/tree_lev.svg';
+import treeTri from '../../../static/img/pics/icons/tree_tri.svg';
 
 function Footer({ config }) {
   const [treeImgs, setTreeImgs] = useState([]);

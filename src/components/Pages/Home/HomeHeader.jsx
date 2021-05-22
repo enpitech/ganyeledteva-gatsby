@@ -1,9 +1,9 @@
 import React from 'react';
 import logo from '../../../../static/logos/logo.png';
-import cloudBig from '../../../../static/pics/icons/cloud_big.svg';
-import bird from '../../../../static/pics/icons/bird.svg';
-import treeLev from '../../../../static/pics/icons/tree_lev.svg';
-import treeTri from '../../../../static/pics/icons/tree_tri.svg';
+import cloudBig from '../../../../static/img/pics/icons/cloud_big.svg';
+import bird from '../../../../static/img/pics/icons/bird.svg';
+import treeLev from '../../../../static/img/pics/icons/tree_lev.svg';
+import treeTri from '../../../../static/img/pics/icons/tree_tri.svg';
 import * as mainHeaderStyles from '../../../styles/main-header.module.css';
 
 export default function HomeHeader() {
