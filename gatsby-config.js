@@ -25,6 +25,10 @@ module.exports = {
     "gatsby-plugin-postcss",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-lodash",
+    "gatsby-remark-images",
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -37,6 +41,13 @@ module.exports = {
       options: {
         name: "posts",
         path: `${__dirname}/content/`,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "images",
+        path: `${__dirname}/static/img`,
       },
     },
     {
@@ -73,9 +84,7 @@ module.exports = {
         color: config.themeColor,
       },
     },
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+
     "gatsby-plugin-catch-links",
     "gatsby-plugin-twitter",
     "gatsby-plugin-sitemap",
@@ -125,7 +134,7 @@ module.exports = {
       options: {
         setup(ref) {
           const ret = ref.query.site.siteMetadata.rssMetadata;
-          ret.allMarkdownRemark = ref.query.allMarkdownRemark;
+          ret.allMarkdownRemark = ref.query.allMdx;
           ret.generator = "GatsbyJS Advanced Starter";
           return ret;
         },
@@ -149,7 +158,7 @@ module.exports = {
           {
             serialize(ctx) {
               const { rssMetadata } = ctx.query.site.siteMetadata;
-              return ctx.query.allMarkdownRemark.edges.map((edge) => ({
+              return ctx.query.allMdx.edges.map((edge) => ({
                 categories: edge.node.frontmatter.tags,
                 date: edge.node.fields.date,
                 title: edge.node.frontmatter.title,
@@ -164,7 +173,7 @@ module.exports = {
             },
             query: `
             {
-              allMarkdownRemark(
+              allMdx(
                 limit: 1000,
                 sort: { order: DESC, fields: [frontmatter___date] },
               ) {
@@ -179,10 +188,8 @@ module.exports = {
                     }
                     frontmatter {
                       title
-                      cover
                       date
-                      category
-                      tags
+                      img
                     }
                   }
                 }

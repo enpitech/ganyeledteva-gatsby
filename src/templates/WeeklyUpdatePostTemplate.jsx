@@ -13,6 +13,7 @@ import Page from "../components/Page/Page";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { formatDate } from "../utils";
+import Img from "gatsby-image"
 
 // This should be the weekly-update post page
 export default function WeeklyUpdatePostTemplate({ data, pageContext }) {
@@ -22,6 +23,7 @@ export default function WeeklyUpdatePostTemplate({ data, pageContext }) {
   if (!post.id) {
     post.id = slug;
   }
+  let featuredImgFluid = post.img.childImageSharp.fluid
 
   return (
     <Layout>
@@ -42,6 +44,7 @@ export default function WeeklyUpdatePostTemplate({ data, pageContext }) {
               <Gap />
               <div className="md:w-3/5 mb-10">
                 <MDXProvider components={mdStyle}>
+                  <Img fluid={featuredImgFluid} />
                   <MDXRenderer>{postNode.body}</MDXRenderer>
                 </MDXProvider>
               </div>
@@ -74,6 +77,13 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date
+        img {
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       fields {
         slug
