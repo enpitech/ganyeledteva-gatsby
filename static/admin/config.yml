@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: github
   repo: nir2002/ganyeledteva-gatsby # Path to your Github repository
   branch: main # Branch to update
   # base_url: https://auth-cms.herokuapp.com
