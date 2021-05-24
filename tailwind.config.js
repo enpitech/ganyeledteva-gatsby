@@ -25,6 +25,9 @@ module.exports = {
           header2weekly : '#8ddad5',
         }
       },
+      boxShadow: {
+        postImg : '-1px 0px 17px -2px rgba(0,0,0,0.6)'
+      },
 
   },
   variants: {
