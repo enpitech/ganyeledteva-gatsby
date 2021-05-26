@@ -10,7 +10,6 @@ import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import PageHeader from "../components/Page/PageHeader";
 import Page from "../components/Page/Page";
-import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { formatDate } from "../utils";
 
@@ -41,9 +40,7 @@ export default function WeeklyUpdatePostTemplate({ data, pageContext }) {
             <div className="flex justify-between">
               <Gap />
               <div className="md:w-3/5 mb-10 text-lg">
-                <MDXProvider components={mdStyle}>
-                  <MDXRenderer>{postNode.body}</MDXRenderer>
-                </MDXProvider>
+                <MDXRenderer>{postNode.body}</MDXRenderer>
               </div>
               <Gap />
             </div>
@@ -82,38 +79,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-/**
- * defining the custom styling of md element to html elements
- */
-
-/* <blockqoute/> element  ref= https://www.coltborg.com/style-a-blockquote-using-tailwind-css/*/
-const Blockquote = (props) => (
-  <blockquote
-    {...props}
-    className="p-4 italic border-r-4 bg-neutral-100 text-neutral-600 border-neutral-500 quote"
-  >
-    &ldquo;
-    {props.children}
-  </blockquote>
-);
-
-/* main style object, is passed to MDXRenderer  */
-const mdStyle = {
-  h1: (props) => <h1 {...props} className="text-4xl" />,
-  h2: (props) => (
-    <h2
-      {...props}
-      className="border-r-4 border-purple-border mt-12 mb-5 pr-2 text-3xl font-normal"
-    />
-  ),
-  p: (props) => <p {...props} className="mb-3 text-lg" />,
-  strong: (props) => <strong {...props} className="text-lg inline-block" />,
-  ul: (props) => <ul {...props} className="list-disc list-outside mb-5 mr-5" />,
-  ol: (props) => (
-    <ol {...props} className="list-decimal list-outside mb-5 mr-5" />
-  ),
-  li: (props) => <li {...props} className="text-lg" />,
-  a: (props) => <a {...props} className="text-blue-500" />,
-  blockquote: Blockquote,
-};
