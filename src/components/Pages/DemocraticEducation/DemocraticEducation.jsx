@@ -45,7 +45,7 @@ function DemocraticEducation() {
         />
       </Page.Header>
       <Page.Main>
-        <div className="md:flex flex-row justify-center md:w-4/5">
+        <div className="md:flex flex-row m-auto md:w-4/5">
           <div className="md:w-3/5 ml-10">
             <MDXRenderer>{body}</MDXRenderer>
           </div>
@@ -53,7 +53,7 @@ function DemocraticEducation() {
             {images.map((img, index) => (
               <div
                 key={`${(img.src, index)}`}
-                className="my-5 lg:mx-5 shadow-DemocEducImg"
+                className="my-5 lg:mx-5 shadow-democEducImg"
               >
                 <img src={img.src} alt={img.alt} />
               </div>
