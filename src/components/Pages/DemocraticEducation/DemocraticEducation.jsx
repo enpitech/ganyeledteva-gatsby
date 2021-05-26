@@ -15,17 +15,13 @@ function DemocraticEducation() {
               date
               dir
             }
-            excerpt
-            timeToRead
             frontmatter {
               title
-              date
               subtitle
               images {
                 alt
                 src
               }
-              bg
             }
             body
           }
@@ -34,8 +30,8 @@ function DemocraticEducation() {
     }
   `);
 
-  const post = data.allMdx.edges[0].node;
-  const { frontmatter, body } = post;
+  const pageNode = data.allMdx.edges[0].node;
+  const { frontmatter, body } = pageNode;
   const { title, subtitle, images } = frontmatter;
 
   return (
@@ -49,13 +45,16 @@ function DemocraticEducation() {
         />
       </Page.Header>
       <Page.Main>
-        <div className="md:flex flex-row justify-center m-auto md:w-4/5">
-          <div className="md:w-3/5 md:ml-10">
+        <div className="md:flex flex-row justify-center md:w-4/5">
+          <div className="md:w-3/5 ml-10">
             <MDXRenderer>{body}</MDXRenderer>
           </div>
           <div className="md:w-2/5 mt-4">
-            {images.map((img) => (
-              <div className="my-5 lg:mx-5 shadow-postImg">
+            {images.map((img, index) => (
+              <div
+                key={`${(img.src, index)}`}
+                className="my-5 lg:mx-5 shadow-DemocEducImg"
+              >
                 <img src={img.src} alt={img.alt} />
               </div>
             ))}

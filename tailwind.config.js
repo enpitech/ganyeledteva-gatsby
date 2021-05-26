@@ -26,7 +26,7 @@ module.exports = {
         }
       },
       boxShadow: {
-        postImg : '-1px 0px 17px -2px rgba(0,0,0,0.6)'
+        DemocEducImg : '0 0 14px -3px rgba(0,0,0,.67)'
       },
       screens:{
         'md': '769px',
