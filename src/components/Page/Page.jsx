@@ -12,8 +12,8 @@ function Header({ children }) {
 }
 
 function Main({ children }) {
-return <main>{children}</main>;
-// return <main><MDXProvider components={mdStyle}>{children}</MDXProvider></main>;
+// return <main>{children}</main>;
+return <main><MDXProvider components={mdStyle}>{children}</MDXProvider></main>;
 }
 
 Page.Header = Header;

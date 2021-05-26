@@ -40,7 +40,7 @@ export default function WeeklyUpdatePostTemplate({ data, pageContext }) {
           <Page.Main>
             <div className="flex justify-between">
               <Gap />
-              <div className="md:w-3/5 mb-10">
+              <div className="md:w-3/5 mb-10 text-lg">
                 <MDXProvider components={mdStyle}>
                   <MDXRenderer>{postNode.body}</MDXRenderer>
                 </MDXProvider>

@@ -52,18 +52,19 @@ function DemocraticEducation() {
         />
       </Page.Header>
       <Page.Main>
-        <div className='lg:grid grid-cols-10'>
-          <div className='col-span-4 col-start-2 lg:ml-3 pb-10'>
+        <div className="md:flex flex-row justify-center m-auto md:w-4/5">
+          <div className="md:w-3/5 md:ml-10">
         <MDXRenderer>{body}</MDXRenderer>
-        </div>
-        <div className='col-span-4 lg:m-10 float-right'>
-          {images.map(img =>
-          <div className="mb-5 lg:m-5 shadow-postImg">
+        </div> 
+        <div className="md:w-2/5 mt-4">
+        {images.map(img =>
+          <div className="my-5 lg:mx-5 shadow-postImg">
           <img src={img.src} alt={img.alt}/>
         </div>
           )}
+          </div>
         </div>
-        </div>
+
       </Page.Main>
     </Page>
   );
