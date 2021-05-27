@@ -28,5 +28,4 @@ const mdStyle = {
     blockquote: Blockquote,
     };
     
-    export {mdStyle};  
-      
+export {mdStyle};  

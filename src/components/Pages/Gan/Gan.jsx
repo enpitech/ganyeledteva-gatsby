@@ -14,10 +14,7 @@ function Gan() {
         />
       </Page.Header>
       <Page.Main>
-        <div>
-          תוכן העמוד
-          <h2 className="text-xl">ffddfddf</h2>
-        </div>
+        <div>תוכן העמוד</div>
       </Page.Main>
     </Page>
   );

@@ -45,7 +45,7 @@ function DemocraticEducation() {
         />
       </Page.Header>
       <Page.Main>
-        <div className="md:flex flex-row m-auto md:w-4/5">
+        <div className="md:flex md:w-4/5 m-auto">
           <div className="md:w-3/5 ml-10">
             <MDXRenderer>{body}</MDXRenderer>
           </div>
