@@ -40,25 +40,23 @@ function DemocraticEducation() {
         <PageHeader
           title={title}
           subtitle={subtitle}
-          backgroundColorClass="bg-gradient-to-r from-green-300 to-blue-400"
+          backgroundColorClass="bg-gradient-to-r from-blue-300 to-blue-100"
           backgroundPatternClass="bg-patt2"
         />
       </Page.Header>
-      <Page.Main>
-        <div className="md:flex md:w-4/5 m-auto">
-          <div className="md:w-3/5 ml-10">
-            <MDXRenderer>{body}</MDXRenderer>
-          </div>
-          <div className="md:w-2/5 mt-4">
-            {images.map((img, index) => (
-              <div
-                key={`${(img.src, index)}`}
-                className="my-5 lg:mx-5 shadow-democEducImg"
-              >
-                <img src={img.src} alt={img.alt} />
-              </div>
-            ))}
-          </div>
+      <Page.Main className="md:flex justify-center">
+        <div className="md:w-3/7 ml-10">
+          <MDXRenderer>{body}</MDXRenderer>
+        </div>
+        <div className="md:w-2/7 mt-4">
+          {images.map((img, index) => (
+            <div
+              key={`${(img.src, index)}`}
+              className="my-5 lg:mx-5 shadow-democEducImg"
+            >
+              <img src={img.src} alt={img.alt} />
+            </div>
+          ))}
         </div>
       </Page.Main>
     </Page>

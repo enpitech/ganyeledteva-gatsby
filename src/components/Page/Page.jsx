@@ -10,9 +10,9 @@ function Header({ children }) {
   return children ? <header>{children}</header> : null;
 }
 
-function Main({ children }) {
+function Main({ children, className }) {
   return (
-    <main>
+    <main className={className}>
       <MDXProvider components={mdStyle}>{children}</MDXProvider>
     </main>
   );
