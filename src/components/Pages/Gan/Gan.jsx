@@ -1,6 +1,6 @@
-import React from 'react';
-import Page from '../../Page/Page';
-import PageHeader from '../../Page/PageHeader';
+import React from "react";
+import Page from "../../Page/Page";
+import PageHeader from "../../Page/PageHeader";
 
 function Gan() {
   return (

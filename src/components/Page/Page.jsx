@@ -1,4 +1,6 @@
-import React from 'react';
+import React from "react";
+import { MDXProvider } from "@mdx-js/react";
+import { mdStyle } from "../../styles/mdxStyles";
 
 export default function Page({ children }) {
   return <div className="bg-white">{children}</div>;
@@ -8,8 +10,12 @@ function Header({ children }) {
   return children ? <header>{children}</header> : null;
 }
 
-function Main({ children }) {
-  return <main>{children}</main>;
+function Main({ children, className }) {
+  return (
+    <main className={className}>
+      <MDXProvider components={mdStyle}>{children}</MDXProvider>
+    </main>
+  );
 }
 
 Page.Header = Header;
