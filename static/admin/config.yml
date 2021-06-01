@@ -10,7 +10,7 @@ public_folder: 'assets/pics/uploads' # The src attribute for uploaded media will
 collections:
   - name: 'weekly-update'
     label: 'עדכון שבועי'
-    folder: 'content/pages/content/weekly-update'
+    folder: 'content/weekly-update'
     create: true
     slug: '{{slug}}'
     fields:
@@ -22,7 +22,7 @@ collections:
 
   - name: 'home'
     label: 'דף הבית'
-    folder: 'content/static'
+    folder: 'content/home'
     create: true
     slug: '{{slug}}'
     fields:
