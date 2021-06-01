@@ -114,5 +114,6 @@ module.exports = {
         includeRobots: false,
       },
     },
+    'gatsby-plugin-remove-fingerprints',
   ],
 };
