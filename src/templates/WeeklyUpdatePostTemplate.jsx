@@ -56,7 +56,9 @@ export const pageQuery = graphql`
       excerpt
       frontmatter {
         title
+        subtitle
         date
+        img
       }
       fields {
         slug
