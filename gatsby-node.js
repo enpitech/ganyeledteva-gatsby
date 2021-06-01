@@ -4,51 +4,51 @@
 
 /* eslint "no-console": "off" */
 
-const path = require("path");
-const _ = require("lodash");
-const moment = require("moment");
-const siteConfig = require("./data/SiteConfig");
+const path = require('path');
+const _ = require('lodash');
+const moment = require('moment');
+const siteConfig = require('./data/SiteConfig');
 
 // Create slug and date fields if exists in frontmatter
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   let slug;
-  if (node.internal.type === "Mdx") {
+  if (node.internal.type === 'Mdx') {
     const fileNode = getNode(node.parent);
     const parsedFilePath = path.parse(fileNode.relativePath);
     if (
-      Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
+      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
+      Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
     ) {
       slug = `/${parsedFilePath.dir}/${_.kebabCase(node.frontmatter.title)}`;
-    } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
+    } else if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
       slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
-    } else if (parsedFilePath.dir === "") {
+    } else if (parsedFilePath.dir === '') {
       slug = `/${parsedFilePath.name}/`;
     } else {
       slug = `/${parsedFilePath.dir}/`;
     }
 
-    if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
-      if (Object.prototype.hasOwnProperty.call(node.frontmatter, "slug"))
+    if (Object.prototype.hasOwnProperty.call(node, 'frontmatter')) {
+      if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug'))
         slug = `/${_.kebabCase(node.frontmatter.slug)}`;
-      if (Object.prototype.hasOwnProperty.call(node.frontmatter, "date")) {
+      if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'date')) {
         const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
         if (!date.isValid)
           console.warn(`WARNING: Invalid date.`, node.frontmatter);
 
-        createNodeField({ node, name: "date", value: date.toISOString() });
+        createNodeField({ node, name: 'date', value: date.toISOString() });
       }
     }
-    createNodeField({ node, name: "slug", value: slug });
-    createNodeField({ node, name: "dir", value: parsedFilePath.dir });
+    createNodeField({ node, name: 'slug', value: slug });
+    createNodeField({ node, name: 'dir', value: parsedFilePath.dir });
   }
 };
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const postPage = path.resolve("src/templates/WeeklyUpdatePostTemplate.jsx"); // This should be weekly-update post page
-  const weeklyUpdatePage = path.resolve("./src/templates/weekly-update.jsx");
+  const postPage = path.resolve('src/templates/WeeklyUpdatePostTemplate.jsx'); // This should be weekly-update post page
+  const weeklyUpdatePage = path.resolve('./src/templates/weekly-update.jsx');
   // Get a full list of markdown posts
   const markdownQueryResult = await graphql(`
     {
@@ -60,7 +60,9 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             frontmatter {
               title
+              subtitle
               date
+              img
             }
             body
           }

@@ -1,17 +1,13 @@
-import React from "react";
-import { Helmet } from "react-helmet";
-import { graphql } from "gatsby";
-import Layout from "../layout";
-import UserInfo from "../components/UserInfo/UserInfo";
-import Disqus from "../components/Disqus/Disqus";
-import PostTags from "../components/PostTags/PostTags";
-import SocialLinks from "../components/SocialLinks/SocialLinks";
-import SEO from "../components/SEO/SEO";
-import config from "../../data/SiteConfig";
-import PageHeader from "../components/Page/PageHeader";
-import Page from "../components/Page/Page";
-import { MDXRenderer } from "gatsby-plugin-mdx";
-import { formatDate } from "../utils";
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import Layout from '../layout';
+import SEO from '../components/SEO/SEO';
+import config from '../../data/SiteConfig';
+import PageHeader from '../components/Page/PageHeader';
+import Page from '../components/Page/Page';
+import { formatDate } from '../utils';
 
 // This should be the weekly-update post page
 export default function WeeklyUpdatePostTemplate({ data, pageContext }) {
@@ -24,37 +20,27 @@ export default function WeeklyUpdatePostTemplate({ data, pageContext }) {
 
   return (
     <Layout>
-      <div>
-        <Helmet>
-          <title>{`${post.title} | ${config.siteTitle}`}</title>
-        </Helmet>
-        <SEO postPath={slug} postNode={postNode} postSEO />
-        <Page>
-          <PageHeader
-            title={post.title}
-            subtitle={formatDate(post.date)}
-            backgroundColorClass="bg-gradient-to-r from-yellow-200 to-green-300"
-            backgroundPatternClass="bg-patt2"
-          />
-          <Page.Main>
-            <div className="flex justify-between">
-              <Gap />
-              <div className="md:w-3/5 mb-10 text-lg">
-                <MDXRenderer>{postNode.body}</MDXRenderer>
-              </div>
-              <Gap />
+      <Helmet>
+        <title>{`${post.title} | ${config.siteTitle}`}</title>
+      </Helmet>
+      <SEO postPath={slug} postNode={postNode} postSEO />
+      <Page>
+        <PageHeader
+          title={post.title}
+          subtitle={formatDate(post.date)}
+          backgroundColorClass="bg-gradient-to-r from-yellow-200 to-green-300"
+          backgroundPatternClass="bg-patt2"
+        />
+        <Page.Main>
+          <div className="flex justify-between">
+            <Gap />
+            <div className="md:w-3/5 mb-10 text-lg">
+              <MDXRenderer>{postNode.body}</MDXRenderer>
             </div>
-          </Page.Main>
-        </Page>
-        <div>
-          <div className="post-meta">
-            <PostTags tags={post.tags} />
-            <SocialLinks postPath={slug} postNode={postNode} />
+            <Gap />
           </div>
-          <UserInfo config={config} />
-          <Disqus postNode={postNode} />
-        </div>
-      </div>
+        </Page.Main>
+      </Page>
     </Layout>
   );
 }
@@ -70,7 +56,9 @@ export const pageQuery = graphql`
       excerpt
       frontmatter {
         title
+        subtitle
         date
+        img
       }
       fields {
         slug
