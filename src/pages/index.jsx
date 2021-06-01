@@ -82,7 +82,6 @@ function initSketchDrawer() {
       width: WINDOW_WIDTH,
 
       setup() {
-        console.log('setup');
         changeColor();
       },
       mousedown() {
