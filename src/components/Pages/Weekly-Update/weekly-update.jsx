@@ -1,14 +1,13 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
-import Layout from "../layout";
-import PostListing from "../components/PostListing/PostListing";
-import SEO from "../components/SEO/SEO";
-import config from "../../data/SiteConfig";
-import Page from "../components/Page/Page";
-import PageHeader from "../components/Page/PageHeader";
-import { formatDate } from "../utils";
-import Logo from "../components/Logo/Logo";
+import Layout from "../../../layout";
+import SEO from "../../SEO/SEO";
+import config from "../../../../data/SiteConfig";
+import Page from "../../Page/Page";
+import PageHeader from "../../Page/PageHeader";
+import { formatDate } from "../../../utils";
+import Logo from "../../Logo/Logo";
 
 function WeeklyUpdate({ data }) {
   const postEdges = data.allMdx.edges;
@@ -90,7 +89,9 @@ const PostItem = ({ date, title, fullPostUrl }) => {
         <Link to={fullPostUrl}>
           <div className="pr-4">
             <p className="h-10 pt-3">{formatDate(date)}</p>
-            <h1 className="pb-10 text-3xl font-bold mb-10 h-40 pl-2">{title}</h1>
+            <h1 className="pb-10 text-3xl font-bold mb-10 h-40 pl-2">
+              {title}
+            </h1>
             <GotoPostButton />
           </div>
         </Link>

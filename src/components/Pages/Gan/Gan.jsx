@@ -4,38 +4,22 @@ import PageHeader from "../../Page/PageHeader";
 import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../../../layout";
-import UserInfo from "../../../components/UserInfo/UserInfo";
-import Disqus from "../../../components/Disqus/Disqus";
-import PostTags from "../../../components/PostTags/PostTags";
-import SocialLinks from "../../../components/SocialLinks/SocialLinks";
 import SEO from "../../../components/SEO/SEO";
 import config from "../../../../data/SiteConfig";
 
-function Gan({ data, pageContext }) {
+function Gan({ data }) {
   const postEdges = data.allMdx.edges;
   const postList = [];
   postEdges.forEach((postEdge) => {
     postList.push({
       path: postEdge.node.fields.slug,
-      tags: postEdge.node.frontmatter.tags,
-      cover: postEdge.node.frontmatter.cover,
       title: postEdge.node.frontmatter.title,
       subtitle: postEdge.node.frontmatter.subtitle,
-      date: postEdge.node.fields.date,
-      excerpt: postEdge.node.excerpt,
-      timeToRead: postEdge.node.timeToRead,
-      dir: postEdge.node.fields.dir,
       body: postEdge.node.body,
       img: postEdge.node.frontmatter.img,
       link: postEdge.node.frontmatter.link,
     });
   });
-  // const { slug } = pageContext;
-  // const postNode = data.allMdx;
-  // const post = postNode.frontmatter;
-  // if (!post.id) {
-  //   post.id = slug;
-  // }
 
   const headerMdPost = postList.filter(
     (post) => post.title === "גן ילדי הטבע הדמוקרטי"
@@ -43,42 +27,32 @@ function Gan({ data, pageContext }) {
 
   return (
     <Layout>
-      <div>
-        <Helmet>
-          <title>{`${headerMdPost.title} | ${config.siteTitle}`}</title>
-        </Helmet>
-        {/* <SEO postPath={slug} postNode={postNode} postSEO /> */}
-        <Page>
-          <Page.Header>
-            <PageHeader
-              title={headerMdPost.title}
-              subtitle={headerMdPost.subtitle}
-              backgroundColorClass="bg-gradient-to-r from-blue-header1Gan to-blue-header2Gan"
-              backgroundPatternClass="bg-patt1"
-            />
-          </Page.Header>
-          <Page.Main className="">
-            <div className="md:w-9/12 m-auto">
-              {postList.map(
-                (post, index) =>
-                  post.title !== "גן ילדי הטבע הדמוקרטי" && (
-                    <div key={index} className="mt-10 mb-16 md:mb-40">
-                      <Post post={post} />
-                    </div>
-                  )
-              )}
-            </div>
-          </Page.Main>
-        </Page>
-        <div>
-          <div className="post-meta">
-            {/* <PostTags tags={post.tags} /> */}
-            {/* <SocialLinks postPath={slug} postNode={postNode} /> */}
+      <Helmet>
+        <title>{`${headerMdPost.title} | ${config.siteTitle}`}</title>
+      </Helmet>
+      <SEO />
+      <Page>
+        <Page.Header>
+          <PageHeader
+            title={headerMdPost.title}
+            subtitle={headerMdPost.subtitle}
+            backgroundColorClass="bg-gradient-to-r from-blue-header1Gan to-blue-header2Gan"
+            backgroundPatternClass="bg-patt1"
+          />
+        </Page.Header>
+        <Page.Main>
+          <div className="md:w-9/12 m-auto pb-1">
+            {postList.map(
+              (post, index) =>
+                post.title !== "גן ילדי הטבע הדמוקרטי" && (
+                  <div key={index} className="mt-10 mb-16 md:mb-40">
+                    <Post post={post} />
+                  </div>
+                )
+            )}
           </div>
-          <UserInfo config={config} />
-          {/* <Disqus postNode={postNode} /> */}
-        </div>
-      </div>
+        </Page.Main>
+      </Page>
     </Layout>
   );
 }

@@ -47,8 +47,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const postPage = path.resolve('src/templates/WeeklyUpdatePostTemplate.jsx'); // This should be weekly-update post page
-  const weeklyUpdatePage = path.resolve('./src/templates/weekly-update.jsx');
+  const weeklyPostPage = path.resolve("src/templates/WeeklyUpdatePostTemplate.jsx"); // This should be weekly-update post page
+  const weeklyUpdatePage = path.resolve("./src/components/Pages/Weekly-Update/weekly-update.jsx");
+  const ganPostPage = path.resolve("./src/templates/GanPostTemplate.jsx"); // This should be weekly-update post page
+  const ganPage = path.resolve("./src/components/Pages/Gan/Gan.jsx");
   // Get a full list of markdown posts
   const markdownQueryResult = await graphql(`
     {
@@ -114,7 +116,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: edge.node.fields.slug, // this should be the title in the md file
-      component: postPage,
+      component: weeklyPostPage,
       context: {
         slug: edge.node.fields.slug,
         // all the below data can be used to create prev/next post buttons
@@ -125,42 +127,6 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
-};
-
-
-
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
-  const postPage = path.resolve("./src/templates/GanPostTemplate.jsx"); // This should be weekly-update post page
-  const ganPage = path.resolve("./src/components/Pages/Gan/Gan.jsx");
-  // Get a full list of markdown posts
-  const markdownQueryResult = await graphql(`
-    {
-      allMdx {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              date
-            }
-            body
-          }
-        }
-      }
-    }
-  `);
-  if (markdownQueryResult.errors) {
-    console.error(markdownQueryResult.errors);
-    throw markdownQueryResult.errors;
-  }
-  
-  // The relevant posts data
-  const postsEdges = markdownQueryResult.data.allMdx.edges;
-  console.log(postsEdges[0])
-  // Paging
   createPage({
     path: `/gan`,
     component: ganPage,
@@ -168,24 +134,17 @@ exports.createPages = async ({ graphql, actions }) => {
 
   /** We will use this for the weekly-updates blog */
   // Post page creating
-  postsEdges.forEach((edge, index) => {
+  postsEdges.forEach((edge) => {
     // Create post pages
-    const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
-    const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
-    const nextEdge = postsEdges[nextID];
-    const prevEdge = postsEdges[prevID];
 
     createPage({
       path: edge.node.fields.slug, // this should be the title in the md file
-      component: postPage,
+      component: ganPostPage,
       context: {
         slug: edge.node.fields.slug,
-        // all the below data can be used to create prev/next post buttons
-        // nexttitle: nextEdge.node.frontmatter.title,
-        // nextslug: nextEdge.node.fields.slug,
-        // prevtitle: prevEdge.node.frontmatter.title,
-        // prevslug: prevEdge.node.fields.slug,
       },
     });
   });
+
 };
+
