@@ -60,7 +60,7 @@ collections:
 
   - name: 'democraticeducation'
     label: 'הגישה הדמוקרטית'
-    folder: 'content/pages/content/democraticeducation'
+    folder: 'content/democraticeducation'
     create: true
     slug: '{{slug}}'
     fields:
@@ -95,7 +95,7 @@ collections:
 
   - name: 'gan'
     label: 'הגן'
-    folder: 'content/pages/content/gan'
+    folder: 'content/gan'
     create: true
     slug: '{{slug}}'
     fields:
@@ -131,7 +131,7 @@ collections:
 
   - name: 'democratic-center'
     label: 'המרכז הדמוקרטי'
-    folder: 'content/pages/content/democratic-center'
+    folder: 'content/democratic-center'
     create: true
     slug: '{{slug}}'
     fields:
@@ -166,7 +166,7 @@ collections:
 
   - name: 'signup'
     label: 'רישום לגן'
-    folder: 'content/pages/content/signup'
+    folder: 'content/signup'
     create: true
     slug: '{{slug}}'
     fields:
