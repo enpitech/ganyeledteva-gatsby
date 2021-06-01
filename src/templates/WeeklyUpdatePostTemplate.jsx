@@ -63,7 +63,7 @@ const Gap = () => <div className="hidden md:block w-1/5" />;
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query WeeklyUpdatePostBySlug($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       body
       timeToRead

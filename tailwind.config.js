@@ -16,6 +16,7 @@ module.exports = {
       colors: {
         purple :{
           border:'#f7479e',
+          lightBorder: '#ff2b56',
         } ,
         red :{
           link : '#ff3860',
@@ -23,7 +24,17 @@ module.exports = {
         green:{
           header1weekly : '#8cf8e7' ,
           header2weekly : '#8ddad5',
+          headerGanPost: '#96e6a1',
+          
         },
+        yellow:{
+          headerGanPost: '#d4fc79',
+          headerBorder : '#fdffa8',
+        },
+        blue:{
+          header1Gan: '#8cf8e7',
+          header2Gan: '#8ddad5',
+        }
       },
       boxShadow: {
         democEducImg : '0 0 14px -3px rgba(0,0,0,.67)'
