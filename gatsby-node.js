@@ -52,7 +52,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const weeklyPostPage = path.resolve("./src/templates/WeeklyUpdatePostTemplate.jsx"); 
    const weeklyUpdatePage = path.resolve("./src/components/Pages/WeeklyUpdate/weekly-update.jsx");
-  const ganPostPage = path.resolve("./src/templates/GanSectionTemplate.jsx");
+  const ganSectionPage = path.resolve("./src/templates/GanSectionTemplate.jsx");
   const ganPage = path.resolve("./src/components/Pages/Gan/Gan.jsx");
   // Get a full list of markdown posts
   const markdownQueryResult = await graphql(`
@@ -118,7 +118,7 @@ exports.createPages = async ({ graphql, actions }) => {
     if(edge.node.fields.dir === ganDirName){
          createPage({
       path: edge.node.fields.slug, 
-      component: ganPostPage,
+      component: ganSectionPage,
       context: {
         slug: edge.node.fields.slug,
       },

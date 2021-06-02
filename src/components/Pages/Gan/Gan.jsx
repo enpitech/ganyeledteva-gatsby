@@ -6,7 +6,7 @@ import { graphql, Link } from "gatsby";
 import Layout from "../../../layout";
 import SEO from "../../../components/SEO/SEO";
 import config from "../../../../data/SiteConfig";
-const headerMdFileName = config.ganPageHeaderInfoMdFileName;
+const headerMdFileName = config.ganMainPageDataMdFileName;
 
 function Gan({ data }) {
   const sectionEdges = data.allMdx.edges;
@@ -23,21 +23,21 @@ function Gan({ data }) {
     });
   });
 
-  const pageHeader = sectionList.filter(
+  const mainPageHeader = sectionList.filter(
     (section) => section.filename === headerMdFileName
   )[0];
 
   return (
     <Layout>
       <Helmet>
-        <title>{`${pageHeader.title} | ${config.siteTitle}`}</title>
+        <title>{`${mainPageHeader.title} | ${config.siteTitle}`}</title>
       </Helmet>
       <SEO />
       <Page>
         <Page.Header>
           <PageHeader
-            title={pageHeader.title}
-            subtitle={pageHeader.subtitle}
+            title={mainPageHeader.title}
+            subtitle={mainPageHeader.subtitle}
             backgroundColorClass="bg-gradient-to-r from-blue-gan-page-header1 to-blue-gan-page-header2"
             backgroundPatternClass="bg-patt1"
           />

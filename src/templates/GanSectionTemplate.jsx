@@ -7,12 +7,12 @@ import config from "../../data/SiteConfig";
 import PageHeader from "../components/Page/PageHeader";
 import Page from "../components/Page/Page";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-const headerMdFileName = config.ganPageHeaderInfoMdFileName;
+const headerMdFileName = config.ganMainPageDataMdFileName;
 
-export default function GanPostTemplate({ data, pageContext }) {
-  const { mdx, allMdx } = data;
+export default function GanSectionTemplate({ data, pageContext }) {
+  const { mdx: activeGanSection, allMdx: ganSections } = data;
   const sectionsData = [];
-  allMdx.edges.forEach((sectionEdge) => {
+  ganSections.edges.forEach((sectionEdge) => {
     sectionsData.push({
       filename: sectionEdge.node.fields.filename,
       title: sectionEdge.node.frontmatter.title,
@@ -21,7 +21,7 @@ export default function GanPostTemplate({ data, pageContext }) {
   });
 
   const { slug } = pageContext;
-  const sectionsNode = mdx;
+  const sectionsNode = activeGanSection;
   const section = sectionsNode.frontmatter;
   const images = section.images;
   if (!section.id) {
@@ -47,8 +47,6 @@ export default function GanPostTemplate({ data, pageContext }) {
             <MDXRenderer>{sectionsNode.body}</MDXRenderer>
             <BottomNavMenu
               sectionsData={sectionsData}
-              // sectionsTitle={sectionsTitle}
-              // sectionsPath={sectionsPath}
               activeSectionTitle={section.title}
             />
           </div>
