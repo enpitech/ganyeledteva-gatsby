@@ -51,7 +51,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const weeklyPostPage = path.resolve("./src/templates/WeeklyUpdatePostTemplate.jsx"); 
-  const weeklyUpdatePage = path.resolve("./src/components/Pages/WeeklyUpdate/weekly-update.jsx");
+   const weeklyUpdatePage = path.resolve("./src/components/Pages/WeeklyUpdate/weekly-update.jsx");
   const ganPostPage = path.resolve("./src/templates/GanSectionTemplate.jsx");
   const ganPage = path.resolve("./src/components/Pages/Gan/Gan.jsx");
   // Get a full list of markdown posts
@@ -115,7 +115,7 @@ exports.createPages = async ({ graphql, actions }) => {
   });
   /** We will use this for the weekly-updates blog */
   postsEdges.forEach((edge, index) => {
-    if(edge.node.fields.dir===ganDirName){
+    if(edge.node.fields.dir === ganDirName){
          createPage({
       path: edge.node.fields.slug, 
       component: ganPostPage,
@@ -124,7 +124,7 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   }
-  else if(edge.node.fields.dir===weeklyUpdateDirName){
+  else if(edge.node.fields.dir === weeklyUpdateDirName){
     const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
     const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
     const nextEdge = postsEdges[nextID];

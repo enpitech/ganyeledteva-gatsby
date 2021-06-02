@@ -19,12 +19,7 @@ export default function GanPostTemplate({ data, pageContext }) {
       path: sectionEdge.node.fields.slug,
     });
   });
-  // const sectionsTitle = allMdx.edges.map(
-  //   (postEdge) => postEdge.node.frontmatter.title
-  // );
-  // const sectionsPath = allMdx.edges.map(
-  //   (postEdge) => postEdge.node.fields.slug
-  // );
+
   const { slug } = pageContext;
   const sectionsNode = mdx;
   const section = sectionsNode.frontmatter;
@@ -40,10 +35,10 @@ export default function GanPostTemplate({ data, pageContext }) {
       </Helmet>
       <SEO postPath={slug} postNode={sectionsNode} postSEO />
       <Page>
-        <Page.Header className="border-b-8 border-yellow-headerBorder">
+        <Page.Header className="border-b-8 border-yellow-gan-section-header-border">
           <PageHeader
             title={section.title}
-            backgroundColorClass="bg-gradient-to-r from-yellow-headerGanPost to-green-headerGanPost"
+            backgroundColorClass="bg-gradient-to-r from-yellow-gan-section-header to-green-gan-section-header"
             backgroundPatternClass="bg-patt2"
           />
         </Page.Header>
@@ -54,14 +49,14 @@ export default function GanPostTemplate({ data, pageContext }) {
               sectionsData={sectionsData}
               // sectionsTitle={sectionsTitle}
               // sectionsPath={sectionsPath}
-              currSectionTitle={section.title}
+              activeSectionTitle={section.title}
             />
           </div>
           <div className="md:w-2/7 mt-4">
             {images.map((img, index) => (
               <div
                 key={`${(img.src, index)}`}
-                className="my-5 lg:mx-5 shadow-democEducImg"
+                className="my-5 lg:mx-5 shadow-img"
               >
                 <img src={img.src} alt={img.alt} />
               </div>
@@ -73,9 +68,8 @@ export default function GanPostTemplate({ data, pageContext }) {
   );
 }
 
-const BottomNavMenu = ({ sectionsData, currSectionTitle }) => {
-  // const BottomNavMenu = ({ sectionsTitle, sectionsPath, currSectionTitle }) => {
-  const activeSectionStyle = "text-purple-lightBorder opacity-40";
+const BottomNavMenu = ({ sectionsData, activeSectionTitle }) => {
+  const activeSectionStyle = "text-purple-light-border opacity-40";
   const nonActiveSectionStyle = "hover:text-purple-border";
   return (
     <div className="border-t-2 pt-4 mt-6">
@@ -87,7 +81,7 @@ const BottomNavMenu = ({ sectionsData, currSectionTitle }) => {
               <div
                 key={index}
                 className={`my-1 ${
-                  section.title === currSectionTitle
+                  section.title === activeSectionTitle
                     ? activeSectionStyle
                     : nonActiveSectionStyle
                 }`}

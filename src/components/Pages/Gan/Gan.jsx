@@ -38,7 +38,7 @@ function Gan({ data }) {
           <PageHeader
             title={pageHeader.title}
             subtitle={pageHeader.subtitle}
-            backgroundColorClass="bg-gradient-to-r from-blue-header1Gan to-blue-header2Gan"
+            backgroundColorClass="bg-gradient-to-r from-blue-gan-page-header1 to-blue-gan-page-header2"
             backgroundPatternClass="bg-patt1"
           />
         </Page.Header>
@@ -74,10 +74,7 @@ const Section = ({ section }) => {
         </Link>
       </div>
       <div className="md:w-5/12 h-2/6 mt-16 md:mt-0">
-        <img
-          className=" m-auto lg:mx-5 shadow-democEducImg h-4/5"
-          src={section.img}
-        />
+        <img className=" m-auto lg:mx-5 shadow-img h-4/5" src={section.img} />
       </div>
     </div>
   );
