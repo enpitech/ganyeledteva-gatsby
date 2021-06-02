@@ -67,14 +67,14 @@ const Section = ({ section }) => {
         <h1 className="text-3xl font-bold mb-2"> {section.title} </h1>
         <p>{section.subtitle}</p>
         <Link to={section.path}>
-          <div className="inline-block my-4 px-2 py-1 rounded-full  text-center border-2 border-black text-black hover:bg-red-link hover:text-white">
+          <div className="inline-block my-4 px-2 py-1 rounded-full text-center border-2 border-black text-black hover:bg-red-link hover:text-white">
             {section.link}
             {" >"}
           </div>
         </Link>
       </div>
-      <div className="md:w-5/12 h-2/6 mt-16 md:mt-0">
-        <img className=" m-auto lg:mx-5 shadow-img h-4/5" src={section.img} />
+      <div className="md:w-4/12 h-2/6 mt-16 md:mt-0">
+        <img className="m-auto lg:mx-5 shadow-img" src={section.img} />
       </div>
     </div>
   );
