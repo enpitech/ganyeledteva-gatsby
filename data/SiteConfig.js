@@ -42,6 +42,7 @@ const config = {
   copyright: '© 2009 כל הזכויות שמורות לגן ילדי הטבע הדמוקרטי.', // Copyright string for the footer of the website and RSS feed.
   themeColor: '#c62828', // Used for setting manifest and progress theme colors.
   backgroundColor: '#e0e0e0', // Used for setting manifest background color.
+  ganPageHeaderInfoMdFileName : 'index', // the file name of the .md file that holds the information for the 'Gan' page header
 };
 
 // Validate

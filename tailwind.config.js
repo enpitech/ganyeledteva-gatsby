@@ -22,8 +22,11 @@ module.exports = {
           link : '#ff3860',
         },
         green:{
-          header1weekly : '#8cf8e7' ,
-          header2weekly : '#8ddad5',
+          weeklyUpdate:{
+            header1 : '#8cf8e7' ,
+            header2 : '#8ddad5',
+          },
+          
           headerGanPost: '#96e6a1',
           
         },

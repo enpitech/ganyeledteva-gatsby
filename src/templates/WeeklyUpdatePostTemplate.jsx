@@ -1,13 +1,13 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import Layout from '../layout';
-import SEO from '../components/SEO/SEO';
-import config from '../../data/SiteConfig';
-import PageHeader from '../components/Page/PageHeader';
-import Page from '../components/Page/Page';
-import { formatDate } from '../utils';
+import React from "react";
+import { Helmet } from "react-helmet";
+import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import Layout from "../layout";
+import SEO from "../components/SEO/SEO";
+import config from "../../data/SiteConfig";
+import PageHeader from "../components/Page/PageHeader";
+import Page from "../components/Page/Page";
+import { formatDate } from "../utils";
 
 // This should be the weekly-update post page
 export default function WeeklyUpdatePostTemplate({ data, pageContext }) {

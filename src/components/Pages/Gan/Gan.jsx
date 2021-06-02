@@ -6,49 +6,50 @@ import { graphql, Link } from "gatsby";
 import Layout from "../../../layout";
 import SEO from "../../../components/SEO/SEO";
 import config from "../../../../data/SiteConfig";
+const headerMdFileName = config.ganPageHeaderInfoMdFileName;
 
 function Gan({ data }) {
-  const postEdges = data.allMdx.edges;
-  const postList = [];
-  postEdges.forEach((postEdge) => {
-    postList.push({
-      path: postEdge.node.fields.slug,
-      title: postEdge.node.frontmatter.title,
-      subtitle: postEdge.node.frontmatter.subtitle,
-      body: postEdge.node.body,
-      img: postEdge.node.frontmatter.img,
-      link: postEdge.node.frontmatter.link,
+  const sectionEdges = data.allMdx.edges;
+  const sectionList = [];
+  sectionEdges.forEach((sectionEdge) => {
+    sectionList.push({
+      path: sectionEdge.node.fields.slug,
+      title: sectionEdge.node.frontmatter.title,
+      subtitle: sectionEdge.node.frontmatter.subtitle,
+      body: sectionEdge.node.body,
+      img: sectionEdge.node.frontmatter.img,
+      link: sectionEdge.node.frontmatter.link,
+      filename: sectionEdge.node.fields.filename,
     });
   });
 
-  const headerMdPost = postList.filter(
-    (post) => post.title === "גן ילדי הטבע הדמוקרטי"
+  const pageHeader = sectionList.filter(
+    (section) => section.filename === headerMdFileName
   )[0];
 
   return (
     <Layout>
       <Helmet>
-        <title>{`${headerMdPost.title} | ${config.siteTitle}`}</title>
+        <title>{`${pageHeader.title} | ${config.siteTitle}`}</title>
       </Helmet>
       <SEO />
       <Page>
         <Page.Header>
           <PageHeader
-            title={headerMdPost.title}
-            subtitle={headerMdPost.subtitle}
+            title={pageHeader.title}
+            subtitle={pageHeader.subtitle}
             backgroundColorClass="bg-gradient-to-r from-blue-header1Gan to-blue-header2Gan"
             backgroundPatternClass="bg-patt1"
           />
         </Page.Header>
         <Page.Main>
           <div className="md:w-9/12 m-auto pb-1">
-            {postList.map(
-              (post, index) =>
-                post.title !== "גן ילדי הטבע הדמוקרטי" && (
-                  <div key={index} className="mt-10 mb-16 md:mb-40">
-                    <Post post={post} />
-                  </div>
-                )
+            {sectionList.map((section, index) =>
+              section.filename !== headerMdFileName ? (
+                <div key={index} className="mt-10 mb-16 md:mb-40">
+                  <Section section={section} />
+                </div>
+              ) : null
             )}
           </div>
         </Page.Main>
@@ -59,15 +60,15 @@ function Gan({ data }) {
 
 export default Gan;
 
-const Post = ({ post }) => {
+const Section = ({ section }) => {
   return (
     <div className="flex md:flex-row flex-col justify-between">
       <div className="flex flex-col md:w-2/5">
-        <h1 className="text-3xl font-bold mb-2"> {post.title} </h1>
-        <p>{post.subtitle}</p>
-        <Link to={post.path}>
+        <h1 className="text-3xl font-bold mb-2"> {section.title} </h1>
+        <p>{section.subtitle}</p>
+        <Link to={section.path}>
           <div className="inline-block my-4 px-2 py-1 rounded-full  text-center border-2 border-black text-black hover:bg-red-link hover:text-white">
-            {post.link}
+            {section.link}
             {" >"}
           </div>
         </Link>
@@ -75,7 +76,7 @@ const Post = ({ post }) => {
       <div className="md:w-5/12 h-2/6 mt-16 md:mt-0">
         <img
           className=" m-auto lg:mx-5 shadow-democEducImg h-4/5"
-          src={post.img}
+          src={section.img}
         />
       </div>
     </div>
@@ -92,6 +93,7 @@ export const pageQuery = graphql`
             slug
             date
             dir
+            filename
           }
           frontmatter {
             title
