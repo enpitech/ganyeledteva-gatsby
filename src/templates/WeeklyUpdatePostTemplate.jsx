@@ -1,13 +1,13 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import Layout from '../layout';
-import SEO from '../components/SEO/SEO';
-import config from '../../data/SiteConfig';
-import PageHeader from '../components/Page/PageHeader';
-import Page from '../components/Page/Page';
-import { formatDate } from '../utils';
+import React from "react";
+import { Helmet } from "react-helmet";
+import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import Layout from "../layout";
+import SEO from "../components/SEO/SEO";
+import config from "../../data/SiteConfig";
+import PageHeader from "../components/Page/PageHeader";
+import Page from "../components/Page/Page";
+import { formatDate } from "../utils";
 
 // This should be the weekly-update post page
 export default function WeeklyUpdatePostTemplate({ data, pageContext }) {
@@ -49,7 +49,7 @@ const Gap = () => <div className="hidden md:block w-1/5" />;
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query WeeklyUpdatePostBySlug($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       body
       timeToRead

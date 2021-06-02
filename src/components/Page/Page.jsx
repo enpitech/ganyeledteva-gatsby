@@ -6,8 +6,8 @@ export default function Page({ children }) {
   return <div className="bg-white">{children}</div>;
 }
 
-function Header({ children }) {
-  return children ? <header>{children}</header> : null;
+function Header({ children, className }) {
+  return children ? <header className={className}>{children}</header> : null;
 }
 
 function Main({ children, className }) {

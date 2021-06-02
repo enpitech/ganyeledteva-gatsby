@@ -16,17 +16,27 @@ module.exports = {
       colors: {
         purple :{
           border:'#f7479e',
+          'light-border': '#ff2b56',
         } ,
         red :{
           link : '#ff3860',
         },
         green:{
-          header1weekly : '#8cf8e7' ,
-          header2weekly : '#8ddad5',
+          'weekly-page-header1':'#8cf8e7',
+          'weekly-page-header2':'#8ddad5',
+          'gan-section-header': '#96e6a1',
+          },
+        yellow:{
+          'gan-section-header': '#d4fc79',
+          'gan-section-header-border' : '#fdffa8',
         },
+        blue:{
+          'gan-page-header1': '#8cf8e7',
+          'gan-page-header2': '#8ddad5',
+        }
       },
       boxShadow: {
-        democEducImg : '0 0 14px -3px rgba(0,0,0,.67)'
+        'img' : '0 0 14px -3px rgba(0,0,0,.67)'
       },
       screens:{
         'md': '769px',

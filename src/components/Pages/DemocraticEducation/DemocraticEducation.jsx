@@ -52,7 +52,7 @@ function DemocraticEducation() {
           {images.map((img, index) => (
             <div
               key={`${(img.src, index)}`}
-              className="my-5 lg:mx-5 shadow-democEducImg"
+              className="my-5 lg:mx-5 shadow-img"
             >
               <img src={img.src} alt={img.alt} />
             </div>

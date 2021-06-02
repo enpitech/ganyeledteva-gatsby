@@ -1,23 +1,107 @@
 import React from "react";
 import Page from "../../Page/Page";
 import PageHeader from "../../Page/PageHeader";
+import { Helmet } from "react-helmet";
+import { graphql, Link } from "gatsby";
+import Layout from "../../../layout";
+import SEO from "../../../components/SEO/SEO";
+import config from "../../../../data/SiteConfig";
+const headerMdFileName = config.ganMainPageDataMdFileName;
 
-function Gan() {
+function Gan({ data }) {
+  const sectionEdges = data.allMdx.edges;
+  const sectionList = [];
+  sectionEdges.forEach((sectionEdge) => {
+    sectionList.push({
+      path: sectionEdge.node.fields.slug,
+      title: sectionEdge.node.frontmatter.title,
+      subtitle: sectionEdge.node.frontmatter.subtitle,
+      body: sectionEdge.node.body,
+      img: sectionEdge.node.frontmatter.img,
+      link: sectionEdge.node.frontmatter.link,
+      filename: sectionEdge.node.fields.filename,
+    });
+  });
+
+  const mainPageHeader = sectionList.filter(
+    (section) => section.filename === headerMdFileName
+  )[0];
+
   return (
-    <Page>
-      <Page.Header>
-        <PageHeader
-          title="גן ילדי הטבע הדמוקרטי"
-          subtitle="גן ילדי הטבע הוקם בשנת 2009 בשכונת נחלת יצחק מתוך חזון של יצירת שינוי תפיסת תפקיד הגן בחייהם של הילדים והילדות עד גיל 3. הגן הציב לעצמו מטרה - לעמוד בסטנדרטים הגבוהים ביותר של חינוך לגילאי לידה עד 3, ושואף להציע מרחב חינוכי מתקדם צעיר אינטיליגנטי ורגיש. שעות הפעילות בגן שלנו: א'-ה' 7:30-16:30 ימי שישי לסירוגין 7:45-11:45"
-          backgroundColorClass="bg-gradient-to-r from-blue-300 to-green-400"
-          backgroundPatternClass="bg-patt1"
-        />
-      </Page.Header>
-      <Page.Main>
-        <div>תוכן העמוד</div>
-      </Page.Main>
-    </Page>
+    <Layout>
+      <Helmet>
+        <title>{`${mainPageHeader.title} | ${config.siteTitle}`}</title>
+      </Helmet>
+      <SEO />
+      <Page>
+        <Page.Header>
+          <PageHeader
+            title={mainPageHeader.title}
+            subtitle={mainPageHeader.subtitle}
+            backgroundColorClass="bg-gradient-to-r from-blue-gan-page-header1 to-blue-gan-page-header2"
+            backgroundPatternClass="bg-patt1"
+          />
+        </Page.Header>
+        <Page.Main>
+          <div className="md:w-9/12 m-auto pb-1">
+            {sectionList.map((section, index) =>
+              section.filename !== headerMdFileName ? (
+                <div key={index} className="mt-10 mb-16 md:mb-40">
+                  <Section section={section} />
+                </div>
+              ) : null
+            )}
+          </div>
+        </Page.Main>
+      </Page>
+    </Layout>
   );
 }
 
 export default Gan;
+
+const Section = ({ section }) => {
+  return (
+    <div className="flex md:flex-row flex-col justify-between">
+      <div className="flex flex-col md:w-2/5">
+        <h1 className="text-3xl font-bold mb-2"> {section.title} </h1>
+        <p>{section.subtitle}</p>
+        <Link to={section.path}>
+          <div className="inline-block my-4 px-2 py-1 rounded-full text-center border-2 border-black text-black hover:bg-red-link hover:text-white">
+            {section.link}
+            {" >"}
+          </div>
+        </Link>
+      </div>
+      <div className="md:w-4/12 h-2/6 mt-16 md:mt-0">
+        <img className="m-auto lg:mx-5 shadow-img" src={section.img} />
+      </div>
+    </div>
+  );
+};
+
+/* eslint no-undef: "off" */
+export const pageQuery = graphql`
+  query GanPageQuery {
+    allMdx(filter: { fields: { dir: { eq: "gan" } } }) {
+      edges {
+        node {
+          fields {
+            slug
+            date
+            dir
+            filename
+          }
+          frontmatter {
+            title
+            date
+            img
+            subtitle
+            link
+          }
+          body
+        }
+      }
+    }
+  }
+`;
