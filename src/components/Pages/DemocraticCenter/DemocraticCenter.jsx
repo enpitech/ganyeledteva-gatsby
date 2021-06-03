@@ -1,6 +1,5 @@
 import React from "react";
 import Page from "../../Page/Page";
-import PageHeader from "../../Page/PageHeader";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import vid from "../../../../static/assets/vids/dummyvid.mp4";
