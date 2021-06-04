@@ -6,4 +6,12 @@ module.exports = {
   extends: ["airbnb", "prettier", "plugin:react-hooks/recommended"],
   plugins: ["react", "prettier", "react-hooks"],
   rules: { "react/prop-types": 0 },
+    "settings": {
+      "import/resolver": {
+        "alias": [
+          ["~static", "./static"]
+        ]
+      }
+    }
+  
 };

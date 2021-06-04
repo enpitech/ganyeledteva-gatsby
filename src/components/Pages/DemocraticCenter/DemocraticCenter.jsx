@@ -2,7 +2,7 @@ import React from "react";
 import Page from "../../Page/Page";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import tadmitVideo from "../../../../static/assets/vids/dummyvid.mp4";
+import tadmitVideo from "~static/assets/vids/dummyvid.mp4";
 
 function DemocraticCenter() {
   const data = useStaticQuery(graphql`
