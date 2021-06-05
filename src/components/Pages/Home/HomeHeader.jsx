@@ -5,10 +5,16 @@ import bird from '../../../../static/img/pics/icons/bird.svg';
 import treeLev from '../../../../static/img/pics/icons/tree_lev.svg';
 import treeTri from '../../../../static/img/pics/icons/tree_tri.svg';
 import * as mainHeaderStyles from '../../../styles/main-header.module.css';
+import Logo from '../../Logo/Logo';
 
 export default function HomeHeader() {
   return (
     <header>
+      <div className="md:hidden  bg-gradient-to-r from-green-300 to-green-100">
+        <div className="flex justify-center align-items w-full p-6 bg-patt2">
+          <Logo className="w-40" />
+        </div>
+      </div>
       <div className="hidden sm:block">
         <div id="draw" className="z-40 absolute" style={{ height: 500 }} />
         <div
