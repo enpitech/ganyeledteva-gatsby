@@ -14,32 +14,33 @@ module.exports = {
         heebo: ['Heebo'],
       },
       colors: {
-        purple :{
-          border:'#f7479e',
+        purple: {
+          border: '#f7479e',
           'light-border': '#ff2b56',
-        } ,
-        red :{
-          link : '#ff3860',
+          header: '#ff2b56',
         },
-        green:{
-          'weekly-page-header1':'#8cf8e7',
-          'weekly-page-header2':'#8ddad5',
+        red: {
+          link: '#ff3860',
+        },
+        green: {
+          'weekly-page-header1': '#8cf8e7',
+          'weekly-page-header2': '#8ddad5',
           'gan-section-header': '#96e6a1',
-          },
-        yellow:{
-          'gan-section-header': '#d4fc79',
-          'gan-section-header-border' : '#fdffa8',
         },
-        blue:{
+        yellow: {
+          'gan-section-header': '#d4fc79',
+          'gan-section-header-border': '#fdffa8',
+        },
+        blue: {
           'gan-page-header1': '#8cf8e7',
           'gan-page-header2': '#8ddad5',
-        }
+        },
       },
       boxShadow: {
-        'img' : '0 0 14px -3px rgba(0,0,0,.67)'
+        img: '0 0 14px -3px rgba(0,0,0,.67)',
       },
-      screens:{
-        'md': '769px',
+      screens: {
+        md: '769px',
       },
       width: {
         '1/7': '14.2857143%',
@@ -48,12 +49,11 @@ module.exports = {
         '4/7': '57.1428571%',
         '5/7': '71.4285714%',
         '6/7': '85.7142857%',
-      }
-
+      },
+    },
+    variants: {
+      extend: {},
+    },
+    plugins: [require('tailwindcss-rtl')],
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [require('tailwindcss-rtl')],
-}
 };

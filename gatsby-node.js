@@ -146,4 +146,14 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
 
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        "~static": path.resolve(__dirname, "static")
+      }
+    }
+  });
+};
+
 
