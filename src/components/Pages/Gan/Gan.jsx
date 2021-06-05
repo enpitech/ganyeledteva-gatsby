@@ -1,11 +1,13 @@
-import React from "react";
-import Page from "../../Page/Page";
-import PageHeader from "../../Page/PageHeader";
-import { Helmet } from "react-helmet";
-import { graphql, Link } from "gatsby";
-import Layout from "../../../layout";
-import SEO from "../../../components/SEO/SEO";
-import config from "../../../../data/SiteConfig";
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { graphql } from 'gatsby';
+import Page from '../../Page/Page';
+import PageHeader from '../../Page/PageHeader';
+import Layout from '../../../layout';
+import SEO from '../../SEO/SEO';
+import config from '../../../../data/SiteConfig';
+import SectionCard from '../../SectionCard';
+
 const headerMdFileName = config.ganMainPageDataMdFileName;
 
 function Gan({ data }) {
@@ -44,13 +46,20 @@ function Gan({ data }) {
         </Page.Header>
         <Page.Main>
           <div className="md:w-9/12 m-auto pb-1">
-            {sectionList.map((section, index) =>
-              section.filename !== headerMdFileName ? (
-                <div key={index} className="mt-10 mb-16 md:mb-40">
-                  <Section section={section} />
+            {sectionList.map((section, index) => {
+              const { title, subtitle, path, link, img } = section;
+              return section.filename !== headerMdFileName ? (
+                <div key={title} className="mt-10 mb-16 md:mb-40">
+                  <SectionCard
+                    title={title}
+                    subtitle={subtitle}
+                    path={path}
+                    link={link}
+                    img={img}
+                  />
                 </div>
-              ) : null
-            )}
+              ) : null;
+            })}
           </div>
         </Page.Main>
       </Page>
@@ -59,26 +68,6 @@ function Gan({ data }) {
 }
 
 export default Gan;
-
-const Section = ({ section }) => {
-  return (
-    <div className="flex md:flex-row flex-col justify-between">
-      <div className="flex flex-col md:w-2/5">
-        <h1 className="text-3xl font-bold mb-2"> {section.title} </h1>
-        <p>{section.subtitle}</p>
-        <Link to={section.path}>
-          <div className="inline-block my-4 px-2 py-1 rounded-full text-center border-2 border-black text-black hover:bg-red-link hover:text-white">
-            {section.link}
-            {" >"}
-          </div>
-        </Link>
-      </div>
-      <div className="md:w-4/12 h-2/6 mt-16 md:mt-0">
-        <img className="m-auto lg:mx-5 shadow-img" src={section.img} />
-      </div>
-    </div>
-  );
-};
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`

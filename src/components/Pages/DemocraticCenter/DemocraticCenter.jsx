@@ -1,8 +1,9 @@
-import React from "react";
-import Page from "../../Page/Page";
-import { useStaticQuery, graphql } from "gatsby";
-import { MDXRenderer } from "gatsby-plugin-mdx";
-import tadmitVideo from "~static/assets/vids/dummyvid.mp4";
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import tadmitVideo from '~static/assets/vids/dummyvid.mp4';
+
+import Page from '../../Page/Page';
 
 function DemocraticCenter() {
   const data = useStaticQuery(graphql`
