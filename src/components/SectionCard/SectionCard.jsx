@@ -13,7 +13,7 @@ const SectionCard = ({
   className,
 }) => (
   <div
-    className={`flex md:flex-row${
+    className={`flex flex-col md:flex-row${
       reverse ? '-reverse' : ''
     }  justify-between ${className}`}
   >
