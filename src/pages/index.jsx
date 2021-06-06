@@ -140,6 +140,8 @@ function initSketchDrawer() {
 }
 
 const handleChangeClientState = (newState, addedTags) => {
+  console.log("handleChangeClientState addedTags:", addedTags);
+
   if (addedTags && addedTags.scriptTags) {
     const foundScript = addedTags.scriptTags.find(({ src }) =>
       src.includes(sketchScriptPath)
