@@ -25,7 +25,7 @@ function HomePage() {
             type="text/javascript"
           />
         </Helmet>
-        <div className="h-32 border-4 w-full bg-yellow-200 sm:bg-red-200 md:bg-blue-200 lg:bg-green-200"></div>
+        {/* <div className="h-32 border-4 w-full bg-yellow-200 sm:bg-red-200 md:bg-blue-200 lg:bg-green-200"></div> */}
 
         <Home />
       </div>
