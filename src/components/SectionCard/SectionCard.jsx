@@ -15,7 +15,7 @@ const SectionCard = ({
   <div
     className={`flex md:flex-row${
       reverse ? '-reverse' : ''
-    } flex-col justify-between ${className}`}
+    }  justify-between ${className}`}
   >
     <div className="flex flex-col md:w-6/12 p-10 justify-center items-center text-center">
       <TextTitle title={title} />
