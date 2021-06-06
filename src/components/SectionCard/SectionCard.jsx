@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import TextTitle from '../TextTitle';
 
 const SectionCard = ({
   title,
@@ -17,7 +18,7 @@ const SectionCard = ({
     } flex-col justify-between ${className}`}
   >
     <div className="flex flex-col md:w-6/12 p-10 justify-center items-center text-center">
-      <h1 className="text-4xl  mb-2 text-purple-header"> {title} </h1>
+      <TextTitle title={title} />
       <p>{subtitle}</p>
       <Link to={path}>
         <div className="inline-block my-4 px-2 py-1 rounded-full text-center border-2 border-black text-black hover:bg-red-link hover:text-white">

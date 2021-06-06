@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import HomeHeader from './HomeHeader';
 import Page from '../../Page/Page';
 import SectionCard from '../../SectionCard';
+import TextTitle from '../../TextTitle';
 
 function Home() {
   const data = useStaticQuery(graphql`
@@ -34,8 +35,8 @@ function Home() {
       <Page.Header>
         <HomeHeader />
       </Page.Header>
-      <Page.Main className="md:flex justify-center ">
-        <div className="md:w-9/12 m-auto">
+      <Page.Main className="md:flex md:flex-col justify-center items-center">
+        <div className="md:w-9/12 ">
           {stories.map((story, index) => {
             const { title, subtitle, link, img, url } = story;
             return (
@@ -51,6 +52,16 @@ function Home() {
               />
             );
           })}
+        </div>
+        <div className="md:w-9/12 mt-40">
+          <TextTitle className="text-center" title="החודש בגן" />
+          <iframe
+            title="calendar"
+            src="https://calendar.google.com/calendar/embed?showTitle=0&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=ganyeledteva%40gmail.com&color=%23b90e28&ctz=Asia%2FJerusalem"
+            width="100%;"
+            height="600"
+            scrolling="no"
+          />
         </div>
       </Page.Main>
     </Page>
