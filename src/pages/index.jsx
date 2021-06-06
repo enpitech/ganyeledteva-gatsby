@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import { withPrefix } from "gatsby";
 import _ from "lodash";
 import $ from "jquery";
-
 import Layout from "../layout";
 import config from "../../data/SiteConfig";
 import Home from "../components/Pages/Home/Home";
@@ -19,13 +18,12 @@ function HomePage() {
           // eslint-disable-next-line no-use-before-define
           onChangeClientState={handleChangeClientState}
         >
-          {/* <script
+          <script
             id="sketch"
             src={withPrefix("js/lib/sketch.js")}
             type="text/javascript"
-          /> */}
+          />
         </Helmet>
-        {/* <div className="h-32 border-4 w-full bg-yellow-200 sm:bg-red-200 md:bg-blue-200 lg:bg-green-200"></div> */}
 
         <Home />
       </div>
@@ -36,8 +34,6 @@ function HomePage() {
 export default HomePage;
 
 function initSketchDrawer() {
-  console.log("Init sketch drawer!!!!!!!!!!!!!!!");
-
   let color = "#f7479e";
   const COLORS = ["#ff2b56", "#4b2ac8", "#f36c4f", "#1b522f", "#fff797"];
   const WINDOW_WIDTH = window.innerWidth;
@@ -76,8 +72,6 @@ function initSketchDrawer() {
   };
 
   function initSketch() {
-    console.log("Init sketch!!!!!!!!!!!!!!!");
-
     // eslint-disable-next-line no-undef
     return Sketch.create({
       container: document.getElementById("draw"),
@@ -140,8 +134,6 @@ function initSketchDrawer() {
 }
 
 const handleChangeClientState = (newState, addedTags) => {
-  console.log("handleChangeClientState addedTags:", addedTags);
-
   if (addedTags && addedTags.scriptTags) {
     const foundScript = addedTags.scriptTags.find(({ src }) =>
       src.includes(sketchScriptPath)
@@ -150,7 +142,6 @@ const handleChangeClientState = (newState, addedTags) => {
       foundScript.addEventListener(
         "load",
         () => {
-          console.log("Load event listener!!!!!!!!!!!!!!!");
           initSketchDrawer();
         },
         {

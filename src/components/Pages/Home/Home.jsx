@@ -41,14 +41,15 @@ function Home() {
             const { title, subtitle, link, img, url } = story;
             return (
               <SectionCard
+                className={`flex flex-col ${
+                  index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'
+                } justify-between mt-20`}
                 key={title}
-                className="mt-20"
                 title={title}
                 subtitle={subtitle}
                 path={url}
                 link={link}
                 img={img}
-                reverse={index % 2 === 1}
               />
             );
           })}

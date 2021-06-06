@@ -34,6 +34,7 @@ module.exports = {
         blue: {
           'gan-page-header1': '#8cf8e7',
           'gan-page-header2': '#8ddad5',
+          'fb' : '#4266b2',
         },
       },
       boxShadow: {
