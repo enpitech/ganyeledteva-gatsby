@@ -9,12 +9,9 @@ const SectionCard = ({
   link,
   img,
   imgAlt,
-  reverse,
   className,
 }) => (
-  <div
-    className={`flex flex-col md:flex-row-reverse justify-between ${className}`}
-  >
+  <div className={className}>
     <div className="flex flex-col md:w-6/12 p-10 justify-center items-center text-center">
       <TextTitle title={title} />
       <p>{subtitle}</p>
