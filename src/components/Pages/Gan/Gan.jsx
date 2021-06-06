@@ -46,11 +46,12 @@ function Gan({ data }) {
         </Page.Header>
         <Page.Main>
           <div className="md:w-9/12 m-auto pb-1">
-            {sectionList.map((section, index) => {
+            {sectionList.map((section) => {
               const { title, subtitle, path, link, img } = section;
               return section.filename !== headerMdFileName ? (
                 <div key={title} className="mt-10 mb-16 md:mb-40">
                   <SectionCard
+                    className="flex flex-col md:flex-row justify-between"
                     title={title}
                     subtitle={subtitle}
                     path={path}
