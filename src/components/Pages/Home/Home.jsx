@@ -1,9 +1,9 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import HomeHeader from './HomeHeader';
-import Page from '../../Page/Page';
-import SectionCard from '../../SectionCard';
-import TextTitle from '../../TextTitle';
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import HomeHeader from "./HomeHeader";
+import Page from "../../Page/Page";
+import SectionCard from "../../SectionCard";
+import TextTitle from "../../TextTitle";
 
 function Home() {
   const data = useStaticQuery(graphql`
