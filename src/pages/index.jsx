@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { withPrefix } from 'gatsby';
 import _ from 'lodash';
@@ -7,31 +7,9 @@ import $ from 'jquery';
 import Layout from '../layout';
 import config from '../../data/SiteConfig';
 import Home from '../components/Pages/Home/Home';
+import useScript from '../hooks/useScript';
 
 const sketchScriptPath = withPrefix('js/lib/sketch.js');
-
-function HomePage() {
-  return (
-    <Layout>
-      <div>
-        <Helmet
-          title={`גן ילדי הטבע | ${config.siteTitle}`}
-          // eslint-disable-next-line no-use-before-define
-          onChangeClientState={handleChangeClientState}
-        >
-          <script
-            id="sketch"
-            src={withPrefix('js/lib/sketch.js')}
-            type="text/javascript"
-          />
-        </Helmet>
-        <Home />
-      </div>
-    </Layout>
-  );
-}
-
-export default HomePage;
 
 function initSketchDrawer() {
   let color = '#f7479e';
@@ -131,21 +109,23 @@ function initSketchDrawer() {
   $(window).on('resize', lazyLayout);
 }
 
-const handleChangeClientState = (newState, addedTags) => {
-  if (addedTags && addedTags.scriptTags) {
-    const foundScript = addedTags.scriptTags.find(({ src }) =>
-      src.includes(sketchScriptPath)
-    );
-    if (foundScript) {
-      foundScript.addEventListener(
-        'load',
-        () => {
-          initSketchDrawer();
-        },
-        {
-          once: true,
-        }
-      );
+function HomePage() {
+  const status = useScript(sketchScriptPath);
+
+  useEffect(() => {
+    if (status === 'ready') {
+      initSketchDrawer();
     }
-  }
-};
+  }, [status]);
+
+  return (
+    <Layout>
+      <div>
+        <Helmet title={`גן ילדי הטבע | ${config.siteTitle}`} />
+        <Home />
+      </div>
+    </Layout>
+  );
+}
+
+export default HomePage;

@@ -10,7 +10,7 @@ import Logo from '../../Logo/Logo';
 export default function HomeHeader() {
   return (
     <header>
-      <div className="md:hidden bg-gradient-to-r from-green-300 to-green-100">
+      <div className="sm:hidden bg-gradient-to-r from-green-300 to-green-100">
         <div className="flex justify-center align-items w-full p-6 bg-patt2">
           <Logo className="w-40" />
         </div>
