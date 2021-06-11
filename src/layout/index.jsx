@@ -18,6 +18,7 @@ const navigation = [
   },
   { name: 'העדכון השבועי', href: '/weekly-update' },
   { name: 'רישום לגן', href: '/signup' },
+  { name: 'שאלות ותשובות', href: '/faq' },
 ];
 
 export default function MainLayout({ children }) {
