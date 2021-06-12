@@ -4,6 +4,7 @@ import HomeHeader from "./HomeHeader";
 import Page from "../../Page/Page";
 import SectionCard from "../../SectionCard";
 import TextTitle from "../../TextTitle";
+import TeamGrid from "../../TeamGrid";
 
 function Home() {
   const data = useStaticQuery(graphql`
@@ -42,7 +43,7 @@ function Home() {
             return (
               <SectionCard
                 className={`flex flex-col ${
-                  index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'
+                  index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
                 } justify-between mt-20`}
                 key={title}
                 title={title}
@@ -55,6 +56,8 @@ function Home() {
           })}
         </div>
         <div className="md:w-9/12 mt-40">
+          <TeamGrid />
+
           <TextTitle className="text-center" title="החודש בגן" />
           <iframe
             title="calendar"
