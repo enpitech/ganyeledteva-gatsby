@@ -79,7 +79,7 @@ const EmployeeCard = ({ details, minImgHeight, minImgWidth }) => {
     >
       <button onClick={() => setOpen(!open)}>
         <div className=" relative">
-          <div className="absolute flex flex-col justify-center  w-full h-full">
+          <div className="absolute flex flex-col justify-center w-full h-full">
             {details.title}
           </div>
 
