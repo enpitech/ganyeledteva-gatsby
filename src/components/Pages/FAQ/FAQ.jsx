@@ -67,7 +67,9 @@ function FAQ() {
                       </Disclosure.Button>
                     </dt>
                     <Disclosure.Panel as="dd" className="mt-2 pl-12">
-                      <p className="text-right text-gray-500">{item.answer}</p>
+                      <p className="text-right text-gray-500 whitespace-pre">
+                        {item.answer}
+                      </p>
                     </Disclosure.Panel>
                   </>
                 )}
