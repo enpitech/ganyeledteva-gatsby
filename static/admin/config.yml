@@ -187,4 +187,4 @@ collections:
         widget: list
         fields:
           - { label: 'שאלה', name: 'question', widget: 'string' }
-          - { label: 'תשובה', name: 'answer', widget: 'text' }
+          - { label: 'תשובה', name: 'answer', widget: 'markdown' }
