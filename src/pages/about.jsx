@@ -8,7 +8,7 @@ function AboutPage() {
   return (
     <Layout>
       <div className="about-container">
-        <Helmet title={`About | ${config.siteTitle}`} />
+        <Helmet title={`עלינו | ${config.siteTitle}`} />
         <About />
       </div>
     </Layout>
