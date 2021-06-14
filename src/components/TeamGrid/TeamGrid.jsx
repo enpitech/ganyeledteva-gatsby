@@ -25,16 +25,22 @@ export default function TeamGrid() {
   `);
 
   const [foundImagesSize, setFoundImagesSize] = useState(false);
+  const [minImageSize, setMinImagesSize] = useState({
+    height: Infinity,
+    width: Infinity,
+  });
 
-  let minImgWidth = Infinity;
-  let minImgHeight = Infinity;
   useEffect(() => {
     data.allMdx.edges.forEach(async (employeeEdge) => {
       reactImageSize(employeeEdge.node.frontmatter.img)
         .then(({ width, height }) => {
-          if (width < minImgWidth) minImgWidth = width;
+          if (width < minImageSize.width) {
+            setMinImagesSize((prevState) => ({ ...prevState, width }));
+          }
 
-          if (height < minImgHeight) minImgHeight = height;
+          if (height < minImageSize.height) {
+            setMinImagesSize((prevState) => ({ ...prevState, height }));
+          }
         })
         .catch((errorMessage) =>
           console.log("error getting image size", errorMessage)
@@ -55,31 +61,128 @@ export default function TeamGrid() {
     });
   });
 
-  return foundImagesSize ? (
-    <div className="flex flex-wrap space-10">
-      {teamList.map((employeeMdDetails) => (
-        <EmployeeCard
-          details={employeeMdDetails}
-          minImgHeight={minImgHeight}
-          minImgWidth={minImgWidth}
-        />
-      ))}
+  const containerStyle = {
+    // width: "100%",
+    width: "1160px",
+    margin: "100px auto",
+    backgroundColor: "#ccc",
+  };
+  const containerStyle2 = {
+    width: "890px",
+    margin: "auto",
+  };
+
+  const itemStyle = {
+    // width: "21.833%",
+    // height: "11.833%",
+    height: "200px",
+    width: "200px",
+    float: "left",
+    display: "inline-block",
+    overflow: "hidden",
+    marginLeft: "40px",
+    marginRight: "40px",
+    marginTop: "4px",
+    transform: "rotate(45deg)",
+    border: "solid 2px black",
+    background: "transparent",
+    textDecoration: "none",
+    color: "#fff",
+  };
+
+  // const itemStyle = {
+  //   width: "21.833%",
+  //   paddingBottom: "21.833%",
+  //   overflow: "hidden",
+  //   float: "left",
+  //   transform: "rotate(45deg)",
+  //   margin: "5.5%",
+  //   marginTop: "-11%",
+  //   backgroundColor: "#fff",
+  //   backgroundSize: "cover",
+  //   display: "block",
+  // };
+
+  return (
+    <div>
+      <div style={containerStyle}>
+        {[1, 2, 3].map((x) => {
+          return (
+            <div style={itemStyle}>
+              <div
+                style={{
+                  display: "table-cell",
+                  width: "20rem",
+                  height: "20rem",
+                  backgroundColor: "red",
+                }}
+              >
+                {x}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div style={containerStyle2}>
+        {[1, 2].map((x) => {
+          return (
+            <div style={itemStyle}>
+              <div
+                style={{
+                  display: "table-cell",
+                  width: "200px",
+                  height: "200px",
+                  backgroundColor: "blue",
+                }}
+              >
+                {x}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      {/* <div style={containerStyle}>
+        {[1, 2, 3, 4].map((x) => {
+          return (
+            <div style={itemStyle}>
+              <div
+                style={{
+                  display: "table-cell",
+                  width: "200px",
+                  height: "200px",
+                }}
+              >
+                {x}
+              </div>
+            </div>
+          );
+        })}
+      </div> */}
     </div>
-  ) : null;
+  );
 }
 
-const EmployeeCard = ({ details, minImgHeight, minImgWidth }) => {
-  console.log(minImgHeight, minImgWidth);
+const EmployeeCard = ({ details, minImageSize }) => {
+  const { height: minImgHeight, width: minImgWidth } = minImageSize;
   const [open, setOpen] = useState(false);
 
   return (
     <div
-      className="text-white hover:text-red-link text-lg text-center w-44 h-44 bg-red-100"
-      style={{ clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }}
+      className="text-white hover:text-red-link text-lg text-center inline-block bg-red-100"
+      style={{
+        clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+
+        // height: minImgHeight,
+        // width: minImgWidth,
+      }}
     >
       <button onClick={() => setOpen(!open)}>
         <div className=" relative">
-          <div className="absolute flex flex-col justify-center w-full h-full">
+          <div
+            className="absolute flex flex-col justify-center"
+            // style={{ height: minImgHeight, width: minImgWidth }}
+          >
+            {/* <div className="absolute flex flex-col justify-center w-full h-full" style={{ height: minImgHeight, width: minImgWidth }}> */}
             {details.title}
           </div>
 
@@ -121,7 +224,8 @@ const EmployeeCard = ({ details, minImgHeight, minImgWidth }) => {
           </Transition.Root>
           <div>
             <img
-              style={{ height: minImgHeight, width: minImgWidth }}
+              // style={{ height: minImgHeight, width: minImgWidth }}
+              // className="h-44 w-72"
               src={details.imgPath}
             />
           </div>

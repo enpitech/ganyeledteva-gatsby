@@ -55,9 +55,9 @@ function Home() {
             );
           })}
         </div>
-        <div className="md:w-9/12 mt-40">
-          <TeamGrid />
+        <TeamGrid />
 
+        <div className="md:w-9/12 mt-40">
           <TextTitle className="text-center" title="החודש בגן" />
           <iframe
             title="calendar"
