@@ -44,6 +44,7 @@ export default function ContactForm({ formType }) {
 
   return (
     <form
+      netlify
       className="space-y-8"
       name="contact"
       method="post"
