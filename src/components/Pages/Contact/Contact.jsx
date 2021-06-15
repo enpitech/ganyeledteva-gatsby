@@ -6,7 +6,7 @@ import ContactForm from './ContactForm';
 import ReasonBtn from './ReasonBtn';
 
 export default function Contact() {
-  const [formType, setFormType] = useState();
+  const [formType, setFormType] = useState(1);
 
   return (
     <Page>
