@@ -26,7 +26,7 @@ export default function ContactForm({ formType }) {
         ...formValues,
       }),
     })
-      .then(() => navigate(form.getAttribute('action')))
+      .then(() => navigate('/contact'))
       .catch((error) => alert(error));
   };
 
@@ -48,7 +48,6 @@ export default function ContactForm({ formType }) {
       className="space-y-8"
       name="contact"
       method="post"
-      action="/contact/"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
