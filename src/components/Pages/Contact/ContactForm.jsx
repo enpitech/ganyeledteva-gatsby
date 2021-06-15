@@ -252,7 +252,7 @@ function SubmitBtn({ label, onClick }) {
     <div className="pt-5">
       <div className="flex justify-start">
         <button
-          type="button"
+          type="submit"
           className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-3xl font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full h-16"
           onClick={onClick}
         >
