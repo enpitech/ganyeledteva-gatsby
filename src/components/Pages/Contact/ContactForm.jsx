@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import { navigate } from 'gatsby-link';
 
 function encode(data) {
   return Object.keys(data)
@@ -24,9 +25,9 @@ export default function ContactForm({ formType }) {
         'form-name': form.getAttribute('name'),
         ...formValues,
       }),
-    });
-    // .then(() => navigate(form.getAttribute('action')))
-    // .catch((error) => alert(error));
+    })
+      .then(() => navigate(form.getAttribute('action')))
+      .catch((error) => alert(error));
   };
 
   const getForm = () => {
@@ -44,15 +45,21 @@ export default function ContactForm({ formType }) {
 
   return (
     <form
-      netlify
       className="space-y-8"
       name="contact"
       method="post"
+      action="/contact/"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
     >
       <input type="hidden" name="form-name" value="contact" />
+      <p hidden>
+        <label>
+          Don’t fill this out:{' '}
+          <input name="bot-field" onChange={handleInputChange} />
+        </label>
+      </p>
 
       <div className="space-y-8  sm:space-y-5">
         <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
