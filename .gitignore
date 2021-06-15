@@ -66,3 +66,5 @@ bundle-stats.json
 
 # toy file
 content\weekly-update\ניסיון.md
+# Local Netlify folder
+.netlify
