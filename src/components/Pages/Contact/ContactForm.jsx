@@ -22,7 +22,12 @@ export default function ContactForm({ formType }) {
   };
 
   return (
-    <form className="space-y-8 ">
+    <form
+      className="space-y-8"
+      name="contact"
+      method="POST"
+      data-netlify="true"
+    >
       <div className="space-y-8  sm:space-y-5">
         <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
           <div className="space-y-6 sm:space-y-5">{getForm()}</div>
