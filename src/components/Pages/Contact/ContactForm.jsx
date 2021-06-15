@@ -25,9 +25,12 @@ export default function ContactForm({ formType }) {
     <form
       className="space-y-8"
       name="contact"
-      method="POST"
+      method="post"
       data-netlify="true"
+      data-netlify-honeypot="bot-field"
     >
+      <input type="hidden" name="form-name" value="contact" />
+
       <div className="space-y-8  sm:space-y-5">
         <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
           <div className="space-y-6 sm:space-y-5">{getForm()}</div>
