@@ -1,11 +1,32 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 
+function encode(data) {
+  return Object.keys(data)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join('&');
+}
+
 export default function ContactForm({ formType }) {
   const [formValues, setFormValues] = useState({});
 
   const handleInputChange = ({ target }) => {
     setFormValues({ ...formValues, [target.name]: target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        ...formValues,
+      }),
+    });
+    // .then(() => navigate(form.getAttribute('action')))
+    // .catch((error) => alert(error));
   };
 
   const getForm = () => {
@@ -28,6 +49,7 @@ export default function ContactForm({ formType }) {
       method="post"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
+      onSubmit={handleSubmit}
     >
       <input type="hidden" name="form-name" value="contact" />
 
@@ -37,12 +59,7 @@ export default function ContactForm({ formType }) {
         </div>
       </div>
 
-      <SubmitBtn
-        label="תרשמו אותי!"
-        onClick={() => {
-          console.log('test');
-        }}
-      />
+      <SubmitBtn label="תרשמו אותי!" />
     </form>
   );
 }
@@ -250,14 +267,13 @@ function ServicesForm({ handleInputChange }) {
 }
 
 /** Forms Components */
-function SubmitBtn({ label, onClick }) {
+function SubmitBtn({ label }) {
   return (
     <div className="pt-5">
       <div className="flex justify-start">
         <button
           type="submit"
           className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-3xl font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full h-16"
-          onClick={onClick}
         >
           {label}
         </button>
