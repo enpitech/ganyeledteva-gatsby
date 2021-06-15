@@ -48,6 +48,7 @@
     "react-share": "^4.4.0",
     "react-twitter-widgets": "^1.9.5",
     "rehype-react": "^6.2.0",
+    "request": "^2.88.2",
     "styled-components": "^5.3.0",
     "url-join": "^4.0.0"
   },
