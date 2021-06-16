@@ -125,7 +125,7 @@ function RegistrationForm({ handleInputChange }) {
                 id="male"
                 name="sex"
                 type="radio"
-                value="male"
+                value="ילד"
                 className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                 onChange={handleInputChange}
               />
@@ -138,7 +138,7 @@ function RegistrationForm({ handleInputChange }) {
                 id="female"
                 name="sex"
                 type="radio"
-                value="female"
+                value="ילדה"
                 className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                 onChange={handleInputChange}
               />
@@ -157,6 +157,7 @@ function RegistrationForm({ handleInputChange }) {
       <TextBox
         label="ספרו לנו על האופן בו אתם תופסים חינוך"
         onChange={handleInputChange}
+        fieldName="thoughts_about_education"
       />
     </>
   );
@@ -358,20 +359,20 @@ function Phone({ onChange }) {
   );
 }
 
-function TextBox({ label, onChange }) {
+function TextBox({ label, onChange, fieldName }) {
   return (
     <div className="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
       <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <label
-          htmlFor="open-question"
+          htmlFor={fieldName}
           className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
         >
           {label}
         </label>
         <div className="mt-1 sm:mt-0 sm:col-span-2">
           <textarea
-            id="open-question"
-            name="open-question"
+            id={fieldName}
+            name={fieldName}
             rows={3}
             className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
             defaultValue={''}
