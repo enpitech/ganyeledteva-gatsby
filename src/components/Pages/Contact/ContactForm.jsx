@@ -8,6 +8,16 @@ function encode(data) {
     .join('&');
 }
 
+function getAgeInSep(date) {
+  const diff = new Date('09/01/2021') - new Date(date);
+
+  const precentAge = diff / 1000 / 60 / 60 / 24 / 365;
+  const years = Math.floor(precentAge);
+  const months = (precentAge - years) * 12;
+
+  return `${years}.${Math.floor(months)}`;
+}
+
 export default function ContactForm({ formType }) {
   const [formValues, setFormValues] = useState({});
 
@@ -18,12 +28,16 @@ export default function ContactForm({ formType }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
+
+    console.log(getAgeInSep(formValues.date_of_birth));
+
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         'form-name': form.getAttribute('name'),
         ...formValues,
+        ageInSept: getAgeInSep(formValues.date_of_birth),
       }),
     })
       .then(() => navigate(form.getAttribute('action')))

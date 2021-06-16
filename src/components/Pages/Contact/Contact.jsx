@@ -47,13 +47,3 @@ export default function Contact() {
     </Page>
   );
 }
-
-// function getAgeInSep(date) {
-//   const diff = (new Date("09/01/2021")) - (new      Date(date));
-
-//   const precentAge = diff/1000/60/60/24/365
-//   const years = Math.floor(precentAge)
-//    const months = (precentAge-years)*12
-
-//  console.log({years, months})
-//  }
