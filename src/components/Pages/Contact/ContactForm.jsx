@@ -29,15 +29,13 @@ export default function ContactForm({ formType }) {
     e.preventDefault();
     const form = e.target;
 
-    console.log(getAgeInSep(formValues.date_of_birth));
-
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         'form-name': form.getAttribute('name'),
         ...formValues,
-        ageInSept: getAgeInSep(formValues.date_of_birth),
+        age_in_sept: getAgeInSep(formValues.date_of_birth),
       }),
     })
       .then(() => navigate(form.getAttribute('action')))
