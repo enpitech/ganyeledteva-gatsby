@@ -122,8 +122,8 @@ function RegistrationForm({ handleInputChange }) {
           <div className="mt-4 grid grid-cols-1 gap-y-4">
             <div className="flex items-center">
               <input
-                id="male"
-                name="sex"
+                id="child_gender"
+                name="child_gender"
                 type="radio"
                 value="ילד"
                 className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
@@ -135,8 +135,8 @@ function RegistrationForm({ handleInputChange }) {
             </div>
             <div className="flex items-center">
               <input
-                id="female"
-                name="sex"
+                id="child_gender"
+                name="child_gender"
                 type="radio"
                 value="ילדה"
                 className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
