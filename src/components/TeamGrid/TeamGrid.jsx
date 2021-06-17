@@ -42,9 +42,10 @@ export default function TeamGrid() {
   let splittedTeamList = [];
   let mainDummyDiamond = { title: mainDummyTitle };
   let DummyDiamond = { title: "", isDummy: true };
+
   splittedTeamList.push([teamList[0], mainDummyDiamond, teamList[1]]);
-  let teamListWithoutFirstTwo = teamList.slice(2);
   let shouldTakeTwoEmployees = true;
+  let teamListWithoutFirstTwo = teamList.slice(2);
   for (let i = 0; i < teamListWithoutFirstTwo.length; ) {
     if (shouldTakeTwoEmployees) {
       splittedTeamList.push(teamListWithoutFirstTwo.slice(i, i + 2));
