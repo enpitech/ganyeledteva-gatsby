@@ -3,7 +3,7 @@ title: חוה
 firstname: חוה
 lastname: זסלבסקי
 img: /img/pics/whatsapp-image-2020-08-27-at-19.22.16-1-.jpeg
-index: 1
+index: 8
 ---
 
 **חוה ("עם ו' אחת"...) זסלבסקי, בת 27 - מחנכת **

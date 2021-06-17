@@ -3,7 +3,8 @@ import { useStaticQuery, graphql } from "gatsby";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import reactImageSize from "react-image-size";
+const mainDummyTitle = "צוות הגן";
+const diamondSideLength = 27;
 
 export default function TeamGrid() {
   const data = useStaticQuery(graphql`
@@ -17,38 +18,13 @@ export default function TeamGrid() {
               firstname
               lastname
               img
+              index
             }
           }
         }
       }
     }
   `);
-
-  const [foundImagesSize, setFoundImagesSize] = useState(false);
-  const [minImageSize, setMinImagesSize] = useState({
-    height: Infinity,
-    width: Infinity,
-  });
-
-  useEffect(() => {
-    data.allMdx.edges.forEach(async (employeeEdge) => {
-      reactImageSize(employeeEdge.node.frontmatter.img)
-        .then(({ width, height }) => {
-          if (width < minImageSize.width) {
-            setMinImagesSize((prevState) => ({ ...prevState, width }));
-          }
-
-          if (height < minImageSize.height) {
-            setMinImagesSize((prevState) => ({ ...prevState, height }));
-          }
-        })
-        .catch((errorMessage) =>
-          console.log("error getting image size", errorMessage)
-        );
-    });
-
-    setFoundImagesSize(true);
-  }, []);
 
   let teamList = [];
   data.allMdx.edges.forEach((employeeEdge) => {
@@ -58,179 +34,190 @@ export default function TeamGrid() {
       lastName: employeeEdge.node.frontmatter.lastname,
       imgPath: employeeEdge.node.frontmatter.img,
       body: employeeEdge.node.body,
+      index: employeeEdge.node.frontmatter.index,
     });
   });
 
-  const containerStyle = {
-    // width: "100%",
-    width: "1160px",
-    margin: "100px auto",
-    backgroundColor: "#ccc",
-  };
-  const containerStyle2 = {
-    width: "890px",
-    margin: "auto",
-  };
+  teamList.sort((a, b) => (a.index > b.index ? 1 : -1));
+  let splittedTeamList = [];
+  let mainDummyDiamond = { title: mainDummyTitle };
+  let DummyDiamond = { title: "", isDummy: true };
+  splittedTeamList.push([teamList[0], mainDummyDiamond, teamList[1]]);
+  let teamListWithoutFirstTwo = teamList.slice(2);
+  let shouldTakeTwoEmployees = true;
+  for (let i = 0; i < teamListWithoutFirstTwo.length; ) {
+    if (shouldTakeTwoEmployees) {
+      splittedTeamList.push(teamListWithoutFirstTwo.slice(i, i + 2));
+      shouldTakeTwoEmployees = false;
+      i += 2;
+    } else {
+      splittedTeamList.push(teamListWithoutFirstTwo.slice(i, i + 3));
+      i += 3;
+      shouldTakeTwoEmployees = true;
+    }
+  }
 
-  const itemStyle = {
-    // width: "21.833%",
-    // height: "11.833%",
-    height: "200px",
-    width: "200px",
-    float: "left",
-    display: "inline-block",
-    overflow: "hidden",
-    marginLeft: "40px",
-    marginRight: "40px",
-    marginTop: "4px",
-    transform: "rotate(45deg)",
-    border: "solid 2px black",
-    background: "transparent",
-    textDecoration: "none",
-    color: "#fff",
-  };
+  const oneBeforeLastSubArrLen =
+    splittedTeamList[splittedTeamList.length - 2].length;
+  const lastSubArrLen = splittedTeamList[splittedTeamList.length - 1].length;
 
-  // const itemStyle = {
-  //   width: "21.833%",
-  //   paddingBottom: "21.833%",
-  //   overflow: "hidden",
-  //   float: "left",
-  //   transform: "rotate(45deg)",
-  //   margin: "5.5%",
-  //   marginTop: "-11%",
-  //   backgroundColor: "#fff",
-  //   backgroundSize: "cover",
-  //   display: "block",
-  // };
+  if (oneBeforeLastSubArrLen === 2 && lastSubArrLen != 3) {
+    for (let i = 0; i < oneBeforeLastSubArrLen - lastSubArrLen + 1; i++)
+      splittedTeamList[splittedTeamList.length - 1].push(DummyDiamond);
+  } else if (oneBeforeLastSubArrLen === 3 && lastSubArrLen === 1)
+    splittedTeamList[splittedTeamList.length - 1].push(DummyDiamond);
 
   return (
-    <div>
-      <div style={containerStyle}>
-        {[1, 2, 3].map((x) => {
+    <>
+      <div className="hidden md:block w-full -mb-20 mt-10">
+        {splittedTeamList.map((singleSplittedTeamList, index) => {
           return (
-            <div style={itemStyle}>
-              <div
-                style={{
-                  display: "table-cell",
-                  width: "20rem",
-                  height: "20rem",
-                  backgroundColor: "red",
-                }}
-              >
-                {x}
-              </div>
+            <div
+              className="text-center w-full"
+              style={{
+                marginTop:
+                  index === 0 ? "auto" : `-${(diamondSideLength - 1) / 2}vw`,
+              }}
+            >
+              {singleSplittedTeamList.map((employeeDetails) => (
+                <EmployeeCardDesktop details={employeeDetails} />
+              ))}
             </div>
           );
         })}
       </div>
-      <div style={containerStyle2}>
-        {[1, 2].map((x) => {
-          return (
-            <div style={itemStyle}>
-              <div
-                style={{
-                  display: "table-cell",
-                  width: "200px",
-                  height: "200px",
-                  backgroundColor: "blue",
-                }}
-              >
-                {x}
-              </div>
-            </div>
-          );
+
+      <div className="block md:hidden w-full grid grid-cols-2 gap-2 text-center px-2">
+        {teamList.map((employeeDetails) => {
+          return <EmployeeCardMobile details={employeeDetails} />;
         })}
       </div>
-      {/* <div style={containerStyle}>
-        {[1, 2, 3, 4].map((x) => {
-          return (
-            <div style={itemStyle}>
-              <div
-                style={{
-                  display: "table-cell",
-                  width: "200px",
-                  height: "200px",
-                }}
-              >
-                {x}
-              </div>
-            </div>
-          );
-        })}
-      </div> */}
-    </div>
+    </>
   );
 }
 
-const EmployeeCard = ({ details, minImageSize }) => {
-  const { height: minImgHeight, width: minImgWidth } = minImageSize;
+const EmployeeCardDesktop = ({ details }) => {
+  const { title, imgPath, body, firstName, lastName, isDummy } = details;
   const [open, setOpen] = useState(false);
-
   return (
     <div
-      className="text-white hover:text-red-link text-lg text-center inline-block bg-red-100"
+      className="inline-block text-white hover:text-red-link md:text-3xl lg:text-4xl xl:text-6xl text-center mx-4"
       style={{
         clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
-
-        // height: minImgHeight,
-        // width: minImgWidth,
+        backgroundImage: `url(${imgPath})`,
+        backgroundSize: "cover",
       }}
     >
-      <button onClick={() => setOpen(!open)}>
-        <div className=" relative">
-          <div
-            className="absolute flex flex-col justify-center"
-            // style={{ height: minImgHeight, width: minImgWidth }}
-          >
-            {/* <div className="absolute flex flex-col justify-center w-full h-full" style={{ height: minImgHeight, width: minImgWidth }}> */}
-            {details.title}
-          </div>
-
-          <Transition.Root show={open} as={Fragment}>
-            <Dialog
-              as="div"
-              static
-              className="fixed z-10 inset-0 overflow-y-auto h-full bg-black bg-opacity-80 text-white"
-              open={open}
-              onClose={setOpen}
-            >
-              <div className="md:grid grid-cols-3 pt-20">
-                <div
-                  className="hidden md:block m-auto bg-red-100 text-center w-72 h-72"
-                  style={{
-                    clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
-                  }}
-                >
-                  <img className=" h-full" src={details.imgPath} />
-                </div>
-                <div className="col-span-2 w-4/5 mx-10">
-                  <button
-                    type="button"
-                    className="float-left h-10 w-10"
-                    onClick={() => setOpen(!open)}
-                  >
-                    <XIcon />
-                  </button>
-
-                  <Dialog.Title className="text-5xl mb-5">
-                    {details.firstName} {details.lastName}
-                  </Dialog.Title>
-                  <div className="text-xl">
-                    <MDXRenderer>{details.body}</MDXRenderer>
-                  </div>
-                </div>
+      <button onClick={() => setOpen(!open)} className="focus:outline-none">
+        <div
+          className="relative mt-auto mr-auto"
+          style={{
+            width: `${diamondSideLength}vw`,
+            height: `${diamondSideLength}vw`,
+          }}
+        >
+          {details.isDummy ? null : (
+            <div className="absolute inset-0">
+              <div
+                className={`h-full w-full absolute  ${
+                  title === mainDummyTitle ? "text-red-link top-1/3" : "top-2/3"
+                }`}
+              >
+                <div className=" flex flex-col justify-center">{title}</div>
               </div>
-            </Dialog>
-          </Transition.Root>
-          <div>
-            <img
-              // style={{ height: minImgHeight, width: minImgWidth }}
-              // className="h-44 w-72"
-              src={details.imgPath}
-            />
-          </div>
+              {title === mainDummyTitle ? null : (
+                <EmployeeModal
+                  show={open}
+                  as={Fragment}
+                  onClose={setOpen}
+                  firstName={firstName}
+                  lastName={lastName}
+                  imgPath={imgPath}
+                  body={body}
+                />
+              )}
+            </div>
+          )}
         </div>
       </button>
     </div>
+  );
+};
+
+const EmployeeCardMobile = ({ details }) => {
+  const { title, imgPath, body, firstName, lastName } = details;
+  const [open, setOpen] = useState(false);
+  return (
+    <button onClick={() => setOpen(!open)} className="bg-red-500">
+      <div
+        className="w-full h-24 "
+        style={{
+          backgroundImage: `url(${imgPath})`,
+          backgroundSize: "cover",
+        }}
+      >
+        <EmployeeModal
+          show={open}
+          as={Fragment}
+          onClose={setOpen}
+          firstName={firstName}
+          lastName={lastName}
+          imgPath={imgPath}
+          body={body}
+        />
+      </div>
+      <div className="bg-gray-200 h-8 text-xl w-full">{title}</div>
+    </button>
+  );
+};
+
+const EmployeeModal = ({
+  show,
+  as,
+  onClose,
+  imgPath,
+  firstName,
+  lastName,
+  body,
+}) => {
+  return (
+    <Transition.Root show={show} as={as}>
+      <Dialog
+        as="div"
+        static
+        className="fixed z-10 inset-0 overflow-y-auto h-full bg-black bg-opacity-90 text-white"
+        open={show}
+        onClose={onClose}
+      >
+        <div className="md:grid grid-cols-3 pt-20">
+          <div
+            className="hidden md:block m-auto bg-red-100 text-center"
+            style={{
+              clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+              backgroundImage: `url(${imgPath})`,
+              backgroundSize: "cover",
+              width: `${diamondSideLength}vw`,
+              height: `${diamondSideLength}vw`,
+            }}
+          />
+          <div className="col-span-2 w-4/5 mx-10">
+            <button
+              type="button"
+              className="float-left h-10 w-10"
+              onClick={() => onClose(!show)}
+            >
+              <XIcon />
+            </button>
+
+            <Dialog.Title className="text-5xl mb-5">
+              {firstName} {lastName}
+            </Dialog.Title>
+            <div className="text-2xl">
+              <MDXRenderer>{body}</MDXRenderer>
+            </div>
+          </div>
+        </div>
+      </Dialog>
+    </Transition.Root>
   );
 };

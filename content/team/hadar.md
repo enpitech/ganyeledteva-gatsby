@@ -3,7 +3,7 @@ title: "מיכל "
 firstname: מיכל
 lastname: רמתי
 img: /img/pics/20190829_181740.jpg
-index: 1
+index: 4
 ---
 
 **מיכל רמתי, בת 40 - קפטנית **

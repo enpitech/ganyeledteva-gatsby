@@ -3,7 +3,7 @@ title: צחי
 firstname: צחי
 lastname: חנניה
 img: /img/pics/1111.png
-index: "1"
+index: 1
 ---
 
 **צחי חנניה, בן 31, מנהל פיתוח עסקי, תוכני וארגוני בגן**

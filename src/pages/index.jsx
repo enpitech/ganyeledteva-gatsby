@@ -129,8 +129,6 @@ function initSketchDrawer() {
     window.sketch = initSketch();
   }, 500);
   $(window).on("resize", lazyLayout);
-
-  console.log({ color, radius });
 }
 
 const handleChangeClientState = (newState, addedTags) => {

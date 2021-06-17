@@ -10,6 +10,8 @@ import Footer from "../components/Footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import Logo from "../components/Logo/Logo";
+import favicon from "~static/logos/favicon.png";
 
 const navigation = [
   { name: "דף הבית", href: "/" },
@@ -31,6 +33,7 @@ export default function MainLayout({ children }) {
       <Helmet>
         <meta name="description" content={config.siteDescription} />
         <html lang="he" dir="rtl" />
+        <link rel="icon" href={favicon} />
       </Helmet>
       <Disclosure as="nav" className="bg-white shadow-sm">
         {({ open }) => (
@@ -39,16 +42,7 @@ export default function MainLayout({ children }) {
               <div className="flex flex-row-reverse sm:flex-row justify-between h-16">
                 <div className="flex">
                   <div className="flex-shrink-0 flex items-center">
-                    <img
-                      className="block lg:hidden h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                      alt="Workflow"
-                    />
-                    <img
-                      className="hidden lg:block h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-                      alt="Workflow"
-                    />
+                    <Logo className="h-12 ml-4 w-auto my-auto" alt="navLogo" />
                   </div>
                   <div className="hidden sm:-my-px sm:ms-6 sm:flex sm:space-x-8">
                     {navigation.map((item, index) => {
@@ -129,7 +123,7 @@ export default function MainLayout({ children }) {
       </Disclosure>
 
       <div className="pb-10 ">{children}</div>
-      <Footer config={config} />
+      <Footer config={config} navigation={navigation} />
     </div>
   );
 }
