@@ -209,6 +209,7 @@ const EmployeeModal = ({
 /**
  * splits the team list into sub arrays of 2's and 3's,
  * to create a grid layout of rows of 3 diamonds followed by a row of 2 diamonds and so on...
+ * assumptions: @param:teamList length >= 2, meaning there are at least 2 .md file of gan's worker
  */
 const prepareTeamListForDiamondGrid = (teamList) => {
   let teamListSplitToSubArrs = []; // this will hold the team list split to sub arrays of 2's and 3's
@@ -236,10 +237,11 @@ const prepareTeamListForDiamondGrid = (teamList) => {
   return teamListSplitToSubArrs;
 };
 
-/* fill in empty diamonds in the last row (to maintain grid layout) if:
+/** fill in empty diamonds in the last row (to maintain grid layout) if:
  * one before last row length == 3 AND last row length != 2
  * OR
  * one before last row length == 2 AND last row length != 3
+ * assumptions: @param:teamListSplitToSubArrs length >= 2, meaning there are at least 3 .md file of gan's worker
  */
 const fillInEmptyDiamondsIfNeeded = (teamListSplitToSubArrs) => {
   const oneBeforeLastRowLen =
