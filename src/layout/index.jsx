@@ -5,6 +5,7 @@ import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { useLocation } from "@reach/router";
 import config from "../../data/SiteConfig";
+import siteRoutes from "../../data/SiteRoutes";
 import { classNames } from "../utils";
 import Footer from "../components/Footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,17 +14,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../components/Logo/Logo";
 import favicon from "~static/logos/favicon.png";
 
-const navigation = [
-  { name: "דף הבית", href: "/" },
-  { name: "הגישה הדמוקרטית", href: "/democraticeducation" },
-  { name: "הגן", href: "/gan" },
-  {
-    name: "חדשנות חינוכית לגיל הרך",
-    href: "/democratic-center",
-  },
-  { name: "העדכון השבועי", href: "/weekly-update" },
-  { name: "רישום לגן", href: "/signup" },
-];
+const navigation = siteRoutes;
 
 export default function MainLayout({ children }) {
   const location = useLocation();
@@ -74,14 +65,14 @@ export default function MainLayout({ children }) {
                     linkTo="https://www.facebook.com/yaldeyhateva/"
                     target="_blank"
                   >
-                    <FBIcon />
+                    <FontAwesomeIcon icon={faFacebookF} />
                   </EnquireNavButton>
                   <EnquireNavButton
                     title="צור קשר"
                     bgColor="bg-red-link"
                     linkTo="/contact"
                   >
-                    <PhoneIcon />
+                    <FontAwesomeIcon icon={faPhone} />
                   </EnquireNavButton>
                 </div>
 
@@ -138,6 +129,3 @@ const EnquireNavButton = ({ title, linkTo, bgColor, target, children }) => (
     {title}
   </a>
 );
-
-const FBIcon = () => <FontAwesomeIcon icon={faFacebookF} />;
-const PhoneIcon = () => <FontAwesomeIcon icon={faPhone} />;

@@ -1,9 +1,10 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, Fragment } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-const mainDummyTitle = "צוות הגן";
+
+const mainEmptyDiamondTitle = "צוות הגן";
 const diamondSideLength = 27;
 
 export default function TeamGrid() {
@@ -25,63 +26,52 @@ export default function TeamGrid() {
       }
     }
   `);
+  let teamList = data.allMdx.edges.map((employeeEdge) => {
+    const { body } = employeeEdge.node;
+    const {
+      title,
+      firstname,
+      lastname,
+      img,
+      index,
+    } = employeeEdge.node.frontmatter;
 
-  let teamList = [];
-  data.allMdx.edges.forEach((employeeEdge) => {
-    teamList.push({
-      title: employeeEdge.node.frontmatter.title,
-      firstName: employeeEdge.node.frontmatter.firstname,
-      lastName: employeeEdge.node.frontmatter.lastname,
-      imgPath: employeeEdge.node.frontmatter.img,
-      body: employeeEdge.node.body,
-      index: employeeEdge.node.frontmatter.index,
-    });
+    return {
+      title,
+      firstname,
+      lastname,
+      imgPath: img,
+      index,
+      content: body,
+    };
   });
 
   teamList.sort((a, b) => (a.index > b.index ? 1 : -1));
-  let splittedTeamList = [];
-  let mainDummyDiamond = { title: mainDummyTitle };
-  let DummyDiamond = { title: "", isDummy: true };
 
-  splittedTeamList.push([teamList[0], mainDummyDiamond, teamList[1]]);
-  let shouldTakeTwoEmployees = true;
-  let teamListWithoutFirstTwo = teamList.slice(2);
-  for (let i = 0; i < teamListWithoutFirstTwo.length; ) {
-    if (shouldTakeTwoEmployees) {
-      splittedTeamList.push(teamListWithoutFirstTwo.slice(i, i + 2));
-      shouldTakeTwoEmployees = false;
-      i += 2;
-    } else {
-      splittedTeamList.push(teamListWithoutFirstTwo.slice(i, i + 3));
-      i += 3;
-      shouldTakeTwoEmployees = true;
-    }
-  }
-
-  const oneBeforeLastSubArrLen =
-    splittedTeamList[splittedTeamList.length - 2].length;
-  const lastSubArrLen = splittedTeamList[splittedTeamList.length - 1].length;
-
-  if (oneBeforeLastSubArrLen === 2 && lastSubArrLen != 3) {
-    for (let i = 0; i < oneBeforeLastSubArrLen - lastSubArrLen + 1; i++)
-      splittedTeamList[splittedTeamList.length - 1].push(DummyDiamond);
-  } else if (oneBeforeLastSubArrLen === 3 && lastSubArrLen === 1)
-    splittedTeamList[splittedTeamList.length - 1].push(DummyDiamond);
+  let teamListDesktop = prepareTeamListForDiamondGrid(teamList);
 
   return (
-    <>
-      <div className="hidden md:block w-full -mb-20 mt-10">
-        {splittedTeamList.map((singleSplittedTeamList, index) => {
+    <div className="mt-10">
+      <div className="hidden md:block w-full -mb-20 ">
+        {teamListDesktop.map((singleSplittedTeamList, index) => {
           return (
             <div
+              key={index}
+              //ZOOM
+              // className={`text-center w-full ${
+              //   index === 0 ? "mt-auto" : "mt-grid"
+              //   // + (diamondSideLength - 10) / 100
+              // }`}
               className="text-center w-full"
               style={{
                 marginTop:
+                  //ZOOM
                   index === 0 ? "auto" : `-${(diamondSideLength - 1) / 2}vw`,
+                // index === 0 ? "auto" : `-${(diamondSideLength - 1) / 2}%`,
               }}
             >
-              {singleSplittedTeamList.map((employeeDetails) => (
-                <EmployeeCardDesktop details={employeeDetails} />
+              {singleSplittedTeamList.map((employeeData, index) => (
+                <EmployeeCardDesktop key={index} data={employeeData} />
               ))}
             </div>
           );
@@ -89,17 +79,18 @@ export default function TeamGrid() {
       </div>
 
       <div className="block md:hidden w-full grid grid-cols-2 gap-2 text-center px-2">
-        {teamList.map((employeeDetails) => {
-          return <EmployeeCardMobile details={employeeDetails} />;
+        {teamList.map((employeeData, index) => {
+          return <EmployeeCardMobile key={index} data={employeeData} />;
         })}
       </div>
-    </>
+    </div>
   );
 }
 
-const EmployeeCardDesktop = ({ details }) => {
-  const { title, imgPath, body, firstName, lastName, isDummy } = details;
+const EmployeeCardDesktop = ({ data }) => {
+  const { title, imgPath, content, firstName, lastName, isEmpty } = data;
   const [open, setOpen] = useState(false);
+
   return (
     <div
       className="inline-block text-white hover:text-red-link md:text-3xl lg:text-4xl xl:text-6xl text-center mx-4"
@@ -113,28 +104,32 @@ const EmployeeCardDesktop = ({ details }) => {
         <div
           className="relative mt-auto mr-auto"
           style={{
+            //   width: `${diamondSideLength}%`,
+            //   height: `${diamondSideLength}%`,
+            //ZOOM
             width: `${diamondSideLength}vw`,
             height: `${diamondSideLength}vw`,
           }}
         >
-          {details.isDummy ? null : (
+          {isEmpty ? null : (
             <div className="absolute inset-0">
               <div
                 className={`h-full w-full absolute  ${
-                  title === mainDummyTitle ? "text-red-link top-1/3" : "top-2/3"
+                  title === mainEmptyDiamondTitle
+                    ? "text-red-link top-1/3"
+                    : "top-2/3"
                 }`}
               >
                 <div className=" flex flex-col justify-center">{title}</div>
               </div>
-              {title === mainDummyTitle ? null : (
+              {title === mainEmptyDiamondTitle ? null : (
                 <EmployeeModal
-                  show={open}
-                  as={Fragment}
+                  open={open}
                   onClose={setOpen}
                   firstName={firstName}
                   lastName={lastName}
                   imgPath={imgPath}
-                  body={body}
+                  content={content}
                 />
               )}
             </div>
@@ -145,11 +140,11 @@ const EmployeeCardDesktop = ({ details }) => {
   );
 };
 
-const EmployeeCardMobile = ({ details }) => {
-  const { title, imgPath, body, firstName, lastName } = details;
+const EmployeeCardMobile = ({ data }) => {
+  const { title, imgPath, content, firstName, lastName } = data;
   const [open, setOpen] = useState(false);
   return (
-    <button onClick={() => setOpen(!open)} className="bg-red-500">
+    <button onClick={() => setOpen(!open)} className="focus:outline-none">
       <div
         className="w-full h-24 "
         style={{
@@ -158,13 +153,12 @@ const EmployeeCardMobile = ({ details }) => {
         }}
       >
         <EmployeeModal
-          show={open}
-          as={Fragment}
+          open={open}
           onClose={setOpen}
           firstName={firstName}
           lastName={lastName}
           imgPath={imgPath}
-          body={body}
+          content={content}
         />
       </div>
       <div className="bg-gray-200 h-8 text-xl w-full">{title}</div>
@@ -173,21 +167,20 @@ const EmployeeCardMobile = ({ details }) => {
 };
 
 const EmployeeModal = ({
-  show,
-  as,
+  open,
   onClose,
   imgPath,
   firstName,
   lastName,
-  body,
+  content,
 }) => {
   return (
-    <Transition.Root show={show} as={as}>
+    <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
         static
         className="fixed z-10 inset-0 overflow-y-auto h-full bg-black bg-opacity-90 text-white"
-        open={show}
+        open={open}
         onClose={onClose}
       >
         <div className="md:grid grid-cols-3 pt-20">
@@ -205,7 +198,7 @@ const EmployeeModal = ({
             <button
               type="button"
               className="float-left h-10 w-10"
-              onClick={() => onClose(!show)}
+              onClick={() => onClose(!open)}
             >
               <XIcon />
             </button>
@@ -214,11 +207,50 @@ const EmployeeModal = ({
               {firstName} {lastName}
             </Dialog.Title>
             <div className="text-2xl">
-              <MDXRenderer>{body}</MDXRenderer>
+              <MDXRenderer>{content}</MDXRenderer>
             </div>
           </div>
         </div>
       </Dialog>
     </Transition.Root>
   );
+};
+
+const prepareTeamListForDiamondGrid = (teamList) => {
+  let teamListSplitToSubArrs = []; // this will hold the team list split to sub arrays of 2's and 3's, for the diamond grid layout
+  let mainEmptyDiamond = { title: mainEmptyDiamondTitle };
+  let placeholderEmptyDiamond = { title: "", isEmpty: true };
+  let firstGridRow = [teamList[0], mainEmptyDiamond, teamList[1]]; // first row with the Gan's managers and the empty diamond with the grid title
+  teamListSplitToSubArrs.push(firstGridRow);
+
+  let shouldBeGridRowOfTwo = true; // for the splitting process, flag to indicate if row of 2 employees or 3.
+  let ganEmployeesWithoutManagers = teamList.slice(2);
+  for (let i = 0; i < ganEmployeesWithoutManagers.length; ) {
+    if (shouldBeGridRowOfTwo) {
+      teamListSplitToSubArrs.push(ganEmployeesWithoutManagers.slice(i, i + 2));
+      shouldBeGridRowOfTwo = false;
+      i += 2;
+    } else {
+      teamListSplitToSubArrs.push(ganEmployeesWithoutManagers.slice(i, i + 3));
+      i += 3;
+      shouldBeGridRowOfTwo = true;
+    }
+  }
+
+  const oneBeforeLastSubArrLen =
+    teamListSplitToSubArrs[teamListSplitToSubArrs.length - 2].length;
+  const lastSubArrLen =
+    teamListSplitToSubArrs[teamListSplitToSubArrs.length - 1].length;
+
+  if (oneBeforeLastSubArrLen === 2 && lastSubArrLen != 3) {
+    for (let i = 0; i < oneBeforeLastSubArrLen - lastSubArrLen + 1; i++)
+      teamListSplitToSubArrs[teamListSplitToSubArrs.length - 1].push(
+        placeholderEmptyDiamond
+      );
+  } else if (oneBeforeLastSubArrLen === 3 && lastSubArrLen === 1)
+    teamListSplitToSubArrs[teamListSplitToSubArrs.length - 1].push(
+      placeholderEmptyDiamond
+    );
+
+  return teamListSplitToSubArrs;
 };

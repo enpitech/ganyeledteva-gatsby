@@ -48,7 +48,6 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "react-image-size": "^1.0.4",
     "react-share": "^4.4.0",
     "react-twitter-widgets": "^1.9.5",
     "rehype-react": "^6.2.0",
