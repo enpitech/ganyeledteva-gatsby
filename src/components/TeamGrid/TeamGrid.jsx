@@ -57,17 +57,10 @@ export default function TeamGrid() {
           return (
             <div
               key={index}
-              //ZOOM
-              // className={`text-center w-full ${
-              //   index === 0 ? "mt-auto" : "mt-grid"
-              //   // + (diamondSideLength - 10) / 100
-              // }`}
               className="text-center w-full"
               style={{
                 marginTop:
-                  //ZOOM
                   index === 0 ? "auto" : `-${(diamondSideLength - 1) / 2}vw`,
-                // index === 0 ? "auto" : `-${(diamondSideLength - 1) / 2}%`,
               }}
             >
               {singleSplittedTeamList.map((employeeData, index) => (
@@ -104,9 +97,6 @@ const EmployeeCardDesktop = ({ data }) => {
         <div
           className="relative mt-auto mr-auto"
           style={{
-            //   width: `${diamondSideLength}%`,
-            //   height: `${diamondSideLength}%`,
-            //ZOOM
             width: `${diamondSideLength}vw`,
             height: `${diamondSideLength}vw`,
           }}
@@ -216,8 +206,12 @@ const EmployeeModal = ({
   );
 };
 
+/**
+ * splits the team list into sub arrays of 2's and 3's,
+ * to create a grid layout of rows of 3 diamonds followed by a row of 2 diamonds and so on...
+ */
 const prepareTeamListForDiamondGrid = (teamList) => {
-  let teamListSplitToSubArrs = []; // this will hold the team list split to sub arrays of 2's and 3's, for the diamond grid layout
+  let teamListSplitToSubArrs = []; // this will hold the team list split to sub arrays of 2's and 3's
   let mainEmptyDiamond = { title: mainEmptyDiamondTitle };
   let placeholderEmptyDiamond = { title: "", isEmpty: true };
   let firstGridRow = [teamList[0], mainEmptyDiamond, teamList[1]]; // first row with the Gan's managers and the empty diamond with the grid title
@@ -237,20 +231,44 @@ const prepareTeamListForDiamondGrid = (teamList) => {
     }
   }
 
-  const oneBeforeLastSubArrLen =
+  teamListSplitToSubArrs = fillInEmptyDiamondsIfNeeded(teamListSplitToSubArrs);
+
+  return teamListSplitToSubArrs;
+};
+
+/* fill in empty diamonds in the last row (to maintain grid layout) if:
+ * one before last row length == 3 AND last row length != 2
+ * OR
+ * one before last row length == 2 AND last row length != 3
+ */
+const fillInEmptyDiamondsIfNeeded = (teamListSplitToSubArrs) => {
+  const oneBeforeLastRowLen =
     teamListSplitToSubArrs[teamListSplitToSubArrs.length - 2].length;
-  const lastSubArrLen =
+  const lastRowLen =
     teamListSplitToSubArrs[teamListSplitToSubArrs.length - 1].length;
 
-  if (oneBeforeLastSubArrLen === 2 && lastSubArrLen != 3) {
-    for (let i = 0; i < oneBeforeLastSubArrLen - lastSubArrLen + 1; i++)
-      teamListSplitToSubArrs[teamListSplitToSubArrs.length - 1].push(
-        placeholderEmptyDiamond
-      );
-  } else if (oneBeforeLastSubArrLen === 3 && lastSubArrLen === 1)
+  if (oneBeforeLastRowLen === 2 && lastRowLen != 3) {
+    if (lastRowLen === 2) {
+      const [employeeDiamond1, employeeDiamond2] = teamListSplitToSubArrs[
+        teamListSplitToSubArrs.length - 1
+      ];
+      teamListSplitToSubArrs[teamListSplitToSubArrs.length - 1] = [
+        employeeDiamond1,
+        placeholderEmptyDiamond,
+        employeeDiamond2,
+      ];
+    } else if (lastRowLen === 1) {
+      const [employeeDiamond] = teamListSplitToSubArrs[
+        teamListSplitToSubArrs.length - 1
+      ];
+      teamListSplitToSubArrs[teamListSplitToSubArrs.length - 1] = [
+        placeholderEmptyDiamond,
+        employeeDiamond,
+        placeholderEmptyDiamond,
+      ];
+    }
+  } else if (oneBeforeLastRowLen === 3 && lastRowLen === 1)
     teamListSplitToSubArrs[teamListSplitToSubArrs.length - 1].push(
       placeholderEmptyDiamond
     );
-
-  return teamListSplitToSubArrs;
 };
