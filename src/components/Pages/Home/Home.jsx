@@ -54,7 +54,7 @@ function Home() {
             );
           })}
         </div>
-        <div className="md:w-9/12 mt-40">
+        <div className="md:w-9/12 mt-40 mb-20">
           <TextTitle className="text-center" title="החודש בגן" />
           <iframe
             title="calendar"
