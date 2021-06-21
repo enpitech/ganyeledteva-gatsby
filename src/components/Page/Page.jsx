@@ -1,9 +1,13 @@
-import React from "react";
-import { MDXProvider } from "@mdx-js/react";
-import { mdStyle } from "../../styles/mdxStyles";
+import React from 'react';
+import { MDXProvider } from '@mdx-js/react';
+import { mdStyle } from '../../styles/mdxStyles';
 
-export default function Page({ children }) {
-  return <div className="bg-white">{children}</div>;
+export default function Page({ children, style }) {
+  return (
+    <div className="bg-white" style={style}>
+      {children}
+    </div>
+  );
 }
 
 function Header({ children, className }) {
