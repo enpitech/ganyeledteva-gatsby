@@ -32,12 +32,17 @@ function Home() {
   const { stories } = frontmatter;
 
   return (
-    <Page>
+    <Page
+      style={{
+        background: "#fff url('img/backgrounds/back.png')",
+        backgroundSize: 'cover',
+      }}
+    >
       <Page.Header>
         <HomeHeader />
       </Page.Header>
       <Page.Main className="md:flex md:flex-col justify-center items-center">
-        <div className="md:w-9/12 ">
+        <div className="md:w-9/12">
           {stories.map((story, index) => {
             const { title, subtitle, link, img, url } = story;
             return (
@@ -57,7 +62,7 @@ function Home() {
         </div>
         <TeamGrid />
 
-        <div className="md:w-9/12 mt-40">
+        <div className="md:w-9/12 mt-40 mb-20">
           <TextTitle className="text-center" title="החודש בגן" />
           <iframe
             title="calendar"

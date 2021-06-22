@@ -71,6 +71,6 @@ module.exports = {
     variants: {
       extend: {},
     },
-    plugins: [require('tailwindcss-rtl')],
   },
+  plugins: [require('@tailwindcss/forms'), require('tailwindcss-rtl')],
 };
