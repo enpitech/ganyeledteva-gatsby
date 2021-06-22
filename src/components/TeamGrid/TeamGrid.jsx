@@ -88,7 +88,7 @@ const EmployeeCardDesktop = ({ data }) => {
 
   return (
     <div
-      className="inline-block text-white hover:text-red-link md:text-3xl lg:text-4xl xl:text-6xl text-center mx-4"
+      className="inline-block text-white hover:text-red-link md:text-3xl lg:text-3xl xl:text-5xl text-center mx-4"
       style={{
         clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
         backgroundImage: `url(${imgPath})`,
