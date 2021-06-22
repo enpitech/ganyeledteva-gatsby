@@ -5,7 +5,7 @@ import { XIcon } from "@heroicons/react/outline";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 const mainEmptyDiamondTitle = "צוות הגן";
-const diamondSideLength = 27;
+const diamondSideEdgeLength = 27;
 
 export default function TeamGrid() {
   const data = useStaticQuery(graphql`
@@ -26,6 +26,8 @@ export default function TeamGrid() {
       }
     }
   `);
+
+
   let teamList = data.allMdx.edges.map((employeeEdge) => {
     const { body } = employeeEdge.node;
     const {
@@ -60,7 +62,7 @@ export default function TeamGrid() {
               className="text-center w-full"
               style={{
                 marginTop:
-                  index === 0 ? "auto" : `-${(diamondSideLength - 1) / 2}vw`,
+                  index === 0 ? "auto" : `-${(diamondSideEdgeLength - 1) / 2}vw`,
               }}
             >
               {singleSplittedTeamList.map((employeeData, index) => (
@@ -97,8 +99,8 @@ const EmployeeCardDesktop = ({ data }) => {
         <div
           className="relative mt-auto mr-auto"
           style={{
-            width: `${diamondSideLength}vw`,
-            height: `${diamondSideLength}vw`,
+            width: `${diamondSideEdgeLength}vw`,
+            height: `${diamondSideEdgeLength}vw`,
           }}
         >
           {isEmpty ? null : (
@@ -180,8 +182,8 @@ const EmployeeModal = ({
               clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
               backgroundImage: `url(${imgPath})`,
               backgroundSize: "cover",
-              width: `${diamondSideLength}vw`,
-              height: `${diamondSideLength}vw`,
+              width: `${diamondSideEdgeLength}vw`,
+              height: `${diamondSideEdgeLength}vw`,
             }}
           />
           <div className="col-span-2 w-4/5 mx-10">
@@ -209,29 +211,27 @@ const EmployeeModal = ({
 /**
  * splits the team list into sub arrays of 2's and 3's,
  * to create a grid layout of rows of 3 diamonds followed by a row of 2 diamonds and so on...
- * assumptions: @param:teamList length >= 2, meaning there are at least 2 .md file of gan's worker
+ * assumptions: @param:teamList length >= 2, meaning there are at least 2 .md file of gan's workers
  */
 const prepareTeamListForDiamondGrid = (teamList) => {
   let teamListSplitToSubArrs = []; // this will hold the team list split to sub arrays of 2's and 3's
-  let mainEmptyDiamond = { title: mainEmptyDiamondTitle };
-  let placeholderEmptyDiamond = { title: "", isEmpty: true };
-  let firstGridRow = [teamList[0], mainEmptyDiamond, teamList[1]]; // first row with the Gan's managers and the empty diamond with the grid title
+  const mainEmptyDiamond = { title: mainEmptyDiamondTitle }; // this is for the first row middle diamond that holds text only
+  const firstGridRow = [teamList[0], mainEmptyDiamond, teamList[1]]; // first row with the Gan's managers and the empty diamond with the grid title
   teamListSplitToSubArrs.push(firstGridRow);
 
   let shouldBeGridRowOfTwo = true; // for the splitting process, flag to indicate if row of 2 employees or 3.
-  let ganEmployeesWithoutManagers = teamList.slice(2);
-  for (let i = 0; i < ganEmployeesWithoutManagers.length; ) {
+  let ganEmployeesExcludeManagers = teamList.slice(2); // Managers - Tzachi and Ahinoham
+  for (let i = 0; i < ganEmployeesExcludeManagers.length; ) {
     if (shouldBeGridRowOfTwo) {
-      teamListSplitToSubArrs.push(ganEmployeesWithoutManagers.slice(i, i + 2));
+      teamListSplitToSubArrs.push(ganEmployeesExcludeManagers.slice(i, i + 2));
       shouldBeGridRowOfTwo = false;
       i += 2;
     } else {
-      teamListSplitToSubArrs.push(ganEmployeesWithoutManagers.slice(i, i + 3));
+      teamListSplitToSubArrs.push(ganEmployeesExcludeManagers.slice(i, i + 3));
       i += 3;
       shouldBeGridRowOfTwo = true;
     }
   }
-
   teamListSplitToSubArrs = fillInEmptyDiamondsIfNeeded(teamListSplitToSubArrs);
 
   return teamListSplitToSubArrs;
@@ -241,9 +241,11 @@ const prepareTeamListForDiamondGrid = (teamList) => {
  * one before last row length == 3 AND last row length != 2
  * OR
  * one before last row length == 2 AND last row length != 3
- * assumptions: @param:teamListSplitToSubArrs length >= 2, meaning there are at least 3 .md file of gan's worker
+ * assumptions: @param:teamListSplitToSubArrs length >= 2, meaning there are at least 3 .md file of gan's workers
  */
 const fillInEmptyDiamondsIfNeeded = (teamListSplitToSubArrs) => {
+
+  const placeholderEmptyDiamond = { title: "", isEmpty: true };
   const oneBeforeLastRowLen =
     teamListSplitToSubArrs[teamListSplitToSubArrs.length - 2].length;
   const lastRowLen =
@@ -273,4 +275,6 @@ const fillInEmptyDiamondsIfNeeded = (teamListSplitToSubArrs) => {
     teamListSplitToSubArrs[teamListSplitToSubArrs.length - 1].push(
       placeholderEmptyDiamond
     );
+
+    return teamListSplitToSubArrs
 };

@@ -5,7 +5,6 @@ import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { useLocation } from "@reach/router";
 import config from "../../data/SiteConfig";
-import siteRoutes from "../../data/SiteRoutes";
 import { classNames } from "../utils";
 import Footer from "../components/Footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,7 +13,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../components/Logo/Logo";
 import favicon from "~static/logos/favicon.png";
 
-const navigation = siteRoutes;
+const navigation = config.siteRoutes;
 
 export default function MainLayout({ children }) {
   const location = useLocation();
