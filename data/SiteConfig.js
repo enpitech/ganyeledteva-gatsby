@@ -51,7 +51,8 @@ const config = {
     href: "/democratic-center",
   },
   { name: "העדכון השבועי", href: "/weekly-update" },
-  { name: "רישום לגן", href: "/signup" }] ,
+  { name: "רישום לגן", href: "/signup" } ,
+  { name: "שאלות ותשובות", href: "/faq" }] ,
   
 };
 
