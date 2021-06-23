@@ -4,6 +4,7 @@ import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import Page from "../../Page/Page";
 import PageHeader from "../../Page/PageHeader";
+import SEO from "../../SEO/SEO";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -15,6 +16,9 @@ function FAQ() {
       allMdx(filter: { fields: { dir: { eq: "faq" } } }) {
         edges {
           node {
+            fields {
+              dir
+            }
             frontmatter {
               title
               subtitle
@@ -30,11 +34,19 @@ function FAQ() {
   `);
 
   const pageNode = data.allMdx.edges[0].node;
-  const { frontmatter } = pageNode;
+  const { frontmatter, fields } = pageNode;
   const { title, subtitle, faqs } = frontmatter;
+
+  const pageSEOData = {
+    title: title,
+    description: undefined,
+    image: undefined,
+    pagePath: fields.dir,
+  };
 
   return (
     <Page>
+      <SEO pageSEOData={pageSEOData} />
       <Page.Header>
         <PageHeader
           title={title}

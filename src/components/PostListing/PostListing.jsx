@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'gatsby';
+import React from "react";
+import { Link } from "gatsby";
 
 function PostListing({ postEdges }) {
   const postList = [];
@@ -12,17 +12,16 @@ function PostListing({ postEdges }) {
       date: postEdge.node.fields.date,
       excerpt: postEdge.node.excerpt,
       timeToRead: postEdge.node.timeToRead,
-      dir: postEdge.node.fields.dir
+      dir: postEdge.node.fields.dir,
     });
   });
   return (
-
     <div>
       {
         /* Your post list here. */
         postList.map((post) => (
           <Link to={post.path} key={post.title}>
-            <h1>{post.title}</h1>
+            {post.title ? <h1>{post.title}</h1> : null}
           </Link>
         ))
       }

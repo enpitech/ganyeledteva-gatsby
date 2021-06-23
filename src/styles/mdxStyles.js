@@ -28,7 +28,7 @@ const mdStyle = {
     strong: (props) => <strong {...props} className="inline-block" />,
     ul: (props) => <ul {...props} className="list-disc list-outside mb-5 mr-5" />,
     ol: (props) => <ol {...props} className="list-decimal list-outside mb-5 mr-5" />,
-    a: (props) => <a {...props} className="text-blue-500" />,
+    a: (props) => <a {...props} className="text-blue-500" target='_blank' />,
     blockquote: Blockquote,
     };
     

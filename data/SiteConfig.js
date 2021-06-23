@@ -1,5 +1,5 @@
 const config = {
-  siteTitle: 'Gatsby Advanced Starter', // Site title.
+  siteTitle: 'גן ילדי הטבע הדמוקרטי', // Site title.
   siteTitleShort: 'GA Starter', // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: 'GatsbyJS Advanced Starter', // Alternative site title for SEO.
   siteLogo: '/logos/logo-1024.png', // Logo used for SEO and manifest.
@@ -52,7 +52,9 @@ const config = {
   },
   { name: "העדכון השבועי", href: "/weekly-update" },
   { name: "רישום לגן", href: "/signup" } ,
-  { name: "שאלות ותשובות", href: "/faq" }] ,
+  { name: "שאלות ותשובות", href: "/faq" },
+  { name: "צור קשר", href: "/contact" },
+] ,
   
 };
 

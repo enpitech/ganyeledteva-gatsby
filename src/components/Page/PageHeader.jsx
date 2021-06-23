@@ -15,8 +15,12 @@ export default function PageHeader({
             backgroundPatternClass || "bg-patt2"
           }`}
         >
-          <h1 className="text-5xl text-center mb-4">{title}</h1>
-          <h2 className="text-lg text-center max-w-3xl ">{subtitle}</h2>
+          {title ? (
+            <h1 className="text-5xl text-center mb-4">{title}</h1>
+          ) : null}
+          {subtitle ? (
+            <h2 className="text-lg text-center max-w-3xl ">{subtitle}</h2>
+          ) : null}
         </div>
       </div>
     </Page.Header>
