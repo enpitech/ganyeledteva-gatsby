@@ -172,20 +172,6 @@ function RegistrationForm({ handleInputChange }) {
                 <span className="block text-sm text-gray-700">ילדה</span>
               </label>
             </div>
-            <div className="flex items-center">
-              <input
-                id="align"
-                name="child_gender"
-                type="radio"
-                value="חייזר"
-                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-                onChange={handleInputChange}
-                disabled
-              />
-              <label htmlFor="female" className="mr-3">
-                <span className="block text-sm text-gray-700">חייזר</span>
-              </label>
-            </div>
           </div>
         </fieldset>
       </div>
