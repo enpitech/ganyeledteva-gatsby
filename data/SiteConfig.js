@@ -8,8 +8,7 @@ const config = {
   siteDescription: 'A GatsbyJS starter with Advanced design in mind.', // Website description used for RSS feeds/meta description tag.
   siteRssTitle: '', // Title of the RSS feed
   siteFBAppID: '', // FB Application ID for using app insights
-  googleAnalyticsID: 'UA-47311644-5', // GA tracking ID.
-  disqusShortname: 'https-vagr9k-github-io-gatsby-advanced-starter', // Disqus shortname.
+  googleAnalyticsID: '', // GA tracking ID.
   dateFromFormat: 'YYYY-MM-DD', // Date format used in the frontmatter.
   dateFormat: 'DD/MM/YYYY', // Date format for display.
   userLinks: [

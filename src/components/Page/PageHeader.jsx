@@ -7,7 +7,9 @@ export default function PageHeader({
   backgroundColorClass,
   backgroundPatternClass,
 }) {
-  return title ? (
+  if (!title) return null;
+
+  return (
     <Page.Header>
       <div className={`${backgroundColorClass || "bg-green-gradient"} `}>
         <div
@@ -23,5 +25,5 @@ export default function PageHeader({
         </div>
       </div>
     </Page.Header>
-  ) : null;
+  );
 }
