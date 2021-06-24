@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import Page from "../../Page/Page";
 import PageHeader from "../../Page/PageHeader";
 import Layout from "../../../layout";
-import SEO from "../../SEO/SEO";
+import SEO from "../../SEO";
 import config from "../../../../data/SiteConfig";
 import SectionCard from "../../SectionCard";
 
@@ -42,13 +42,13 @@ function Gan({ data }) {
   return (
     <Layout>
       <Helmet>
-        <title>{`${mainPageHeader.title} | ${config.siteTitle}`}</title>
+        <title>{`${pageTitle} | ${config.siteTitle}`}</title>
       </Helmet>
       <SEO pageSEOData={pageSEOData} />
       <Page>
         <Page.Header>
           <PageHeader
-            title={mainPageHeader.title}
+            title={pageTitle}
             subtitle={mainPageHeader.subtitle}
             backgroundColorClass="bg-gradient-to-r from-blue-gan-page-header1 to-blue-gan-page-header2"
             backgroundPatternClass="bg-patt1"

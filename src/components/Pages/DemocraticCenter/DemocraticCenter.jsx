@@ -2,7 +2,7 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import tadmitVideo from "~static/assets/vids/dummyvid.mp4";
-import SEO from "../../SEO/SEO";
+import SEO from "../../SEO";
 import Page from "../../Page/Page";
 
 function DemocraticCenter() {
@@ -33,7 +33,7 @@ function DemocraticCenter() {
   const { title, images } = frontmatter;
 
   const pageSEOData = {
-    title: title,
+    title,
     description: undefined,
     image: undefined,
     pagePath: fields.dir,

@@ -4,7 +4,7 @@ import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import Page from "../../Page/Page";
 import PageHeader from "../../Page/PageHeader";
-import SEO from "../../SEO/SEO";
+import SEO from "../../SEO";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

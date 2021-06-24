@@ -70,18 +70,6 @@ function SEO({ postSEOData, pageSEOData }) {
 
   const datePublished = getPublicationDate();
 
-  const authorJSONLD = {
-    "@type": "Person",
-    name: config.userName,
-    email: config.userEmail,
-    address: config.userLocation,
-  };
-
-  const logoJSONLD = {
-    "@type": "ImageObject",
-    url: getImagePath(config.siteLogo),
-  };
-
   const blogURL = urljoin(config.siteUrl, config.pathPrefix);
   const schemaOrgJSONLD = [
     {
@@ -117,12 +105,6 @@ function SEO({ postSEOData, pageSEOData }) {
         alternateName: config.siteTitleAlt ? config.siteTitleAlt : "",
         headline: title,
         image: { "@type": "ImageObject", url: image },
-        author: authorJSONLD,
-        publisher: {
-          ...authorJSONLD,
-          "@type": "Organization",
-          logo: logoJSONLD,
-        },
         datePublished,
         description,
       }

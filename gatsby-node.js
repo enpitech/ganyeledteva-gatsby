@@ -22,9 +22,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
       Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
     ) {
-      if (parsedFilePath.dir===ganDirName){
+      if (parsedFilePath.dir === ganDirName){
         slug = `/${parsedFilePath.dir}/${parsedFilePath.name}`;
-      }else{
+      } else {
         slug = `/${parsedFilePath.dir}/${_.kebabCase(node.frontmatter.title)}`;
       }
     } else if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {

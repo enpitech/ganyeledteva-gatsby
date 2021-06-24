@@ -3,7 +3,7 @@ import Page from "../../Page/Page";
 import PageHeader from "../../Page/PageHeader";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import SEO from "../../SEO/SEO";
+import SEO from "../../SEO";
 
 function DemocraticEducation() {
   const data = useStaticQuery(graphql`

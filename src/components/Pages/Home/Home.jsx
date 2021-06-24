@@ -4,7 +4,7 @@ import HomeHeader from "./HomeHeader";
 import Page from "../../Page/Page";
 import SectionCard from "../../SectionCard";
 import TextTitle from "../../TextTitle";
-import SEO from "../../SEO/SEO";
+import SEO from "../../SEO";
 import TeamGrid from "../../TeamGrid";
 
 function Home() {

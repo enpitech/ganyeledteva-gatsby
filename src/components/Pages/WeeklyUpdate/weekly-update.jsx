@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../../../layout";
-import SEO from "../../SEO/SEO";
+import SEO from "../../SEO";
 import config from "../../../../data/SiteConfig";
 import Page from "../../Page/Page";
 import PageHeader from "../../Page/PageHeader";
@@ -101,11 +101,9 @@ const PostItem = ({ date, title, fullPostUrl }) => {
         <Link to={fullPostUrl}>
           <div className="pr-4">
             <p className="h-10 pt-3">{formatDate(date)}</p>
-            {title ? (
-              <h1 className="pb-10 text-3xl font-bold mb-10 h-40 pl-2">
-                {title}
-              </h1>
-            ) : null}
+            <h1 className="pb-10 text-3xl font-bold mb-10 h-40 pl-2">
+              {title}
+            </h1>
             <GotoPostButton />
           </div>
         </Link>
@@ -120,9 +118,7 @@ const FirstPost = ({ firstPost }) => {
       <Link to={firstPost.path}>
         <div className="px-5">
           <p className="mb-4 pt-2">{formatDate(firstPost.date)}</p>
-          {firstPost.title ? (
-            <h1 className="text-5xl mb-8 font-bold">{firstPost.title}</h1>
-          ) : null}
+          <h1 className="text-5xl mb-8 font-bold">{firstPost.title}</h1>
           <GotoPostButton className="my-5" />
         </div>
       </Link>

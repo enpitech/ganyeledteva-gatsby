@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Page from "../../Page/Page";
 import PageHeader from "../../Page/PageHeader";
 import ContactForm from "./ContactForm";
-import SEO from "../../SEO/SEO";
+import SEO from "../../SEO";
 import config from "../../../../data/SiteConfig";
 
 import ReasonBtn from "./ReasonBtn";
