@@ -43,6 +43,17 @@ const config = {
   themeColor: '#c62828', // Used for setting manifest and progress theme colors.
   backgroundColor: '#e0e0e0', // Used for setting manifest background color.
   ganMainPageDataMdFileName : 'index', // gan's main page data is defined in "content/gan/index.md", unlike other pages' data, so this is the said file name.
+  siteRoutes: [  { name: "דף הבית", href: "/" },
+  { name: "הגישה הדמוקרטית", href: "/democraticeducation" },
+  { name: "הגן", href: "/gan" },
+  {
+    name: "חדשנות חינוכית לגיל הרך",
+    href: "/democratic-center",
+  },
+  { name: "העדכון השבועי", href: "/weekly-update" },
+  { name: "רישום לגן", href: "/signup" } ,
+  { name: "שאלות ותשובות", href: "/faq" }] ,
+  
 };
 
 // Validate

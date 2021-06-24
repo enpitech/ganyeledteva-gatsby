@@ -1,12 +1,12 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import { Disclosure } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/outline';
-import Page from '../../Page/Page';
-import PageHeader from '../../Page/PageHeader';
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import { Disclosure } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/outline";
+import Page from "../../Page/Page";
+import PageHeader from "../../Page/PageHeader";
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
+  return classes.filter(Boolean).join(" ");
 }
 
 function FAQ() {
@@ -58,8 +58,8 @@ function FAQ() {
                         <span className="ml-6 h-7 flex items-center">
                           <ChevronDownIcon
                             className={classNames(
-                              open ? '-rotate-180' : 'rotate-0',
-                              'h-6 w-6 transform'
+                              open ? "-rotate-180" : "rotate-0",
+                              "h-6 w-6 transform"
                             )}
                             aria-hidden="true"
                           />
@@ -67,7 +67,7 @@ function FAQ() {
                       </Disclosure.Button>
                     </dt>
                     <Disclosure.Panel as="dd" className="mt-2 pl-12">
-                      <p className="text-right text-gray-500 whitespace-pre">
+                      <p className="text-right text-gray-500 whitespace-pre-wrap">
                         {item.answer}
                       </p>
                     </Disclosure.Panel>

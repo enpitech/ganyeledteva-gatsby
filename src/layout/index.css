@@ -1,3 +1,5 @@
+@import '../styles/typography.css';
+
 * {
   box-sizing: border-box;
 }
@@ -11,6 +13,8 @@ body {
   padding: 0;
   min-height: 100%;
   min-width: 100%;
+  font-family: 'Heebo', sans-serif;
+  color: #3d3d3d;
 }
 
 #___gatsby #gatsby-focus-wrapper {

@@ -1,9 +1,10 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import HomeHeader from './HomeHeader';
-import Page from '../../Page/Page';
-import SectionCard from '../../SectionCard';
-import TextTitle from '../../TextTitle';
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import HomeHeader from "./HomeHeader";
+import Page from "../../Page/Page";
+import SectionCard from "../../SectionCard";
+import TextTitle from "../../TextTitle";
+import TeamGrid from "../../TeamGrid";
 
 function Home() {
   const data = useStaticQuery(graphql`
@@ -31,18 +32,23 @@ function Home() {
   const { stories } = frontmatter;
 
   return (
-    <Page>
+    <Page
+      style={{
+        background: "#fff url('img/backgrounds/back.png')",
+        backgroundSize: 'cover',
+      }}
+    >
       <Page.Header>
         <HomeHeader />
       </Page.Header>
       <Page.Main className="md:flex md:flex-col justify-center items-center">
-        <div className="md:w-9/12 ">
+        <div className="md:w-9/12">
           {stories.map((story, index) => {
             const { title, subtitle, link, img, url } = story;
             return (
               <SectionCard
                 className={`flex flex-col ${
-                  index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'
+                  index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
                 } justify-between mt-20`}
                 key={title}
                 title={title}
@@ -54,7 +60,9 @@ function Home() {
             );
           })}
         </div>
-        <div className="md:w-9/12 mt-40">
+        <TeamGrid />
+
+        <div className="md:w-9/12 mt-40 mb-20">
           <TextTitle className="text-center" title="החודש בגן" />
           <iframe
             title="calendar"

@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import { withPrefix } from 'gatsby';
-import _ from 'lodash';
-import $ from 'jquery';
+import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
+import { withPrefix } from "gatsby";
+import _ from "lodash";
+import $ from "jquery";
 
-import Layout from '../layout';
-import config from '../../data/SiteConfig';
-import Home from '../components/Pages/Home/Home';
-import useScript from '../hooks/useScript';
+import Layout from "../layout";
+import config from "../../data/SiteConfig";
+import Home from "../components/Pages/Home/Home";
+import useScript from "../hooks/useScript";
 
-const sketchScriptPath = withPrefix('js/lib/sketch.js');
+const sketchScriptPath = withPrefix("js/lib/sketch.js");
 
 function initSketchDrawer() {
-  let color = '#f7479e';
-  const COLORS = ['#ff2b56', '#4b2ac8', '#f36c4f', '#1b522f', '#fff797'];
+  let color = "#f7479e";
+  const COLORS = ["#ff2b56", "#4b2ac8", "#f36c4f", "#1b522f", "#fff797"];
   const WINDOW_WIDTH = window.innerWidth;
   let radius = 0;
 
@@ -24,7 +24,7 @@ function initSketchDrawer() {
       colorIndex = 0;
     }
     color = COLORS[colorIndex];
-    $('#hiddenText').css('color', color).css('borderBottomColor', color);
+    $("#hiddenText").css("color", color).css("borderBottomColor", color);
   };
 
   const draw = function () {
@@ -36,8 +36,8 @@ function initSketchDrawer() {
     for (let i = this.touches.length - 1; i >= 0; i--) {
       const touch = this.touches[i];
 
-      this.lineCap = 'round';
-      this.lineJoin = 'round';
+      this.lineCap = "round";
+      this.lineJoin = "round";
       this.fillStyle = color;
       this.strokeStyle = color;
       this.lineWidth = radius;
@@ -52,9 +52,9 @@ function initSketchDrawer() {
   function initSketch() {
     // eslint-disable-next-line no-undef
     return Sketch.create({
-      container: document.getElementById('draw'),
+      container: document.getElementById("draw"),
       autoclear: false,
-      retina: 'auto',
+      retina: "auto",
       fullscreen: false,
       height: 500,
       width: WINDOW_WIDTH,
@@ -68,8 +68,8 @@ function initSketchDrawer() {
         for (let i = this.touches.length - 1; i >= 0; i--) {
           const touch = this.touches[i];
 
-          this.lineCap = 'round';
-          this.lineJoin = 'round';
+          this.lineCap = "round";
+          this.lineJoin = "round";
           this.fillStyle = color;
           this.strokeStyle = color;
           this.lineWidth = radius;
@@ -106,14 +106,14 @@ function initSketchDrawer() {
     if (window.sketch) window.sketch.destroy();
     window.sketch = initSketch();
   }, 500);
-  $(window).on('resize', lazyLayout);
+  $(window).on("resize", lazyLayout);
 }
 
 function HomePage() {
   const status = useScript(sketchScriptPath);
 
   useEffect(() => {
-    if (status === 'ready') {
+    if (status === "ready") {
       initSketchDrawer();
     }
   }, [status]);
