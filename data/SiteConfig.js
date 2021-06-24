@@ -7,8 +7,9 @@ const config = {
   pathPrefix: '/', // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription: 'A GatsbyJS starter with Advanced design in mind.', // Website description used for RSS feeds/meta description tag.
   siteRssTitle: '', // Title of the RSS feed
+  siteRss:'', 
   siteFBAppID: '', // FB Application ID for using app insights
-  googleAnalyticsID: '', // GA tracking ID.
+  googleAnalyticsID: 'DUMMY_ID', // GA tracking ID. uses dummy id to compile
   dateFromFormat: 'YYYY-MM-DD', // Date format used in the frontmatter.
   dateFormat: 'DD/MM/YYYY', // Date format for display.
   userLinks: [

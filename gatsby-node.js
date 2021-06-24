@@ -154,7 +154,9 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        "~static": path.resolve(__dirname, "static")
+        "~static": path.resolve(__dirname, "static"),
+        "~src": path.resolve(__dirname, "src"),
+
       }
     }
   });
