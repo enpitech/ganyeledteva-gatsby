@@ -12,7 +12,7 @@ export default function ReasonBtn({ content, active, onClick, className }) {
         font-medium rounded-md shadow-sm text-white
         hover:bg-purple-light-border focus:outline-none
         focus:ring-2 focus:ring-offset-2 focus:bg-purple-light-border sm:p-6
-        w-full md:w-1/4 h-1/4 md:h-36  text-3xl`,
+        w-full md:w-1/4 h-1/4 md:h-36  text-2xl`,
         className
       )}
       onClick={onClick}

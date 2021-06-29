@@ -8,16 +8,6 @@ function encode(data) {
     .join('&');
 }
 
-function getAgeInSep(date) {
-  const diff = new Date('09/01/2021') - new Date(date);
-
-  const precentAge = diff / 1000 / 60 / 60 / 24 / 365;
-  const years = Math.floor(precentAge);
-  const months = (precentAge - years) * 12;
-
-  return `${years}.${Math.floor(months)}`;
-}
-
 export default function ContactForm({ formType }) {
   const [formValues, setFormValues] = useState({});
 
@@ -35,21 +25,20 @@ export default function ContactForm({ formType }) {
       body: encode({
         'form-name': form.getAttribute('name'),
         ...formValues,
-        age_in_sept: getAgeInSep(formValues.date_of_birth),
       }),
     })
       .then(() => navigate('/contact'))
-      .catch((error) => alert(error));
+      .catch();
   };
 
   const getForm = () => {
     switch (formType) {
       case 1:
-        return <RegistrationForm handleInputChange={handleInputChange} />;
-      case 2:
         return <WorkWithUsForm handleInputChange={handleInputChange} />;
-      case 3:
+      case 2:
         return <ServicesForm handleInputChange={handleInputChange} />;
+      case 3:
+        return <OtherReasonForm handleInputChange={handleInputChange} />;
       default:
         return null;
     }
@@ -78,104 +67,10 @@ export default function ContactForm({ formType }) {
         </div>
       </div>
 
-      <SubmitBtn label="תרשמו אותי!" />
+      <div className="w-max ">
+        <SubmitBtn label="רק ללחוץ כאן וסיימתם :)" />
+      </div>
     </form>
-  );
-}
-
-function RegistrationForm({ handleInputChange }) {
-  return (
-    <>
-      <FullName label="שם מלא של ההורה" onChange={handleInputChange} />
-
-      <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-        <label
-          htmlFor="child_name"
-          className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-        >
-          שם מלא של הילד/ה
-        </label>
-        <div className="mt-1 sm:mt-0 sm:col-span-2">
-          <input
-            type="text"
-            name="child_name"
-            id="child_name"
-            className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-            onChange={handleInputChange}
-          />
-        </div>
-      </div>
-
-      <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-        <label
-          htmlFor="date_of_birth"
-          className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-        >
-          תאריך לידה של הילד/ה
-        </label>
-        <div className="mt-1 sm:mt-0 sm:col-span-2">
-          <input
-            type="date"
-            name="date_of_birth"
-            id="date_of_birth"
-            autoComplete="bday"
-            className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-            onChange={handleInputChange}
-          />
-        </div>
-      </div>
-      <p hidden>
-        <label>
-          Age In September: <input name="age_in_sept" />
-        </label>
-      </p>
-
-      <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-        <legend className="block text-sm font-medium text-gray-700">
-          ילד או ילדה?
-        </legend>
-        <fieldset className="sm:col-span-2">
-          <div className="mt-4 grid grid-cols-1 gap-y-4">
-            <div className="flex items-center">
-              <input
-                id="male"
-                name="child_gender"
-                type="radio"
-                value="ילד"
-                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-                onChange={handleInputChange}
-              />
-              <label htmlFor="male" className="mr-3">
-                <span className="block text-sm text-gray-700">ילד</span>
-              </label>
-            </div>
-            <div className="flex items-center">
-              <input
-                id="female"
-                name="child_gender"
-                type="radio"
-                value="ילדה"
-                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-                onChange={handleInputChange}
-              />
-              <label htmlFor="female" className="mr-3">
-                <span className="block text-sm text-gray-700">ילדה</span>
-              </label>
-            </div>
-          </div>
-        </fieldset>
-      </div>
-
-      <Email onChange={handleInputChange} />
-
-      <Phone onChange={handleInputChange} />
-
-      <TextBox
-        label="ספרו לנו על האופן בו אתם תופסים חינוך"
-        onChange={handleInputChange}
-        fieldName="thoughts_about_education"
-      />
-    </>
   );
 }
 
@@ -205,8 +100,8 @@ function WorkWithUsForm({ handleInputChange }) {
         </div>
       </div>
 
-      <TextBox label="על עצמכם" onChange={handleInputChange} />
-      <TextBox label="מה אתם מחפשים" onChange={handleInputChange} />
+      <TextBox label="על עצמכם" onChange={handleInputChange} required />
+      <TextBox label="מה אתם מחפשים" onChange={handleInputChange} required />
     </>
   );
 }
@@ -287,6 +182,18 @@ function ServicesForm({ handleInputChange }) {
       </div>
 
       <TextBox label="דברים נוספים" onChange={handleInputChange} />
+    </>
+  );
+}
+
+function OtherReasonForm({ handleInputChange }) {
+  return (
+    <>
+      <FullName label="שם מלא" onChange={handleInputChange} />
+      <Email onChange={handleInputChange} />
+      <Phone onChange={handleInputChange} />
+
+      <TextBox label="יאללה שוט" onChange={handleInputChange} required />
     </>
   );
 }
