@@ -87,7 +87,7 @@ export function Phone({ onChange, required }) {
   );
 }
 
-export function TextBox({ label, onChange, fieldName }) {
+export function TextBox({ label, onChange, fieldName, required }) {
   return (
     <div className="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
       <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
@@ -105,6 +105,7 @@ export function TextBox({ label, onChange, fieldName }) {
             className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
             defaultValue=""
             onChange={onChange}
+            required={required}
           />
         </div>
       </div>
