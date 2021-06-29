@@ -4,6 +4,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Page from '../../Page/Page';
 import PageHeader from '../../Page/PageHeader';
 import SignupForm from './SignupForm';
+import SEO from '../../SEO/SEO';
 
 export default function Signup() {
   const data = useStaticQuery(graphql`
@@ -25,10 +26,16 @@ export default function Signup() {
   const pageNode = data.allMdx.edges[0].node;
   const { frontmatter, body } = pageNode;
   const { title, subtitle } = frontmatter;
+  const pageSEOData = {
+    title,
+    description: undefined, // description to be added later by Tzachi
+    pagePath: 'signup',
+  };
 
   return (
     <Page>
       <Page.Header>
+        <SEO pageSEOData={pageSEOData} />
         <PageHeader
           title={title}
           subtitle={subtitle}

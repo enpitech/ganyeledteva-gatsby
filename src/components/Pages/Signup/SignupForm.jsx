@@ -11,7 +11,12 @@ function encode(data) {
 }
 
 function getAgeInSep(date) {
-  const diff = new Date('09/01/2021') - new Date(date);
+  const currentDate = new Date();
+  let nextSeptYear = currentDate.getFullYear();
+  if (currentDate.getMonth() >= 9 && currentDate.getMonth() <= 12) {
+    nextSeptYear += 1;
+  }
+  const diff = new Date(`09/01/${nextSeptYear}`) - new Date(date);
 
   const precentAge = diff / 1000 / 60 / 60 / 24 / 365;
   const years = Math.floor(precentAge);
@@ -184,12 +189,14 @@ function RegistrationForm({ handleInputChange }) {
         label="ספרו לנו על האופן בו אתם תופסים את תפקיד הגן בחיי הילדים ואת מערכת היחסים בין הבית לגן"
         onChange={handleInputChange}
         fieldName="thoughts_about_education"
+        required
       />
 
       <TextBox
         label="ספרו לנו מי אתם ואיך נוכל לעזור לכם"
         onChange={handleInputChange}
         fieldName="who_are_you"
+        required
       />
     </>
   );
