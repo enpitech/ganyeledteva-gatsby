@@ -44,6 +44,8 @@ const config = {
   { name: "רישום לגן", href: "/signup" } ,
   { name: "שאלות ותשובות", href: "/faq" },
   { name: "צור קשר", href: "/contact" },
+  { name: "מוצרים חינוכיים", href: "/products" },
+  { name: "לעבוד בגן", href: "/work-in-gan" },
 ] ,
   
 };

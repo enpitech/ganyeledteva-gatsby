@@ -87,7 +87,7 @@ export default function WorkInGan() {
             title={teamGalleryTitle || "הצוות המנצח שלנו:"}
             className="text-center py-10"
           />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-10">
             {teamImages.map((img) => (
               <img src={img.src} alt={img.alt} />
             ))}

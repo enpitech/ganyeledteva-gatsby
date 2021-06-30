@@ -11,12 +11,18 @@ import TextTitle from "../../TextTitle";
 export default function Products() {
   const data = useStaticQuery(graphql`
     query productsQuery {
-      teamMdx: allMdx(filter: { fields: { dir: { eq: "team" } } }) {
+      allMdx(filter: { fields: { dir: { eq: "products" } } }) {
         edges {
           node {
             frontmatter {
               title
               subtitle
+              video1_title
+              video1
+              video2_title
+              video2
+              video3_title
+              video3
             }
             body
           }
@@ -25,14 +31,30 @@ export default function Products() {
     }
   `);
 
-  const title = "המוצרים החינוכיים שלנו";
-  const subtitle = "יש לנו ימבה מוצרים מגניבים";
-  const body = "וואי כמה מוצרים";
+  const {
+    title,
+    subtitle,
+    video1_title,
+    video1,
+    video2_title,
+    video2,
+    video3_title,
+    video3,
+  } = data.allMdx.edges[0].node.frontmatter;
+  const { body } = data.allMdx.edges[0].node;
+  // const title = "המוצרים החינוכיים שלנו";
+  // const subtitle = "יש לנו ימבה מוצרים מגניבים";
+  // const body = "וואי כמה מוצרים";
+  const videos = [
+    { title: video1_title, src: video1 },
+    { title: video2_title, src: video2 },
+    { title: video3_title, src: video3 },
+  ];
   const contactPageRouteObject = siteRoutes.filter(
     (route) => route.name === "צור קשר"
   )[0];
 
-  let contactPageRoute = "/"; // default value
+  let contactPageRoute = "/"; // home page as default value
   if (contactPageRouteObject) contactPageRoute = contactPageRouteObject.href;
 
   return (
@@ -47,27 +69,30 @@ export default function Products() {
         />
       </Page.Header>
       <Page.Main>
-        {/* <MDXRenderer>{body}</MDXRenderer> */}
-        <Link to={contactPageRoute}>
-          <TextTitle
-            className="text-center"
-            title="מעניין אתכם? צרו איתנו קשר"
-          />
-        </Link>
+        <div className="mr-5 md:mr-20">
+          <MDXRenderer>{body}</MDXRenderer>
+        </div>
+        <div className="text-center">
+          <Link to={contactPageRoute}>
+            <div className="inline-block rounded-full text-2xl text-center py-1 px-3 border-2 border-black bg-red-link text-white">
+              מעניין אתכם? צרו איתנו קשר
+            </div>
+          </Link>
+        </div>
         {/* <Carousel/> */}
-        <div>
-          {/* {videos.map(({ title, src }) =>
+        <div className="pb-10">
+          {videos.map(({ title, src }) =>
             src ? (
-              <div>
+              <div key={title}>
                 {title ? (
                   <TextTitle title={title} className="text-center py-10" />
                 ) : null}
                 <video className="m-auto w-2/3 h-2/3 " controls>
-                  <source src={tadmitVideo} type="video/mp4" />
+                  <source src={src} type="video/mp4" />
                 </video>
               </div>
             ) : null
-          )} */}
+          )}
         </div>
       </Page.Main>
     </Page>
