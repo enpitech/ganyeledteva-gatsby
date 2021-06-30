@@ -2,7 +2,6 @@ import React from "react";
 import Page from "~src/components/Page/Page";
 import PageHeader from "~src/components/Page/PageHeader";
 import SEO from "~src/components/SEO";
-// import tadmitVideo from "~static/assets/vids/dummyvid.mp4";
 import { useStaticQuery, graphql } from "gatsby";
 import TextTitle from "../../TextTitle";
 
@@ -29,6 +28,8 @@ export default function WorkInGan() {
               title
               subtitle
               tadmitVideo
+              tadmitVideoTitle
+              teamGalleryTitle
             }
           }
         }
@@ -51,13 +52,11 @@ export default function WorkInGan() {
     teamGalleryTitle,
   } = workInGanMdxData.frontmatter;
 
-  const { dir: workINGanDirName } = workInGanMdxData.fields;
-
   const pageSEOData = {
     title: title,
     description: undefined,
     image: undefined,
-    pagePath: workINGanDirName,
+    pagePath: workInGanMdxData.fields.dir,
   };
 
   return (
@@ -72,14 +71,22 @@ export default function WorkInGan() {
         />
       </Page.Header>
       <Page.Main>
-        <div className="my-16">
-          <TextTitle title={tadmitVideoTitle} className="text-center py-10" />
-          <video className="m-auto w-2/3 h-2/3 " controls>
-            <source src={tadmitVideo} type="video/mp4" />
-          </video>
-        </div>
+        {tadmitVideo ? (
+          <div className="mb-16">
+            <TextTitle
+              title={tadmitVideoTitle || "ככה זה לעבוד איתנו:"}
+              className="text-center py-10"
+            />
+            <video className="m-auto w-2/3 h-2/3 " controls>
+              <source src={tadmitVideo} type="video/mp4" />
+            </video>
+          </div>
+        ) : null}
         <div className="m-auto pb-20 w-5/6">
-          <TextTitle title={teamGalleryTitle} className="text-center py-10" />
+          <TextTitle
+            title={teamGalleryTitle || "הצוות המנצח שלנו:"}
+            className="text-center py-10"
+          />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
             {teamImages.map((img) => (
               <img src={img.src} alt={img.alt} />
