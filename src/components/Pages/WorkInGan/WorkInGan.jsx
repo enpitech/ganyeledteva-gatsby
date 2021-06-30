@@ -89,7 +89,7 @@ export default function WorkInGan() {
           />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-10">
             {teamImages.map((img) => (
-              <img src={img.src} alt={img.alt} />
+              <img key={img.src} src={img.src} alt={img.alt} />
             ))}
           </div>
         </div>
