@@ -21,29 +21,33 @@ collections:
       - { label: "טקסט", name: "body", widget: "markdown", required: false }
 
   - name: "home"
-    label: "דף הבית"
+    label: "דף הבית - אנחנו בתקשורת"
     folder: "content/home"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "כותרת דף", name: "title", widget: "string" }
-      - { label: "כותרת לכתבה הראשונה", name: "story1_title", widget: "string" }
-      - { label: "תת כותרת", name: "story1_subtitle", widget: "text" }
-      - { label: "טקסט בכפתור", name: "story1_link", widget: "string" }
-      - { label: "כתובת לינק", name: "story1_url", widget: "string" }
-      - { label: "תמונה", name: "story1_img", widget: "image" }
+      - { label: "כותרת", name: "title", widget: "string" }
+      - { label: "קישור לכתבה", name: "link_to_story", widget: "string" }
+      - { label: "תמונה", name: "img", widget: "image" }
 
-      - { label: "כותרת לכתבה הראשונה", name: "story2_title", widget: "string" }
-      - { label: "תת כותרת", name: "story2_subtitle", widget: "text" }
-      - { label: "טקסט בכפתור", name: "story2_link", widget: "string" }
-      - { label: "כתובת לינק", name: "story2_url", widget: "string" }
-      - { label: "תמונה", name: "story2_img", widget: "image" }
+      # - { label: "כותרת דף", name: "title", widget: "string" }
+      # - { label: "כותרת לכתבה הראשונה", name: "story1_title", widget: "string" }
+      # - { label: "תת כותרת", name: "story1_subtitle", widget: "text" }
+      # - { label: "טקסט בכפתור", name: "story1_link", widget: "string" }
+      # - { label: "כתובת לינק", name: "story1_url", widget: "string" }
+      # - { label: "תמונה", name: "story1_img", widget: "image" }
 
-      - { label: "כותרת לכתבה הראשונה", name: "story3_title", widget: "string" }
-      - { label: "תת כותרת", name: "story3_subtitle", widget: "text" }
-      - { label: "טקסט בכפתור", name: "story3_link", widget: "string" }
-      - { label: "כתובת לינק", name: "story3_url", widget: "string" }
-      - { label: "תמונה", name: "story3_img", widget: "image" }
+      # - { label: "כותרת לכתבה הראשונה", name: "story2_title", widget: "string" }
+      # - { label: "תת כותרת", name: "story2_subtitle", widget: "text" }
+      # - { label: "טקסט בכפתור", name: "story2_link", widget: "string" }
+      # - { label: "כתובת לינק", name: "story2_url", widget: "string" }
+      # - { label: "תמונה", name: "story2_img", widget: "image" }
+
+      # - { label: "כותרת לכתבה הראשונה", name: "story3_title", widget: "string" }
+      # - { label: "תת כותרת", name: "story3_subtitle", widget: "text" }
+      # - { label: "טקסט בכפתור", name: "story3_link", widget: "string" }
+      # - { label: "כתובת לינק", name: "story3_url", widget: "string" }
+      # - { label: "תמונה", name: "story3_img", widget: "image" }
 
   - name: "team"
     label: "הצוות"
@@ -198,7 +202,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "כותרת", name: "title", widget: "string" }
+      - { label: "כותרת דף", name: "title", widget: "string" }
       - { label: "תת כותרת", name: "subtitle", widget: "text", required: false }
       - {
           label: "סרטון תדמית",
@@ -218,3 +222,36 @@ collections:
           widget: "text",
           required: false,
         }
+  - name: "products"
+    label: "מוצרים חינוכיים"
+    folder: "content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "כותרת דף", name: "title", widget: "string" }
+      - { label: "תת כותרת", name: "subtitle", widget: "text", required: false }
+      - { label: "טקסט", name: "body", widget: "markdown" }
+
+      - {
+          label: "כותרת לסרטון הראשון",
+          name: "video1_title",
+          widget: "string",
+          required: false,
+        }
+      - { label: "סרטון 1", name: "video1", widget: "file", required: false }
+
+      - {
+          label: "כותרת לסרטון הראשון",
+          name: "video2_title",
+          widget: "string",
+          required: false,
+        }
+      - { label: "סרטון 2", name: "video2", widget: "file", required: false }
+
+      - {
+          label: "כותרת לסרטון הראשון",
+          name: "video3_title",
+          widget: "string",
+          required: false,
+        }
+      - { label: "סרטון 3", name: "video3", widget: "file", required: false }
