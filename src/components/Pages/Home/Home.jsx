@@ -64,7 +64,10 @@ function Home() {
           })}
         </div>
         <TeamGrid />
-        <Carousel />
+        <div className="mt-40">
+          <TextTitle title="אנחנו בתקשורת" className="text-center" />
+          <Carousel />
+        </div>
         <div className="md:w-9/12 mt-40 mb-20">
           <TextTitle className="text-center" title="החודש בגן" />
           <iframe
