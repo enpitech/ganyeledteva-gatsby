@@ -43,7 +43,13 @@ export default function WorkInGan() {
   }));
 
   const workInGanMdxData = data.workInGanMdx.edges[0].node;
-  const { title, subtitle, tadmitVideo } = workInGanMdxData.frontmatter;
+  const {
+    title,
+    subtitle,
+    tadmitVideo,
+    tadmitVideoTitle,
+    teamGalleryTitle,
+  } = workInGanMdxData.frontmatter;
 
   const { dir: workINGanDirName } = workInGanMdxData.fields;
 
@@ -67,16 +73,13 @@ export default function WorkInGan() {
       </Page.Header>
       <Page.Main>
         <div className="my-16">
-          <TextTitle
-            title="לעבוד איתנו be like:"
-            className="text-center py-10"
-          />
+          <TextTitle title={tadmitVideoTitle} className="text-center py-10" />
           <video className="m-auto w-2/3 h-2/3 " controls>
             <source src={tadmitVideo} type="video/mp4" />
           </video>
         </div>
         <div className="m-auto pb-20 w-5/6">
-          <TextTitle title="הצוות המנצח שלנו" className="text-center py-10" />
+          <TextTitle title={teamGalleryTitle} className="text-center py-10" />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
             {teamImages.map((img) => (
               <img src={img.src} alt={img.alt} />
