@@ -28,11 +28,6 @@ export default function CarouselComponent() {
     src: imgEdge.node.frontmatter.img,
   }));
 
-  const arr = [1, 2, 3, 4, 5, 6];
-  let slides = imgArr.map((img) => (
-    <img className="w-full h-full" src={img.src} />
-  ));
-
   return (
     <AliceCarousel autoPlay={true}>
       {imgArr.map((img) => (

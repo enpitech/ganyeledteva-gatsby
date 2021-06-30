@@ -5,7 +5,6 @@ import PageHeader from "../../Page/PageHeader";
 import SEO from "../../SEO";
 import { siteRoutes } from "../../../../data/SiteConfig";
 import { useStaticQuery, graphql, Link } from "gatsby";
-import { faVideoSlash } from "@fortawesome/free-solid-svg-icons";
 import TextTitle from "../../TextTitle";
 
 export default function Products() {
@@ -42,9 +41,7 @@ export default function Products() {
     video3,
   } = data.allMdx.edges[0].node.frontmatter;
   const { body } = data.allMdx.edges[0].node;
-  // const title = "המוצרים החינוכיים שלנו";
-  // const subtitle = "יש לנו ימבה מוצרים מגניבים";
-  // const body = "וואי כמה מוצרים";
+
   const videos = [
     { title: video1_title, src: video1 },
     { title: video2_title, src: video2 },
@@ -79,7 +76,6 @@ export default function Products() {
             </div>
           </Link>
         </div>
-        {/* <Carousel/> */}
         <div className="pb-10">
           {videos.map(({ title, src }) =>
             src ? (

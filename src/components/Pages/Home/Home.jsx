@@ -6,7 +6,6 @@ import SectionCard from "../../SectionCard";
 import TextTitle from "../../TextTitle";
 import SEO from "../../SEO";
 import TeamGrid from "../../TeamGrid";
-import Carousel from "~src/components/Carousel/Carousel";
 
 function Home() {
   const data = useStaticQuery(graphql`
@@ -23,14 +22,21 @@ function Home() {
                 url
               }
             }
+            fields {
+              filename
+            }
           }
         }
       }
     }
   `);
-
-  const pageNode = data.allMdx.edges[0].node;
-  const { frontmatter } = pageNode;
+  const mainContentMdxFileName = "index";
+  const mainContentNode = data.allMdx.edges.filter(
+    (edge) => edge.node.fields.filename === mainContentMdxFileName
+  )[0].node;
+  // const pageNode = data.allMdx.edges[0].node;
+  // const { frontmatter } = pageNode;
+  const { frontmatter } = mainContentNode;
   const { stories } = frontmatter;
 
   return (

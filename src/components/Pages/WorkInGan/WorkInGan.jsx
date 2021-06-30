@@ -3,7 +3,7 @@ import Page from "~src/components/Page/Page";
 import PageHeader from "~src/components/Page/PageHeader";
 import SEO from "~src/components/SEO";
 import { useStaticQuery, graphql } from "gatsby";
-import TextTitle from "../../TextTitle";
+import TextTitle from "~src/components/TextTitle";
 
 export default function WorkInGan() {
   const data = useStaticQuery(graphql`
