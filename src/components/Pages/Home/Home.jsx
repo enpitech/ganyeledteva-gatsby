@@ -64,7 +64,6 @@ function Home() {
           })}
         </div>
         <TeamGrid />
-        <Carousel />
         <div className="md:w-9/12 mt-40 mb-20">
           <TextTitle className="text-center" title="החודש בגן" />
           <iframe
