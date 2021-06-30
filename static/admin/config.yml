@@ -202,3 +202,15 @@ collections:
           widget: "file",
           required: false,
         }
+      - {
+          label: "כותרת סרטון",
+          name: "tadmitVideoTitle",
+          widget: "text",
+          required: false,
+        }
+      - {
+          label: "כותרת גלריית צוות",
+          name: "teamGalleryTitle",
+          widget: "text",
+          required: false,
+        }
