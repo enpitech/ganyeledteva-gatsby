@@ -2,14 +2,14 @@ import React from "react";
 import Page from "~src/components/Page/Page";
 import PageHeader from "~src/components/Page/PageHeader";
 import SEO from "~src/components/SEO";
-import tadmitVideo from "~static/assets/vids/dummyvid.mp4";
+// import tadmitVideo from "~static/assets/vids/dummyvid.mp4";
 import { useStaticQuery, graphql } from "gatsby";
 import TextTitle from "../../TextTitle";
 
 export default function WorkInGan() {
   const data = useStaticQuery(graphql`
-    query teamImagesQuery {
-      allMdx(filter: { fields: { dir: { eq: "team" } } }) {
+    query workInGanAndteamImagesQuery {
+      teamMdx: allMdx(filter: { fields: { dir: { eq: "team" } } }) {
         edges {
           node {
             frontmatter {
@@ -19,22 +19,48 @@ export default function WorkInGan() {
           }
         }
       }
+      workInGanMdx: allMdx(filter: { fields: { dir: { eq: "work-in-gan" } } }) {
+        edges {
+          node {
+            fields {
+              dir
+            }
+            frontmatter {
+              title
+              subtitle
+              tadmitVideo
+            }
+          }
+        }
+      }
     }
   `);
 
-  const imgEdges = data.allMdx.edges;
-  let teamImages = imgEdges.map((imgEdge) => ({
+  const teamImagesEdges = data.teamMdx.edges;
+  let teamImages = teamImagesEdges.map((imgEdge) => ({
     src: imgEdge.node.frontmatter.img,
     alt: imgEdge.node.frontmatter.title,
   }));
 
+  const workInGanMdxData = data.workInGanMdx.edges[0].node;
+  const { title, subtitle, tadmitVideo } = workInGanMdxData.frontmatter;
+
+  const { dir: workINGanDirName } = workInGanMdxData.fields;
+
+  const pageSEOData = {
+    title: title,
+    description: undefined,
+    image: undefined,
+    pagePath: workINGanDirName,
+  };
+
   return (
     <Page>
-      <SEO />
+      <SEO pageSEOData={pageSEOData} />
       <Page.Header>
         <PageHeader
-          title={"לעבוד בגן ילדי הטבע הדמוקרטי"}
-          subtitle={"ממש כדאי לעבוד כאן"}
+          title={title}
+          subtitle={subtitle}
           backgroundColorClass="bg-gradient-to-r from-blue-gan-page-header1 to-blue-gan-page-header2"
           backgroundPatternClass="bg-patt1"
         />
