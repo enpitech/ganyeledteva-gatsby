@@ -28,12 +28,14 @@ export default function GanSectionTemplate({ data, pageContext }) {
     section.id = slug;
   }
 
+  const postSEOData = { postPath: slug, postNode: sectionsNode };
+
   return (
     <Layout>
       <Helmet>
         <title>{`${section.title} | ${config.siteTitle}`}</title>
       </Helmet>
-      <SEO postPath={slug} postNode={sectionsNode} postSEO />
+      <SEO postSEOData={postSEOData} />
       <Page>
         <Page.Header className="border-b-8 border-yellow-gan-section-header-border">
           <PageHeader

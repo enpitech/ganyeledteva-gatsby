@@ -17,13 +17,15 @@ export default function WeeklyUpdatePostTemplate({ data, pageContext }) {
   if (!post.id) {
     post.id = slug;
   }
+  const postSEOData = { postPath: slug, postNode };
 
   return (
     <Layout>
       <Helmet>
         <title>{`${post.title} | ${config.siteTitle}`}</title>
       </Helmet>
-      <SEO postPath={slug} postNode={postNode} postSEO />
+      <SEO postSEOData={postSEOData} />
+
       <Page>
         <PageHeader
           title={post.title}

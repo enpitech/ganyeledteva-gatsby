@@ -7,6 +7,8 @@ export default function PageHeader({
   backgroundColorClass,
   backgroundPatternClass,
 }) {
+  if (!title) return null;
+
   return (
     <Page.Header>
       <div className={`${backgroundColorClass || "bg-green-gradient"} `}>
@@ -16,7 +18,10 @@ export default function PageHeader({
           }`}
         >
           <h1 className="text-5xl text-center mb-4">{title}</h1>
-          <h2 className="text-lg text-center max-w-3xl ">{subtitle}</h2>
+
+          {subtitle ? (
+            <h2 className="text-lg text-center max-w-3xl ">{subtitle}</h2>
+          ) : null}
         </div>
       </div>
     </Page.Header>

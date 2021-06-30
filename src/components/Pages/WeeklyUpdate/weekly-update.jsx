@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../../../layout";
-import SEO from "../../SEO/SEO";
+import SEO from "../../SEO";
 import config from "../../../../data/SiteConfig";
 import Page from "../../Page/Page";
 import PageHeader from "../../Page/PageHeader";
@@ -26,10 +26,22 @@ function WeeklyUpdate({ data }) {
   });
 
   const [firstPost, ...restPostList] = postList;
+  const pageTitle = "העדכון השבועי";
+  const pagePath = config.siteRoutes.filter(
+    (routeObject) => routeObject.name === pageTitle
+  )[0].href;
+
+  const pageSEOData = {
+    title: pageTitle,
+    description: undefined,
+    image: undefined,
+    pagePath,
+  };
+
   return (
     <Layout>
-      <Helmet title={`העדכון השבועי | ${config.siteTitle}`} />
-      <SEO />
+      <Helmet title={`${pageTitle} | ${config.siteTitle}`} />
+      <SEO pageSEOData={pageSEOData} />
       <Page>
         <PageHeader
           title="העדכון השבועי"

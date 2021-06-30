@@ -1,19 +1,34 @@
-import React, { useState } from 'react';
-import Page from '../../Page/Page';
-import PageHeader from '../../Page/PageHeader';
-import ContactForm from './ContactForm';
+import React, { useState } from "react";
+import Page from "../../Page/Page";
+import PageHeader from "../../Page/PageHeader";
+import ContactForm from "./ContactForm";
+import SEO from "../../SEO";
+import config from "../../../../data/SiteConfig";
 
-import ReasonBtn from './ReasonBtn';
+import ReasonBtn from "./ReasonBtn";
 
 export default function Contact() {
   const [formType, setFormType] = useState();
+  const pageTitle = "צור קשר";
+
+  const pagePath = config.siteRoutes.filter(
+    (routeObject) => routeObject.name === pageTitle
+  )[0].href;
+
+  const pageSEOData = {
+    title: pageTitle,
+    description: undefined,
+    image: undefined,
+    pagePath,
+  };
 
   return (
     <Page>
+      <SEO pageSEOData={pageSEOData} />
       <Page.Header>
         <PageHeader
-          title={'צור קשר'}
-          subtitle={'צור איתנו קשר'}
+          title={pageTitle}
+          subtitle={"צור איתנו קשר"}
           backgroundColorClass="bg-gradient-to-r from-blue-gan-page-header1 to-blue-gan-page-header2"
           backgroundPatternClass="bg-patt1"
         />
@@ -47,13 +62,3 @@ export default function Contact() {
     </Page>
   );
 }
-
-// function getAgeInSep(date) {
-//   const diff = (new Date("09/01/2021")) - (new      Date(date));
-
-//   const precentAge = diff/1000/60/60/24/365
-//   const years = Math.floor(precentAge)
-//    const months = (precentAge-years)*12
-
-//  console.log({years, months})
-//  }

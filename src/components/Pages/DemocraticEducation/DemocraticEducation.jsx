@@ -3,6 +3,7 @@ import Page from "../../Page/Page";
 import PageHeader from "../../Page/PageHeader";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import SEO from "../../SEO";
 
 function DemocraticEducation() {
   const data = useStaticQuery(graphql`
@@ -11,8 +12,6 @@ function DemocraticEducation() {
         edges {
           node {
             fields {
-              slug
-              date
               dir
             }
             frontmatter {
@@ -31,11 +30,19 @@ function DemocraticEducation() {
   `);
 
   const pageNode = data.allMdx.edges[0].node;
-  const { frontmatter, body } = pageNode;
+  const { frontmatter, body, fields } = pageNode;
   const { title, subtitle, images } = frontmatter;
+
+  const pageSEOData = {
+    title: title,
+    description: undefined,
+    image: undefined,
+    pagePath: fields.dir,
+  };
 
   return (
     <Page>
+      <SEO pageSEOData={pageSEOData} />
       <Page.Header>
         <PageHeader
           title={title}

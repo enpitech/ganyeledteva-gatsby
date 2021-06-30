@@ -4,6 +4,7 @@ import HomeHeader from "./HomeHeader";
 import Page from "../../Page/Page";
 import SectionCard from "../../SectionCard";
 import TextTitle from "../../TextTitle";
+import SEO from "../../SEO";
 import TeamGrid from "../../TeamGrid";
 
 function Home() {
@@ -35,9 +36,10 @@ function Home() {
     <Page
       style={{
         background: "#fff url('img/backgrounds/back.png')",
-        backgroundSize: 'cover',
+        backgroundSize: "cover",
       }}
     >
+      <SEO />
       <Page.Header>
         <HomeHeader />
       </Page.Header>
