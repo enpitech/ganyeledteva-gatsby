@@ -237,7 +237,7 @@ collections:
       - { label: "סרטון 1", name: "video1", widget: "file", required: false }
 
       - {
-          label: "כותרת לסרטון השלישי",
+          label: "כותרת לסרטון השני",
           name: "video2_title",
           widget: "string",
           required: false,
@@ -245,7 +245,7 @@ collections:
       - { label: "סרטון 2", name: "video2", widget: "file", required: false }
 
       - {
-          label: "כותרת לסרטון השני",
+          label: "כותרת לסרטון השלישי",
           name: "video3_title",
           widget: "string",
           required: false,
