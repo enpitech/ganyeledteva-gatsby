@@ -4,6 +4,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import tadmitVideo from "~static/assets/vids/dummyvid.mp4";
 import SEO from "../../SEO";
 import Page from "../../Page/Page";
+import Carousel from "~src/components/Carousel/Carousel";
 
 function DemocraticCenter() {
   const data = useStaticQuery(graphql`
@@ -67,6 +68,7 @@ function DemocraticCenter() {
             </div>
           ))}
         </div>
+        <Carousel />
       </Page.Main>
     </Page>
   );
