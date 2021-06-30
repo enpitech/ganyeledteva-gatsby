@@ -188,3 +188,17 @@ collections:
         fields:
           - { label: "שאלה", name: "question", widget: "string" }
           - { label: "תשובה", name: "answer", widget: "markdown" }
+  - name: "work-in-gan"
+    label: "לעבוד בגן ילדי הטבע"
+    folder: "content/work-in-gan"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "כותרת", name: "title", widget: "string" }
+      - { label: "תת כותרת", name: "subtitle", widget: "text", required: false }
+      - {
+          label: "סרטון תדמית",
+          name: "tadmitVideo",
+          widget: "file",
+          required: false,
+        }
