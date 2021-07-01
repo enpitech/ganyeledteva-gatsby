@@ -229,4 +229,4 @@ collections:
               widget: "string",
               required: false,
             }
-          - { label: "סרטון", name: "video", widget: "file", required: false }
+          - { label: "סרטון", name: "video", widget: "file" }

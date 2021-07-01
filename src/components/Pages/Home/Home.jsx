@@ -38,11 +38,7 @@ function Home() {
 
   const pageNode = data.allMdx.edges[0].node;
   const { frontmatter } = pageNode;
-<<<<<<< Updated upstream
-  const { stories } = frontmatter;
-=======
   const { stories, us_on_media: usOnMediaArticles } = frontmatter;
->>>>>>> Stashed changes
 
   return (
     <Page
@@ -75,9 +71,6 @@ function Home() {
           })}
         </div>
         <TeamGrid />
-<<<<<<< Updated upstream
-
-=======
         <div className="mt-40 ">
           <TextTitle title="אנחנו בתקשורת" className="text-center" />
           <div className=" ">
@@ -93,7 +86,6 @@ function Home() {
             </Carousel>
           </div>
         </div>
->>>>>>> Stashed changes
         <div className="md:w-9/12 mt-40 mb-20">
           <TextTitle className="text-center" title="החודש בגן" />
           <iframe
