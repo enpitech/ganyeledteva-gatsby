@@ -18,9 +18,11 @@ function Home() {
               filename
             }
             frontmatter {
-              title
-              img
-              link_to_article
+              us_on_media {
+                title
+                img
+                link_to_article
+              }
               stories {
                 title
                 subtitle
@@ -34,23 +36,11 @@ function Home() {
       }
     }
   `);
-  const storiesMdFileName = "index";
 
-  const storiesNode = data.allMdx.edges.filter(
-    (edge) => edge.node.fields.filename === storiesMdFileName
-  )[0].node;
+  const pageNode = data.allMdx.edges[0].node;
+  const { frontmatter } = pageNode;
+  const { stories, us_on_media: usOnMediaArticles } = frontmatter;
 
-  const usOnMediaEdges = data.allMdx.edges.filter(
-    (edge) => edge.node.fields.filename !== storiesMdFileName
-  );
-  // const [storiesNode, ...usOnMediaEdges] = data.allMdx.edges;
-  const { frontmatter } = storiesNode;
-  const { stories } = frontmatter;
-
-  let usOnMediaArticles = usOnMediaEdges.map((articleEdge) => {
-    const { title, img, link_to_article } = articleEdge.node.frontmatter;
-    return { title, img, link_to_article };
-  });
   return (
     <Page
       style={{
@@ -82,10 +72,10 @@ function Home() {
           })}
         </div>
         <TeamGrid />
-        <div className="mt-40 w-auto">
+        <div className="mt-40 ">
           <TextTitle title="אנחנו בתקשורת" className="text-center" />
           <div className=" ">
-            <Carousel time={5000}>
+            <Carousel time={8000}>
               {usOnMediaArticles.map(({ title, img, link_to_article }) => (
                 <Article
                   key={title}
@@ -119,7 +109,7 @@ const Article = ({ title, img, link_to_article, className }) => {
     <div className={`text-center text-2xl ${className}`}>
       <a href={link_to_article} target="_blank">
         <div className="mb-2">{title}</div>
-        <img className="w-5/6 m-auto" src={img} />
+        <img className="md:h-96 m-auto" src={img} />
       </a>
     </div>
   );
