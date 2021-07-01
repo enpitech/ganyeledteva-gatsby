@@ -77,7 +77,7 @@ export default function WorkInGan() {
               title={tadmitVideoTitle || "ככה זה לעבוד איתנו:"}
               className="text-center py-10"
             />
-            <video className="m-auto w-2/3 h-2/3 " controls>
+            <video className="m-auto w-11/12 md:w-2/3 md:h-2/3 " controls>
               <source src={tadmitVideo} type="video/mp4" />
             </video>
           </div>

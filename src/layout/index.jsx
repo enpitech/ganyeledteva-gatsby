@@ -34,8 +34,8 @@ export default function MainLayout({ children }) {
                   <div className="flex-shrink-0 flex items-center">
                     <Logo className="h-12 ml-4 w-auto my-auto" alt="navLogo" />
                   </div>
-                  <div className="hidden sm:-my-px sm:ms-6 sm:flex sm:space-x-8">
-                    {navigation.map((item, index) => {
+                  <div className="hidden md:-my-px md:ms-6 md:flex ">
+                    {navigation.map((item) => {
                       const isActive = item.href === location.pathname;
 
                       return (
@@ -44,10 +44,9 @@ export default function MainLayout({ children }) {
                           href={item.href}
                           className={classNames(
                             isActive
-                              ? "border-indigo-500 text-gray-900"
-                              : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
-                            "inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium",
-                            index === 0 ? "ml-5" : ""
+                              ? "border-purple-border text-purple-border font-bold"
+                              : "border-transparent text-gray-500 hover:text-purple-border hover:border-purple-border hover:font-bold",
+                            "text-center inline-flex items-center px-2 pt-1 border-b-2 text-sm font-medium"
                           )}
                           aria-current={isActive ? "page" : undefined}
                         >
@@ -56,26 +55,26 @@ export default function MainLayout({ children }) {
                       );
                     })}
                   </div>
-                </div>
-                <div className="text-sm my-auto hidden sm:flex flex-row">
-                  <EnquireNavButton
-                    title="פייסבוק"
-                    bgColor="bg-blue-fb"
-                    linkTo="https://www.facebook.com/yaldeyhateva/"
-                    target="_blank"
-                  >
-                    <FontAwesomeIcon icon={faFacebookF} />
-                  </EnquireNavButton>
-                  <EnquireNavButton
-                    title="צור קשר"
-                    bgColor="bg-red-link"
-                    linkTo="/contact"
-                  >
-                    <FontAwesomeIcon icon={faPhone} />
-                  </EnquireNavButton>
+                  <div className="text-sm my-auto hidden md:flex flex-row">
+                    <EnquireNavButton
+                      title="פייסבוק"
+                      bgColor="bg-blue-fb"
+                      linkTo="https://www.facebook.com/yaldeyhateva/"
+                      target="_blank"
+                    >
+                      <FontAwesomeIcon icon={faFacebookF} />
+                    </EnquireNavButton>
+                    <EnquireNavButton
+                      title="צור קשר"
+                      bgColor="bg-red-link"
+                      linkTo="/contact"
+                    >
+                      <FontAwesomeIcon icon={faPhone} />
+                    </EnquireNavButton>
+                  </div>
                 </div>
 
-                <div className="-mr-2 flex items-center sm:hidden">
+                <div className="-mr-2 flex items-center md:hidden">
                   {/* Mobile menu button */}
                   <Disclosure.Button className="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <span className="sr-only">פתח תפריט ראשי</span>
@@ -89,7 +88,7 @@ export default function MainLayout({ children }) {
               </div>
             </div>
 
-            <Disclosure.Panel className="sm:hidden">
+            <Disclosure.Panel className="md:hidden">
               <div className="pt-2 pb-3 space-y-1">
                 {navigation.map((item) => (
                   <a
