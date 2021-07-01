@@ -13,7 +13,15 @@ function Home() {
       allMdx(filter: { fields: { dir: { eq: "home" } } }) {
         edges {
           node {
+            fields {
+              filename
+            }
             frontmatter {
+              us_on_media {
+                title
+                img
+                link_to_article
+              }
               stories {
                 title
                 subtitle
@@ -30,7 +38,11 @@ function Home() {
 
   const pageNode = data.allMdx.edges[0].node;
   const { frontmatter } = pageNode;
+<<<<<<< Updated upstream
   const { stories } = frontmatter;
+=======
+  const { stories, us_on_media: usOnMediaArticles } = frontmatter;
+>>>>>>> Stashed changes
 
   return (
     <Page
@@ -63,7 +75,25 @@ function Home() {
           })}
         </div>
         <TeamGrid />
+<<<<<<< Updated upstream
 
+=======
+        <div className="mt-40 ">
+          <TextTitle title="אנחנו בתקשורת" className="text-center" />
+          <div className=" ">
+            <Carousel time={8000}>
+              {usOnMediaArticles.map(({ title, img, link_to_article }) => (
+                <Article
+                  key={title}
+                  title={title}
+                  img={img}
+                  link_to_article={link_to_article}
+                />
+              ))}
+            </Carousel>
+          </div>
+        </div>
+>>>>>>> Stashed changes
         <div className="md:w-9/12 mt-40 mb-20">
           <TextTitle className="text-center" title="החודש בגן" />
           <iframe
@@ -80,3 +110,14 @@ function Home() {
 }
 
 export default Home;
+
+const Article = ({ title, img, link_to_article, className }) => {
+  return (
+    <div className={`text-center text-2xl ${className}`}>
+      <a href={link_to_article} target="_blank">
+        <div className="mb-2">{title}</div>
+        <img className="md:h-96 m-auto" src={img} />
+      </a>
+    </div>
+  );
+};
