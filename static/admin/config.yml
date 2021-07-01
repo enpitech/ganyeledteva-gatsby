@@ -26,11 +26,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-<<<<<<< HEAD
-        - name: us_on_media
-=======
       - name: us_on_media
->>>>>>> 79c9d3b9a023cd4dada92bbc1cbd02590df8bb0d
         label: אנחנו בתקשורת
         widget: list
         fields:
