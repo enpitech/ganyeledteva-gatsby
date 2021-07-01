@@ -23,15 +23,15 @@ export default function CarouselComponent({ items }) {
   }));
 
   const [currentImage, setCurrentImage] = useState(0);
-  // const [refs, setRefs] = useState([]);
+  // const [refs, setRefs] = useState({});
 
   // We are using react ref to 'tag' each of the images. Below will create an array of
   // objects with numbered keys. We will use those numbers (i) later to access a ref of a
   // specific image in this array.
-  const refs = imgArr.reduce((acc, val, i) => {
-    acc[i] = React.createRef();
-    return acc;
-  }, {});
+  // const refs = imgArr.reduce((acc, val, i) => {
+  //   acc[i] = React.createRef();
+  //   return acc;
+  // }, {});
 
   const scrollToImage = (i) => {
     // First let's set the index of the image we want to see next
@@ -41,6 +41,7 @@ export default function CarouselComponent({ items }) {
     // we can then use built-in scrollIntoView API to do exactly what it says on the box - scroll it into
     // your current view! To do so we pass an index of the image, which is then use to identify our current
     // image's ref in 'refs' array above.
+    if (!refs[i].current) return;
     refs[i].current.scrollIntoView({
       //     Defines the transition animation.
       behavior: "smooth",
@@ -92,21 +93,23 @@ export default function CarouselComponent({ items }) {
     </button>
   );
 
-  // //pass to next image every 5 seconds
-  // const MINUTE_MS = 60000;
-  // useEffect(() => {
-  //   let tmpRefsArr = imgArr.reduce((acc, val, i) => {
-  //     acc[i] = React.createRef();
-  //     return acc;
-  //   }, {});
+  let refs = imgArr.reduce((acc, val, i) => {
+    acc[i] = React.createRef();
+    return acc;
+  }, {});
 
-  //   setRefs(tmpRefsArr);
-  //   const interval = setInterval(() => {
-  //     nextImage();
-  //   }, MINUTE_MS / 12);
+  // setRefs(tmpRefsArr);
+  //pass to next image every 5 seconds
+  const MINUTE_MS = 60000;
+  useEffect(() => {
+    console.log(refs);
+    console.log(imgArr);
+    const interval = setInterval(() => {
+      nextImage();
+    }, MINUTE_MS / 12);
 
-  //   return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
-  // }, []);
+    return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+  }, []);
 
   return (
     // Images are placed using inline flex. We then wrap an image in a div

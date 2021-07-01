@@ -26,28 +26,13 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "כותרת", name: "title", widget: "string" }
-      - { label: "קישור לכתבה", name: "link_to_story", widget: "string" }
-      - { label: "תמונה", name: "img", widget: "image" }
-
-      # - { label: "כותרת דף", name: "title", widget: "string" }
-      # - { label: "כותרת לכתבה הראשונה", name: "story1_title", widget: "string" }
-      # - { label: "תת כותרת", name: "story1_subtitle", widget: "text" }
-      # - { label: "טקסט בכפתור", name: "story1_link", widget: "string" }
-      # - { label: "כתובת לינק", name: "story1_url", widget: "string" }
-      # - { label: "תמונה", name: "story1_img", widget: "image" }
-
-      # - { label: "כותרת לכתבה הראשונה", name: "story2_title", widget: "string" }
-      # - { label: "תת כותרת", name: "story2_subtitle", widget: "text" }
-      # - { label: "טקסט בכפתור", name: "story2_link", widget: "string" }
-      # - { label: "כתובת לינק", name: "story2_url", widget: "string" }
-      # - { label: "תמונה", name: "story2_img", widget: "image" }
-
-      # - { label: "כותרת לכתבה הראשונה", name: "story3_title", widget: "string" }
-      # - { label: "תת כותרת", name: "story3_subtitle", widget: "text" }
-      # - { label: "טקסט בכפתור", name: "story3_link", widget: "string" }
-      # - { label: "כתובת לינק", name: "story3_url", widget: "string" }
-      # - { label: "תמונה", name: "story3_img", widget: "image" }
+        - name: us_on_media
+        label: אנחנו בתקשורת
+        widget: list
+        fields:
+          - { label: "כותרת", name: "title", widget: "string" }
+          - { label: "קישור לכתבה", name: "link_to_article", widget: "string" }
+          - { label: "תמונה", name: "img", widget: "image" }
 
   - name: "team"
     label: "הצוות"
