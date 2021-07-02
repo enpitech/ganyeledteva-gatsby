@@ -6,6 +6,7 @@ import SectionCard from "../../SectionCard";
 import TextTitle from "../../TextTitle";
 import SEO from "../../SEO";
 import TeamGrid from "../../TeamGrid";
+import Carousel from "~src/components/Carousel/Carousel";
 
 function Home() {
   const data = useStaticQuery(graphql`
@@ -38,7 +39,6 @@ function Home() {
       }
     }
   `);
-
 
   const pageNode = data.allMdx.edges[0].node;
   const { frontmatter } = pageNode;

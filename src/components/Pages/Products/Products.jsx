@@ -17,6 +17,7 @@ export default function Products() {
             frontmatter {
               title
               subtitle
+              imgs_and_vids_title
               products_images {
                 alt
                 src
@@ -38,6 +39,7 @@ export default function Products() {
     subtitle,
     products_images: productsImages,
     products_videos: productsVideos,
+    imgs_and_vids_title: imagesAndVideosTitle,
   } = data.allMdx.edges[0].node.frontmatter;
   const { body } = data.allMdx.edges[0].node;
 
@@ -71,10 +73,12 @@ export default function Products() {
           </Link>
         </div>
         <div>
-          <TextTitle
-            title="הנה כמה מהמוצרים שלנו"
-            className="text-center py-10"
-          />
+          {imagesAndVideosTitle ? (
+            <TextTitle
+              title={imagesAndVideosTitle}
+              className="text-center py-10"
+            />
+          ) : null}
           <Carousel time={8000}>
             {productsImages.map((img) => (
               <img className="h-96" src={img.src} alt={img.alt} />
