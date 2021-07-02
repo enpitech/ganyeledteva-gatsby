@@ -14,9 +14,6 @@ function Home() {
       allMdx(filter: { fields: { dir: { eq: "home" } } }) {
         edges {
           node {
-            fields {
-              filename
-            }
             frontmatter {
               us_on_media {
                 title
@@ -30,9 +27,6 @@ function Home() {
                 img
                 url
               }
-            }
-            fields {
-              filename
             }
           }
         }

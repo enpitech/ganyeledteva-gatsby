@@ -177,10 +177,6 @@ collections:
         fields:
           - { label: "שאלה", name: "question", widget: "string" }
           - { label: "תשובה", name: "answer", widget: "markdown" }
-<<<<<<< HEAD
-
-=======
->>>>>>> 5b196d7ede21eda6510838df305f5aa96558ace8
   - name: "work-in-gan"
     label: "לעבוד בגן ילדי הטבע"
     folder: "content/work-in-gan"
