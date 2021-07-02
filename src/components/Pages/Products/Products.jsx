@@ -6,6 +6,7 @@ import SEO from "../../SEO";
 import { siteRoutes } from "../../../../data/SiteConfig";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import TextTitle from "../../TextTitle";
+import Carousel from "~src/components/Carousel/Carousel";
 
 export default function Products() {
   const data = useStaticQuery(graphql`
@@ -16,12 +17,14 @@ export default function Products() {
             frontmatter {
               title
               subtitle
-              video1_title
-              video1
-              video2_title
-              video2
-              video3_title
-              video3
+              products_images {
+                alt
+                src
+              }
+              products_videos {
+                video
+                video_title
+              }
             }
             body
           }
@@ -33,20 +36,11 @@ export default function Products() {
   const {
     title,
     subtitle,
-    video1_title,
-    video1,
-    video2_title,
-    video2,
-    video3_title,
-    video3,
+    products_images: productsImages,
+    products_videos: productsVideos,
   } = data.allMdx.edges[0].node.frontmatter;
   const { body } = data.allMdx.edges[0].node;
 
-  const videos = [
-    { title: video1_title, src: video1 },
-    { title: video2_title, src: video2 },
-    { title: video3_title, src: video3 },
-  ];
   const contactPageRouteObject = siteRoutes.filter(
     (route) => route.name === "צור קשר"
   )[0];
@@ -76,12 +70,24 @@ export default function Products() {
             </div>
           </Link>
         </div>
-        <div className="pb-10">
-          {videos.map(({ title, src }) =>
+        <div>
+          <TextTitle
+            title="הנה כמה מהמוצרים שלנו"
+            className="text-center py-10"
+          />
+          <Carousel time={8000}>
+            {productsImages.map((img) => (
+              <img className="h-96" src={img.src} alt={img.alt} />
+            ))}
+          </Carousel>
+        </div>
+
+        <div className="py-10">
+          {productsVideos.map(({ video_title: videoTitle, video: src }) =>
             src ? (
-              <div key={title}>
-                {title ? (
-                  <TextTitle title={title} className="text-center py-10" />
+              <div key={videoTitle}>
+                {videoTitle ? (
+                  <TextTitle title={videoTitle} className="text-center py-10" />
                 ) : null}
                 <video className="m-auto w-2/3 h-2/3 " controls>
                   <source src={src} type="video/mp4" />
