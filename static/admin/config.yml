@@ -213,6 +213,11 @@ collections:
       - { label: "תת כותרת", name: "subtitle", widget: "text", required: false }
       - { label: "טקסט", name: "body", widget: "markdown" }
 
+      - {
+          label: "כותרת לתמונות וסרטונים",
+          name: "imgs_and_vids_title",
+          widget: "string",
+        }
       - name: products_images
         label: תמונות מוצרים
         widget: list
