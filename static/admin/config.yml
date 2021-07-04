@@ -183,12 +183,19 @@ collections:
     fields:
       - { label: "כותרת", name: "title", widget: "string" }
       - { label: "תת כותרת", name: "subtitle", widget: "text" }
+      - { label: "טקסט צור קשר", name: "contact_text", widget: "markdown" }
       - name: faqs
         label: שאלות ותשובות
         widget: list
         fields:
           - { label: "שאלה", name: "question", widget: "string" }
           - { label: "תשובה", name: "answer", widget: "markdown" }
+        - name: faqs
+          label: שאלות ותשובות
+          widget: list
+          fields:
+            - { label: "שאלה", name: "question", widget: "string" }
+            - { label: "תשובה", name: "answer", widget: "markdown" }
   - name: "work-in-gan"
     label: "לעבוד בגן ילדי הטבע"
     folder: "content/work-in-gan"
