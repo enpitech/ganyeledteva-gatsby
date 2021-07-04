@@ -31,6 +31,8 @@ function Home() {
                 img
                 url
               }
+              tadmit_video
+              tadmit_video_title
             }
           }
         }
@@ -40,7 +42,12 @@ function Home() {
 
   const pageNode = data.allMdx.edges[0].node;
   const { frontmatter } = pageNode;
-  const { stories, us_on_media: usOnMediaArticles } = frontmatter;
+  const {
+    stories,
+    us_on_media: usOnMediaArticles,
+    tadmit_video: tadmitVideo,
+    tadmit_video_title: tadmitVideoTitle,
+  } = frontmatter;
 
   return (
     <Page
@@ -73,7 +80,10 @@ function Home() {
           })}
         </div>
         <TeamGrid />
-        <TadmitVideo />
+        <TadmitVideo
+          tadmitVideoTitle={tadmitVideoTitle}
+          tadmitVideo={tadmitVideo}
+        />
         <div className="mt-40 ">
           <TextTitle title="אנחנו בתקשורת" className="text-center" />
           <div className=" ">
@@ -119,12 +129,15 @@ const Article = ({ title, img, linkToArticle, className }) => {
   );
 };
 
-const TadmitVideo = () => {
-  return (
-    <div>
-      <video className="m-auto mt-40 w-2/3 h-2/3 " autoPlay loop muted>
+const TadmitVideo = ({ tadmitVideo, tadmitVideoTitle }) => {
+  return tadmitVideo ? (
+    <div className=" mt-40">
+      {tadmitVideoTitle ? (
+        <TextTitle className="text-center" title={tadmitVideoTitle} />
+      ) : null}
+      <video className="m-auto mt-10 w-2/3 h-2/3 " autoPlay loop muted>
         <source src={tadmitVideo} type="video/mp4" />
       </video>
     </div>
-  );
+  ) : null;
 };
