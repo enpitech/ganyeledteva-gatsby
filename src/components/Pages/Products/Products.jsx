@@ -6,7 +6,7 @@ import SEO from "../../SEO";
 import { siteRoutes } from "../../../../data/SiteConfig";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import TextTitle from "../../TextTitle";
-import Carousel from "~src/components/Carousel/Carousel";
+import Carousel from "~src/components/Carousel";
 
 export default function Products() {
   const data = useStaticQuery(graphql`
@@ -48,7 +48,9 @@ export default function Products() {
   )[0];
 
   let contactPageRoute = "/"; // home page as default value
-  if (contactPageRouteObject) contactPageRoute = contactPageRouteObject.href;
+  if (contactPageRouteObject) {
+    contactPageRoute = contactPageRouteObject.hre;
+  }
 
   return (
     <Page>
@@ -81,7 +83,7 @@ export default function Products() {
           ) : null}
           <Carousel time={8000}>
             {productsImages.map((img) => (
-              <img className="h-96" src={img.src} alt={img.alt} />
+              <img className="h-96" key={img.src} src={img.src} alt={img.alt} />
             ))}
           </Carousel>
         </div>

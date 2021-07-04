@@ -6,7 +6,7 @@ import SectionCard from "../../SectionCard";
 import TextTitle from "../../TextTitle";
 import SEO from "../../SEO";
 import TeamGrid from "../../TeamGrid";
-import Carousel from "~src/components/Carousel/Carousel";
+import Carousel from "~src/components/Carousel";
 
 function Home() {
   const data = useStaticQuery(graphql`

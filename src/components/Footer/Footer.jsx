@@ -66,9 +66,13 @@ function Footer({ config, navigation }) {
     <footer className="bg-gray">
       <div className="flex flex-col items-center mx-auto py-8 px-4 overflow-hidden sm:px-6 lg:px-8">
         <div className="flex flex-wrap justify-center mb-10">{treeImgs}</div>
-        <div className="border-t-2 border-b-2 w-4/5 flex flex-col md:flex-row justify-between">
+        <div className="border-t-2 border-b-2 text-center w-4/5 flex flex-col md:flex-row justify-between">
           {navigation.map((navItem) => (
-            <a className="m-auto py-5" href={navItem.href}>
+            <a
+              key={navItem.name}
+              className="m-auto py-5 px-2"
+              href={navItem.href}
+            >
               {navItem.name}
             </a>
           ))}

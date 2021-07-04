@@ -58,7 +58,7 @@ export default function MainLayout({ children }) {
                   <div className="text-sm my-auto hidden md:flex flex-row">
                     <EnquireNavButton
                       title="פייסבוק"
-                      bgColor="bg-blue-fb"
+                      className="bg-blue-fb h-4/5"
                       linkTo="https://www.facebook.com/yaldeyhateva/"
                       target="_blank"
                     >
@@ -66,7 +66,7 @@ export default function MainLayout({ children }) {
                     </EnquireNavButton>
                     <EnquireNavButton
                       title="צור קשר"
-                      bgColor="bg-red-link"
+                      className="bg-red-link"
                       linkTo="/contact"
                     >
                       <FontAwesomeIcon icon={faPhone} />
@@ -117,9 +117,9 @@ export default function MainLayout({ children }) {
   );
 }
 
-const EnquireNavButton = ({ title, linkTo, bgColor, target, children }) => (
+const EnquireNavButton = ({ title, linkTo, className, target, children }) => (
   <a
-    className={`m-2 rounded py-2 px-3 text-white inline-block flex flex-row ${bgColor}`}
+    className={`m-2 rounded py-2 px-3 text-white inline-block flex flex-row ${className}`}
     href={linkTo}
     target={target}
   >
