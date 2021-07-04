@@ -175,7 +175,6 @@ collections:
       - { label: "כותרת", name: "title", widget: "string" }
       - { label: "תת כותרת", name: "subtitle", widget: "text" }
       - { label: "טקסט", name: "body", widget: "markdown" }
-
   - name: "faq"
     label: "שאלות ותשובות"
     folder: "content/faq"
