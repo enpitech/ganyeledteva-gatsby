@@ -86,6 +86,7 @@ function Home() {
                   />
                 )
               )}
+
             </Carousel>
           </div>
         </div>
@@ -110,6 +111,7 @@ const Article = ({ title, img, linkToArticle, className }) => {
   return (
     <div className={`text-center text-2xl ${className}`}>
       <a href={linkToArticle} target="_blank">
+
         <div className="mb-2">{title}</div>
         <img className="md:h-96 m-auto" src={img} />
       </a>

@@ -214,25 +214,24 @@ collections:
       - { label: "טקסט", name: "body", widget: "markdown" }
 
       - {
-          label: "כותרת לסרטון הראשון",
-          name: "video1_title",
+          label: "כותרת לתמונות וסרטונים",
+          name: "imgs_and_vids_title",
           widget: "string",
-          required: false,
         }
-      - { label: "סרטון 1", name: "video1", widget: "file", required: false }
-
-      - {
-          label: "כותרת לסרטון השני",
-          name: "video2_title",
-          widget: "string",
-          required: false,
-        }
-      - { label: "סרטון 2", name: "video2", widget: "file", required: false }
-
-      - {
-          label: "כותרת לסרטון השלישי",
-          name: "video3_title",
-          widget: "string",
-          required: false,
-        }
-      - { label: "סרטון 3", name: "video3", widget: "file", required: false }
+      - name: products_images
+        label: תמונות מוצרים
+        widget: list
+        fields:
+          - { label: "תמונה", name: "src", widget: "image" }
+          - { label: "כיתוב תמונה", name: "alt", widget: "string" }
+      - name: products_videos
+        label: סרטוני מוצרים
+        widget: list
+        fields:
+          - {
+              label: "כותרת לסרטון",
+              name: "video_title",
+              widget: "string",
+              required: false,
+            }
+          - { label: "סרטון", name: "video", widget: "file" }

@@ -11,6 +11,7 @@ const Carousel = ({ children, time }) => {
 
   useEffect(() => {
     const interval = setInterval(moveToNextItem, time);
+
     return () => clearInterval(interval);
   });
 
@@ -36,6 +37,7 @@ const Carousel = ({ children, time }) => {
   const slides = () => {
     return children.map((child, idx) => (
       <Thumbnail key={idx} id={idx} selectedKey={currItemIndex}>
+
         {child}
       </Thumbnail>
     ));
@@ -45,6 +47,7 @@ const Carousel = ({ children, time }) => {
     return keys.map((key) => (
       <span key={key} onClick={() => setIndex(key)}>
         <DotIcon selected={key === currItemIndex} />
+
       </span>
     ));
   };
