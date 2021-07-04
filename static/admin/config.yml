@@ -195,6 +195,7 @@ collections:
             widget: list
             fields:
               - { label: "שאלה", name: "question", widget: "string" }
+              - { label: "שאלה", name: "question", widget: "string" }
 
   - name: "work-in-gan"
     label: "לעבוד בגן ילדי הטבע"
