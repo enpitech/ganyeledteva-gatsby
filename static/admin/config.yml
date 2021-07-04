@@ -21,11 +21,12 @@ collections:
       - { label: "טקסט", name: "body", widget: "markdown", required: false }
 
   - name: "home"
-    label: "דף הבית - אנחנו בתקשורת"
+    label: "דף הבית"
     folder: "content/home"
     create: true
     slug: "{{slug}}"
     fields:
+      - { label: "כותרת", name: "title", widget: "string" }
       - {
           label: "כותרת לסרטון תסדמית",
           name: "tadmit_video_title",
@@ -183,12 +184,18 @@ collections:
     fields:
       - { label: "כותרת", name: "title", widget: "string" }
       - { label: "תת כותרת", name: "subtitle", widget: "text" }
-      - name: faqs
-        label: שאלות ותשובות
+      - name: faq_sections
+        label: נושאים לשאלות ותשובות
         widget: list
         fields:
-          - { label: "שאלה", name: "question", widget: "string" }
-          - { label: "תשובה", name: "answer", widget: "markdown" }
+          - { label: "כותרת נושא", name: "faq_section_title", widget: "string" }
+          - name: faqs
+          label: שאלות ותשובות
+          widget: list
+          fields:
+            - { label: "שאלה", name: "question", widget: "string" }
+            - { label: "תשובה", name: "answer", widget: "markdown" }
+
   - name: "work-in-gan"
     label: "לעבוד בגן ילדי הטבע"
     folder: "content/work-in-gan"
