@@ -6,6 +6,7 @@ import SectionCard from "../../SectionCard";
 import TextTitle from "../../TextTitle";
 import SEO from "../../SEO";
 import TeamGrid from "../../TeamGrid";
+import Carousel from "~src/components/Carousel";
 
 function Home() {
   const data = useStaticQuery(graphql`
@@ -13,9 +14,6 @@ function Home() {
       allMdx(filter: { fields: { dir: { eq: "home" } } }) {
         edges {
           node {
-            fields {
-              filename
-            }
             frontmatter {
               us_on_media {
                 title
