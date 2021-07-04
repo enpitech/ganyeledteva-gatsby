@@ -197,9 +197,6 @@ collections:
           - { label: "תשובה", name: "answer", widget: "markdown" }
       - { label: "טקסט צור קשר", name: "contact_text", widget: "markdown" }
       
-      
-    
-
   - name: "work-in-gan"
     label: "לעבוד בגן ילדי הטבע"
     folder: "content/work-in-gan"
