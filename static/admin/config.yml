@@ -183,27 +183,20 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "כותרת", name: "title", widget: "string" }
-
-  # - name: "faq"
-  #   label: "שאלות ותשובות"
-  #   folder: "content/faq"
-  #   create: true
-  #   slug: "{{slug}}"
-  #   fields:
-  #     - { label: "כותרת", name: "title", widget: "string" }
-  #     - { label: "תת כותרת", name: "subtitle", widget: "text" }
-  #     # - name: faq_sections
-  #     # label: נושאים לשאלות ותשובות
-  #     # widget: list
-  #     # fields:
-  #     #   - { label: "כותרת נושא", name: "faq_section_title", widget: "string" }
-  #     - name: faqs
-  #     label: שאלות ותשובות
-  #     widget: list
-  #     fields:
-  #       - { label: "שאלה", name: "question", widget: "string" }
-  #       - { label: "תשובה", name: "answer", widget: "markdown" }
-  #     - { label: "טקסט צור קשר", name: "contact_text", widget: "markdown" }
+      - { label: "תת כותרת", name: "subtitle", widget: "text" }
+      - name: "faq_sections"
+        label: "נושאים לשאלות ותשובות"
+        widget: list
+        fields:
+           - { label: "כותרת נושא", name: "faq_section_title", widget: "string" }
+           - name: faqs
+            label: "שאלות ותשובות"
+            widget: list
+            fields:
+              - { label: "שאלה", name: "question", widget: "string" }
+              - { label: "תשובה", name: "answer", widget: "markdown" }
+      - { label: "טקסט צור קשר", name: "contact_text", widget: "markdown" }
+            
 
   - name: "work-in-gan"
     label: "לעבוד בגן ילדי הטבע"
