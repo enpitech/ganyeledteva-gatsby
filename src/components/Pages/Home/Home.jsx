@@ -7,6 +7,7 @@ import TextTitle from "../../TextTitle";
 import SEO from "../../SEO";
 import TeamGrid from "../../TeamGrid";
 import Carousel from "~src/components/Carousel";
+import tadmitVideo from "~static/assets/vids/dummyvid.mp4";
 
 function Home() {
   const data = useStaticQuery(graphql`
@@ -72,6 +73,7 @@ function Home() {
           })}
         </div>
         <TeamGrid />
+        <TadmitVideo />
         <div className="mt-40 ">
           <TextTitle title="אנחנו בתקשורת" className="text-center" />
           <div className=" ">
@@ -86,12 +88,11 @@ function Home() {
                   />
                 )
               )}
-
             </Carousel>
           </div>
         </div>
         <div className="md:w-9/12 mt-40 mb-20">
-          <TextTitle className="text-center" title="החודש בגן" />
+          <TextTitle className="text-center" title='מה הלו"ז' />
           <iframe
             title="calendar"
             src="https://calendar.google.com/calendar/embed?showTitle=0&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=ganyeledteva%40gmail.com&color=%23b90e28&ctz=Asia%2FJerusalem"
@@ -111,10 +112,19 @@ const Article = ({ title, img, linkToArticle, className }) => {
   return (
     <div className={`text-center text-2xl ${className}`}>
       <a href={linkToArticle} target="_blank">
-
         <div className="mb-2">{title}</div>
         <img className="md:h-96 m-auto" src={img} />
       </a>
+    </div>
+  );
+};
+
+const TadmitVideo = () => {
+  return (
+    <div>
+      <video className="m-auto mt-40 w-2/3 h-2/3 " autoPlay loop muted>
+        <source src={tadmitVideo} type="video/mp4" />
+      </video>
     </div>
   );
 };
