@@ -188,14 +188,13 @@ collections:
         label: נושאים לשאלות ותשובות
         widget: list
         fields:
-          - { label: "שאלה", name: "question", widget: "string" }
-          - { label: "תשובה", name: "answer", widget: "markdown" }
-          - name: list
-            label: list
+          - { label: "כותרת נושא", name: "section_title", widget: "string" }
+          - name: faqs
+            label: שאלות ותשובות
             widget: list
             fields:
               - { label: "שאלה", name: "question", widget: "string" }
-              - { label: "כגכג", name: "quesfgfgtion", widget: "string" }
+              - { label: "תשובה", name: "answer", widget: "markdown" }
 
   - name: "work-in-gan"
     label: "לעבוד בגן ילדי הטבע"
