@@ -190,9 +190,9 @@ collections:
       fields:
         - { label: "כותרת נושא", name: "faq_section_title", widget: "string" }
         - name: faqs
-        label: שאלות ותשובות
-        widget: list
-        fields:
+          label: שאלות ותשובות
+          widget: list
+          fields:
           - { label: "שאלה", name: "question", widget: "string" }
           - { label: "תשובה", name: "answer", widget: "markdown" }
       - { label: "טקסט צור קשר", name: "contact_text", widget: "markdown" }
