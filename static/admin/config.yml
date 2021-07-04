@@ -184,6 +184,12 @@ collections:
     fields:
       - { label: "כותרת", name: "title", widget: "string" }
       - { label: "תת כותרת", name: "subtitle", widget: "text" }
+      - name: "faq_sections"
+      label: "נושאים לשאלות ותשובות"
+      widget: list
+      fields:
+        - { label: "כותרת נושא", name: "faq_section_title", widget: "string" }
+
 
   # - name: "faq"
   #   label: "שאלות ותשובות"
