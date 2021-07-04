@@ -26,6 +26,18 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
+      - {
+          label: "כותרת לסרטון תסדמית",
+          name: "tadmit_video_title",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "סרטון תדמית",
+          name: "tadmit_video",
+          widget: "file",
+          required: false,
+        }
       - name: us_on_media
         label: אנחנו בתקשורת
         widget: list
