@@ -131,7 +131,7 @@ const Article = ({ title, img, linkToArticle, className }) => {
 
 const TadmitVideo = ({ tadmitVideo, tadmitVideoTitle }) => {
   return tadmitVideo ? (
-    <div className=" mt-40">
+    <div className="mt-40">
       {tadmitVideoTitle ? (
         <TextTitle className="text-center" title={tadmitVideoTitle} />
       ) : null}
