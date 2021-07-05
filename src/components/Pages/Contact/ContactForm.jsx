@@ -18,6 +18,7 @@ export default function ContactForm({ formType }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
+
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -27,17 +28,17 @@ export default function ContactForm({ formType }) {
       }),
     })
       .then(() => navigate('/contact'))
-      .catch((error) => alert(error));
+      .catch();
   };
 
   const getForm = () => {
     switch (formType) {
       case 1:
-        return <RegistrationForm handleInputChange={handleInputChange} />;
-      case 2:
         return <WorkWithUsForm handleInputChange={handleInputChange} />;
-      case 3:
+      case 2:
         return <ServicesForm handleInputChange={handleInputChange} />;
+      case 3:
+        return <OtherReasonForm handleInputChange={handleInputChange} />;
       default:
         return null;
     }
@@ -66,98 +67,10 @@ export default function ContactForm({ formType }) {
         </div>
       </div>
 
-      <SubmitBtn label="תרשמו אותי!" />
+      <div className="w-max mx-auto">
+        <SubmitBtn label="רק ללחוץ כאן וסיימתם :)" />
+      </div>
     </form>
-  );
-}
-
-function RegistrationForm({ handleInputChange }) {
-  return (
-    <>
-      <FullName label="שם מלא של ההורה" onChange={handleInputChange} />
-
-      <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-        <label
-          htmlFor="child_name"
-          className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-        >
-          שם מלא של הילד/ה
-        </label>
-        <div className="mt-1 sm:mt-0 sm:col-span-2">
-          <input
-            type="text"
-            name="child_name"
-            id="child_name"
-            className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-            onChange={handleInputChange}
-          />
-        </div>
-      </div>
-
-      <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-        <label
-          htmlFor="date_of_birth"
-          className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-        >
-          תאריך לידה של הילד/ה
-        </label>
-        <div className="mt-1 sm:mt-0 sm:col-span-2">
-          <input
-            type="date"
-            name="date_of_birth"
-            id="date_of_birth"
-            autoComplete="bday"
-            className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-            onChange={handleInputChange}
-          />
-        </div>
-      </div>
-
-      <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-        <legend className="block text-sm font-medium text-gray-700">
-          ילד או ילדה?
-        </legend>
-        <fieldset className="sm:col-span-2">
-          <div className="mt-4 grid grid-cols-1 gap-y-4">
-            <div className="flex items-center">
-              <input
-                id="male"
-                name="sex"
-                type="radio"
-                value="male"
-                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-                onChange={handleInputChange}
-              />
-              <label htmlFor="male" className="mr-3">
-                <span className="block text-sm text-gray-700">ילד</span>
-              </label>
-            </div>
-            <div className="flex items-center">
-              <input
-                id="female"
-                name="sex"
-                type="radio"
-                value="female"
-                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-                onChange={handleInputChange}
-              />
-              <label htmlFor="female" className="mr-3">
-                <span className="block text-sm text-gray-700">ילדה</span>
-              </label>
-            </div>
-          </div>
-        </fieldset>
-      </div>
-
-      <Email onChange={handleInputChange} />
-
-      <Phone onChange={handleInputChange} />
-
-      <TextBox
-        label="ספרו לנו על האופן בו אתם תופסים חינוך"
-        onChange={handleInputChange}
-      />
-    </>
   );
 }
 
@@ -187,8 +100,8 @@ function WorkWithUsForm({ handleInputChange }) {
         </div>
       </div>
 
-      <TextBox label="על עצמכם" onChange={handleInputChange} />
-      <TextBox label="מה אתם מחפשים" onChange={handleInputChange} />
+      <TextBox label="על עצמכם" onChange={handleInputChange} required />
+      <TextBox label="מה אתם מחפשים" onChange={handleInputChange} required />
     </>
   );
 }
@@ -269,6 +182,18 @@ function ServicesForm({ handleInputChange }) {
       </div>
 
       <TextBox label="דברים נוספים" onChange={handleInputChange} />
+    </>
+  );
+}
+
+function OtherReasonForm({ handleInputChange }) {
+  return (
+    <>
+      <FullName label="שם מלא" onChange={handleInputChange} />
+      <Email onChange={handleInputChange} />
+      <Phone onChange={handleInputChange} />
+
+      <TextBox label="יאללה שוט" onChange={handleInputChange} required />
     </>
   );
 }
@@ -357,20 +282,20 @@ function Phone({ onChange }) {
   );
 }
 
-function TextBox({ label, onChange }) {
+function TextBox({ label, onChange, fieldName }) {
   return (
     <div className="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
       <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <label
-          htmlFor="open-question"
+          htmlFor={fieldName}
           className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
         >
           {label}
         </label>
         <div className="mt-1 sm:mt-0 sm:col-span-2">
           <textarea
-            id="open-question"
-            name="open-question"
+            id={fieldName}
+            name={fieldName}
             rows={3}
             className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
             defaultValue={''}

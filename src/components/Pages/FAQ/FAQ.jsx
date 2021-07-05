@@ -5,6 +5,7 @@ import { ChevronDownIcon } from "@heroicons/react/outline";
 import Page from "../../Page/Page";
 import PageHeader from "../../Page/PageHeader";
 import SEO from "../../SEO";
+import TextTitle from "../../TextTitle";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -42,7 +43,7 @@ function FAQ() {
   const { title, subtitle, contact_text, faqs_sections } = frontmatter;
 
   const pageSEOData = {
-    title: title,
+    title,
     description: undefined,
     image: undefined,
     pagePath: fields.dir,
@@ -63,9 +64,11 @@ function FAQ() {
         {faqs_sections.map(({ section_title, faqs }) => {
           return (
             <div key={section_title}>
-              <h2 className="text-center text-2xl text-purple-border">
-                {section_title}
-              </h2>
+              <TextTitle
+                title={section_title}
+                className="text-center py-2"
+              ></TextTitle>
+
               <div className="max-w-3xl mx-auto divide-y-2 divide-gray-200">
                 {faqs.map((item) => (
                   <dl className="mt-6 space-y-6 divide-y divide-gray-200">

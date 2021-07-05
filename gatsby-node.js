@@ -4,64 +4,68 @@
 
 /* eslint "no-console": "off" */
 
-const path = require('path');
-const _ = require('lodash');
-const moment = require('moment');
-const siteConfig = require('./data/SiteConfig');
-const ganDirName = 'gan'
-const weeklyUpdateDirName = 'weekly-update'
+const path = require("path");
+const _ = require("lodash");
+const moment = require("moment");
+const siteConfig = require("./data/SiteConfig");
+const ganDirName = "gan";
+const weeklyUpdateDirName = "weekly-update";
 
 // Create slug and date fields if exists in frontmatter
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   let slug;
-  if (node.internal.type === 'Mdx') {
+  if (node.internal.type === "Mdx") {
     const fileNode = getNode(node.parent);
     const parsedFilePath = path.parse(fileNode.relativePath);
     if (
-      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
+      Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
+      Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
     ) {
-      if (parsedFilePath.dir === ganDirName){
+      if (parsedFilePath.dir === ganDirName) {
         slug = `/${parsedFilePath.dir}/${parsedFilePath.name}`;
       } else {
         slug = `/${parsedFilePath.dir}/${_.kebabCase(node.frontmatter.title)}`;
       }
-    } else if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
+    } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
       slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
-    } else if (parsedFilePath.dir === '') {
+    } else if (parsedFilePath.dir === "") {
       slug = `/${parsedFilePath.name}/`;
     } else {
       slug = `/${parsedFilePath.dir}/`;
     }
 
-    if (Object.prototype.hasOwnProperty.call(node, 'frontmatter')) {
-      if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug'))
+    if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
+      if (Object.prototype.hasOwnProperty.call(node.frontmatter, "slug"))
         slug = `/${_.kebabCase(node.frontmatter.slug)}`;
-      if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'date')) {
+      if (Object.prototype.hasOwnProperty.call(node.frontmatter, "date")) {
         const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
         if (!date.isValid)
           console.warn(`WARNING: Invalid date.`, node.frontmatter);
 
-        createNodeField({ node, name: 'date', value: date.toISOString() });
+        createNodeField({ node, name: "date", value: date.toISOString() });
       }
     }
-    createNodeField({ node, name: 'slug', value: slug });
-    createNodeField({ node, name: 'dir', value: parsedFilePath.dir });
-    createNodeField({ node, name: 'filename', value: parsedFilePath.name });
+    createNodeField({ node, name: "slug", value: slug });
+    createNodeField({ node, name: "dir", value: parsedFilePath.dir });
+    createNodeField({ node, name: "filename", value: parsedFilePath.name });
   }
 };
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const weeklyPostPage = path.resolve("./src/templates/WeeklyUpdatePostTemplate.jsx"); 
-   const weeklyUpdatePage = path.resolve("./src/components/Pages/WeeklyUpdate/weekly-update.jsx");
+  const weeklyPostPage = path.resolve(
+    "./src/templates/WeeklyUpdatePostTemplate.jsx"
+  );
+  const weeklyUpdatePage = path.resolve(
+    "./src/components/Pages/WeeklyUpdate/weekly-update.jsx"
+  );
   const ganSectionPage = path.resolve("./src/templates/GanSectionTemplate.jsx");
   const ganPage = path.resolve("./src/components/Pages/Gan/Gan.jsx");
   // Get a full list of markdown posts
   const markdownQueryResult = await graphql(`
     {
-      allMdx{
+      allMdx {
         edges {
           node {
             fields {
@@ -119,36 +123,34 @@ exports.createPages = async ({ graphql, actions }) => {
   });
   /** We will use this for the weekly-updates blog */
   postsEdges.forEach((edge, index) => {
-    if(edge.node.fields.dir === ganDirName){
-         createPage({
-      path: edge.node.fields.slug, 
-      component: ganSectionPage,
-      context: {
-        slug: edge.node.fields.slug,
-      },
-    });
-  }
-  else if(edge.node.fields.dir === weeklyUpdateDirName){
-    const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
-    const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
-    const nextEdge = postsEdges[nextID];
-    const prevEdge = postsEdges[prevID];
+    if (edge.node.fields.dir === ganDirName) {
+      createPage({
+        path: edge.node.fields.slug,
+        component: ganSectionPage,
+        context: {
+          slug: edge.node.fields.slug,
+        },
+      });
+    } else if (edge.node.fields.dir === weeklyUpdateDirName) {
+      const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
+      const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
+      const nextEdge = postsEdges[nextID];
+      const prevEdge = postsEdges[prevID];
 
-    createPage({
-      path: edge.node.fields.slug, 
-      component: weeklyPostPage,
-      context: {
-        slug: edge.node.fields.slug,
-        nexttitle: nextEdge.node.frontmatter.title,
-        nextslug: nextEdge.node.fields.slug,
-        prevtitle: prevEdge.node.frontmatter.title,
-        prevslug: prevEdge.node.fields.slug,
-      },
-    })
-  }
-    });
-  }
-
+      createPage({
+        path: edge.node.fields.slug,
+        component: weeklyPostPage,
+        context: {
+          slug: edge.node.fields.slug,
+          nexttitle: nextEdge.node.frontmatter.title,
+          nextslug: nextEdge.node.fields.slug,
+          prevtitle: prevEdge.node.frontmatter.title,
+          prevslug: prevEdge.node.fields.slug,
+        },
+      });
+    }
+  });
+};
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -156,10 +158,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       alias: {
         "~static": path.resolve(__dirname, "static"),
         "~src": path.resolve(__dirname, "src"),
-
-      }
-    }
+      },
+    },
   });
 };
-
-

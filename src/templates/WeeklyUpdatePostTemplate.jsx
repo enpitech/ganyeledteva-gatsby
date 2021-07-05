@@ -21,9 +21,6 @@ export default function WeeklyUpdatePostTemplate({ data, pageContext }) {
 
   return (
     <Layout>
-      <Helmet>
-        <title>{`${post.title} | ${config.siteTitle}`}</title>
-      </Helmet>
       <SEO postSEOData={postSEOData} />
 
       <Page>

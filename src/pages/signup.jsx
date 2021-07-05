@@ -1,14 +1,11 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import Layout from '../layout';
-import config from '../../data/SiteConfig';
+import React from "react";
+import Layout from "../layout";
+import Signup from "../components/Pages/Signup";
 
 function SignupPage() {
   return (
     <Layout>
-      <div>
-        <Helmet title={`הרשמה | ${config.siteTitle}`} />
-      </div>
+      <Signup />
     </Layout>
   );
 }

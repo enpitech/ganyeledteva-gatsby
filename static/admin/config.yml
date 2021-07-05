@@ -254,3 +254,19 @@ collections:
               required: false,
             }
           - { label: "סרטון", name: "video", widget: "file" }
+  - name: "site_config"
+    label: "הגדרות אתר"
+    folder: "content/site_config"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - name: navigation_routes
+        label: שמות עמודים
+        widget: list
+        fields:
+          - { label: "שם עמוד", name: "route_name", widget: "string" }
+          - {
+              label: "כתובת עמוד - לא לשנות ערך זה!",
+              name: "route_href",
+              widget: "string",
+            }

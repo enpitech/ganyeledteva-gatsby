@@ -86,7 +86,7 @@ function Home() {
         />
         <div className="mt-40 ">
           <TextTitle title="אנחנו בתקשורת" className="text-center" />
-          <div className=" ">
+          <div>
             <Carousel time={8000}>
               {usOnMediaArticles.map(
                 ({ title, img, link_to_article: linkToArticle }) => (
