@@ -8,9 +8,13 @@ module.exports = {
   rules: { "react/prop-types": 0 },
     "settings": {
       "import/resolver": {
-        "alias": [
-          ["~static", "./static"]
-        ]
+        "alias": {'map':[
+            ["~static", "./static"],
+            ["~src", "./src"]
+          
+        ],
+        "extensions": [".js", ".jsx"]}
+
       }
     }
   

@@ -4,7 +4,9 @@ import HomeHeader from "./HomeHeader";
 import Page from "../../Page/Page";
 import SectionCard from "../../SectionCard";
 import TextTitle from "../../TextTitle";
+import SEO from "../../SEO";
 import TeamGrid from "../../TeamGrid";
+import Carousel from "~src/components/Carousel";
 
 function Home() {
   const data = useStaticQuery(graphql`
@@ -12,7 +14,15 @@ function Home() {
       allMdx(filter: { fields: { dir: { eq: "home" } } }) {
         edges {
           node {
+            fields {
+              filename
+            }
             frontmatter {
+              us_on_media {
+                title
+                img
+                link_to_article
+              }
               stories {
                 title
                 subtitle
@@ -29,15 +39,16 @@ function Home() {
 
   const pageNode = data.allMdx.edges[0].node;
   const { frontmatter } = pageNode;
-  const { stories } = frontmatter;
+  const { stories, us_on_media: usOnMediaArticles } = frontmatter;
 
   return (
     <Page
       style={{
         background: "#fff url('img/backgrounds/back.png')",
-        backgroundSize: 'cover',
+        backgroundSize: "cover",
       }}
     >
+      <SEO />
       <Page.Header>
         <HomeHeader />
       </Page.Header>
@@ -61,7 +72,24 @@ function Home() {
           })}
         </div>
         <TeamGrid />
+        <div className="mt-40 ">
+          <TextTitle title="אנחנו בתקשורת" className="text-center" />
+          <div className=" ">
+            <Carousel time={8000}>
+              {usOnMediaArticles.map(
+                ({ title, img, link_to_article: linkToArticle }) => (
+                  <Article
+                    key={title}
+                    title={title}
+                    img={img}
+                    linkToArticle={linkToArticle}
+                  />
+                )
+              )}
 
+            </Carousel>
+          </div>
+        </div>
         <div className="md:w-9/12 mt-40 mb-20">
           <TextTitle className="text-center" title="החודש בגן" />
           <iframe
@@ -78,3 +106,15 @@ function Home() {
 }
 
 export default Home;
+
+const Article = ({ title, img, linkToArticle, className }) => {
+  return (
+    <div className={`text-center text-2xl ${className}`}>
+      <a href={linkToArticle} target="_blank">
+
+        <div className="mb-2">{title}</div>
+        <img className="md:h-96 m-auto" src={img} />
+      </a>
+    </div>
+  );
+};

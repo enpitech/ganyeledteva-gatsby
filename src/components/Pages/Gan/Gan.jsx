@@ -1,12 +1,12 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { graphql } from 'gatsby';
-import Page from '../../Page/Page';
-import PageHeader from '../../Page/PageHeader';
-import Layout from '../../../layout';
-import SEO from '../../SEO/SEO';
-import config from '../../../../data/SiteConfig';
-import SectionCard from '../../SectionCard';
+import React from "react";
+import { Helmet } from "react-helmet";
+import { graphql } from "gatsby";
+import Page from "../../Page/Page";
+import PageHeader from "../../Page/PageHeader";
+import Layout from "../../../layout";
+import SEO from "../../SEO";
+import config from "../../../../data/SiteConfig";
+import SectionCard from "../../SectionCard";
 
 const headerMdFileName = config.ganMainPageDataMdFileName;
 
@@ -22,6 +22,7 @@ function Gan({ data }) {
       img: sectionEdge.node.frontmatter.img,
       link: sectionEdge.node.frontmatter.link,
       filename: sectionEdge.node.fields.filename,
+      dir: sectionEdge.node.fields.dir,
     });
   });
 
@@ -29,16 +30,25 @@ function Gan({ data }) {
     (section) => section.filename === headerMdFileName
   )[0];
 
+  const { title: pageTitle, img: pageImage, dir: pagePath } = mainPageHeader;
+
+  const pageSEOData = {
+    title: pageTitle,
+    description: undefined,
+    image: pageImage,
+    pagePath,
+  };
+
   return (
     <Layout>
       <Helmet>
-        <title>{`${mainPageHeader.title} | ${config.siteTitle}`}</title>
+        <title>{`${pageTitle} | ${config.siteTitle}`}</title>
       </Helmet>
-      <SEO />
+      <SEO pageSEOData={pageSEOData} />
       <Page>
         <Page.Header>
           <PageHeader
-            title={mainPageHeader.title}
+            title={pageTitle}
             subtitle={mainPageHeader.subtitle}
             backgroundColorClass="bg-gradient-to-r from-blue-gan-page-header1 to-blue-gan-page-header2"
             backgroundPatternClass="bg-patt1"

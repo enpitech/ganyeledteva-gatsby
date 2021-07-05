@@ -1,9 +1,9 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import tadmitVideo from '~static/assets/vids/dummyvid.mp4';
-
-import Page from '../../Page/Page';
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import tadmitVideo from "~static/assets/vids/dummyvid.mp4";
+import SEO from "../../SEO";
+import Page from "../../Page/Page";
 
 function DemocraticCenter() {
   const data = useStaticQuery(graphql`
@@ -11,6 +11,9 @@ function DemocraticCenter() {
       allMdx(filter: { fields: { dir: { eq: "democratic-center" } } }) {
         edges {
           node {
+            fields {
+              dir
+            }
             frontmatter {
               title
               images {
@@ -26,11 +29,19 @@ function DemocraticCenter() {
   `);
 
   const pageNode = data.allMdx.edges[0].node;
-  const { frontmatter, body } = pageNode;
+  const { frontmatter, body, fields } = pageNode;
   const { title, images } = frontmatter;
+
+  const pageSEOData = {
+    title,
+    description: undefined,
+    image: undefined,
+    pagePath: fields.dir,
+  };
 
   return (
     <Page>
+      <SEO pageSEOData={pageSEOData} />
       <Page.Header>
         <div className="text-center flex flex-col justify-center relative">
           <video autoPlay muted loop>

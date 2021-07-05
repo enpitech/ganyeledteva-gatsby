@@ -39,6 +39,7 @@ export default function Contact() {
 
   return (
     <Page>
+      <SEO pageSEOData={pageSEOData} />
       <Page.Header>
         <SEO pageSEOData={pageSEOData} />
         <PageHeader

@@ -4,13 +4,24 @@ import urljoin from "url-join";
 import moment from "moment";
 import config from "../../../data/SiteConfig";
 
-function SEO({ postNode, postPath, postSEO }) {
+/**
+ * @param postSEOData is for post type pages
+ * @param pageSEOData is for page type pages
+ * the SEO for post type pages is different from a regular page,
+ * so we differentiate between post type pages and page type pages
+ */
+
+function SEO({ postSEOData, pageSEOData }) {
   let title;
   let description;
   let image;
   let postURL;
+  let pageURL;
+  let postNode; // so getPublicationDate function will recognize this variable
 
-  if (postSEO) {
+  if (postSEOData) {
+    const { postPath } = postSEOData;
+    ({ postNode } = postSEOData);
     const postMeta = postNode.frontmatter;
     ({ title } = postMeta);
     description = postMeta.description
@@ -18,11 +29,19 @@ function SEO({ postNode, postPath, postSEO }) {
       : postNode.excerpt;
     image = postMeta.cover;
     postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
-  } else {
-    title = config.siteTitle;
-    description = config.siteDescription;
-    image = config.siteLogo;
+  } else if (pageSEOData) {
+    ({ title, description, image } = pageSEOData);
+    if (pageSEOData.pagePath)
+      pageURL = urljoin(
+        config.siteUrl,
+        config.pathPrefix,
+        pageSEOData.pagePath
+      );
   }
+
+  if (!title) title = config.siteTitle;
+  if (!description) description = config.siteDescription;
+  if (!image) image = config.siteLogo;
 
   const getImagePath = (imageURI) => {
     if (
@@ -44,24 +63,12 @@ function SEO({ postNode, postPath, postSEO }) {
 
     return moment(postNode.frontmatter.date, config.dateFromFormat).toDate();
   };
-  
-  if(image){
+
+  if (image) {
     image = getImagePath(image);
   }
 
   const datePublished = getPublicationDate();
-
-  const authorJSONLD = {
-    "@type": "Person",
-    name: config.userName,
-    email: config.userEmail,
-    address: config.userLocation,
-  };
-
-  const logoJSONLD = {
-    "@type": "ImageObject",
-    url: getImagePath(config.siteLogo),
-  };
 
   const blogURL = urljoin(config.siteUrl, config.pathPrefix);
   const schemaOrgJSONLD = [
@@ -73,7 +80,7 @@ function SEO({ postNode, postPath, postSEO }) {
       alternateName: config.siteTitleAlt ? config.siteTitleAlt : "",
     },
   ];
-  if (postSEO) {
+  if (postSEOData) {
     schemaOrgJSONLD.push(
       {
         "@context": "http://schema.org",
@@ -98,22 +105,20 @@ function SEO({ postNode, postPath, postSEO }) {
         alternateName: config.siteTitleAlt ? config.siteTitleAlt : "",
         headline: title,
         image: { "@type": "ImageObject", url: image },
-        author: authorJSONLD,
-        publisher: {
-          ...authorJSONLD,
-          "@type": "Organization",
-          logo: logoJSONLD,
-        },
         datePublished,
         description,
       }
     );
   }
+  const urlForMeta = postSEOData ? postURL : pageSEOData ? pageURL : blogURL;
+
   return (
     <Helmet>
       {/* General tags */}
+      <meta name="title" content={title} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />
+      <link rel="canonical" href={urlForMeta} />
 
       {/* Schema.org tags */}
       <script type="application/ld+json">
@@ -121,11 +126,12 @@ function SEO({ postNode, postPath, postSEO }) {
       </script>
 
       {/* OpenGraph tags */}
-      <meta property="og:url" content={postSEO ? postURL : blogURL} />
-      {postSEO ? <meta property="og:type" content="article" /> : null}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
+      <meta property="og:type" content={postSEOData ? "article" : "website"} />
+      <meta property="og:site_name" content={config.siteTitle} />
+      <meta property="og:url" content={urlForMeta} />
       <meta
         property="fb:app_id"
         content={config.siteFBAppID ? config.siteFBAppID : ""}
