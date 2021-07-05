@@ -89,7 +89,9 @@ export default function SignupForm() {
           </div>
         </div>
 
-        <SubmitBtn label="תרשמו אותי!" onSubmit={handleSubmit} />
+        <div className="w-1/3 mx-auto">
+          <SubmitBtn label="תרשמו אותי!" onSubmit={handleSubmit} />
+        </div>
       </form>
     </>
   );

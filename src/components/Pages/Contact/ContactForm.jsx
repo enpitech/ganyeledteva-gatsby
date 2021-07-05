@@ -67,7 +67,7 @@ export default function ContactForm({ formType }) {
         </div>
       </div>
 
-      <div className="w-max ">
+      <div className="w-max mx-auto">
         <SubmitBtn label="רק ללחוץ כאן וסיימתם :)" />
       </div>
     </form>
