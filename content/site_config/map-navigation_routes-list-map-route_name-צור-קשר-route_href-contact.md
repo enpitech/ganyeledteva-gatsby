@@ -3,7 +3,8 @@ title: הגדרות
 nav_menu_routes_to_ignore:
   - href: /
   - href: /contact
-footer_menu_routes_to_ignore: []
+footer_menu_routes_to_ignore:
+  - href: /dummy-content-do-not-delete!
 navigation_routes:
   - name: דף הבית
     href: /
