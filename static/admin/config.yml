@@ -260,13 +260,23 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
+      - name: nav_menu_routes_to_ignore
+        label: כתובות עמודים שלא יופיעו בתפריט העליון
+        widget: list
+        fields:
+          - { label: "כתובת עמוד", name: "href", widget: "string" }
+      - name: footer_menu_routes_to_ignore
+        label: כתובות עמודים שלא יופיעו בתפריט התחתון
+        widget: list
+        fields:
+          - { label: "כתובת עמוד", name: "href", widget: "string" }
       - name: navigation_routes
         label: שמות עמודים
         widget: list
         fields:
-          - { label: "שם עמוד", name: "route_name", widget: "string" }
+          - { label: "שם עמוד", name: "name", widget: "string" }
           - {
               label: "כתובת עמוד - לא לשנות ערך זה!",
-              name: "route_href",
+              name: "href",
               widget: "string",
             }

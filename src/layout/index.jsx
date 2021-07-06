@@ -26,6 +26,12 @@ export default function MainLayout({ children }) {
                 name
                 href
               }
+              nav_menu_routes_to_ignore {
+                href
+              }
+              footer_menu_routes_to_ignore {
+                href
+              }
             }
           }
         }
@@ -33,11 +39,25 @@ export default function MainLayout({ children }) {
     }
   `);
 
-  const routes = data.allMdx.edges[0].node.frontmatter.navigation_routes;
+  let {
+    navigation_routes: routes,
+    nav_menu_routes_to_ignore: navMenuIgnoredRoutes,
+    footer_menu_routes_to_ignore: footerMenuIgnoredRoutes,
+  } = data.allMdx.edges[0].node.frontmatter;
 
   config.siteRoutes = routes;
   const navigation = config.siteRoutes;
-  const navBarIgnoredRoutes = ["/contact", "/"];
+
+  navMenuIgnoredRoutes = navMenuIgnoredRoutes.map((item) => item.href);
+  footerMenuIgnoredRoutes = footerMenuIgnoredRoutes?.map((item) => item.href);
+
+  const navBarMenuItems = navigation.filter(
+    ({ name, href }) => !navMenuIgnoredRoutes.includes(href)
+  );
+  const footerMenuItems = navigation.filter(
+    ({ name, href }) => !footerMenuIgnoredRoutes?.includes(href)
+  );
+
   const location = useLocation();
 
   return (
@@ -57,10 +77,10 @@ export default function MainLayout({ children }) {
                     <Logo className="h-12 ml-4 w-auto my-auto" alt="navLogo" />
                   </div>
                   <div className="hidden md:-my-px md:ms-6 md:flex ">
-                    {navigation.map((item) => {
+                    {navBarMenuItems.map((item) => {
                       const isActive = item.href === location.pathname;
 
-                      return navBarIgnoredRoutes.includes(item.href) ? null : (
+                      return (
                         <a
                           key={item.name}
                           href={item.href}
@@ -140,7 +160,7 @@ export default function MainLayout({ children }) {
       </Disclosure>
 
       <div className="pb-10 ">{children}</div>
-      <Footer config={config} navigation={navigation} />
+      <Footer config={config} navigation={footerMenuItems} />
     </div>
   );
 }
