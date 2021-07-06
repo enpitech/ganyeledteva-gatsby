@@ -9,13 +9,35 @@ import { classNames } from "../utils";
 import Footer from "../components/Footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../components/Logo/Logo";
 import favicon from "~static/logos/favicon.png";
-
-const navigation = config.siteRoutes;
+import { useStaticQuery, graphql } from "gatsby";
 
 export default function MainLayout({ children }) {
+  const data = useStaticQuery(graphql`
+    query siteConfigQuery {
+      allMdx(filter: { fields: { dir: { eq: "site_config" } } }) {
+        edges {
+          node {
+            frontmatter {
+              navigation_routes {
+                name
+                href
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const routes = data.allMdx.edges[0].node.frontmatter.navigation_routes;
+
+  config.siteRoutes = routes;
+  const navigation = config.siteRoutes;
+  const navBarIgnoredRoutes = ["/contact", "/"];
   const location = useLocation();
 
   return (
@@ -38,7 +60,7 @@ export default function MainLayout({ children }) {
                     {navigation.map((item) => {
                       const isActive = item.href === location.pathname;
 
-                      return (
+                      return navBarIgnoredRoutes.includes(item.href) ? null : (
                         <a
                           key={item.name}
                           href={item.href}
@@ -57,7 +79,13 @@ export default function MainLayout({ children }) {
                   </div>
                   <div className="text-sm my-auto hidden md:flex flex-row">
                     <EnquireNavButton
-                      title="פייסבוק"
+                      className="bg-black h-4/5 "
+                      linkTo="https://www.youtube.com/user/0542318413"
+                      target="_blank"
+                    >
+                      <FontAwesomeIcon icon={faYoutube} />
+                    </EnquireNavButton>
+                    <EnquireNavButton
                       className="bg-blue-fb h-4/5"
                       linkTo="https://www.facebook.com/yaldeyhateva/"
                       target="_blank"
@@ -123,7 +151,7 @@ const EnquireNavButton = ({ title, linkTo, className, target, children }) => (
     href={linkTo}
     target={target}
   >
-    <div className="ml-2">{children}</div>
+    <div className={title ? "ml-2" : "m-auto"}>{children}</div>
     {title}
   </a>
 );
