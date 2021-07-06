@@ -35,10 +35,7 @@ export default function Signup() {
     (route) => route.href === `/${pageNode.fields.dir}`
   )[0];
 
-  let currentPageTitle = "רישום לגן";
-  if (currentPageRouteObject) {
-    currentPageTitle = currentPageRouteObject.name;
-  }
+  const currentPageTitle = currentPageRouteObject?.name || "רישום לגן";
 
   const pageSEOData = {
     title: currentPageTitle,

@@ -54,15 +54,9 @@ export default function Products() {
     (route) => route.href === `/${data.allMdx.edges[0].node.fields.dir}`
   )[0];
 
-  let currentPageTitle = "מוצרים חינוכיים";
-  if (currentPageRouteObject) {
-    currentPageTitle = currentPageRouteObject.name;
-  }
+  const currentPageTitle = currentPageRouteObject?.name || "מוצרים חינוכיים";
 
-  let contactPageRoute = "/"; // home page as default value
-  if (contactPageRouteObject) {
-    contactPageRoute = contactPageRouteObject.href;
-  }
+  const contactPageRoute = contactPageRouteObject?.href || "/"; // home page as default value
 
   const pageSEOData = {
     title: currentPageTitle,

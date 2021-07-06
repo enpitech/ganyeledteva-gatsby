@@ -57,10 +57,7 @@ export default function WorkInGan() {
     (route) => route.href === `/${workInGanMdxData.fields.dir}`
   )[0];
 
-  let currentPageTitle = "לעבוד בגן";
-  if (currentPageRouteObject) {
-    currentPageTitle = currentPageRouteObject.name;
-  }
+  const currentPageTitle = currentPageRouteObject?.name || "לעבוד בגן";
 
   const pageSEOData = {
     title: currentPageTitle,

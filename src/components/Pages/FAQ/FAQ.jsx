@@ -40,7 +40,12 @@ function FAQ() {
 
   const pageNode = data.allMdx.edges[0].node;
   const { frontmatter, fields } = pageNode;
-  const { title, subtitle, contact_text, faqs_sections } = frontmatter;
+  const {
+    title,
+    subtitle,
+    contact_text: contactText,
+    faqs_sections: faqsSections,
+  } = frontmatter;
 
   const pageSEOData = {
     title,
@@ -61,11 +66,11 @@ function FAQ() {
         />
       </Page.Header>
       <Page.Main className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
-        {faqs_sections.map(({ section_title, faqs }) => {
+        {faqsSections.map(({ section_title: sectionTitle, faqs }) => {
           return (
-            <div key={section_title}>
+            <div key={sectionTitle}>
               <TextTitle
-                title={section_title}
+                title={sectionTitle}
                 className="text-center py-2"
               ></TextTitle>
 
@@ -107,7 +112,7 @@ function FAQ() {
         })}
 
         <div className="text-center mt-20">
-          <div className="text-xl">{contact_text}</div>
+          <div className="text-xl">{contactText}</div>
           <Link to={"/contact"}>
             <div className="mt-5 inline-block rounded-full text-2xl text-center py-1 px-3 border-2 border-black bg-red-link text-white">
               ליצירת קשר
