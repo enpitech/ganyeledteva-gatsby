@@ -3,8 +3,7 @@ title: הגדרות
 nav_menu_routes_to_ignore:
   - href: /
   - href: /contact
-footer_menu_routes_to_ignore:
-  - href: /
+footer_menu_routes_to_ignore: []
 navigation_routes:
   - route_name: צור קשר
     route_href: /contact
