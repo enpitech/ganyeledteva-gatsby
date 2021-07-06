@@ -2,7 +2,7 @@
 title: טקסטים לדף הבית
 stories:
   - title: הגישה הדמוקרטית
-    subtitle: >-2
+    subtitle: >2-
        הגישה מתבססת על ההנחה כי לכל צורך ישנם מגוון פתרונות שונים וכי יש להתאים את הפתרון למזג, לתחומי העניין, ולאזורי החוזק של הילד
       שעות הפעילות בגן שלנו:
 
@@ -13,7 +13,8 @@ stories:
     url: /democraticeducation
     img: /img/pics/82933773_1339704489544850_4168107632957063168_o.jpg
   - title: המרכז לחינוך דמוקרטי
-    subtitle: " כלים רלוונטיים, מעודכנים ופרקטיים להתמודדות עם מערכת היחסים המחודשת
+    subtitle:
+      " כלים רלוונטיים, מעודכנים ופרקטיים להתמודדות עם מערכת היחסים המחודשת
       שבין המבוגרים לילדים בעולם שלנו."
     link: קראו עוד על המרכז
     url: /democratic-center
@@ -31,4 +32,6 @@ us_on_media:
   - title: כתבה עלינו 2
     link_to_article: https://www.google.com/search?q=%D7%92%D7%9F+%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91%D7%A2
     img: /assets/pics/uploads/20190829_181956.jpg
+tadmit_video: /assets/pics/uploads/dummyvid.mp4
+tadmit_video_title: הנה קצת על הגן
 ---

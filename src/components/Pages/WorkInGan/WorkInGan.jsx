@@ -4,6 +4,7 @@ import PageHeader from "~src/components/Page/PageHeader";
 import SEO from "~src/components/SEO";
 import { useStaticQuery, graphql } from "gatsby";
 import TextTitle from "~src/components/TextTitle";
+import { siteRoutes } from "../../../../data/SiteConfig";
 
 export default function WorkInGan() {
   const data = useStaticQuery(graphql`
@@ -52,8 +53,14 @@ export default function WorkInGan() {
     teamGalleryTitle,
   } = workInGanMdxData.frontmatter;
 
+  const currentPageRouteObject = siteRoutes.filter(
+    (route) => route.href === `/${workInGanMdxData.fields.dir}`
+  )[0];
+
+  const currentPageTitle = currentPageRouteObject?.name || "לעבוד בגן";
+
   const pageSEOData = {
-    title: title,
+    title: currentPageTitle,
     description: undefined,
     image: undefined,
     pagePath: workInGanMdxData.fields.dir,

@@ -1,14 +1,11 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import Layout from '../layout';
-import About from '../components/Pages/About/About';
-import config from '../../data/SiteConfig';
+import React from "react";
+import Layout from "../layout";
+import About from "../components/Pages/About/About";
 
 function AboutPage() {
   return (
     <Layout>
       <div className="about-container">
-        <Helmet title={`עלינו | ${config.siteTitle}`} />
         <About />
       </div>
     </Layout>

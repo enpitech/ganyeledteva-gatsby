@@ -113,7 +113,7 @@ function SEO({ postSEOData, pageSEOData }) {
   const urlForMeta = postSEOData ? postURL : pageSEOData ? pageURL : blogURL;
 
   return (
-    <Helmet>
+    <Helmet title={`${title} | ${config.siteTitle}`}>
       {/* General tags */}
       <meta name="title" content={title} />
       <meta name="description" content={description} />

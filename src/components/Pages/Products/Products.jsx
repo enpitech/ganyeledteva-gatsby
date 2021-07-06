@@ -14,6 +14,9 @@ export default function Products() {
       allMdx(filter: { fields: { dir: { eq: "products" } } }) {
         edges {
           node {
+            fields {
+              dir
+            }
             frontmatter {
               title
               subtitle
@@ -47,14 +50,23 @@ export default function Products() {
     (route) => route.name === "צור קשר"
   )[0];
 
-  let contactPageRoute = "/"; // home page as default value
-  if (contactPageRouteObject) {
-    contactPageRoute = contactPageRouteObject.hre;
-  }
+  const currentPageRouteObject = siteRoutes.filter(
+    (route) => route.href === `/${data.allMdx.edges[0].node.fields.dir}`
+  )[0];
+
+  const currentPageTitle = currentPageRouteObject?.name || "מוצרים חינוכיים";
+
+  const contactPageRoute = contactPageRouteObject?.href || "/"; // home page as default value
+
+  const pageSEOData = {
+    title: currentPageTitle,
+    description: undefined,
+    dir: data.allMdx.edges[0].node.fields.dir,
+  };
 
   return (
     <Page>
-      <SEO />
+      <SEO pageSEOData={pageSEOData} />
       <Page.Header>
         <PageHeader
           title={title}
