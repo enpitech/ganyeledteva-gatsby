@@ -33,8 +33,6 @@ function DemocraticEducation() {
   const { frontmatter, body, fields } = pageNode;
   const { title, subtitle, images } = frontmatter;
 
-  console.log(typeof body);
-
   const pageSEOData = {
     title: title,
     description: undefined,

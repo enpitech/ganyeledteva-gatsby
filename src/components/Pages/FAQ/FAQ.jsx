@@ -6,11 +6,6 @@ import Page from "../../Page/Page";
 import PageHeader from "../../Page/PageHeader";
 import SEO from "../../SEO";
 import TextTitle from "../../TextTitle";
-import showdown from "showdown";
-// import { MDXRenderer } from "gatsby-plugin-mdx";
-import ReactMarkdown from "react-markdown";
-
-const converter = new showdown.Converter();
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -51,10 +46,6 @@ function FAQ() {
     contact_text: contactText,
     faqs_sections: faqsSections,
   } = frontmatter;
-
-  const zibi = faqsSections[0].faqs[0].answer;
-  console.log(zibi);
-  console.log(converter.makeHtml(zibi));
 
   const pageSEOData = {
     title,
@@ -106,7 +97,9 @@ function FAQ() {
                             </Disclosure.Button>
                           </dt>
                           <Disclosure.Panel as="dd" className="mt-2 pl-12">
-                            <ReactMarkdown>{item.answer}</ReactMarkdown>
+                            <p className="text-right text-gray-500 whitespace-pre-wrap">
+                              {item.answer}
+                            </p>
                           </Disclosure.Panel>
                         </>
                       )}
@@ -117,9 +110,6 @@ function FAQ() {
             </div>
           );
         })}
-        {/* <p className="text-right text-gray-500 whitespace-pre-wrap">
-                              {item.answer}
-                            </p> */}
 
         <div className="text-center mt-20">
           <div className="text-xl">{contactText}</div>
