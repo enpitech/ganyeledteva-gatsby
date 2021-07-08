@@ -7,7 +7,6 @@ import TextTitle from "../../TextTitle";
 import SEO from "../../SEO";
 import TeamGrid from "../../TeamGrid";
 import Carousel from "~src/components/Carousel";
-import tadmitVideo from "~static/assets/vids/dummyvid.mp4";
 
 function Home() {
   const data = useStaticQuery(graphql`
@@ -89,10 +88,9 @@ function Home() {
           <div>
             <Carousel time={8000}>
               {usOnMediaArticles.map(
-                ({ title, img, link_to_article: linkToArticle }) => (
+                ({ img, link_to_article: linkToArticle }) => (
                   <Article
-                    key={title}
-                    title={title}
+                    key={linkToArticle}
                     img={img}
                     linkToArticle={linkToArticle}
                   />
@@ -118,11 +116,10 @@ function Home() {
 
 export default Home;
 
-const Article = ({ title, img, linkToArticle, className }) => {
+const Article = ({ img, linkToArticle, className }) => {
   return (
     <div className={`text-center text-2xl ${className}`}>
       <a href={linkToArticle} target="_blank">
-        <div className="mb-2">{title}</div>
         <img className="md:h-96 m-auto" src={img} />
       </a>
     </div>
