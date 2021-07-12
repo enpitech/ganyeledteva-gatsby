@@ -38,6 +38,21 @@ us_on_media:
   - title: כתבה עלינו 3
     link_to_article: https://www.google.com/search?q=%D7%92%D7%9F+%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91%D7%A2
     img: /assets/pics/uploads/10842085_10202867450396813_327328370662932325_o.jpg
+  - title: כתבה עלינו 3
+    link_to_article: https://www.google.com/search?q=%D7%92%D7%9F+%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91%D7%A2
+    img: /assets/pics/uploads/10842085_10202867450396813_327328370662932325_o.jpg
+  - title: כתבה עלינו 3
+    link_to_article: https://www.google.com/search?q=%D7%92%D7%9F+%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91%D7%A2
+    img: /assets/pics/uploads/10842085_10202867450396813_327328370662932325_o.jpg
+  - title: כתבה עלינו 3
+    link_to_article: https://www.google.com/search?q=%D7%92%D7%9F+%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91%D7%A2
+    img: /assets/pics/uploads/10842085_10202867450396813_327328370662932325_o.jpg
+  - title: כתבה עלינו 3
+    link_to_article: https://www.google.com/search?q=%D7%92%D7%9F+%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91%D7%A2
+    img: /assets/pics/uploads/10842085_10202867450396813_327328370662932325_o.jpg
+  - title: כתבה עלינו 3
+    link_to_article: https://www.google.com/search?q=%D7%92%D7%9F+%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91%D7%A2
+    img: /assets/pics/uploads/10842085_10202867450396813_327328370662932325_o.jpg
 tadmit_video: /assets/pics/uploads/dummyvid.mp4
 tadmit_video_title: הנה קצת על הגן
 ---

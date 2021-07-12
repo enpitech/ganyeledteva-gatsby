@@ -6,8 +6,20 @@ import SectionCard from "../../SectionCard";
 import TextTitle from "../../TextTitle";
 import SEO from "../../SEO";
 import TeamGrid from "../../TeamGrid";
-import Carousel from "~src/components/Carousel";
+// import Carousel from "~src/components/Carousel";
+import arrowRightIcon from "~static/img/pics/icons/arrow_right.svg";
+import arrowLeftIcon from "~static/img/pics/icons/left-arrow-svgrepo-com.svg";
+// import arrowLeftIcon from "~static/img/pics/icons/arrow_left.svg";
 
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+  Dot,
+} from "pure-react-carousel";
+import "pure-react-carousel/dist/react-carousel.es.css";
 function Home() {
   const data = useStaticQuery(graphql`
     query HomeQuery {
@@ -48,6 +60,14 @@ function Home() {
     tadmit_video_title: tadmitVideoTitle,
   } = frontmatter;
 
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
     <Page
       style={{
@@ -85,148 +105,57 @@ function Home() {
         />
         <div className="mt-40 ">
           <TextTitle title="אנחנו בתקשורת" className="text-center" />
-          <div>
-            {/* <Carousel time={8000}> */}
-            {/* <Carousel
-              additionalTransfrom={0}
-              arrows
-              autoPlaySpeed={3000}
-              centerMode={false}
-              className=""
-              containerclassName="container-with-dots"
-              dotListclassName=""
-              draggable
-              focusOnSelect={false}
-              infinite
-              itemclassName=""
-              keyBoardControl
-              minimumTouchDrag={80}
-              renderButtonGroupOutside={false}
-              renderDotsOutside={false}
-              responsive={{
-                desktop: {
-                  breakpoint: {
-                    max: 3000,
-                    min: 1024,
-                  },
-                  items: 3,
-                  partialVisibilityGutter: 40,
-                },
-                mobile: {
-                  breakpoint: {
-                    max: 464,
-                    min: 0,
-                  },
-                  items: 1,
-                  partialVisibilityGutter: 30,
-                },
-                tablet: {
-                  breakpoint: {
-                    max: 1024,
-                    min: 464,
-                  },
-                  items: 2,
-                  partialVisibilityGutter: 30,
-                },
-              }}
-              showDots={false}
-              sliderclassName=""
-              slidesToSlide={1}
-              swipeable
-            >
-              {usOnMediaArticles.map(
-                ({ img, link_to_article: linkToArticle }) => (
-                  <Article
-                    key={linkToArticle}
-                    img={img}
-                    linkToArticle={linkToArticle}
-                  />
-                )
-              )}
-            </Carousel> */}
-            {/* <div className="w-full carousel">
-              <div id="slide1" className="relative w-full pt-20 carousel-item">
+          {/* <Carousel time={8000}> */}
+          <CarouselProvider
+            naturalSlideWidth={500}
+            naturalSlideHeight={500}
+            totalSlides={usOnMediaArticles.length}
+            infinite
+            isPlaying
+            visibleSlides={3}
+            className="w-screen"
+            interval={8000}
+          >
+            <div className="relative overflow-hidden">
+              <Slider>
+                {usOnMediaArticles.map(
+                  ({ img, link_to_article: linkToArticle }, index) => (
+                    <>
+                      <Slide index={index}>
+                        <Article
+                          key={linkToArticle}
+                          img={img}
+                          linkToArticle={linkToArticle}
+                        />
+                      </Slide>
+                      <Dot slide={index} />
+                    </>
+                  )
+                )}
+              </Slider>
+              <ButtonBack className="absolute left-0 top-1/3 h-1/3 focus:outline-none">
+                <img className="ml-5 w-20 m-auto" src={arrowLeftIcon} />
+              </ButtonBack>
+              <ButtonNext className="absolute top-1/3 h-1/3 focus:outline-none">
                 <img
-                  src="https://picsum.photos/id/500/800/300"
-                  className="w-full"
+                  className="bg-white"
+                  src="https://img.icons8.com/carbon-copy/100/000000/arrow.png"
                 />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                  <a
-                    href="/components/carousel#slide4"
-                    className="btn btn-circle"
-                  >
-                    ❮
-                  </a>
-                  <a
-                    href="/components/carousel#slide2"
-                    className="btn btn-circle"
-                  >
-                    ❯
-                  </a>
-                </div>
-              </div>
-              <div id="slide2" className="relative w-full pt-20 carousel-item">
-                <img
-                  src="https://picsum.photos/id/501/800/300"
-                  className="w-full"
-                />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                  <a
-                    href="/components/carousel#slide1"
-                    className="btn btn-circle"
-                  >
-                    ❮
-                  </a>
-                  <a
-                    href="/components/carousel#slide3"
-                    className="btn btn-circle"
-                  >
-                    ❯
-                  </a>
-                </div>
-              </div>
-              <div id="slide3" className="relative w-full pt-20 carousel-item">
-                <img
-                  src="https://picsum.photos/id/502/800/300"
-                  className="w-full"
-                />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                  <a
-                    href="/components/carousel#slide2"
-                    className="btn btn-circle"
-                  >
-                    ❮
-                  </a>
-                  <a
-                    href="/components/carousel#slide4"
-                    className="btn btn-circle"
-                  >
-                    ❯
-                  </a>
-                </div>
-              </div>
-              <div id="slide4" className="relative w-full pt-20 carousel-item">
-                <img
-                  src="https://picsum.photos/id/503/800/300"
-                  className="w-full"
-                />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                  <a
-                    href="/components/carousel#slide3"
-                    className="btn btn-circle"
-                  >
-                    ❮
-                  </a>
-                  <a
-                    href="/components/carousel#slide1"
-                    className="btn btn-circle"
-                  >
-                    ❯
-                  </a>
-                </div>
-              </div>
-            </div>*/}
-          </div>
+                {/* <img className="w-28 m-auto" src={arrowRightIcon} /> */}
+              </ButtonNext>
+            </div>
+            <div className="flex flex-row justify-center ">
+              {usOnMediaArticles.map((_, index) => (
+                <Dot
+                  disabled={false}
+                  className="mx-5 focus:outline-none"
+                  slide={index}
+                >
+                  <div className="inline-block rounded-full h-3 w-3 bg-red-link"></div>
+                </Dot>
+              ))}
+            </div>
+          </CarouselProvider>
         </div>
         <div className="md:w-9/12 mt-40 mb-20">
           <TextTitle className="text-center" title='מה הלו"ז' />
@@ -247,9 +176,9 @@ export default Home;
 
 const Article = ({ img, linkToArticle, className }) => {
   return (
-    <div className={`text-center text-2xl ${className}`}>
+    <div className={`m-5 text-center text-2xl ${className}`}>
       <a href={linkToArticle} target="_blank">
-        <img className="md:h-96 m-auto" src={img} />
+        <img className="h-96 m-auto" src={img} />
       </a>
     </div>
   );
