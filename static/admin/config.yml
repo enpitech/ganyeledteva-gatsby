@@ -128,6 +128,18 @@ collections:
           - { label: "תמונה", name: "src", widget: "image" }
           - { label: "כיתוב תמונה", name: "alt", widget: "string" }
       - { label: "טקסט", name: "body", widget: "markdown" }
+      - {
+          label: "כותרת סרטון",
+          name: "video_title",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "סיומת כתובת סרטון ביוטיוב - לדוגמא: הסיומת לסרטון הנל www.youtube.com/watch?v=2IiNEMEFF0o היא 2IiNEMEFF0o ",
+          name: "video",
+          widget: "string",
+          required: false,
+        }
 
   - name: "democratic-center"
     label: "המרכז הדמוקרטי"

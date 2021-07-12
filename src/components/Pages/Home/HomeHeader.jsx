@@ -1,11 +1,11 @@
-import React from 'react';
-import logo from '../../../../static/logos/logo.png';
-import cloudBig from '../../../../static/img/pics/icons/cloud_big.svg';
-import bird from '../../../../static/img/pics/icons/bird.svg';
-import treeLev from '../../../../static/img/pics/icons/tree_lev.svg';
-import treeTri from '../../../../static/img/pics/icons/tree_tri.svg';
-import * as mainHeaderStyles from '../../../styles/main-header.module.css';
-import Logo from '../../Logo/Logo';
+import React from "react";
+import logo from "../../../../static/logos/logo.png";
+import cloudBig from "../../../../static/img/pics/icons/cloud_big.svg";
+import bird from "../../../../static/img/pics/icons/bird.svg";
+import treeLev from "../../../../static/img/pics/icons/tree_lev.svg";
+import treeTri from "../../../../static/img/pics/icons/tree_tri.svg";
+import * as mainHeaderStyles from "../../../styles/main-header.module.css";
+import Logo from "../../Logo/Logo";
 
 export default function HomeHeader() {
   return (
@@ -36,13 +36,13 @@ export default function HomeHeader() {
                 <div
                   className="text-xl mt-32 xl:text-2xl xl:mt-24 font-bold"
                   style={{
-                    color: '#63cccb',
+                    color: "#63cccb",
                   }}
                 >
                   <div>מתוך ההיכרות עם הילדים, למדתי כי הילדים</div>
                   <div>הקטנים האלו, הם אנשים חכמים ורגישים, עם</div>
                   <div>
-                    {' '}
+                    {" "}
                     <span>רצון עז ללמוד ו...</span>
                     <span
                       className={mainHeaderStyles.typewriter}
@@ -58,10 +58,10 @@ export default function HomeHeader() {
                 </div>
                 <div
                   style={{
-                    position: 'absolute',
+                    position: "absolute",
                     top: 465,
                     left: 0,
-                    opacity: '0.5',
+                    opacity: "0.5",
                   }}
                 >
                   לחצו להחלפת צבע
@@ -70,7 +70,7 @@ export default function HomeHeader() {
                   <img
                     src={cloudBig}
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       top: 0,
                       left: 400,
                       height: 155,
@@ -80,7 +80,7 @@ export default function HomeHeader() {
                   <img
                     src={bird}
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       top: 40,
                       left: 480,
                       height: 65,
@@ -90,7 +90,7 @@ export default function HomeHeader() {
                   <img
                     src={bird}
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       top: 20,
                       left: 500,
                       height: 65,
@@ -100,7 +100,7 @@ export default function HomeHeader() {
                   <img
                     src={cloudBig}
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       top: 0,
                       left: 100,
                       height: 155,
@@ -110,7 +110,7 @@ export default function HomeHeader() {
                   <img
                     src={bird}
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       top: 40,
                       left: 100,
                       height: 55,
@@ -120,7 +120,7 @@ export default function HomeHeader() {
                   <img
                     src={bird}
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       top: 20,
                       left: 120,
                       height: 55,
@@ -130,7 +130,7 @@ export default function HomeHeader() {
                   <img
                     src={treeLev}
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       top: 304,
                       left: 110,
                       height: 255,
@@ -140,7 +140,7 @@ export default function HomeHeader() {
                   <img
                     src={treeLev}
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       top: 346,
                       left: 90,
                       height: 200,
@@ -150,7 +150,7 @@ export default function HomeHeader() {
                   <img
                     src={treeTri}
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       top: 278,
                       left: 370,
                       height: 295,
@@ -160,7 +160,7 @@ export default function HomeHeader() {
                   <img
                     src={bird}
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       top: 340,
                       left: 410,
                       height: 75,
@@ -170,7 +170,7 @@ export default function HomeHeader() {
                   <img
                     src={bird}
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       top: 320,
                       left: 500,
                       height: 75,
@@ -180,7 +180,7 @@ export default function HomeHeader() {
                   <img
                     src={bird}
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       top: 350,
                       left: 530,
                       height: 75,

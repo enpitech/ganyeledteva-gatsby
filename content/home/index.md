@@ -31,7 +31,13 @@ us_on_media:
     img: /assets/pics/uploads/linkedin_backgroung_pic.jpg
   - title: כתבה עלינו 2
     link_to_article: https://www.google.com/search?q=%D7%92%D7%9F+%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91%D7%A2
-    img: /assets/pics/uploads/20190829_181956.jpg
+    img: /assets/pics/uploads/10842085_10202867450396813_327328370662932325_o.jpg
+  - title: כתבה עלינו 1
+    link_to_article: https://www.google.com/search?q=%D7%92%D7%9F+%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91%D7%A2
+    img: /assets/pics/uploads/linkedin_backgroung_pic.jpg
+  - title: כתבה עלינו 3
+    link_to_article: https://www.google.com/search?q=%D7%92%D7%9F+%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91%D7%A2
+    img: /assets/pics/uploads/10842085_10202867450396813_327328370662932325_o.jpg
 tadmit_video: /assets/pics/uploads/dummyvid.mp4
 tadmit_video_title: הנה קצת על הגן
 ---

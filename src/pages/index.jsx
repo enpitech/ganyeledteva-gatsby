@@ -13,6 +13,7 @@ const sketchScriptPath = withPrefix("js/lib/sketch.js");
 
 function initSketchDrawer() {
   let color = "#f7479e";
+  let mainVisibleTextColor = "#B4F8C8";
   const COLORS = ["#ff2b56", "#4b2ac8", "#f36c4f", "#1b522f", "#fff797"];
   const WINDOW_WIDTH = window.innerWidth;
   let radius = 0;
@@ -24,7 +25,10 @@ function initSketchDrawer() {
       colorIndex = 0;
     }
     color = COLORS[colorIndex];
-    $("#hiddenText").css("color", color).css("borderBottomColor", color);
+
+    $("#hiddenText")
+      .css("color", mainVisibleTextColor)
+      .css("borderBottomColor", mainVisibleTextColor);
   };
 
   const draw = function () {

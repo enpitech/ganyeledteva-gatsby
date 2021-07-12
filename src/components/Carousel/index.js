@@ -37,7 +37,6 @@ const Carousel = ({ children, time }) => {
   const slides = () => {
     return children.map((child, idx) => (
       <Thumbnail key={idx} id={idx} selectedKey={currItemIndex}>
-
         {child}
       </Thumbnail>
     ));
@@ -47,7 +46,6 @@ const Carousel = ({ children, time }) => {
     return keys.map((key) => (
       <span key={key} onClick={() => setIndex(key)}>
         <DotIcon selected={key === currItemIndex} />
-
       </span>
     ));
   };
@@ -57,11 +55,11 @@ const Carousel = ({ children, time }) => {
       <div className="grid grid-flow-row auto-rows-max">
         <div className="flex flex-row justify-center">
           <button className="focus:outline-none" onClick={moveToNextItem}>
-            <img className="h-10 w-10" src={arrowRightIcon} />
+            <img className="h-40 w-40" src={arrowRightIcon} />
           </button>
-          <div className="min-h-100 ">{slides()}</div>
+          <div className="min-h-100 flex flex-row gap-10">{slides()}</div>
           <button onClick={moveToPreviousItem} className="focus:outline-none">
-            <img className="h-10 w-10" src={arrowLeftIcon} />
+            <img className="h-40 w-40" src={arrowLeftIcon} />
           </button>
         </div>
         <div className="flex justify-center mt-2">{sliderDots()}</div>
