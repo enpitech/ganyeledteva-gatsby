@@ -7,12 +7,17 @@ export default function PageHeader({
   wideSubtitle,
   backgroundColorClass,
   backgroundPatternClass,
+  textWhite,
 }) {
   if (!title) return null;
 
   return (
     <Page.Header>
-      <div className={`${backgroundColorClass || "bg-green-gradient"} `}>
+      <div
+        className={`${backgroundColorClass || "bg-green-gradient"} ${
+          textWhite && "text-white"
+        }`}
+      >
         <div
           className={`font-normal	 flex flex-col items-center justify-center h-auto py-12 ${
             backgroundPatternClass || "bg-patt2"

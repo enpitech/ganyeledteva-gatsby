@@ -29,13 +29,18 @@ module.exports = {
           "gan-section-header": "#96e6a1",
         },
         yellow: {
+          "gan-page-header": "#fff797",
           "gan-section-header": "#d4fc79",
           "gan-section-header-border": "#fdffa8",
         },
         blue: {
           "gan-page-header1": "#8cf8e7",
           "gan-page-header2": "#8ddad5",
+          "democ-educ-header": "#4b2ac8",
           fb: "#4266b2",
+        },
+        orange: {
+          "work-in-gan-page-header": "#f36c4f",
         },
       },
       boxShadow: {

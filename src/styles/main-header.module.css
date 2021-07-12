@@ -7,9 +7,8 @@
 
 .typewriter {
   display: flex;
-  border-bottom: 3px solid rgb(255, 43, 86);
-  color: "#B4F8C8";
-  /* color: rgb(255, 43, 86); */
+  border-bottom: 3px solid #b4f8c8;
+  color: #b4f8c8;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
