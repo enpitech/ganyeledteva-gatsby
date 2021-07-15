@@ -100,7 +100,7 @@ function Home() {
             className="w-screen"
             interval={8000}
           >
-            <div className="relative overflow-hidden">
+            <div className="relative">
               <Slider>
                 {usOnMediaArticles.map(
                   ({ img, link_to_article: linkToArticle }, index) => (
