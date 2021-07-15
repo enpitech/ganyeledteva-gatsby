@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import Thumbnail from "./Thumbnail";
 import DotIcon from "./DotIcon";
-import arrowRightIcon from "~static/img/pics/icons/arrow_right.svg";
-import arrowLeftIcon from "~static/img/pics/icons/arrow_left.svg";
+import arrowRightIcon from "~static/img/pics/icons/arrow_right_black.svg";
+import arrowLeftIcon from "~static/img/pics/icons/arrow_left_black.svg";
 
 const Carousel = ({ children, time }) => {
   const [currItemIndex, setIndex] = React.useState(0);
@@ -55,11 +55,11 @@ const Carousel = ({ children, time }) => {
       <div className="grid grid-flow-row auto-rows-max">
         <div className="flex flex-row justify-center">
           <button className="focus:outline-none" onClick={moveToNextItem}>
-            <img className="h-40 w-40" src={arrowRightIcon} />
+            <img className="ml-5 h-20 w-20" src={arrowRightIcon} />
           </button>
-          <div className="min-h-100 flex flex-row gap-10">{slides()}</div>
+          <div className="min-h-100 ">{slides()}</div>
           <button onClick={moveToPreviousItem} className="focus:outline-none">
-            <img className="h-40 w-40" src={arrowLeftIcon} />
+            <img className="mr-5 h-20 w-20" src={arrowLeftIcon} />
           </button>
         </div>
         <div className="flex justify-center mt-2">{sliderDots()}</div>
