@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState, useRef } from 'react';
-import { navigate } from 'gatsby-link';
-import { SubmitBtn, FullName, Email, Phone, TextBox } from '../../Inputs';
-import SuccessAlert from '../../Alerts/SuccessAlert';
+import React, { useState, useRef } from "react";
+import { navigate } from "gatsby-link";
+import { SubmitBtn, FullName, Email, Phone, TextBox } from "../../Inputs";
+import SuccessAlert from "../../Alerts/SuccessAlert";
 
 function encode(data) {
   return Object.keys(data)
     .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-    .join('&');
+    .join("&");
 }
 
 function getAgeInSep(date) {
@@ -38,11 +38,11 @@ export default function SignupForm() {
     e.preventDefault();
     const form = formRef.current;
 
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
-        'form-name': form.getAttribute('name'),
+        "form-name": form.getAttribute("name"),
         ...formValues,
         age_in_sept: getAgeInSep(formValues.date_of_birth),
       }),
@@ -61,7 +61,7 @@ export default function SignupForm() {
           setFormSent(false);
         }}
         actionText="חזרה לדף הבית"
-        actionOnClick={() => navigate('/')}
+        actionOnClick={() => navigate("/")}
       />
       <form
         className="space-y-8"
@@ -76,7 +76,7 @@ export default function SignupForm() {
         <input type="hidden" name="form-name" value="contact" />
         <p hidden>
           <label>
-            Don’t fill this out:{' '}
+            Don’t fill this out:{" "}
             <input name="bot-field" onChange={handleInputChange} />
           </label>
         </p>
@@ -188,16 +188,15 @@ function RegistrationForm({ handleInputChange }) {
       <Phone onChange={handleInputChange} required />
 
       <TextBox
-        label="ספרו לנו על האופן בו אתם תופסים את תפקיד הגן בחיי הילדים ואת מערכת היחסים בין הבית לגן"
-        onChange={handleInputChange}
-        fieldName="thoughts_about_education"
-        required
-      />
-
-      <TextBox
         label="ספרו לנו מי אתם ואיך נוכל לעזור לכם"
         onChange={handleInputChange}
         fieldName="who_are_you"
+        required
+      />
+      <TextBox
+        label="ספרו לנו על האופן בו אתם תופסים את תפקיד הגן בחיי הילדים ואת מערכת היחסים בין הבית לגן"
+        onChange={handleInputChange}
+        fieldName="thoughts_about_education"
         required
       />
     </>

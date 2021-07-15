@@ -6,10 +6,8 @@ import SectionCard from "../../SectionCard";
 import TextTitle from "../../TextTitle";
 import SEO from "../../SEO";
 import TeamGrid from "../../TeamGrid";
-// import Carousel from "~src/components/Carousel";
 import arrowRightIcon from "~static/img/pics/icons/arrow_right.svg";
-import arrowLeftIcon from "~static/img/pics/icons/left-arrow-svgrepo-com.svg";
-// import arrowLeftIcon from "~static/img/pics/icons/arrow_left.svg";
+import arrowLeftIcon from "~static/img/pics/icons/arrow_left.svg";
 
 import {
   CarouselProvider,
@@ -43,7 +41,6 @@ function Home() {
                 url
               }
               tadmit_video
-              tadmit_video_title
             }
           }
         }
@@ -57,16 +54,7 @@ function Home() {
     stories,
     us_on_media: usOnMediaArticles,
     tadmit_video: tadmitVideo,
-    tadmit_video_title: tadmitVideoTitle,
   } = frontmatter;
-
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
 
   return (
     <Page
@@ -99,13 +87,9 @@ function Home() {
           })}
         </div>
         <TeamGrid />
-        <TadmitVideo
-          tadmitVideoTitle={tadmitVideoTitle}
-          tadmitVideo={tadmitVideo}
-        />
+        <TadmitVideo tadmitVideo={tadmitVideo} />
         <div className="mt-40 ">
           <TextTitle title="אנחנו בתקשורת" className="text-center" />
-          {/* <Carousel time={8000}> */}
           <CarouselProvider
             naturalSlideWidth={500}
             naturalSlideHeight={500}
@@ -134,23 +118,15 @@ function Home() {
                 )}
               </Slider>
               <ButtonBack className="absolute left-0 top-1/3 h-1/3 focus:outline-none">
-                <img className="ml-5 w-20 m-auto" src={arrowLeftIcon} />
+                <img className="ml-6 w-20 m-auto" src={arrowLeftIcon} />
               </ButtonBack>
               <ButtonNext className="absolute top-1/3 h-1/3 focus:outline-none">
-                <img
-                  className="bg-white"
-                  src="https://img.icons8.com/carbon-copy/100/000000/arrow.png"
-                />
-                {/* <img className="w-28 m-auto" src={arrowRightIcon} /> */}
+                <img className="mr-6 w-20 m-auto" src={arrowRightIcon} />
               </ButtonNext>
             </div>
             <div className="flex flex-row justify-center ">
               {usOnMediaArticles.map((_, index) => (
-                <Dot
-                  disabled={false}
-                  className="mx-5 focus:outline-none"
-                  slide={index}
-                >
+                <Dot className="mx-5 focus:outline-none" slide={index}>
                   <div className="inline-block rounded-full h-3 w-3 bg-red-link"></div>
                 </Dot>
               ))}
@@ -178,18 +154,15 @@ const Article = ({ img, linkToArticle, className }) => {
   return (
     <div className={`m-5 text-center text-2xl ${className}`}>
       <a href={linkToArticle} target="_blank">
-        <img className="h-96 m-auto" src={img} />
+        <img className="rounded h-96 m-auto" src={img} />
       </a>
     </div>
   );
 };
 
-const TadmitVideo = ({ tadmitVideo, tadmitVideoTitle }) => {
+const TadmitVideo = ({ tadmitVideo }) => {
   return tadmitVideo ? (
     <div className="mt-40">
-      {/* {tadmitVideoTitle ? (
-        <TextTitle className="text-center" title={tadmitVideoTitle} />
-      ) : null} */}
       <video className="m-auto mt-10" autoPlay loop muted>
         <source src={tadmitVideo} type="video/mp4" />
       </video>
