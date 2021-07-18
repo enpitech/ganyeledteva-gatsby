@@ -10,9 +10,9 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import TextTitle from "./../components/TextTitle/TextTitle";
 const headerMdFileName = config.ganMainPageDataMdFileName;
 const recommendationFileName = "recommendations";
-const facebookRecommendationUrl =
+const defaultFacebookRecommendationUrl =
   "https://www.facebook.com/yaldeyhateva/reviews/?ref=page_internal";
-const googleRecommendationUrl =
+const defaultGoogleRecommendationUrl =
   "https://www.google.com/search?q=%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91%D7%A2+%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99&rlz=1C1SQJL_iwIL939IL939&oq=%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91&aqs=chrome.0.69i59j69i57j35i39j69i61l3j69i65l2.3577j0j7&sourceid=chrome&ie=UTF-8#lrd=0x151d4ba3aaaaaaab:0xaf0631a83792f010,1,,,";
 
 export default function GanSectionTemplate({ data, pageContext }) {
@@ -29,17 +29,32 @@ export default function GanSectionTemplate({ data, pageContext }) {
   const { slug } = pageContext;
   const sectionsNode = activeGanSection;
   const section = sectionsNode.frontmatter;
-  const { images, video_title: videoTitle, video, title } = section;
+  const {
+    images,
+    video_title: videoTitle,
+    video,
+    title,
+    facebook_recommendation_url: facebookRecommendationUrl,
+    google_recommendation_url: googleRecommendationUrl,
+  } = section;
   if (!section.id) {
     section.id = slug;
   }
 
   const recommendationButtonsData = [
-    { title: "ממליצים עלינו בגוגל", href: googleRecommendationUrl },
-    { title: "ממליצים עלינו בפייסבוק", href: facebookRecommendationUrl },
+    {
+      title: "ממליצים עלינו בגוגל",
+      href: googleRecommendationUrl || defaultGoogleRecommendationUrl,
+    },
+    {
+      title: "ממליצים עלינו בפייסבוק",
+      href: facebookRecommendationUrl || defaultFacebookRecommendationUrl,
+    },
   ];
 
   const postSEOData = { postPath: slug, postNode: sectionsNode };
+  const isRecommendationSection =
+    sectionsNode.fields.filename === recommendationFileName;
 
   return (
     <Layout>
@@ -61,15 +76,17 @@ export default function GanSectionTemplate({ data, pageContext }) {
               <MDXRenderer>{sectionsNode.body}</MDXRenderer>
             </div>
             <div className="md:w-2/7 mt-4 ">
-              {images?.map((img, index) => (
-                <div
-                  key={`${(img.src, index)}`}
-                  className="my-5 lg:mx-5 shadow-img"
-                >
-                  <img src={img.src} alt={img.alt} />
-                </div>
-              ))}
-              {sectionsNode.fields.filename === recommendationFileName ? (
+              {isRecommendationSection
+                ? null
+                : images?.map((img, index) => (
+                    <div
+                      key={`${(img.src, index)}`}
+                      className="my-5 lg:mx-5 shadow-img"
+                    >
+                      <img src={img.src} alt={img.alt} />
+                    </div>
+                  ))}
+              {isRecommendationSection ? (
                 <div className="flex flex-col justify-center md:sticky top-1/2 w-2/3 md:w-full m-auto lg:mr-14">
                   {recommendationButtonsData.map(({ title, href }) => (
                     <RecommendationButton title={title} href={href} />
@@ -148,6 +165,8 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
+        google_recommendation_url
+        facebook_recommendation_url
         images {
           alt
           src

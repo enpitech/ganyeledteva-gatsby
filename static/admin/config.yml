@@ -104,13 +104,13 @@ collections:
       - { label: "כפתור", name: "link", widget: "string" }
       - {
           label: "קישור לעמוד המלצות - גוגל",
-          name: "google-recommendation-url",
+          name: "google_recommendation_url",
           widget: "string",
           required: false,
         }
       - {
           label: "קישור לעמוד המלצות - פייסבוק",
-          name: "facebook-recommendation-url",
+          name: "facebook_recommendation_url",
           widget: "string",
           required: false,
         }
