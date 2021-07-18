@@ -159,9 +159,6 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         "~static": path.resolve(__dirname, "static"),
         "~src": path.resolve(__dirname, "src"),
       },
-      fallback: {
-        path: require.resolve("path-browserify"),
-      },
     },
   });
 };
