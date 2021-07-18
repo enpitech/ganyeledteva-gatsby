@@ -1,25 +1,27 @@
 ---
 title: המלצות
 subtitle: הורי הגן שלנו מספרים
+link: קראו את ההמלצות
+google-recommendation-url: https://www.google.com/search?q=%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91%D7%A2+%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99&rlz=1C1SQJL_iwIL939IL939&oq=%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91&aqs=chrome.0.69i59j69i57j35i39j69i61l3j69i65l2.3577j0j7&sourceid=chrome&ie=UTF-8#lrd=0x151d4ba3aaaaaaab:0xaf0631a83792f010,1,,,
+facebook-recommendation-url: https://www.facebook.com/yaldeyhateva/reviews/?ref=page_internal
 img: /img/pics/door.jpg
-link: "קראו את ההמלצות"
 index: 5
 images:
-  - alt: ''
+  - alt: ילד בסירה
     src: /img/pics/gisha5.jpg
-  - alt: ''
+  - alt: ילדים וארגזים צבעוניים
     src: /img/pics/ekronot3.jpg
-  - alt: ''
+  - alt: ילד מצייר צהוב
     src: /img/pics/gisha4.jpg
-  - alt: ''
+  - alt: שני ילדים מציירים צהוב
     src: /img/pics/gisha6.jpg
-  - alt: ''
+  - alt: ילדים עובדים בגינה
     src: /img/pics/more1.jpg
-  - alt: ''
+  - alt: צללית של ילד
     src: /img/pics/gisha2.jpg
-  - alt: ''
+  - alt: ילדים סביב ארגז מים
     src: /img/pics/ekronot2.jpg
-  - alt: ''
+  - alt: ילדים הולכים על ארגזים
     src: /img/pics/more2.jpg
 ---
 ## זו הייתה אהבה ממבט ראשון...
