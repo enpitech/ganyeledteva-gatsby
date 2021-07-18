@@ -103,6 +103,18 @@ collections:
       - { label: "תת כותרת", name: "subtitle", widget: "text" }
       - { label: "כפתור", name: "link", widget: "string" }
       - {
+          label: "קישור לעמוד המלצות - גוגל",
+          name: "google-recommendation-url",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "קישור לעמוד המלצות - פייסבוק",
+          name: "facebook-recommendation-url",
+          widget: "string",
+          required: false,
+        }
+      - {
           label: "תת כותרת 2 - לא חובה",
           name: "subtitle 2",
           widget: "text",
