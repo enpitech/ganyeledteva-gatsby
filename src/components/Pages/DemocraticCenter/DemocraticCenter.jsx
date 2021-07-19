@@ -48,7 +48,7 @@ function DemocraticCenter() {
             <source src={tadmitVideo} type="video/mp4" />
           </video>
           <div className="absolute bg-blue-300 inset-0 opacity-50 full" />
-          <div className="absolute text-white text-3xl sm:text-4xl md:text-5xl w-full m-auto">
+          <div className="absolute md:top-1/3 text-white text-3xl sm:text-4xl md:text-5xl w-full m-auto">
             {title}
           </div>
         </div>

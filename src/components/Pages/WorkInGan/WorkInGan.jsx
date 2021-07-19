@@ -73,7 +73,7 @@ export default function WorkInGan() {
         <PageHeader
           title={title}
           subtitle={subtitle}
-          backgroundColorClass="bg-gradient-to-r from-blue-gan-page-header1 to-blue-gan-page-header2"
+          backgroundColorClass="bg-orange-work-in-gan-page-header"
           backgroundPatternClass="bg-patt1"
         />
       </Page.Header>

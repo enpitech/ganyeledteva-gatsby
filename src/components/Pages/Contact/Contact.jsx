@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
-import Page from '../../Page/Page';
-import PageHeader from '../../Page/PageHeader';
-import ContactForm from './ContactForm';
+import React, { useState } from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import Page from "../../Page/Page";
+import PageHeader from "../../Page/PageHeader";
+import ContactForm from "./ContactForm";
 
-import ReasonBtn from './ReasonBtn';
-import SEO from '../../SEO/SEO';
+import ReasonBtn from "./ReasonBtn";
+import SEO from "../../SEO/SEO";
 
 export default function Contact() {
   const data = useStaticQuery(graphql`
@@ -32,7 +32,7 @@ export default function Contact() {
   const pageSEOData = {
     title,
     description: undefined, // description to be added later by Tzachi
-    pagePath: 'contact',
+    pagePath: "contact",
   };
 
   const [formType, setFormType] = useState(1);
@@ -45,7 +45,7 @@ export default function Contact() {
         <PageHeader
           title={title}
           subtitle={subtitle || `${placeAddress},  ${placePhone}`}
-          backgroundColorClass="bg-gradient-to-r from-blue-gan-page-header1 to-blue-gan-page-header2"
+          backgroundColorClass="bg-yellow-gan-page-header"
           backgroundPatternClass="bg-patt1"
         />
       </Page.Header>

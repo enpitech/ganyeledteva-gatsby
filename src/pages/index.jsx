@@ -24,7 +24,6 @@ function initSketchDrawer() {
       colorIndex = 0;
     }
     color = COLORS[colorIndex];
-    $("#hiddenText").css("color", color).css("borderBottomColor", color);
   };
 
   const draw = function () {

@@ -42,7 +42,6 @@ collections:
         label: אנחנו בתקשורת
         widget: list
         fields:
-          - { label: "כותרת", name: "title", widget: "string" }
           - { label: "קישור לכתבה", name: "link_to_article", widget: "string" }
           - { label: "תמונה", name: "img", widget: "image" }
 
@@ -104,6 +103,18 @@ collections:
       - { label: "תת כותרת", name: "subtitle", widget: "text" }
       - { label: "כפתור", name: "link", widget: "string" }
       - {
+          label: "קישור לעמוד המלצות - גוגל",
+          name: "google_recommendation_url",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "קישור לעמוד המלצות - פייסבוק",
+          name: "facebook_recommendation_url",
+          widget: "string",
+          required: false,
+        }
+      - {
           label: "תת כותרת 2 - לא חובה",
           name: "subtitle 2",
           widget: "text",
@@ -129,6 +140,18 @@ collections:
           - { label: "תמונה", name: "src", widget: "image" }
           - { label: "כיתוב תמונה", name: "alt", widget: "string" }
       - { label: "טקסט", name: "body", widget: "markdown" }
+      - {
+          label: "כותרת סרטון",
+          name: "video_title",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "סיומת כתובת סרטון ביוטיוב - לדוגמא: הסיומת לסרטון הנל www.youtube.com/watch?v=2IiNEMEFF0o היא 2IiNEMEFF0o ",
+          name: "video",
+          widget: "string",
+          required: false,
+        }
 
   - name: "democratic-center"
     label: "המרכז הדמוקרטי"

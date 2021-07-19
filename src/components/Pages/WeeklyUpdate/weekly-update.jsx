@@ -46,8 +46,9 @@ function WeeklyUpdate({ data }) {
         <PageHeader
           title="העדכון השבועי"
           subtitle="מתוך הכרה בחשיבות הקשר שבין המשולש- ילד/ה-בית-גן נשלח אליכם ההורים בכל סוף שבוע עדכון שבועי ובו אנו משתפות אתכם בחוויות המשותפות שלנו ממהלך השבוע, מעדכנות בפרטים חשובים ומאפשרות גם לכם להיות חלק מהעשייה בגן."
-          backgroundColorClass="bg-gradient-to-r from-green-weekly-page-header1 to-green-weekly-page-header2"
+          backgroundColorClass="bg-purple-header"
           backgroundPatternClass="bg-patt3"
+          textWhite
         ></PageHeader>
         <Page.Main>
           <div className="md:grid grid-cols-9 gap-2 mr-3">

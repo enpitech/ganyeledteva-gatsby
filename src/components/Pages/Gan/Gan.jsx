@@ -50,7 +50,7 @@ function Gan({ data }) {
           <PageHeader
             title={pageTitle}
             subtitle={mainPageHeader.subtitle}
-            backgroundColorClass="bg-gradient-to-r from-blue-gan-page-header1 to-blue-gan-page-header2"
+            backgroundColorClass="bg-yellow-gan-page-header"
             backgroundPatternClass="bg-patt1"
           />
         </Page.Header>

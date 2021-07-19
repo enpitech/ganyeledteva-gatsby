@@ -47,8 +47,9 @@ function DemocraticEducation() {
         <PageHeader
           title={title}
           subtitle={subtitle}
-          backgroundColorClass="bg-gradient-to-r from-blue-300 to-blue-100"
+          backgroundColorClass="bg-blue-democ-educ-header"
           backgroundPatternClass="bg-patt2"
+          textWhite
         />
       </Page.Header>
       <Page.Main className="md:flex justify-center">
