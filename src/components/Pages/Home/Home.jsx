@@ -6,9 +6,18 @@ import SectionCard from "../../SectionCard";
 import TextTitle from "../../TextTitle";
 import SEO from "../../SEO";
 import TeamGrid from "../../TeamGrid";
-import Carousel from "~src/components/Carousel";
-import tadmitVideo from "~static/assets/vids/dummyvid.mp4";
+import arrowRightIcon from "~static/img/pics/icons/arrow_right.svg";
+import arrowLeftIcon from "~static/img/pics/icons/arrow_left.svg";
 
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+  Dot,
+} from "pure-react-carousel";
+import "pure-react-carousel/dist/react-carousel.es.css";
 function Home() {
   const data = useStaticQuery(graphql`
     query HomeQuery {
@@ -32,7 +41,6 @@ function Home() {
                 url
               }
               tadmit_video
-              tadmit_video_title
             }
           }
         }
@@ -46,7 +54,6 @@ function Home() {
     stories,
     us_on_media: usOnMediaArticles,
     tadmit_video: tadmitVideo,
-    tadmit_video_title: tadmitVideoTitle,
   } = frontmatter;
 
   return (
@@ -80,26 +87,51 @@ function Home() {
           })}
         </div>
         <TeamGrid />
-        <TadmitVideo
-          tadmitVideoTitle={tadmitVideoTitle}
-          tadmitVideo={tadmitVideo}
-        />
+        <TadmitVideo tadmitVideo={tadmitVideo} />
         <div className="mt-40 ">
           <TextTitle title="אנחנו בתקשורת" className="text-center" />
-          <div>
-            <Carousel time={8000}>
-              {usOnMediaArticles.map(
-                ({ title, img, link_to_article: linkToArticle }) => (
-                  <Article
-                    key={title}
-                    title={title}
-                    img={img}
-                    linkToArticle={linkToArticle}
-                  />
-                )
-              )}
-            </Carousel>
-          </div>
+          <CarouselProvider
+            naturalSlideWidth={500}
+            naturalSlideHeight={500}
+            totalSlides={usOnMediaArticles.length}
+            infinite
+            isPlaying
+            visibleSlides={3}
+            className="w-screen"
+            interval={8000}
+          >
+            <div className="relative">
+              <Slider>
+                {usOnMediaArticles.map(
+                  ({ img, link_to_article: linkToArticle }, index) => (
+                    <>
+                      <Slide index={index}>
+                        <Article
+                          key={linkToArticle}
+                          img={img}
+                          linkToArticle={linkToArticle}
+                        />
+                      </Slide>
+                      <Dot slide={index} />
+                    </>
+                  )
+                )}
+              </Slider>
+              <ButtonBack className="absolute left-0 top-1/3 h-1/3 focus:outline-none">
+                <img className="ml-6 w-20 m-auto" src={arrowLeftIcon} />
+              </ButtonBack>
+              <ButtonNext className="absolute top-1/3 h-1/3 focus:outline-none">
+                <img className="mr-6 w-20 m-auto" src={arrowRightIcon} />
+              </ButtonNext>
+            </div>
+            <div className="flex flex-row justify-center ">
+              {usOnMediaArticles.map((_, index) => (
+                <Dot className="mx-5 focus:outline-none" slide={index}>
+                  <div className="inline-block rounded-full h-3 w-3 bg-red-link"></div>
+                </Dot>
+              ))}
+            </div>
+          </CarouselProvider>
         </div>
         <div className="md:w-9/12 mt-40 mb-20">
           <TextTitle className="text-center" title='מה הלו"ז' />
@@ -118,24 +150,20 @@ function Home() {
 
 export default Home;
 
-const Article = ({ title, img, linkToArticle, className }) => {
+const Article = ({ img, linkToArticle, className }) => {
   return (
-    <div className={`text-center text-2xl ${className}`}>
+    <div className={`m-5 text-center text-2xl ${className}`}>
       <a href={linkToArticle} target="_blank">
-        <div className="mb-2">{title}</div>
-        <img className="md:h-96 m-auto" src={img} />
+        <img className="rounded h-96 m-auto" src={img} />
       </a>
     </div>
   );
 };
 
-const TadmitVideo = ({ tadmitVideo, tadmitVideoTitle }) => {
+const TadmitVideo = ({ tadmitVideo }) => {
   return tadmitVideo ? (
     <div className="mt-40">
-      {tadmitVideoTitle ? (
-        <TextTitle className="text-center" title={tadmitVideoTitle} />
-      ) : null}
-      <video className="m-auto mt-10 w-2/3 h-2/3 " autoPlay loop muted>
+      <video className="m-auto mt-10" autoPlay loop muted>
         <source src={tadmitVideo} type="video/mp4" />
       </video>
     </div>

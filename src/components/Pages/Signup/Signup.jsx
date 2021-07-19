@@ -50,6 +50,7 @@ export default function Signup() {
         <PageHeader
           title={title}
           subtitle={subtitle}
+          wideSubtitle
           backgroundColorClass="bg-gradient-to-r from-blue-gan-page-header1 to-blue-gan-page-header2"
           backgroundPatternClass="bg-patt1"
         />
