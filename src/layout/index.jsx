@@ -9,13 +9,55 @@ import { classNames } from "../utils";
 import Footer from "../components/Footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../components/Logo/Logo";
 import favicon from "~static/logos/favicon.png";
-
-const navigation = config.siteRoutes;
+import { useStaticQuery, graphql } from "gatsby";
 
 export default function MainLayout({ children }) {
+  const data = useStaticQuery(graphql`
+    query siteConfigQuery {
+      allMdx(filter: { fields: { dir: { eq: "site_config" } } }) {
+        edges {
+          node {
+            frontmatter {
+              navigation_routes {
+                name
+                href
+              }
+              nav_menu_routes_to_ignore {
+                href
+              }
+              footer_menu_routes_to_ignore {
+                href
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  let {
+    navigation_routes: routes,
+    nav_menu_routes_to_ignore: navMenuIgnoredRoutes,
+    footer_menu_routes_to_ignore: footerMenuIgnoredRoutes,
+  } = data.allMdx.edges[0].node.frontmatter;
+
+  config.siteRoutes = routes;
+  const navigation = config.siteRoutes;
+
+  navMenuIgnoredRoutes = navMenuIgnoredRoutes.map((item) => item.href);
+  footerMenuIgnoredRoutes = footerMenuIgnoredRoutes?.map((item) => item.href);
+
+  const navBarMenuItems = navigation.filter(
+    ({ name, href }) => !navMenuIgnoredRoutes.includes(href)
+  );
+  const footerMenuItems = navigation.filter(
+    ({ name, href }) => !footerMenuIgnoredRoutes?.includes(href)
+  );
+
   const location = useLocation();
 
   return (
@@ -35,7 +77,7 @@ export default function MainLayout({ children }) {
                     <Logo className="h-12 ml-4 w-auto my-auto" alt="navLogo" />
                   </div>
                   <div className="hidden md:-my-px md:ms-6 md:flex ">
-                    {navigation.map((item) => {
+                    {navBarMenuItems.map((item) => {
                       const isActive = item.href === location.pathname;
 
                       return (
@@ -57,7 +99,13 @@ export default function MainLayout({ children }) {
                   </div>
                   <div className="text-sm my-auto hidden md:flex flex-row">
                     <EnquireNavButton
-                      title="פייסבוק"
+                      className="bg-black h-4/5 "
+                      linkTo="https://www.youtube.com/user/0542318413"
+                      target="_blank"
+                    >
+                      <FontAwesomeIcon icon={faYoutube} />
+                    </EnquireNavButton>
+                    <EnquireNavButton
                       className="bg-blue-fb h-4/5"
                       linkTo="https://www.facebook.com/yaldeyhateva/"
                       target="_blank"
@@ -112,7 +160,7 @@ export default function MainLayout({ children }) {
       </Disclosure>
 
       <div className="pb-10 ">{children}</div>
-      <Footer config={config} navigation={navigation} />
+      <Footer config={config} navigation={footerMenuItems} />
     </div>
   );
 }
@@ -123,7 +171,7 @@ const EnquireNavButton = ({ title, linkTo, className, target, children }) => (
     href={linkTo}
     target={target}
   >
-    <div className="ml-2">{children}</div>
+    <div className={title ? "ml-2" : "m-auto"}>{children}</div>
     {title}
   </a>
 );
