@@ -1,6 +1,5 @@
 backend:
-  name: github
-  # name: git-gateway
+  name: git-gateway
   repo: nir2002/ganyeledteva-gatsby # Path to your Github repository
   branch: main # Branch to update
   base_url: https://api.netlify.com
