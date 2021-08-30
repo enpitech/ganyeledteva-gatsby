@@ -7,19 +7,20 @@ import treeTri from "../../../../static/img/pics/icons/tree_tri.svg";
 import * as mainHeaderStyles from "../../../styles/main-header.module.css";
 import Logo from "../../Logo/Logo";
 
+const hieght = 450;
 export default function HomeHeader() {
   return (
     <header>
-      <div className="sm:hidden bg-gradient-to-r from-green-300 to-green-100">
+      <div className="md:hidden bg-gradient-to-r from-green-300 to-green-100">
         <div className="flex justify-center align-items w-full p-6 bg-patt2">
           <Logo className="w-40" />
         </div>
       </div>
-      <div className="hidden sm:block">
-        <div id="draw" className="z-40 absolute" style={{ height: 500 }} />
+      <div className="hidden md:block">
+        <div id="draw" className="z-40 absolute" style={{ height: hieght }} />
         <div
           className="bg-gradient-to-tl from-blue-300 to-green-400"
-          style={{ height: 500 }}
+          style={{ height: hieght }}
         >
           <div className="container mx-auto">
             <div className="grid grid-cols-2 z-50 relative pointer-events-none	">
@@ -27,7 +28,7 @@ export default function HomeHeader() {
                 <div className="text-center">
                   <img
                     src={logo}
-                    className="h-60 mt-24 sm:h-72 sm:mt-24 sm:-mr-8 md:h-64 md:mr-4 md:mt-34 lg:mr-16 lg:h-80 lg:mt-18 xl:mr-16 xl:h-96 xl:mt-14"
+                    className="h-60 mt-20 sm:h-72 sm:-mr-8 md:h-64 md:mr-4 md:mt-28 lg:mr-16 lg:h-80 lg:mt-14 xl:mr-16 xl:h-96 xl:mt-10"
                     alt="Logo"
                   />
                 </div>
@@ -59,7 +60,7 @@ export default function HomeHeader() {
                 <div
                   style={{
                     position: "absolute",
-                    top: 465,
+                    top: 405,
                     left: 0,
                     opacity: "0.5",
                   }}
@@ -81,7 +82,7 @@ export default function HomeHeader() {
                     src={bird}
                     style={{
                       position: "absolute",
-                      top: 40,
+                      top: 30,
                       left: 480,
                       height: 65,
                     }}
@@ -91,7 +92,7 @@ export default function HomeHeader() {
                     src={bird}
                     style={{
                       position: "absolute",
-                      top: 20,
+                      top: 10,
                       left: 500,
                       height: 65,
                     }}
@@ -111,7 +112,7 @@ export default function HomeHeader() {
                     src={bird}
                     style={{
                       position: "absolute",
-                      top: 40,
+                      top: 30,
                       left: 100,
                       height: 55,
                     }}
@@ -121,7 +122,7 @@ export default function HomeHeader() {
                     src={bird}
                     style={{
                       position: "absolute",
-                      top: 20,
+                      top: 10,
                       left: 120,
                       height: 55,
                     }}
@@ -131,7 +132,7 @@ export default function HomeHeader() {
                     src={treeLev}
                     style={{
                       position: "absolute",
-                      top: 304,
+                      top: hieght - 197,
                       left: 110,
                       height: 255,
                     }}
@@ -141,7 +142,7 @@ export default function HomeHeader() {
                     src={treeLev}
                     style={{
                       position: "absolute",
-                      top: 346,
+                      top: hieght - 155,
                       left: 90,
                       height: 200,
                     }}
@@ -151,7 +152,7 @@ export default function HomeHeader() {
                     src={treeTri}
                     style={{
                       position: "absolute",
-                      top: 278,
+                      top: hieght - 223,
                       left: 370,
                       height: 295,
                     }}
@@ -161,7 +162,7 @@ export default function HomeHeader() {
                     src={bird}
                     style={{
                       position: "absolute",
-                      top: 340,
+                      top: hieght - 149,
                       left: 410,
                       height: 75,
                     }}
@@ -171,7 +172,7 @@ export default function HomeHeader() {
                     src={bird}
                     style={{
                       position: "absolute",
-                      top: 320,
+                      top: hieght - 159,
                       left: 500,
                       height: 75,
                     }}
@@ -181,7 +182,7 @@ export default function HomeHeader() {
                     src={bird}
                     style={{
                       position: "absolute",
-                      top: 350,
+                      top: hieght - 129,
                       left: 530,
                       height: 75,
                     }}

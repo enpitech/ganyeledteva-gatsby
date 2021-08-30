@@ -55,7 +55,7 @@ function initSketchDrawer() {
       autoclear: false,
       retina: "auto",
       fullscreen: false,
-      height: 500,
+      height: 450,
       width: WINDOW_WIDTH,
 
       setup() {

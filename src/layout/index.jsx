@@ -70,13 +70,13 @@ export default function MainLayout({ children }) {
       <Disclosure as="nav" className="bg-white shadow-sm">
         {({ open }) => (
           <>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-row-reverse sm:flex-row justify-between h-16">
+            <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+              <div className="flex flex-row-reverse md:flex-row justify-between h-16">
                 <div className="flex">
                   <div className="flex-shrink-0 flex items-center">
-                    <Logo className="h-12 ml-4 w-auto my-auto" alt="navLogo" />
+                    <Logo className="h-12 w-auto my-auto" alt="navLogo" />
                   </div>
-                  <div className="hidden md:-my-px md:ms-6 md:flex ">
+                  <div className="hidden md:-my-px md:ms-6 md:flex">
                     {navBarMenuItems.map((item) => {
                       const isActive = item.href === location.pathname;
 
@@ -97,29 +97,29 @@ export default function MainLayout({ children }) {
                       );
                     })}
                   </div>
-                  <div className="text-sm my-auto hidden md:flex flex-row">
-                    <EnquireNavButton
-                      className="bg-black h-4/5 "
-                      linkTo="https://www.youtube.com/user/0542318413"
-                      target="_blank"
-                    >
-                      <FontAwesomeIcon icon={faYoutube} />
-                    </EnquireNavButton>
-                    <EnquireNavButton
-                      className="bg-blue-fb h-4/5"
-                      linkTo="https://www.facebook.com/yaldeyhateva/"
-                      target="_blank"
-                    >
-                      <FontAwesomeIcon icon={faFacebookF} />
-                    </EnquireNavButton>
-                    <EnquireNavButton
-                      title="צור קשר"
-                      className="bg-red-link"
-                      linkTo="/contact"
-                    >
-                      <FontAwesomeIcon icon={faPhone} />
-                    </EnquireNavButton>
-                  </div>
+                </div>
+                <div className="text-sm my-auto hidden md:flex flex-row">
+                  <EnquireNavButton
+                    className="bg-black h-4/5 w-8"
+                    linkTo="https://www.youtube.com/user/0542318413"
+                    target="_blank"
+                  >
+                    <FontAwesomeIcon icon={faYoutube} />
+                  </EnquireNavButton>
+                  <EnquireNavButton
+                    className="bg-blue-fb h-4/5 w-8"
+                    linkTo="https://www.facebook.com/yaldeyhateva/"
+                    target="_blank"
+                  >
+                    <FontAwesomeIcon icon={faFacebookF} />
+                  </EnquireNavButton>
+                  <EnquireNavButton
+                    title="צור קשר"
+                    className="bg-red-link"
+                    linkTo="/contact"
+                  >
+                    <FontAwesomeIcon icon={faPhone} />
+                  </EnquireNavButton>
                 </div>
 
                 <div className="-mr-2 flex items-center md:hidden">
@@ -167,7 +167,9 @@ export default function MainLayout({ children }) {
 
 const EnquireNavButton = ({ title, linkTo, className, target, children }) => (
   <a
-    className={`m-2 rounded py-2 px-3 text-white inline-block flex flex-row ${className}`}
+    className={`m-2 rounded py-2 ${
+      title ? "px-3" : ""
+    } text-white inline-block flex flex-row ${className}`}
     href={linkTo}
     target={target}
   >

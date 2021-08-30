@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  # name: git-gateway
   repo: nir2002/ganyeledteva-gatsby # Path to your Github repository
   branch: main # Branch to update
   base_url: https://api.netlify.com
@@ -27,7 +28,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - {
-          label: "כותרת לסרטון תסדמית",
+          label: "כותרת לסרטון תדמית",
           name: "tadmit_video_title",
           widget: "string",
           required: false,

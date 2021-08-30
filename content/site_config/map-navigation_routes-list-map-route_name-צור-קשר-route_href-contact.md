@@ -12,8 +12,6 @@ navigation_routes:
     href: /democraticeducation
   - name: הגן
     href: /gan
-  - name: מוצרים חינוכיים
-    href: /products
   - name: לעבוד בגן
     href: /work-in-gan
   - name: רישום לגן
@@ -24,6 +22,4 @@ navigation_routes:
     href: /weekly-update
   - name: צור קשר
     href: /contact
-  - name: חדשנות חינוכית לגיל הרך
-    href: /democratic-center
 ---

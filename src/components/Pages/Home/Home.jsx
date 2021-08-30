@@ -8,6 +8,7 @@ import SEO from "../../SEO";
 import TeamGrid from "../../TeamGrid";
 import arrowRightIcon from "~static/img/pics/icons/arrow_right.svg";
 import arrowLeftIcon from "~static/img/pics/icons/arrow_left.svg";
+import "./Home.css";
 
 import {
   CarouselProvider,
@@ -16,6 +17,7 @@ import {
   ButtonBack,
   ButtonNext,
   Dot,
+  DotGroup,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 function Home() {
@@ -56,6 +58,8 @@ function Home() {
     tadmit_video: tadmitVideo,
   } = frontmatter;
 
+  const screenWidth = window.innerWidth;
+  console.log({ screenWidth });
   return (
     <Page
       style={{
@@ -88,7 +92,7 @@ function Home() {
         </div>
         <TeamGrid />
         <TadmitVideo tadmitVideo={tadmitVideo} />
-        <div className="mt-40 ">
+        <div className="mt-20 md:mt-40">
           <TextTitle title="אנחנו בתקשורת" className="text-center" />
           <CarouselProvider
             naturalSlideWidth={500}
@@ -96,7 +100,7 @@ function Home() {
             totalSlides={usOnMediaArticles.length}
             infinite
             isPlaying
-            visibleSlides={3}
+            visibleSlides={screenWidth < 768 ? 1 : 3}
             className="w-screen"
             interval={8000}
           >
@@ -104,36 +108,40 @@ function Home() {
               <Slider>
                 {usOnMediaArticles.map(
                   ({ img, link_to_article: linkToArticle }, index) => (
-                    <>
-                      <Slide index={index}>
-                        <Article
-                          key={linkToArticle}
-                          img={img}
-                          linkToArticle={linkToArticle}
-                        />
-                      </Slide>
-                      <Dot slide={index} />
-                    </>
+                    <Slide index={index}>
+                      <Article
+                        key={linkToArticle}
+                        img={img}
+                        linkToArticle={linkToArticle}
+                      />
+                    </Slide>
                   )
                 )}
               </Slider>
+
               <ButtonBack className="absolute left-0 top-1/3 h-1/3 focus:outline-none">
-                <img className="ml-6 w-20 m-auto" src={arrowLeftIcon} />
+                <img className="ml-6 w-8 md:w-20 m-auto" src={arrowLeftIcon} />
               </ButtonBack>
               <ButtonNext className="absolute top-1/3 h-1/3 focus:outline-none">
-                <img className="mr-6 w-20 m-auto" src={arrowRightIcon} />
+                <img className="mr-6 w-8 md:w-20 m-auto" src={arrowRightIcon} />
               </ButtonNext>
             </div>
-            <div className="flex flex-row justify-center ">
+            <DotGroup className="mt-4 text-center">
               {usOnMediaArticles.map((_, index) => (
-                <Dot className="mx-5 focus:outline-none" slide={index}>
-                  <div className="inline-block rounded-full h-3 w-3 bg-red-link"></div>
+                <Dot
+                  className={`mx-1 md:mx-5 focus:outline-none rounded-full w-3 h-3 bg-red-link`}
+                  slide={index}
+                >
+                  {/* <div
+                    // className={`inline-block rounded-full h-3 w-3`}
+                    className={`inline-block rounded-full h-3 w-3 bg-red-link`}
+                  ></div> */}
                 </Dot>
               ))}
-            </div>
+            </DotGroup>
           </CarouselProvider>
         </div>
-        <div className="md:w-9/12 mt-40 mb-20">
+        <div className="md:w-9/12 mt-20 md:mt-40 mb-20">
           <TextTitle className="text-center" title='מה הלו"ז' />
           <iframe
             title="calendar"
@@ -152,7 +160,7 @@ export default Home;
 
 const Article = ({ img, linkToArticle, className }) => {
   return (
-    <div className={`m-5 text-center text-2xl ${className}`}>
+    <div className={`h-full text-center text-2xl ${className}`}>
       <a href={linkToArticle} target="_blank">
         <img className="rounded h-96 m-auto" src={img} />
       </a>

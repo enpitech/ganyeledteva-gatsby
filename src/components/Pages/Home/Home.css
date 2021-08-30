@@ -1,0 +1,6 @@
+.carousel__dot {
+  /* background-color: red; */
+}
+.carousel__dot--selected {
+  background-color: black;
+}
