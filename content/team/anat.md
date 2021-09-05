@@ -2,7 +2,7 @@
 title: צחי
 firstname: צחי
 lastname: חנניה
-img: /img/pics/1111.png
+img: /assets/pics/uploads/גן_ילדי_הטבע_הדמוקרטי_צוות_צעירים_-_צילום_לנס_הפקות_39.jpg
 index: 1
 ---
 
