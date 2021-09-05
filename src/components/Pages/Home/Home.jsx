@@ -58,7 +58,6 @@ function Home() {
   } = frontmatter;
 
   const screenWidth = window.innerWidth;
-  console.log({ screenWidth });
   return (
     <Page
       style={{
@@ -107,12 +106,8 @@ function Home() {
               <Slider>
                 {usOnMediaArticles.map(
                   ({ img, link_to_article: linkToArticle }, index) => (
-                    <Slide index={index}>
-                      <Article
-                        key={linkToArticle}
-                        img={img}
-                        linkToArticle={linkToArticle}
-                      />
+                    <Slide index={index} key={linkToArticle}>
+                      <Article img={img} linkToArticle={linkToArticle} />
                     </Slide>
                   )
                 )}
@@ -128,6 +123,7 @@ function Home() {
             <DotGroup className="mt-4 text-center">
               {usOnMediaArticles.map((_, index) => (
                 <Dot
+                  key={index}
                   className={`mx-1 md:mx-5 focus:outline-none rounded-full w-3 h-3 bg-red-link`}
                   slide={index}
                 >
@@ -144,7 +140,7 @@ function Home() {
           <TextTitle className="text-center" title='מה הלו"ז' />
           <iframe
             title="calendar"
-            src="https://calendar.google.com/calendar/embed?showTitle=0&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=ganyeledteva%40gmail.com&color=%23b90e28&ctz=Asia%2FJerusalem"
+            src="https://calendar.google.com/calendar/embed?showTitle=0&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=ganyeledteva.Calendar@gmail.com&color=%23b90e28&ctz=Asia%2FJerusalem"
             width="100%;"
             height="600"
             scrolling="no"
