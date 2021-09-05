@@ -2,7 +2,7 @@
 title: חוה
 firstname: חוה
 lastname: זסלבסקי
-img: /img/pics/whatsapp-image-2020-08-27-at-19.22.16-1-.jpeg
+img: /assets/pics/uploads/גן_ילדי_הטבע_הדמוקרטי_צוות_צעירים_-_צילום_לנס_הפקות_99.jpg
 index: 8
 ---
 
