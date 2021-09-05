@@ -2,7 +2,7 @@
 title: חולוד
 firstname: חולוד
 lastname: חמודה
-img: /img/pics/whatsapp-image-2019-11-27-at-12.52.27.jpeg
+img: /assets/pics/uploads/גן_ילדי_הטבע_הדמוקרטי_צוות_צעירים_-_צילום_לנס_הפקות_70.jpg
 index: 5
 ---
 
