@@ -26,7 +26,7 @@ stories:
     url: /gan
     img: /img/pics/home3.jpg
 tadmit_video_title: הנה קצת על הגן
-tadmit_video: /assets/pics/uploads/dummyvid.mp4
+tadmit_video: https://drive.google.com/drive/folders/1eOpZbpHJIpgR_9w6XNDKWA2xumYQyKsR
 us_on_media:
   - link_to_article: " https://www.facebook.com/tzachi.hananya/videos/10215972460813883"
     img: /assets/pics/uploads/logo.png
