@@ -2,7 +2,7 @@
 title: "מיכל "
 firstname: מיכל
 lastname: רמתי
-img: /img/pics/20190829_181740.jpg
+img: /assets/pics/uploads/גן-ילדי-הטבע-הדמוקרטי-צוות-הבוגרים-2020-21-צילום-ערן-לם-24.jpg
 index: 4
 ---
 
