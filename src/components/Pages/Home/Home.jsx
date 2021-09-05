@@ -29,7 +29,6 @@ function Home() {
             }
             frontmatter {
               us_on_media {
-                title
                 img
                 link_to_article
               }
