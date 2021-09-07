@@ -219,8 +219,8 @@ function OtherReasonForm({ handleInputChange }) {
       <Phone onChange={handleInputChange} />
 
       <TextBox
-        id="looking-for"
-        fieldName="looking_for"
+        id="content"
+        fieldName="content"
         label="יאללה שוט"
         onChange={handleInputChange}
         required
