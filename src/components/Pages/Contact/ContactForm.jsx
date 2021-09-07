@@ -113,8 +113,18 @@ function WorkWithUsForm({ handleInputChange }) {
         </div>
       </div>
 
-      <TextBox label="על עצמכם" onChange={handleInputChange} required />
-      <TextBox label="מה אתם מחפשים" onChange={handleInputChange} required />
+      <TextBox
+        id="about"
+        label="על עצמכם"
+        onChange={handleInputChange}
+        required
+      />
+      <TextBox
+        id="looking-for"
+        label="מה אתם מחפשים"
+        onChange={handleInputChange}
+        required
+      />
     </>
   );
 }
