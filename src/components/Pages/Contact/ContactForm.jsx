@@ -218,7 +218,13 @@ function OtherReasonForm({ handleInputChange }) {
       <Email onChange={handleInputChange} />
       <Phone onChange={handleInputChange} />
 
-      <TextBox label="יאללה שוט" onChange={handleInputChange} required />
+      <TextBox
+        id="looking-for"
+        fieldName="looking_for"
+        label="יאללה שוט"
+        onChange={handleInputChange}
+        required
+      />
     </>
   );
 }
