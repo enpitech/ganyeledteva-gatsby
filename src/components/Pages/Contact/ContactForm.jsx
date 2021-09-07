@@ -44,16 +44,29 @@ export default function ContactForm({ formType }) {
     }
   };
 
+  const getFormName = () => {
+    switch (formType) {
+      case 1:
+        return 'work-with-us';
+      case 2:
+        return 'services';
+      case 3:
+        return 'something-else';
+      default:
+        return null;
+    }
+  };
+
   return (
     <form
       className="space-y-8"
-      name="contact"
+      name={getFormName()}
       method="post"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
     >
-      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="form-name" value={getFormName()} />
       <p hidden>
         <label>
           Don’t fill this out:{' '}
