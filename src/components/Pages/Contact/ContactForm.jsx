@@ -115,12 +115,14 @@ function WorkWithUsForm({ handleInputChange }) {
 
       <TextBox
         id="about"
+        fieldName="about"
         label="על עצמכם"
         onChange={handleInputChange}
         required
       />
       <TextBox
         id="looking-for"
+        fieldName="looking_for"
         label="מה אתם מחפשים"
         onChange={handleInputChange}
         required
