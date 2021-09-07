@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { navigate } from 'gatsby-link';
+import SuccessAlert from '../../Alerts/SuccessAlert';
 
 function encode(data) {
   return Object.keys(data)
@@ -10,6 +11,7 @@ function encode(data) {
 
 export default function ContactForm({ formType }) {
   const [formValues, setFormValues] = useState({});
+  const [formSent, setFormSent] = useState(false);
 
   const handleInputChange = ({ target }) => {
     setFormValues({ ...formValues, [target.name]: target.value });
@@ -27,7 +29,9 @@ export default function ContactForm({ formType }) {
         ...formValues,
       }),
     })
-      .then(() => navigate('/contact'))
+      .then(() => {
+        setFormSent(true);
+      })
       .catch();
   };
 
@@ -58,32 +62,44 @@ export default function ContactForm({ formType }) {
   };
 
   return (
-    <form
-      className="space-y-8"
-      name={getFormName()}
-      method="post"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      onSubmit={handleSubmit}
-    >
-      <input type="hidden" name="form-name" value={getFormName()} />
-      <p hidden>
-        <label>
-          Don’t fill this out:{' '}
-          <input name="bot-field" onChange={handleInputChange} />
-        </label>
-      </p>
+    <>
+      <form
+        className="space-y-8"
+        name={getFormName()}
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        onSubmit={handleSubmit}
+      >
+        <input type="hidden" name="form-name" value={getFormName()} />
+        <p hidden>
+          <label>
+            Don’t fill this out:{' '}
+            <input name="bot-field" onChange={handleInputChange} />
+          </label>
+        </p>
 
-      <div className="space-y-8  sm:space-y-5">
-        <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-          <div className="space-y-6 sm:space-y-5">{getForm()}</div>
+        <div className="space-y-8  sm:space-y-5">
+          <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
+            <div className="space-y-6 sm:space-y-5">{getForm()}</div>
+          </div>
         </div>
-      </div>
 
-      <div className="w-max mx-auto">
-        <SubmitBtn label="רק ללחוץ כאן וסיימתם :)" />
-      </div>
-    </form>
+        <div className="w-max mx-auto">
+          <SubmitBtn label="רק ללחוץ כאן וסיימתם :)" />
+        </div>
+      </form>
+      <SuccessAlert
+        open={formSent}
+        title="הטופס נשלח בהצלחה 🎉"
+        content="מחכה לכם תשובה מאיתנו במייל שלכם"
+        onClose={() => {
+          setFormSent(false);
+        }}
+        actionText="חזרה לדף הבית"
+        actionOnClick={() => navigate('/')}
+      />
+    </>
   );
 }
 
