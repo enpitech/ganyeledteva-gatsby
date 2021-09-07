@@ -51,7 +51,7 @@ export default function ContactForm({ formType }) {
   const getFormName = () => {
     switch (formType) {
       case 1:
-        return 'work-with-us';
+        return 'something-else';
       case 2:
         return 'services';
       case 3:
