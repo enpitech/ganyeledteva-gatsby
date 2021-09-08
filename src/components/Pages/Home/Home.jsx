@@ -1,14 +1,14 @@
-import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import HomeHeader from "./HomeHeader";
-import Page from "../../Page/Page";
-import SectionCard from "../../SectionCard";
-import TextTitle from "../../TextTitle";
-import SEO from "../../SEO";
-import TeamGrid from "../../TeamGrid";
-import arrowRightIcon from "~static/img/pics/icons/arrow_right.svg";
-import arrowLeftIcon from "~static/img/pics/icons/arrow_left.svg";
-import "./Home.css";
+import React, { useState } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import HomeHeader from './HomeHeader';
+import Page from '../../Page/Page';
+import SectionCard from '../../SectionCard';
+import TextTitle from '../../TextTitle';
+import SEO from '../../SEO';
+import TeamGrid from '../../TeamGrid';
+import arrowRightIcon from '~static/img/pics/icons/arrow_right.svg';
+import arrowLeftIcon from '~static/img/pics/icons/arrow_left.svg';
+import './Home.css';
 
 import {
   CarouselProvider,
@@ -18,8 +18,10 @@ import {
   ButtonNext,
   Dot,
   DotGroup,
-} from "pure-react-carousel";
-import "pure-react-carousel/dist/react-carousel.es.css";
+} from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import { useEffect } from 'react';
+
 function Home() {
   const data = useStaticQuery(graphql`
     query HomeQuery {
@@ -57,12 +59,17 @@ function Home() {
     tadmit_video_youtube_url_code: tadmitVideoUrlCode,
   } = frontmatter;
 
-  const screenWidth = window.innerWidth;
+  const [screenWidth, setScreenWidth] = useState(0);
+
+  useEffect(() => {
+    setScreenWidth(window.innerWidth);
+  }, []);
+
   return (
     <Page
       style={{
         background: "#fff url('img/backgrounds/back.png')",
-        backgroundSize: "cover",
+        backgroundSize: 'cover',
       }}
     >
       <SEO />
@@ -76,7 +83,7 @@ function Home() {
             return (
               <SectionCard
                 className={`flex flex-col ${
-                  index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
+                  index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'
                 } justify-between mt-20`}
                 key={title}
                 title={title}
