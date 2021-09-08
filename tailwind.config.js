@@ -18,10 +18,15 @@ module.exports = {
         purple: {
           border: "#f7479e",
           "light-border": "#ff2b56",
-          header: "#ff2b56",
         },
+        pink: { header: "#ff2b56" },
+
         red: {
           link: "#ff3860",
+        },
+        turquoise: {
+          "signup-page-header1": "#8cf8e7",
+          "signup-page-header2": "#8ddad5",
         },
         green: {
           "weekly-page-header1": "#8cf8e7",
@@ -34,10 +39,10 @@ module.exports = {
           "gan-section-header-border": "#fdffa8",
         },
         blue: {
-          "gan-page-header1": "#8cf8e7",
-          "gan-page-header2": "#8ddad5",
           "democ-educ-header": "#4b2ac8",
           fb: "#4266b2",
+          "faq-page-header1": "#a1c4fd",
+          "faq-page-header2": "#c2e9fb",
         },
         orange: {
           "work-in-gan-page-header": "#f36c4f",

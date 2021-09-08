@@ -27,7 +27,6 @@ export default function TeamGrid() {
     }
   `);
 
-
   let teamList = data.allMdx.edges.map((employeeEdge) => {
     const { body } = employeeEdge.node;
     const {
@@ -62,7 +61,9 @@ export default function TeamGrid() {
               className="text-center w-full"
               style={{
                 marginTop:
-                  index === 0 ? "auto" : `-${(diamondSideEdgeLength - 1) / 2}vw`,
+                  index === 0
+                    ? "auto"
+                    : `-${(diamondSideEdgeLength - 1) / 2}vw`,
               }}
             >
               {singleSplittedTeamList.map((employeeData, index) => (
@@ -93,6 +94,7 @@ const EmployeeCardDesktop = ({ data }) => {
         clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
         backgroundImage: `url(${imgPath})`,
         backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       <button onClick={() => setOpen(!open)} className="focus:outline-none">
@@ -244,7 +246,6 @@ const prepareTeamListForDiamondGrid = (teamList) => {
  * assumptions: @param:teamListSplitToSubArrs length >= 2, meaning there are at least 3 .md file of gan's workers
  */
 const fillInEmptyDiamondsIfNeeded = (teamListSplitToSubArrs) => {
-
   const placeholderEmptyDiamond = { title: "", isEmpty: true };
   const oneBeforeLastRowLen =
     teamListSplitToSubArrs[teamListSplitToSubArrs.length - 2].length;
@@ -276,5 +277,5 @@ const fillInEmptyDiamondsIfNeeded = (teamListSplitToSubArrs) => {
       placeholderEmptyDiamond
     );
 
-    return teamListSplitToSubArrs
+  return teamListSplitToSubArrs;
 };

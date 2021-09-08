@@ -41,7 +41,7 @@ function Home() {
                 img
                 url
               }
-              tadmit_video
+              tadmit_video_youtube_url_code
             }
           }
         }
@@ -54,7 +54,7 @@ function Home() {
   const {
     stories,
     us_on_media: usOnMediaArticles,
-    tadmit_video: tadmitVideo,
+    tadmit_video_youtube_url_code: tadmitVideoUrlCode,
   } = frontmatter;
 
   const screenWidth = window.innerWidth;
@@ -89,7 +89,7 @@ function Home() {
           })}
         </div>
         <TeamGrid />
-        <TadmitVideo tadmitVideo={tadmitVideo} />
+        <TadmitVideo tadmitVideo={tadmitVideoUrlCode} />
         <div className="mt-20 md:mt-40">
           <TextTitle title="אנחנו בתקשורת" className="text-center" />
           <CarouselProvider
@@ -99,7 +99,7 @@ function Home() {
             infinite
             isPlaying
             visibleSlides={screenWidth < 768 ? 1 : 3}
-            className="w-screen"
+            className="w-screen mt-8"
             interval={8000}
           >
             <div className="relative">
@@ -113,11 +113,17 @@ function Home() {
                 )}
               </Slider>
 
-              <ButtonBack className="absolute left-0 top-1/3 h-1/3 focus:outline-none">
-                <img className="ml-6 w-8 md:w-20 m-auto" src={arrowLeftIcon} />
+              <ButtonBack className="absolute left-0 top-1/3 h-1/6 md:h-1/3 focus:outline-none">
+                <img
+                  className="ml-6 w-8 md:w-20 m-auto bg-red-link rounded-full"
+                  src={arrowLeftIcon}
+                />
               </ButtonBack>
-              <ButtonNext className="absolute top-1/3 h-1/3 focus:outline-none">
-                <img className="mr-6 w-8 md:w-20 m-auto" src={arrowRightIcon} />
+              <ButtonNext className="absolute top-1/3 h-1/6 md:h-1/3 focus:outline-none">
+                <img
+                  className="mr-6 w-8 md:w-20 m-auto bg-red-link rounded-full"
+                  src={arrowRightIcon}
+                />
               </ButtonNext>
             </div>
             <DotGroup className="mt-4 text-center">
@@ -155,20 +161,26 @@ export default Home;
 
 const Article = ({ img, linkToArticle, className }) => {
   return (
-    <div className={`h-full text-center text-2xl ${className}`}>
+    <div
+      className={`h-full mx-2 text-center text-2xl transform transition duration-500 hover:scale-110 ${className}`}
+    >
       <a href={linkToArticle} target="_blank">
-        <img className="rounded h-96 m-auto" src={img} />
+        <img className="h-82 md:h-96 w-5/6 md:w-11/12 m-auto" src={img} />
       </a>
     </div>
   );
 };
 
 const TadmitVideo = ({ tadmitVideo }) => {
+  console.log({ tadmitVideo });
   return tadmitVideo ? (
-    <div className="mt-40">
-      <video className="m-auto mt-10" autoPlay loop muted>
-        <source src={tadmitVideo} type="video/mp4" />
-      </video>
-    </div>
+    <iframe
+      className="w-4/5 md:w-2/3 m-auto h-96 mt-20 md:mt-48 rounded-lg"
+      src={`https://www.youtube.com/embed/${tadmitVideo}`}
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
   ) : null;
 };

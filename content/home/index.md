@@ -26,7 +26,6 @@ stories:
     url: /gan
     img: /img/pics/home3.jpg
 tadmit_video_title: הנה קצת על הגן
-tadmit_video: ""
 tadmit_video_youtube_url: https://www.youtube.com/watch?v=SVe2cxA6PqU
 tadmit_video_youtube_url_code: SVe2cxA6PqU
 us_on_media:
