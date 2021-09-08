@@ -2,7 +2,7 @@
 title: אחינועם
 firstname: אחינועם
 lastname: חנניה
-img: /img/pics/ahinoam.jpg
+img: /assets/pics/uploads/unnamed.jpg
 index: 2
 ---
 

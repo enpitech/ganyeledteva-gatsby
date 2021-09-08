@@ -2,8 +2,8 @@
 title: אורטל
 firstname: אורטל
 lastname: רייבי
-img: /img/pics/ortal2.jpg
-index: 6
+img: /assets/pics/uploads/גן-ילדי-הטבע-הדמוקרטי-צוות-הבוגרים-2020-21-צילום-ערן-לם-19.jpg
+index: 3
 ---
 
 **אורטל רייבי, בת 39 - מנהלת פדגוגית וקפטנית בגן**
