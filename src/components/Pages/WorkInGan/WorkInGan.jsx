@@ -52,7 +52,7 @@ export default function WorkInGan() {
 
       if (!showStickyFooter && window.scrollY >= displayPosition) {
         setShowStickyFooter(true);
-      } else if (showStickyFooter && window.scrollY < 100) {
+      } else if (showStickyFooter && window.scrollY < 150) {
         setShowStickyFooter(false);
       }
     });
@@ -100,7 +100,7 @@ export default function WorkInGan() {
       <Page.Main>
         {tadmitVideo ? (
           <div className="mb-16">
-            <video className="w-max" controls autoPlay muted>
+            <video className="w-full" controls autoPlay muted>
               <source src={tadmitVideo} type="video/mp4" />
             </video>
           </div>
