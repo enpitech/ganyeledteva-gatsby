@@ -90,7 +90,7 @@ export default function SignupForm() {
         </div>
 
         <div className="w-1/3 mx-auto">
-          <SubmitBtn label="תרשמו אותי!" onSubmit={handleSubmit} />
+          <SubmitBtn label="שלח" onSubmit={handleSubmit} />
         </div>
       </form>
     </>

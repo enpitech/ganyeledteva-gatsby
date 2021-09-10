@@ -222,7 +222,7 @@ function ServicesForm({ handleInputChange }) {
         </fieldset>
       </div>
 
-      <TextBox label="דברים נוספים" onChange={handleInputChange} />
+      <TextBox label="משהו שרציתי להוסיף" onChange={handleInputChange} />
     </>
   );
 }
@@ -237,7 +237,7 @@ function OtherReasonForm({ handleInputChange }) {
       <TextBox
         id="content"
         fieldName="content"
-        label="יאללה שוט"
+        label="דברו אלינו"
         onChange={handleInputChange}
         required
       />
