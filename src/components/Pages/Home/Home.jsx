@@ -149,9 +149,10 @@ function Home() {
             </DotGroup>
           </CarouselProvider>
         </div>
-        <div className="md:w-9/12 mt-20 md:mt-40 mb-20">
+        <div className="md:w-9/12 mt-20 md:mt-40">
           <TextTitle className="text-center" title='מה הלו"ז' />
           <iframe
+            className="mb-24"
             title="calendar"
             src="https://calendar.google.com/calendar/embed?showTitle=0&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=ganyeledteva.Calendar@gmail.com&color=%23b90e28&ctz=Asia%2FJerusalem"
             width="100%;"
