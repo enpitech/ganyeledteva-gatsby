@@ -8,8 +8,7 @@ import config from '../../data/SiteConfig';
 import { classNames } from '../utils';
 import Footer from '../components/Footer/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
-import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import Logo from '../components/Logo/Logo';
 import favicon from '~static/logos/favicon.png';
@@ -88,7 +87,11 @@ export default function MainLayout({ children }) {
                             isActive
                               ? 'border-purple-border text-purple-border font-bold'
                               : 'border-transparent text-gray-500 hover:text-purple-border hover:border-purple-border hover:font-bold',
-                            'text-center inline-flex items-center px-2 pt-1 border-b-2 text-sm font-medium'
+                            `${
+                              item.name === 'צור קשר'
+                                ? 'text-purple-border'
+                                : undefined
+                            } text-center inline-flex items-center px-2 pt-1 border-b-2 text-sm font-medium`
                           )}
                           aria-current={isActive ? 'page' : undefined}
                         >
@@ -100,26 +103,24 @@ export default function MainLayout({ children }) {
                 </div>
                 <div className="text-sm my-auto hidden md:flex flex-row">
                   <EnquireNavButton
-                    className="bg-black h-4/5 w-8"
+                    className="bg-black h-4/5 w-9 rounded-full"
                     linkTo="https://www.youtube.com/user/0542318413"
                     target="_blank"
                   >
                     <FontAwesomeIcon icon={faYoutube} />
                   </EnquireNavButton>
                   <EnquireNavButton
-                    className="bg-blue-fb h-4/5 w-8"
+                    className="bg-blue-fb h-4/5 w-9 rounded-full"
                     linkTo="https://www.facebook.com/yaldeyhateva/"
                     target="_blank"
                   >
                     <FontAwesomeIcon icon={faFacebookF} />
                   </EnquireNavButton>
                   <EnquireNavButton
-                    title="צור קשר"
+                    title="רישום לגן"
                     className="bg-red-link"
-                    linkTo="/contact"
-                  >
-                    <FontAwesomeIcon icon={faPhone} />
-                  </EnquireNavButton>
+                    linkTo="/signup"
+                  ></EnquireNavButton>
                 </div>
 
                 <div className="-mr-2 flex items-center md:hidden">
@@ -173,7 +174,9 @@ const EnquireNavButton = ({ title, linkTo, className, target, children }) => (
     href={linkTo}
     target={target}
   >
-    <div className={title ? 'ml-2' : 'm-auto'}>{children}</div>
+    {children ? (
+      <div className={title ? 'ml-2' : 'm-auto'}>{children}</div>
+    ) : null}
     {title}
   </a>
 );
