@@ -191,13 +191,11 @@ function RegistrationForm({ handleInputChange }) {
         label="ספרו לנו מי אתם ואיך נוכל לעזור לכם"
         onChange={handleInputChange}
         fieldName="who_are_you"
-        required
       />
       <TextBox
         label="ספרו לנו על האופן בו אתם תופסים את תפקיד הגן בחיי הילדים ואת מערכת היחסים בין הבית לגן"
         onChange={handleInputChange}
         fieldName="thoughts_about_education"
-        required
       />
     </>
   );
