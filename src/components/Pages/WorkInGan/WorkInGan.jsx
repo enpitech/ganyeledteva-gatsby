@@ -1,10 +1,10 @@
-import React from "react";
-import Page from "~src/components/Page/Page";
-import PageHeader from "~src/components/Page/PageHeader";
-import SEO from "~src/components/SEO";
-import { useStaticQuery, graphql } from "gatsby";
-import TextTitle from "~src/components/TextTitle";
-import { siteRoutes } from "../../../../data/SiteConfig";
+import React from 'react';
+import Page from '~src/components/Page/Page';
+import PageHeader from '~src/components/Page/PageHeader';
+import SEO from '~src/components/SEO';
+import { useStaticQuery, graphql } from 'gatsby';
+import TextTitle from '~src/components/TextTitle';
+import { siteRoutes } from '../../../../data/SiteConfig';
 
 export default function WorkInGan() {
   const data = useStaticQuery(graphql`
@@ -57,7 +57,7 @@ export default function WorkInGan() {
     (route) => route.href === `/${workInGanMdxData.fields.dir}`
   )[0];
 
-  const currentPageTitle = currentPageRouteObject?.name || "לעבוד בגן";
+  const currentPageTitle = currentPageRouteObject?.name || 'לעבוד בגן';
 
   const pageSEOData = {
     title: currentPageTitle,
@@ -80,18 +80,14 @@ export default function WorkInGan() {
       <Page.Main>
         {tadmitVideo ? (
           <div className="mb-16">
-            <TextTitle
-              title={tadmitVideoTitle || "ככה זה לעבוד איתנו:"}
-              className="text-center py-10"
-            />
-            <video className="m-auto w-11/12 md:w-2/3 md:h-2/3 " controls>
+            <video className="w-max" controls>
               <source src={tadmitVideo} type="video/mp4" />
             </video>
           </div>
         ) : null}
         <div className="m-auto pb-20 w-5/6">
           <TextTitle
-            title={teamGalleryTitle || "הצוות המנצח שלנו:"}
+            title={teamGalleryTitle || 'הצוות המנצח שלנו:'}
             className="text-center py-10"
           />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-10">
