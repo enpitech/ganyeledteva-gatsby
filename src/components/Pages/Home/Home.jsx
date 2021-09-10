@@ -1,15 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import HomeHeader from './HomeHeader';
-import Page from '../../Page/Page';
-import SectionCard from '../../SectionCard';
-import TextTitle from '../../TextTitle';
-import SEO from '../../SEO';
-import TeamGrid from '../../TeamGrid';
-import arrowRightIcon from '~static/img/pics/icons/arrow_right.svg';
-import arrowLeftIcon from '~static/img/pics/icons/arrow_left.svg';
-import './Home.css';
-
 import {
   CarouselProvider,
   Slider,
@@ -20,7 +10,17 @@ import {
   DotGroup,
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import { useEffect } from 'react';
+
+import HomeHeader from './HomeHeader';
+import Page from '../../Page/Page';
+import SectionCard from '../../SectionCard';
+import TextTitle from '../../TextTitle';
+import SEO from '../../SEO';
+import TeamGrid from '../../TeamGrid';
+import arrowRightIcon from '~static/img/pics/icons/arrow_right.svg';
+import arrowLeftIcon from '~static/img/pics/icons/arrow_left.svg';
+
+import './Home.css';
 
 function Home() {
   const data = useStaticQuery(graphql`
@@ -124,12 +124,14 @@ function Home() {
                 <img
                   className="ml-6 w-8 md:w-20 m-auto bg-red-link rounded-full"
                   src={arrowLeftIcon}
+                  alt="כפתור אחורה בקרסולה אנחנו בתקשורת"
                 />
               </ButtonBack>
               <ButtonNext className="absolute top-1/3 h-1/6 md:h-1/3 focus:outline-none">
                 <img
                   className="mr-6 w-8 md:w-20 m-auto bg-red-link rounded-full"
                   src={arrowRightIcon}
+                  alt="כפתור קדימה בקרסולה אנחנו בתקשורת"
                 />
               </ButtonNext>
             </div>
@@ -137,7 +139,7 @@ function Home() {
               {usOnMediaArticles.map((_, index) => (
                 <Dot
                   key={index}
-                  className={`mx-1 md:mx-5 focus:outline-none rounded-full w-3 h-3 bg-red-link`}
+                  className="mx-1 md:mx-5 focus:outline-none rounded-full w-3 h-3 bg-red-link"
                   slide={index}
                 >
                   {/* <div
@@ -149,7 +151,7 @@ function Home() {
             </DotGroup>
           </CarouselProvider>
         </div>
-        <div className="md:w-9/12 mt-20 md:mt-40">
+        <div className="md:w-11/12 mt-20 md:mt-40">
           <TextTitle className="text-center" title='מה הלו"ז' />
           <iframe
             className="mb-24"
@@ -167,28 +169,28 @@ function Home() {
 
 export default Home;
 
-const Article = ({ img, linkToArticle, className }) => {
-  return (
-    <div
-      className={`h-full mx-2 text-center text-2xl transform transition duration-500 hover:scale-110 ${className}`}
-    >
-      <a href={linkToArticle} target="_blank">
-        <img className="h-82 md:h-96 w-5/6 md:w-11/12 m-auto" src={img} />
-      </a>
-    </div>
-  );
-};
+const Article = ({ img, linkToArticle, className }) => (
+  <div
+    className={`h-full mx-2 text-center text-2xl transform transition duration-500 hover:scale-110 ${className}`}
+  >
+    <a href={linkToArticle} target="_blank" rel="noreferrer">
+      <img
+        className="h-82 md:h-96 w-5/6 md:w-11/12 m-auto"
+        src={img}
+        alt="תמונה מקדימה של כתבה מגלריית אנחנו בתקשורת"
+      />
+    </a>
+  </div>
+);
 
-const TadmitVideo = ({ tadmitVideo }) => {
-  console.log({ tadmitVideo });
-  return tadmitVideo ? (
+const TadmitVideo = ({ tadmitVideo }) =>
+  tadmitVideo ? (
     <iframe
       className="w-4/5 md:w-2/3 m-auto h-96 mt-20 md:mt-48 rounded-lg"
       src={`https://www.youtube.com/embed/${tadmitVideo}`}
       title="YouTube video player"
-      frameborder="0"
+      frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
+      allowFullScreen
+    />
   ) : null;
-};
