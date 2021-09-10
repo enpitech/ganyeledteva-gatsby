@@ -80,7 +80,7 @@ export default function WorkInGan() {
       <Page.Main>
         {tadmitVideo ? (
           <div className="mb-16">
-            <video className="w-max" controls>
+            <video className="w-max" controls autoPlay muted>
               <source src={tadmitVideo} type="video/mp4" />
             </video>
           </div>
