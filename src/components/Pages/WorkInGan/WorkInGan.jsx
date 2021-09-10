@@ -87,7 +87,7 @@ export default function WorkInGan() {
         ) : null}
         <div className="m-auto pb-20 w-5/6">
           <TextTitle
-            title={teamGalleryTitle || 'הצוות המנצח שלנו:'}
+            title={teamGalleryTitle || 'המחנכות מספרות על העבודה בגן'}
             className="text-center py-10"
           />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-10">
