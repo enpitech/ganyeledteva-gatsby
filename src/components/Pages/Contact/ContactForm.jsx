@@ -224,6 +224,7 @@ function ServicesForm({ handleInputChange }) {
       <TextBox
         label="משהו שרציתי להוסיף"
         onChange={handleInputChange}
+        fieldName="content"
         required
       />
     </>
