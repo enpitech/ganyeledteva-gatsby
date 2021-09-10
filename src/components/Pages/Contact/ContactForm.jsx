@@ -38,9 +38,9 @@ export default function ContactForm({ formType }) {
   const getForm = () => {
     switch (formType) {
       case 1:
-        return <ServicesForm handleInputChange={handleInputChange} />;
-      case 2:
         return <WorkWithUsForm handleInputChange={handleInputChange} />;
+      case 2:
+        return <ServicesForm handleInputChange={handleInputChange} />;
       case 3:
         return <OtherReasonForm handleInputChange={handleInputChange} />;
       default:
@@ -51,9 +51,9 @@ export default function ContactForm({ formType }) {
   const getFormName = () => {
     switch (formType) {
       case 1:
-        return 'services';
-      case 2:
         return 'work-with-us';
+      case 2:
+        return 'services';
       case 3:
         return 'something-else';
       default:
