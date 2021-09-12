@@ -95,7 +95,11 @@ collections:
     fields:
       - { label: "כותרת", name: "title", widget: "string" }
       - { label: "תת כותרת", name: "subtitle", widget: "text" }
-      - { label: "כפתור", name: "link", widget: "string" }
+      - {
+          label: "כותרת קישור לתפריט תזונה",
+          name: "foodMenuLinkTitle",
+          widget: "string",
+        }
       - {
           label: "קישור לעמוד המלצות - גוגל",
           name: "google_recommendation_url",
@@ -148,7 +152,7 @@ collections:
         }
       - {
           label: "קובץ תפריט תזונה",
-          name: "foodMenu",
+          name: "foodMenuFileLink",
           widget: "file",
           required: false,
         }

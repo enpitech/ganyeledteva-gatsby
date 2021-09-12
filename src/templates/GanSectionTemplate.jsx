@@ -35,6 +35,8 @@ export default function GanSectionTemplate({ data, pageContext }) {
     video_title: videoTitle,
     youtubeVideoUrl,
     title,
+    foodMenuFileLink,
+    foodMenuLinkTitle,
     facebook_recommendation_url: facebookRecommendationUrl,
     google_recommendation_url: googleRecommendationUrl,
   } = section;
@@ -113,6 +115,15 @@ export default function GanSectionTemplate({ data, pageContext }) {
               ></iframe>
             </>
           ) : null}
+          {foodMenuFileLink ? (
+            <div className="m-auto w-1/2 text-center">
+              <a href={foodMenuFileLink} target="_blank">
+                <div className="inline-block my-4 px-2 py-1 rounded-full w-1/2 text-center border-2 border-black hover:bg-red-link hover:text-white">
+                  {foodMenuLinkTitle}
+                </div>
+              </a>
+            </div>
+          ) : null}
           <BottomNavMenu
             sectionsData={sectionsData}
             activeSectionTitle={title}
@@ -176,6 +187,8 @@ export const pageQuery = graphql`
         }
         video_title
         youtubeVideoUrl
+        foodMenuFileLink
+        foodMenuLinkTitle
       }
       fields {
         slug
