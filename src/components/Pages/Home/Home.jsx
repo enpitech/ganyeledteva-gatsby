@@ -21,7 +21,7 @@ import arrowRightIcon from "~static/img/pics/icons/arrow_right.svg";
 import arrowLeftIcon from "~static/img/pics/icons/arrow_left.svg";
 
 import "./Home.css";
-import { getVideoIdFromYoutubeUrl } from "../../../utils";
+import TadmitVideo from "../../TadmitVideo";
 
 function Home() {
   const data = useStaticQuery(graphql`
@@ -97,7 +97,9 @@ function Home() {
           })}
         </div>
         <TeamGrid />
-        <TadmitVideo tadmitVideo={tadmitVideoYoutubeUrl} />
+        <div className="mt-20 md:mt-48 w-full">
+          <TadmitVideo tadmitVideo={tadmitVideoYoutubeUrl} />
+        </div>
         <div className="mt-20 md:mt-40">
           <TextTitle title="אנחנו בתקשורת" className="text-center" />
           <CarouselProvider
@@ -178,17 +180,3 @@ const Article = ({ img, linkToArticle, className }) => (
     </a>
   </div>
 );
-
-const TadmitVideo = ({ tadmitVideo }) => {
-  const tadmitVideoYouTubeUrlId = getVideoIdFromYoutubeUrl(tadmitVideo);
-  return tadmitVideo ? (
-    <iframe
-      className="w-4/5 m-auto h-128 mt-20 md:mt-48 rounded-lg"
-      src={`https://www.youtube.com/embed/${tadmitVideoYouTubeUrlId}`}
-      title="YouTube video player"
-      frameBorder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-    />
-  ) : null;
-};
