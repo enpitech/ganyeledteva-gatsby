@@ -184,6 +184,7 @@ const EmployeeModal = ({
               clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
               backgroundImage: `url(${imgPath})`,
               backgroundSize: "cover",
+              backgroundPosition: "center",
               width: `${diamondSideEdgeLength}vw`,
               height: `${diamondSideEdgeLength}vw`,
             }}

@@ -21,6 +21,7 @@ import arrowRightIcon from "~static/img/pics/icons/arrow_right.svg";
 import arrowLeftIcon from "~static/img/pics/icons/arrow_left.svg";
 
 import "./Home.css";
+import { getVideoIdFromYoutubeUrl } from "../../../utils";
 
 function Home() {
   const data = useStaticQuery(graphql`
@@ -43,7 +44,7 @@ function Home() {
                 img
                 url
               }
-              tadmit_video_youtube_url_code
+              tadmit_video_youtube_url
             }
           }
         }
@@ -56,7 +57,7 @@ function Home() {
   const {
     stories,
     us_on_media: usOnMediaArticles,
-    tadmit_video_youtube_url_code: tadmitVideoUrlCode,
+    tadmit_video_youtube_url: tadmitVideoYoutubeUrl,
   } = frontmatter;
 
   const [screenWidth, setScreenWidth] = useState(0);
@@ -96,7 +97,7 @@ function Home() {
           })}
         </div>
         <TeamGrid />
-        <TadmitVideo tadmitVideo={tadmitVideoUrlCode} />
+        <TadmitVideo tadmitVideo={tadmitVideoYoutubeUrl} />
         <div className="mt-20 md:mt-40">
           <TextTitle title="אנחנו בתקשורת" className="text-center" />
           <CarouselProvider
@@ -179,10 +180,11 @@ const Article = ({ img, linkToArticle, className }) => (
 );
 
 const TadmitVideo = ({ tadmitVideo }) => {
+  const tadmitVideoYouTubeUrlId = getVideoIdFromYoutubeUrl(tadmitVideo);
   return tadmitVideo ? (
     <iframe
       className="w-4/5 md:w-2/3 m-auto h-96 mt-20 md:mt-48 rounded-lg"
-      src={`https://www.youtube.com/embed/${tadmitVideo}`}
+      src={`https://www.youtube.com/embed/${tadmitVideoYouTubeUrlId}`}
       title="YouTube video player"
       frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
