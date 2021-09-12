@@ -7,6 +7,7 @@ import TextTitle from "~src/components/TextTitle";
 import { siteRoutes } from "../../../../data/SiteConfig";
 import StickyFooter from "../../StickyFooter";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import TadmitVideo from "../../TadmitVideo";
 
 export default function WorkInGan() {
   const data = useStaticQuery(graphql`
@@ -106,16 +107,18 @@ export default function WorkInGan() {
           subtitle={subtitle}
           backgroundColorClass="bg-orange-work-in-gan-page-header"
           backgroundPatternClass="bg-patt1"
+          textWhite
         />
       </Page.Header>
       <Page.Main>
         {tadmitVideo ? (
-          <div className="mb-16">
-            <video className="w-full" controls autoPlay muted>
-              <source src={tadmitVideo} type="video/mp4" />
-            </video>
-          </div>
-        ) : null}
+          <TadmitVideo tadmitVideo={tadmitVideo} />
+        ) : // <div className="mb-16">
+        //   <video className="w-full" controls autoPlay muted>
+        //     <source src={tadmitVideo} type="video/mp4" />
+        //   </video>
+        // </div>
+        null}
         <div className="m-auto pb-20 w-5/6" ref={workInGanTeamTitle}>
           <TextTitle
             title={teamGalleryTitle || "המחנכות מספרות על העבודה בגן"}
