@@ -167,11 +167,11 @@ export default Home;
 
 const Article = ({ img, linkToArticle, className }) => (
   <div
-    className={`h-full mx-2 text-center text-2xl transform transition duration-500 hover:scale-110 ${className}`}
+    className={`h-full mx-2  text-center text-2xl transform transition duration-500 hover:scale-110 ${className}`}
   >
     <a href={linkToArticle} target="_blank" rel="noreferrer">
       <img
-        className="h-82 md:h-96 w-5/6 md:w-11/12 m-auto"
+        className="h-82 md:h-96 w-5/6 md:w-11/12 m-auto rounded-xl"
         src={img}
         alt="תמונה מקדימה של כתבה מגלריית אנחנו בתקשורת"
       />
