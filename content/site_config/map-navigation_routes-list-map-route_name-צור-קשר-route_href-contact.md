@@ -2,7 +2,6 @@
 title: הגדרות
 nav_menu_routes_to_ignore:
   - href: /
-  - href: /contact
   - href: /products
   - href: /democratic-center
 footer_menu_routes_to_ignore:
@@ -18,8 +17,6 @@ navigation_routes:
     href: /gan
   - name: לעבוד בגן
     href: /work-in-gan
-  - name: רישום לגן
-    href: /signup
   - name: שאלות ותשובות
     href: /faq
   - name: העדכון השבועי

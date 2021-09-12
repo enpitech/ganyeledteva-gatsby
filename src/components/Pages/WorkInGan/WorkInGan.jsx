@@ -1,10 +1,11 @@
-import React from "react";
-import Page from "~src/components/Page/Page";
-import PageHeader from "~src/components/Page/PageHeader";
-import SEO from "~src/components/SEO";
-import { useStaticQuery, graphql } from "gatsby";
-import TextTitle from "~src/components/TextTitle";
-import { siteRoutes } from "../../../../data/SiteConfig";
+import React, { useState, useLayoutEffect, useRef } from 'react';
+import Page from '~src/components/Page/Page';
+import PageHeader from '~src/components/Page/PageHeader';
+import SEO from '~src/components/SEO';
+import { useStaticQuery, graphql } from 'gatsby';
+import TextTitle from '~src/components/TextTitle';
+import { siteRoutes } from '../../../../data/SiteConfig';
+import StickyFooter from '../../StickyFooter';
 
 export default function WorkInGan() {
   const data = useStaticQuery(graphql`
@@ -38,6 +39,25 @@ export default function WorkInGan() {
     }
   `);
 
+  const [showStickyFooter, setShowStickyFooter] = useState(false);
+  const workInGanTeamTitle = useRef(null);
+  useLayoutEffect(() => {
+    document.addEventListener('scroll', function (e) {
+      if (workInGanTeamTitle.current === null) {
+        return;
+      }
+
+      const workInGanTeamTitleOffset = workInGanTeamTitle.current.offsetTop;
+      const displayPosition = workInGanTeamTitleOffset / 3;
+
+      if (!showStickyFooter && window.scrollY >= displayPosition) {
+        setShowStickyFooter(true);
+      } else if (showStickyFooter && window.scrollY < 150) {
+        setShowStickyFooter(false);
+      }
+    });
+  }, [workInGanTeamTitle]);
+
   const teamImagesEdges = data.teamMdx.edges;
   let teamImages = teamImagesEdges.map((imgEdge) => ({
     src: imgEdge.node.frontmatter.img,
@@ -57,7 +77,7 @@ export default function WorkInGan() {
     (route) => route.href === `/${workInGanMdxData.fields.dir}`
   )[0];
 
-  const currentPageTitle = currentPageRouteObject?.name || "לעבוד בגן";
+  const currentPageTitle = currentPageRouteObject?.name || 'לעבוד בגן';
 
   const pageSEOData = {
     title: currentPageTitle,
@@ -80,18 +100,14 @@ export default function WorkInGan() {
       <Page.Main>
         {tadmitVideo ? (
           <div className="mb-16">
-            <TextTitle
-              title={tadmitVideoTitle || "ככה זה לעבוד איתנו:"}
-              className="text-center py-10"
-            />
-            <video className="m-auto w-11/12 md:w-2/3 md:h-2/3 " controls>
+            <video className="w-full" controls autoPlay muted>
               <source src={tadmitVideo} type="video/mp4" />
             </video>
           </div>
         ) : null}
-        <div className="m-auto pb-20 w-5/6">
+        <div className="m-auto pb-20 w-5/6" ref={workInGanTeamTitle}>
           <TextTitle
-            title={teamGalleryTitle || "הצוות המנצח שלנו:"}
+            title={teamGalleryTitle || 'המחנכות מספרות על העבודה בגן'}
             className="text-center py-10"
           />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-10">
@@ -100,6 +116,14 @@ export default function WorkInGan() {
             ))}
           </div>
         </div>
+        {showStickyFooter ? (
+          <StickyFooter
+            text="בא לכם לעבוד איתנו? 👈"
+            mobileText="בא לכם לעבוד איתנו?"
+            actionText="צרו קשר"
+            actionLink="/contact"
+          />
+        ) : null}
       </Page.Main>
     </Page>
   );

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import "./Footer.css";
-import treeLev from "../../../static/img/pics/icons/tree_lev.svg";
-import treeTri from "../../../static/img/pics/icons/tree_tri.svg";
+import React, { useEffect, useState } from 'react';
+import './Footer.css';
+import treeLev from '../../../static/img/pics/icons/tree_lev.svg';
+import treeTri from '../../../static/img/pics/icons/tree_tri.svg';
 
 function Footer({ config, navigation }) {
   const [treeImgs, setTreeImgs] = useState([]);
@@ -63,10 +63,10 @@ function Footer({ config, navigation }) {
   const { copyright } = config;
 
   return (
-    <footer className="bg-gray">
-      <div className="flex flex-col items-center mx-auto py-8 px-4 overflow-hidden sm:px-6 lg:px-8">
+    <footer className="bg-gray bg-gray-100">
+      <div className="flex flex-col items-center mx-auto px-4 overflow-hidden sm:px-6 lg:px-8">
         <div className="flex flex-wrap justify-center mb-10">{treeImgs}</div>
-        <div className="border-t-2 border-b-2 text-center w-4/5 flex flex-col md:flex-row justify-between">
+        <div className="border-t-2 border-b-2 text-center w-full flex flex-col md:flex-row justify-between">
           {navigation.map((navItem) => (
             <a
               key={navItem.name}

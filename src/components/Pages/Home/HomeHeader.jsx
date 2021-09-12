@@ -65,7 +65,7 @@ export default function HomeHeader() {
                   style={{
                     position: "absolute",
                     top: 405,
-                    left: 0,
+                    left: 15,
                     opacity: "0.5",
                   }}
                 >
