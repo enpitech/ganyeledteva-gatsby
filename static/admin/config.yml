@@ -27,8 +27,8 @@ collections:
     slug: "{{slug}}"
     fields:
       - {
-          label: "סרטון תדמית - סיומת סרטון בקישור יוטיוב ",
-          name: "tadmit_video_youtube_url_code",
+          label: "סרטון תדמית - קישור לסרטון יוטיוב ",
+          name: "tadmit_video_youtube_url",
           widget: "text",
           required: false,
         }
