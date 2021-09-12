@@ -183,7 +183,7 @@ const TadmitVideo = ({ tadmitVideo }) => {
   const tadmitVideoYouTubeUrlId = getVideoIdFromYoutubeUrl(tadmitVideo);
   return tadmitVideo ? (
     <iframe
-      className="w-4/5 md:w-2/3 m-auto h-96 mt-20 md:mt-48 rounded-lg"
+      className="w-4/5 m-auto h-128 mt-20 md:mt-48 rounded-lg"
       src={`https://www.youtube.com/embed/${tadmitVideoYouTubeUrlId}`}
       title="YouTube video player"
       frameBorder="0"
