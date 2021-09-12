@@ -2,7 +2,7 @@ import React, { useState, useLayoutEffect, useRef } from "react";
 import Page from "~src/components/Page/Page";
 import PageHeader from "~src/components/Page/PageHeader";
 import SEO from "~src/components/SEO";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import TextTitle from "~src/components/TextTitle";
 import { siteRoutes } from "../../../../data/SiteConfig";
 import StickyFooter from "../../StickyFooter";
@@ -65,7 +65,7 @@ export default function WorkInGan() {
   }, [workInGanTeamTitle]);
 
   const teamDataEdges = data.teamMdx.edges;
-  let teamData = teamDataEdges.map((employee) => ({
+  const teamData = teamDataEdges.map((employee) => ({
     imageSrc: employee.node.frontmatter.img,
     imageAlt: employee.node.frontmatter.title,
     firstName: employee.node.frontmatter.firstname,
@@ -111,14 +111,19 @@ export default function WorkInGan() {
         />
       </Page.Header>
       <Page.Main>
+        <div className="text-center my-8">
+          <h1 className="text-4xl font-bold">בא לכם.ן להצטרף אלינו? </h1>
+          <Link to="/contact">
+            <div className="inline-block my-4 px-10 py-1 text-xl rounded-full text-center border-2 border-black bg-orange-work-in-gan-page-header hover:bg-red-link text-white">
+              השאירו פרטים ונחזור אליכן :){" "}
+            </div>
+          </Link>
+        </div>
         {tadmitVideo ? (
-          <TadmitVideo tadmitVideo={tadmitVideo} />
-        ) : // <div className="mb-16">
-        //   <video className="w-full" controls autoPlay muted>
-        //     <source src={tadmitVideo} type="video/mp4" />
-        //   </video>
-        // </div>
-        null}
+          <div className="my-16">
+            <TadmitVideo tadmitVideo={tadmitVideo} />
+          </div>
+        ) : null}
         <div className="m-auto pb-20 w-5/6" ref={workInGanTeamTitle}>
           <TextTitle
             title={teamGalleryTitle || "המחנכות מספרות על העבודה בגן"}
