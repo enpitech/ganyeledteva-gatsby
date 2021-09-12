@@ -132,12 +132,7 @@ function Home() {
                   key={index}
                   className={`mx-1 md:mx-5 focus:outline-none rounded-full w-3 h-3 bg-red-link`}
                   slide={index}
-                >
-                  {/* <div
-                    // className={`inline-block rounded-full h-3 w-3`}
-                    className={`inline-block rounded-full h-3 w-3 bg-red-link`}
-                  ></div> */}
-                </Dot>
+                ></Dot>
               ))}
             </DotGroup>
           </CarouselProvider>
@@ -172,7 +167,6 @@ const Article = ({ img, linkToArticle, className }) => {
 };
 
 const TadmitVideo = ({ tadmitVideo }) => {
-  console.log({ tadmitVideo });
   return tadmitVideo ? (
     <iframe
       className="w-4/5 md:w-2/3 m-auto h-96 mt-20 md:mt-48 rounded-lg"

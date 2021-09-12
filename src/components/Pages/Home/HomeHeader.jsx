@@ -7,7 +7,7 @@ import treeTri from "../../../../static/img/pics/icons/tree_tri.svg";
 import * as mainHeaderStyles from "../../../styles/main-header.module.css";
 import Logo from "../../Logo/Logo";
 
-const hieght = 450;
+const sketchableHeroHeight = 450;
 export default function HomeHeader() {
   return (
     <header>
@@ -17,10 +17,14 @@ export default function HomeHeader() {
         </div>
       </div>
       <div className="hidden md:block">
-        <div id="draw" className="z-40 absolute" style={{ height: hieght }} />
+        <div
+          id="draw"
+          className="z-40 absolute"
+          style={{ height: sketchableHeroHeight }}
+        />
         <div
           className="bg-gradient-to-tl from-blue-300 to-green-400"
-          style={{ height: hieght }}
+          style={{ height: sketchableHeroHeight }}
         >
           <div className="container mx-auto">
             <div className="grid grid-cols-2 z-50 relative pointer-events-none	">
@@ -132,7 +136,7 @@ export default function HomeHeader() {
                     src={treeLev}
                     style={{
                       position: "absolute",
-                      top: hieght - 197,
+                      top: sketchableHeroHeight - 197,
                       left: 110,
                       height: 255,
                     }}
@@ -142,7 +146,7 @@ export default function HomeHeader() {
                     src={treeLev}
                     style={{
                       position: "absolute",
-                      top: hieght - 155,
+                      top: sketchableHeroHeight - 155,
                       left: 90,
                       height: 200,
                     }}
@@ -152,7 +156,7 @@ export default function HomeHeader() {
                     src={treeTri}
                     style={{
                       position: "absolute",
-                      top: hieght - 223,
+                      top: sketchableHeroHeight - 223,
                       left: 370,
                       height: 295,
                     }}
@@ -162,7 +166,7 @@ export default function HomeHeader() {
                     src={bird}
                     style={{
                       position: "absolute",
-                      top: hieght - 149,
+                      top: sketchableHeroHeight - 149,
                       left: 410,
                       height: 75,
                     }}
@@ -172,7 +176,7 @@ export default function HomeHeader() {
                     src={bird}
                     style={{
                       position: "absolute",
-                      top: hieght - 159,
+                      top: sketchableHeroHeight - 159,
                       left: 500,
                       height: 75,
                     }}
@@ -182,7 +186,7 @@ export default function HomeHeader() {
                     src={bird}
                     style={{
                       position: "absolute",
-                      top: hieght - 129,
+                      top: sketchableHeroHeight - 129,
                       left: 530,
                       height: 75,
                     }}
