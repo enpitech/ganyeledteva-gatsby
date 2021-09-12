@@ -8,6 +8,7 @@ import PageHeader from "../components/Page/PageHeader";
 import Page from "../components/Page/Page";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import TextTitle from "./../components/TextTitle/TextTitle";
+import { getVideoIdFromYoutubeUrl } from "../utils";
 const headerMdFileName = config.ganMainPageDataMdFileName;
 const recommendationFileName = "recommendations";
 const defaultFacebookRecommendationUrl =
@@ -32,7 +33,7 @@ export default function GanSectionTemplate({ data, pageContext }) {
   const {
     images,
     video_title: videoTitle,
-    video,
+    youtubeVideoUrl,
     title,
     facebook_recommendation_url: facebookRecommendationUrl,
     google_recommendation_url: googleRecommendationUrl,
@@ -95,14 +96,16 @@ export default function GanSectionTemplate({ data, pageContext }) {
               ) : null}
             </div>
           </div>
-          {video ? (
+          {youtubeVideoUrl ? (
             <>
               {videoTitle ? (
                 <TextTitle title={videoTitle} className="text-center" />
               ) : null}
               <iframe
                 className="m-auto py-10 w-5/6 h-screen"
-                src={`https://www.youtube.com/embed/${video}`}
+                src={`https://www.youtube.com/embed/${getVideoIdFromYoutubeUrl(
+                  youtubeVideoUrl
+                )}`}
                 title={videoTitle || ""}
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -172,7 +175,7 @@ export const pageQuery = graphql`
           src
         }
         video_title
-        video
+        youtubeVideoUrl
       }
       fields {
         slug

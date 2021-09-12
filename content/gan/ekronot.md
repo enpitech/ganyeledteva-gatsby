@@ -16,7 +16,6 @@ images:
     src: /img/pics/ekronot3.jpg
 video_title: 5 ערכי העבודה החינוכיים בגן שלנו
 youtubeVideoUrl: https://www.youtube.com/watch?v=2IiNEMEFF0o
-video: 2IiNEMEFF0o
 ---
 
 ## אחריות קהילתית
