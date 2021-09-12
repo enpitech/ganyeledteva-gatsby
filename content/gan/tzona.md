@@ -1,6 +1,5 @@
 ---
 title: תזונה בגן
-
 subtitle: "התזונה כחלק משגרת חיי הילדים והילדות בגן, מבוססת על חומרי גלם טבעיים
   ואיכותיים "
 link: עוד על התזונה בגן
@@ -11,6 +10,7 @@ images:
     src: /img/pics/food1.jpg
   - alt: " "
     src: /img/pics/food2.jpg
+foodMenu: /assets/pics/uploads/menu.pdf
 ---
 
 ## תפריט הגן
