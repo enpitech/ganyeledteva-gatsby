@@ -106,9 +106,9 @@ export default function ContactForm({ formType }) {
 function WorkWithUsForm({ handleInputChange }) {
   return (
     <>
-      <FullName label="שם מלא" onChange={handleInputChange} />
-      <Email onChange={handleInputChange} />
-      <Phone onChange={handleInputChange} />
+      <FullName label="שם מלא" onChange={handleInputChange} required />
+      <Email onChange={handleInputChange} required />
+      <Phone onChange={handleInputChange} required />
 
       <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <label
@@ -134,14 +134,13 @@ function WorkWithUsForm({ handleInputChange }) {
         fieldName="about"
         label="על עצמכם"
         onChange={handleInputChange}
-        required
       />
       <TextBox
+        required
         id="looking-for"
         fieldName="looking_for"
         label="מה אתם מחפשים"
         onChange={handleInputChange}
-        required
       />
     </>
   );
@@ -150,9 +149,9 @@ function WorkWithUsForm({ handleInputChange }) {
 function ServicesForm({ handleInputChange }) {
   return (
     <>
-      <FullName label="שם מלא" onChange={handleInputChange} />
-      <Email onChange={handleInputChange} />
-      <Phone onChange={handleInputChange} />
+      <FullName label="שם מלא" onChange={handleInputChange} required />
+      <Email onChange={handleInputChange} required />
+      <Phone onChange={handleInputChange} required />
 
       <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <legend className="block text-sm font-medium text-gray-700">
@@ -222,7 +221,12 @@ function ServicesForm({ handleInputChange }) {
         </fieldset>
       </div>
 
-      <TextBox label="דברים נוספים" onChange={handleInputChange} />
+      <TextBox
+        label="משהו שרציתי להוסיף"
+        onChange={handleInputChange}
+        fieldName="something_to_add"
+        required
+      />
     </>
   );
 }
@@ -230,16 +234,16 @@ function ServicesForm({ handleInputChange }) {
 function OtherReasonForm({ handleInputChange }) {
   return (
     <>
-      <FullName label="שם מלא" onChange={handleInputChange} />
-      <Email onChange={handleInputChange} />
-      <Phone onChange={handleInputChange} />
+      <FullName label="שם מלא" onChange={handleInputChange} required />
+      <Email onChange={handleInputChange} required />
+      <Phone onChange={handleInputChange} required />
 
       <TextBox
+        required
         id="content"
         fieldName="content"
-        label="יאללה שוט"
+        label="דברו אלינו"
         onChange={handleInputChange}
-        required
       />
     </>
   );
@@ -261,7 +265,7 @@ function SubmitBtn({ label }) {
   );
 }
 
-function FullName({ label, onChange }) {
+function FullName({ label, onChange, required }) {
   return (
     <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
       <label
@@ -272,6 +276,7 @@ function FullName({ label, onChange }) {
       </label>
       <div className="mt-1 sm:mt-0 sm:col-span-2">
         <input
+          required={required}
           type="text"
           name="full_name"
           id="full_name"
@@ -284,7 +289,7 @@ function FullName({ label, onChange }) {
   );
 }
 
-function Email({ onChange }) {
+function Email({ onChange, required }) {
   return (
     <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
       <label
@@ -295,6 +300,7 @@ function Email({ onChange }) {
       </label>
       <div className="mt-1 sm:mt-0 sm:col-span-2">
         <input
+          required={required}
           id="email"
           name="email"
           type="email"
@@ -307,7 +313,7 @@ function Email({ onChange }) {
   );
 }
 
-function Phone({ onChange }) {
+function Phone({ onChange, required }) {
   return (
     <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
       <label
@@ -318,6 +324,7 @@ function Phone({ onChange }) {
       </label>
       <div className="mt-1 relative rounded-md shadow-sm">
         <input
+          required={required}
           type="text"
           name="phone_number"
           id="phone_number"
@@ -329,7 +336,7 @@ function Phone({ onChange }) {
   );
 }
 
-function TextBox({ label, onChange, fieldName }) {
+function TextBox({ label, onChange, fieldName, required }) {
   return (
     <div className="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
       <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
@@ -341,6 +348,7 @@ function TextBox({ label, onChange, fieldName }) {
         </label>
         <div className="mt-1 sm:mt-0 sm:col-span-2">
           <textarea
+            required={required}
             id={fieldName}
             name={fieldName}
             rows={3}

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import Page from "../../Page/Page";
-import PageHeader from "../../Page/PageHeader";
-import ContactForm from "./ContactForm";
+import React, { useState } from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import Page from '../../Page/Page';
+import PageHeader from '../../Page/PageHeader';
+import ContactForm from './ContactForm';
 
-import ReasonBtn from "./ReasonBtn";
-import SEO from "../../SEO/SEO";
+import ReasonBtn from './ReasonBtn';
+import SEO from '../../SEO/SEO';
 
 export default function Contact() {
   const data = useStaticQuery(graphql`
@@ -32,7 +32,7 @@ export default function Contact() {
   const pageSEOData = {
     title,
     description: undefined, // description to be added later by Tzachi
-    pagePath: "contact",
+    pagePath: 'contact',
   };
 
   const [formType, setFormType] = useState(1);
@@ -58,7 +58,7 @@ export default function Contact() {
           />
           <ReasonBtn
             active={formType === 2}
-            content="אני מתעניינ.ת במוצרים או שירותים חינוכיים שראיתי בחממה לחדשנות בגיל הרך"
+            content="אני מתעניינ.ת בקורסים והרצאות שלכם"
             onClick={() => setFormType(2)}
           />
           <ReasonBtn

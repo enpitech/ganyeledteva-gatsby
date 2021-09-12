@@ -61,7 +61,7 @@ function FAQ() {
         <PageHeader
           title={title}
           subtitle={subtitle}
-          backgroundColorClass="bg-gradient-to-r from-blue-gan-page-header1 to-blue-gan-page-header2"
+          backgroundColorClass="bg-gradient-to-r from-blue-faq-page-header1 to-blue-faq-page-header2"
           backgroundPatternClass="bg-patt1"
         />
       </Page.Header>
@@ -75,9 +75,12 @@ function FAQ() {
               ></TextTitle>
 
               <div className="max-w-3xl mx-auto divide-y-2 divide-gray-200">
-                {faqs.map((item) => (
-                  <dl className="mt-6 space-y-6 divide-y divide-gray-200">
-                    <Disclosure as="div" key={item.question} className="pt-6">
+                {faqs.map((item, index) => (
+                  <dl
+                    className="mt-6 space-y-6 divide-y divide-gray-200"
+                    key={item.question + index}
+                  >
+                    <Disclosure as="div" className="pt-6">
                       {({ open }) => (
                         <>
                           <dt className="text-lg">

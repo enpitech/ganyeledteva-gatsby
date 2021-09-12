@@ -27,15 +27,9 @@ collections:
     slug: "{{slug}}"
     fields:
       - {
-          label: "כותרת לסרטון תסדמית",
-          name: "tadmit_video_title",
-          widget: "string",
-          required: false,
-        }
-      - {
-          label: "סרטון תדמית",
-          name: "tadmit_video",
-          widget: "file",
+          label: "סרטון תדמית - סיומת סרטון בקישור יוטיוב ",
+          name: "tadmit_video_youtube_url_code",
+          widget: "text",
           required: false,
         }
       - name: us_on_media
@@ -230,7 +224,7 @@ collections:
       - {
           label: "סרטון תדמית",
           name: "tadmitVideo",
-          widget: "file",
+          widget: "text",
           required: false,
         }
       - {

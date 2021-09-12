@@ -71,7 +71,7 @@ export default function Products() {
         <PageHeader
           title={title}
           subtitle={subtitle}
-          backgroundColorClass="bg-gradient-to-r from-blue-gan-page-header1 to-blue-gan-page-header2"
+          backgroundColorClass="bg-gradient-to-r from-turquoise-signup-page-header1 to-turquoise-signup-page-header2"
           backgroundPatternClass="bg-patt1"
         />
       </Page.Header>
