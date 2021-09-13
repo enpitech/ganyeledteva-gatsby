@@ -98,7 +98,10 @@ function Home() {
         </div>
         <TeamGrid />
         <div className="mt-20 md:mt-48 w-full">
-          <TadmitVideo tadmitVideo={tadmitVideoYoutubeUrl} />
+          <TadmitVideo
+            tadmitVideo={tadmitVideoYoutubeUrl}
+            className="rounded-lg"
+          />
         </div>
         <div className="mt-20 md:mt-40">
           <TextTitle title="אנחנו בתקשורת" className="text-center" />
