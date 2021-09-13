@@ -95,7 +95,12 @@ collections:
     fields:
       - { label: "כותרת", name: "title", widget: "string" }
       - { label: "תת כותרת", name: "subtitle", widget: "text" }
-      - { label: "כפתור", name: "link", widget: "string" }
+      - {
+          label: "כותרת קישור לתפריט תזונה",
+          name: "foodMenuLinkTitle",
+          widget: "string",
+          required: false,
+        }
       - {
           label: "קישור לעמוד המלצות - גוגל",
           name: "google_recommendation_url",
@@ -141,9 +146,15 @@ collections:
           required: false,
         }
       - {
-          label: "סיומת כתובת סרטון ביוטיוב - לדוגמא: הסיומת לסרטון הנל www.youtube.com/watch?v=2IiNEMEFF0o היא 2IiNEMEFF0o ",
-          name: "video",
+          label: "לינק לסרטון יוטיוב",
+          name: "youtubeVideoUrl",
           widget: "string",
+          required: false,
+        }
+      - {
+          label: "קובץ תפריט תזונה",
+          name: "foodMenuFileLink",
+          widget: "file",
           required: false,
         }
 
