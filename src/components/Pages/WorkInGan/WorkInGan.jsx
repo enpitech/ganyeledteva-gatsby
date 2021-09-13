@@ -54,11 +54,11 @@ export default function WorkInGan() {
       }
 
       const workInGanTeamTitleOffset = workInGanTeamTitle.current.offsetTop;
-      const displayPosition = workInGanTeamTitleOffset / 3;
+      const displayPosition = workInGanTeamTitleOffset / 1.5;
 
       if (!showStickyFooter && window.scrollY >= displayPosition) {
         setShowStickyFooter(true);
-      } else if (showStickyFooter && window.scrollY < 150) {
+      } else if (showStickyFooter && window.scrollY < displayPosition) {
         setShowStickyFooter(false);
       }
     });
@@ -111,17 +111,20 @@ export default function WorkInGan() {
         />
       </Page.Header>
       <Page.Main>
-        <div className="text-center my-8">
+        {/* <div className="text-center my-8">
           <h1 className="text-4xl font-bold">בא לכם.ן להצטרף אלינו? </h1>
           <Link to="/contact">
             <div className="inline-block my-4 px-10 py-1 text-xl rounded-full text-center border-2 border-black bg-orange-work-in-gan-page-header hover:bg-red-link text-white">
               השאירו פרטים ונחזור אליכן :){" "}
             </div>
           </Link>
-        </div>
+        </div> */}
         {tadmitVideo ? (
-          <div className="my-16">
-            <TadmitVideo tadmitVideo={tadmitVideo} />
+          <div className="mb-16">
+            <TadmitVideo
+              tadmitVideo={tadmitVideo}
+              className="w-screen rounded-none"
+            />
           </div>
         ) : null}
         <div className="m-auto pb-20 w-5/6" ref={workInGanTeamTitle}>
