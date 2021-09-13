@@ -42,8 +42,6 @@ us_on_media:
       https://www.mako.co.il/home-family-toddlers/education/Article-53e7085ae8a\
       c171027.htm"
     img: /assets/pics/uploads/logo.png
-  - link_to_article: " https://www.youtube.com/watch?v=S6qWYrjlY7U"
-    img: /assets/pics/uploads/logo.png
   - link_to_article: " https://www.haaretz.co.il/family/.premium-1.8749592"
     img: /assets/pics/uploads/7.jpg
   - link_to_article: "
@@ -56,8 +54,6 @@ us_on_media:
     img: /assets/pics/uploads/3.png
   - link_to_article: https://www.youtube.com/watch?v=tvJdxj1V9To
     img: /assets/pics/uploads/1.jpg
-  - link_to_article: https://www.facebook.com/tzachi.hananya/posts/10215769738705957
-    img: /assets/pics/uploads/logo.png
   - link_to_article: "
       https://www.mako.co.il/home-family-recreation/Article-7eab6aba0645171026.\
       htm?fbclid=IwAR1gC9UGLGtNS86b_ylXhzgUoRWU4IOMqG3LlGqjMhUhAgSLDabWSQZL1n4"
