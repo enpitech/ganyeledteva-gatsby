@@ -99,6 +99,7 @@ collections:
           label: "כותרת קישור לתפריט תזונה",
           name: "foodMenuLinkTitle",
           widget: "string",
+          required: false,
         }
       - {
           label: "קישור לעמוד המלצות - גוגל",
