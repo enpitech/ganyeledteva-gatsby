@@ -1,6 +1,7 @@
-.carousel__dot {
-  background-color: black;
+.slick-prev:before,
+.slick-next:before {
+  color: #ff2b56;
 }
-.carousel__dot--selected {
-  background-color: #ff2b56;
+.slick-dots li.slick-active button:before {
+  color: #ff2b56;
 }
