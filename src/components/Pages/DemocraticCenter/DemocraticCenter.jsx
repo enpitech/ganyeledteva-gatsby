@@ -18,6 +18,7 @@ function DemocraticCenter() {
             }
             frontmatter {
               title
+              youtubeVideoUrl
               images {
                 alt
                 src
@@ -32,7 +33,7 @@ function DemocraticCenter() {
 
   const pageNode = data.allMdx.edges[0].node;
   const { frontmatter, body, fields } = pageNode;
-  const { title, images } = frontmatter;
+  const { title, images, youtubeVideoUrl: tadmitVideo } = frontmatter;
 
   const pageSEOData = {
     title,
@@ -46,11 +47,7 @@ function DemocraticCenter() {
       <SEO pageSEOData={pageSEOData} />
       <Page.Header>
         <div className="text-center flex flex-col justify-center relative">
-          <TadmitVideo
-            tadmitVideo={"https://www.youtube.com/watch?v=SjA_iOhWHe4"}
-            className="w-full"
-            mute
-          />
+          <TadmitVideo tadmitVideo={tadmitVideo} className="w-full" />
           <div className="absolute bg-blue-300 inset-0 opacity-50 full" />
           <div className="absolute md:top-1/3 text-white text-3xl sm:text-4xl md:text-5xl w-full m-auto">
             {title}
