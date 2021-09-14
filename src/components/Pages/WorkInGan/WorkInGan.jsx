@@ -124,6 +124,7 @@ export default function WorkInGan() {
             <TadmitVideo
               tadmitVideo={tadmitVideo}
               className="w-screen rounded-none"
+              mute
             />
           </div>
         ) : null}

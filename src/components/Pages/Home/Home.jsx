@@ -100,7 +100,8 @@ function Home() {
         <div className="mt-20 md:mt-48 w-full">
           <TadmitVideo
             tadmitVideo={tadmitVideoYoutubeUrl}
-            className="rounded-lg"
+            className="rounded-lg w-4/5"
+            mute
           />
         </div>
         <div className="mt-20 md:mt-40">
