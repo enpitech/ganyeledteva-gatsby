@@ -100,7 +100,7 @@ function Home() {
         <div className="mt-20 md:mt-48 w-full">
           <TadmitVideo
             tadmitVideo={tadmitVideoYoutubeUrl}
-            className=" w-full"
+            className="w-11/12 rounded-xl md:rounded-none md:w-full "
             mute
           />
         </div>
@@ -156,10 +156,9 @@ function Home() {
         <div className="md:w-11/12 mt-20 md:mt-40">
           <TextTitle className="text-center" title='מה הלו"ז' />
           <iframe
-            className="mb-24"
+            className="mb-24 sm:w-2/3 md:w-1/2 mx-auto"
             title="calendar"
             src="https://calendar.google.com/calendar/embed?showTitle=0&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=ganyeledteva.Calendar@gmail.com&color=%23b90e28&ctz=Asia%2FJerusalem"
-            width="100%;"
             height="600"
             scrolling="no"
           />
