@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
-import Page from '../../Page/Page';
-import PageHeader from '../../Page/PageHeader';
-import ContactForm from './ContactForm';
-
-import ReasonBtn from './ReasonBtn';
-import SEO from '../../SEO/SEO';
+import React, { useState, useEffect } from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import Page from "../../Page/Page";
+import PageHeader from "../../Page/PageHeader";
+import ContactForm from "./ContactForm";
+import _ from "lodash";
+import ReasonBtn from "./ReasonBtn";
+import SEO from "../../SEO/SEO";
 
 export default function Contact() {
   const data = useStaticQuery(graphql`
@@ -32,10 +32,24 @@ export default function Contact() {
   const pageSEOData = {
     title,
     description: undefined, // description to be added later by Tzachi
-    pagePath: 'contact',
+    pagePath: "contact",
   };
 
   const [formType, setFormType] = useState(1);
+
+  useEffect(() => {
+    if (!_.isNil(window)) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryParamFormType = Number(urlParams.get("formType"));
+      if (
+        !_.isNil(queryParamFormType) &&
+        1 <= queryParamFormType &&
+        queryParamFormType <= 3
+      ) {
+        setFormType(queryParamFormType);
+      }
+    }
+  }, []);
 
   return (
     <Page>
