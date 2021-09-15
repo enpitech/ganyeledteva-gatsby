@@ -171,7 +171,7 @@ function ServicesForm({ handleInputChange }) {
               <input
                 id="managers"
                 value="managers"
-                name="services"
+                name="service"
                 type="checkbox"
                 className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                 onChange={handleInputChange}
@@ -186,7 +186,7 @@ function ServicesForm({ handleInputChange }) {
               <input
                 id="parents_school"
                 value="parents_school"
-                name="services"
+                name="service"
                 type="checkbox"
                 className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                 onChange={handleInputChange}
@@ -201,7 +201,7 @@ function ServicesForm({ handleInputChange }) {
               <input
                 id="lectures"
                 value="lectures"
-                name="services"
+                name="service"
                 type="checkbox"
                 className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                 onChange={handleInputChange}
@@ -216,7 +216,7 @@ function ServicesForm({ handleInputChange }) {
               <input
                 id="other"
                 value="other"
-                name="services"
+                name="service"
                 type="checkbox"
                 className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                 onChange={handleInputChange}
