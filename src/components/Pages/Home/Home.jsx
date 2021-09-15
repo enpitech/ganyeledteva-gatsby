@@ -58,7 +58,7 @@ function Home() {
     _.isNil(window) ? null : setScreenWidth(window.innerWidth);
   }, []);
 
-  var carouselSettings = {
+  const carouselSettings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -66,7 +66,7 @@ function Home() {
       screenWidth < BREAK_POINTS.sm ? 1 : screenWidth < BREAK_POINTS.md ? 2 : 3,
     slidesToScroll: 1,
     arrows: true,
-    // autoplay: true,
+    autoplay: true,
     pauseOnHover: true,
     pauseOnDotsHover: true,
     rtl: true,
