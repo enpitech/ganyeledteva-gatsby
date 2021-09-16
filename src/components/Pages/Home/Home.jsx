@@ -12,8 +12,18 @@ import TeamGrid from "../../TeamGrid";
 import "./Home.css";
 import _ from "lodash";
 import TadmitVideo from "../../TadmitVideo";
+import tailwindConfig from "../../../../tailwind.config";
+import { formatScreenSizeStringToNumber } from "../../../utils";
 
-const BREAK_POINTS = { lg: 1024, md: 769, sm: 640 }; // in px, according to tailwind.config.js screens configurations
+const screensSizes = tailwindConfig.theme.extend.screens;
+
+const BREAK_POINTS = {
+  lg: formatScreenSizeStringToNumber(screensSizes.lg),
+  md: formatScreenSizeStringToNumber(screensSizes.md),
+  sm: formatScreenSizeStringToNumber(screensSizes.sm),
+};
+
+console.log({ BREAK_POINTS });
 
 function Home() {
   const data = useStaticQuery(graphql`
@@ -119,8 +129,12 @@ function Home() {
             style={{ width: screenWidth - 100 }} // use CSSinJS - Tailwind is not flexible enough
           >
             {usOnMediaArticles.map(
-              ({ img, link_to_article: linkToArticle }, index) => (
-                <Article img={img} linkToArticle={linkToArticle} />
+              ({ img, link_to_article: linkToArticle }) => (
+                <Article
+                  img={img}
+                  linkToArticle={linkToArticle}
+                  key={linkToArticle}
+                />
               )
             )}
           </Slider>
