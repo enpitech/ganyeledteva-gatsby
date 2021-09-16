@@ -123,7 +123,7 @@ export default function WorkInGan() {
           <div className="mb-16">
             <TadmitVideo
               tadmitVideo={tadmitVideo}
-              className="w-screen rounded-none"
+              className="mt-10 sm:mt-0 sm:h-128 sm:w-screen "
               mute
             />
           </div>

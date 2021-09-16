@@ -7,6 +7,12 @@ import _ from "lodash";
 import ReasonBtn from "./ReasonBtn";
 import SEO from "../../SEO/SEO";
 
+const FORM_TYPES = Object.freeze({
+  WORK_IN_GAN: 1,
+  GET_PRODUCTS: 2,
+  GENERAL: 3,
+});
+
 export default function Contact() {
   const data = useStaticQuery(graphql`
     query ContactQuery {
@@ -35,19 +41,23 @@ export default function Contact() {
     pagePath: "contact",
   };
 
-  const [formType, setFormType] = useState(1);
+  const [formType, setFormType] = useState(FORM_TYPES.WORK_IN_GAN);
 
   useEffect(() => {
-    if (!_.isNil(window)) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const queryParamFormType = Number(urlParams.get("formType"));
-      if (
-        !_.isNil(queryParamFormType) &&
-        1 <= queryParamFormType &&
-        queryParamFormType <= 3
-      ) {
-        setFormType(queryParamFormType);
+    try {
+      if (!_.isNil(window)) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const queryParamFormType = Number(urlParams.get("formType"));
+        if (
+          !_.isNil(queryParamFormType) &&
+          FORM_TYPES.WORK_IN_GAN <= queryParamFormType &&
+          queryParamFormType <= FORM_TYPES.general
+        ) {
+          setFormType(queryParamFormType);
+        }
       }
+    } catch {
+      console.log("error in contact query params");
     }
   }, []);
 
@@ -68,17 +78,17 @@ export default function Contact() {
           <ReasonBtn
             active={formType === 1}
             content="בא לי לעבוד אתכם"
-            onClick={() => setFormType(1)}
+            onClick={() => setFormType(FORM_TYPES.WORK_IN_GAN)}
           />
           <ReasonBtn
             active={formType === 2}
             content="אני מתעניינ.ת בקורסים והרצאות שלכם"
-            onClick={() => setFormType(2)}
+            onClick={() => setFormType(FORM_TYPES.GET_PRODUCTS)}
           />
           <ReasonBtn
             active={formType === 3}
             content="אמממ, משהו אחר"
-            onClick={() => setFormType(3)}
+            onClick={() => setFormType(FORM_TYPES.general)}
           />
         </div>
 
