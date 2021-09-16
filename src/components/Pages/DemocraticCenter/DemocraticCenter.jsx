@@ -1,11 +1,9 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import tadmitVideo from "~static/assets/vids/dummyvid.mp4";
 import SEO from "../../SEO";
 import Page from "../../Page/Page";
-import { MDXProvider } from "@mdx-js/react";
-import TadmitVideo from "../../TadmitVideo";
-import { mdStyleWithInternalLinks } from "../../../styles/mdxStyles";
 
 function DemocraticCenter() {
   const data = useStaticQuery(graphql`
@@ -18,7 +16,6 @@ function DemocraticCenter() {
             }
             frontmatter {
               title
-              youtubeVideoUrl
               images {
                 alt
                 src
@@ -33,7 +30,7 @@ function DemocraticCenter() {
 
   const pageNode = data.allMdx.edges[0].node;
   const { frontmatter, body, fields } = pageNode;
-  const { title, images, youtubeVideoUrl: tadmitVideo } = frontmatter;
+  const { title, images } = frontmatter;
 
   const pageSEOData = {
     title,
@@ -47,7 +44,9 @@ function DemocraticCenter() {
       <SEO pageSEOData={pageSEOData} />
       <Page.Header>
         <div className="text-center flex flex-col justify-center relative">
-          <TadmitVideo tadmitVideo={tadmitVideo} className="w-full" />
+          <video autoPlay muted loop>
+            <source src={tadmitVideo} type="video/mp4" />
+          </video>
           <div className="absolute bg-blue-300 inset-0 opacity-50 full" />
           <div className="absolute md:top-1/3 text-white text-3xl sm:text-4xl md:text-5xl w-full m-auto">
             {title}
@@ -56,9 +55,7 @@ function DemocraticCenter() {
       </Page.Header>
       <Page.Main className="md:flex justify-center">
         <div className="md:w-3/7 ml-10">
-          <MDXProvider components={mdStyleWithInternalLinks}>
-            <MDXRenderer>{body}</MDXRenderer>
-          </MDXProvider>
+          <MDXRenderer>{body}</MDXRenderer>
         </div>
         <div className="md:w-2/7 mt-4">
           {images.map((img, index) => (
