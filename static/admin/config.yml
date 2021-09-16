@@ -59,7 +59,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "כותרת", name: "title", widget: "string" }
-      - { label: "תת כותרת", name: "subtitle", widget: "text" }
+      - { label: "תת כותרת", name: "subtitle", widget: "text", required: false }
       - {
           label: "תת כותרת 2 - לא חובה",
           name: "subtitle 2",
@@ -78,7 +78,7 @@ collections:
           widget: "image",
           required: false,
         }
-      - { label: "מיקום", name: "index", widget: "number" }
+      - { label: "מיקום", name: "index", widget: "number", required: false }
       - name: images
         label: תמונות
         widget: list
@@ -192,6 +192,11 @@ collections:
           - { label: "תמונה", name: "src", widget: "image" }
           - { label: "כיתוב תמונה", name: "alt", widget: "string" }
       - { label: "טקסט", name: "body", widget: "markdown" }
+      - {
+          label: "לינק לסרטון יוטיוב",
+          name: "youtubeVideoUrl",
+          widget: "string",
+        }
 
   - name: "signup"
     label: "רישום לגן"

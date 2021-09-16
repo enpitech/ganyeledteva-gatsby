@@ -123,7 +123,8 @@ export default function WorkInGan() {
           <div className="mb-16">
             <TadmitVideo
               tadmitVideo={tadmitVideo}
-              className="w-screen rounded-none"
+              className="mt-10 sm:mt-0 sm:h-128 sm:w-screen "
+              mute
             />
           </div>
         ) : null}
@@ -153,8 +154,8 @@ const TeamGallery = ({ teamData }) => {
       role="list"
       className="space-y-12 sm:divide-y sm:divide-gray-200 sm:space-y-0 sm:-mt-8 lg:gap-x-8 lg:space-y-0"
     >
-      {teamData.map((employee) => (
-        <li key={employee.name} className="sm:py-8">
+      {teamData.map((employee, index) => (
+        <li key={employee.firstName + index} className="sm:py-8">
           <div className="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 items-center ">
             <div className="aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4 ">
               <img
