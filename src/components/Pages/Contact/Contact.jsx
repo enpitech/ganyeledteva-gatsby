@@ -7,7 +7,11 @@ import _ from "lodash";
 import ReasonBtn from "./ReasonBtn";
 import SEO from "../../SEO/SEO";
 
-const FORM_TYPES = { workInGan: 1, getProducts: 2, general: 3 };
+const FORM_TYPES = Object.freeze({
+  WORK_IN_GAN: 1,
+  GET_PRODUCTS: 2,
+  general: 3,
+});
 
 export default function Contact() {
   const data = useStaticQuery(graphql`
@@ -37,7 +41,7 @@ export default function Contact() {
     pagePath: "contact",
   };
 
-  const [formType, setFormType] = useState(FORM_TYPES.workInGan);
+  const [formType, setFormType] = useState(FORM_TYPES.WORK_IN_GAN);
 
   useEffect(() => {
     try {
@@ -46,7 +50,7 @@ export default function Contact() {
         const queryParamFormType = Number(urlParams.get("formType"));
         if (
           !_.isNil(queryParamFormType) &&
-          FORM_TYPES.workInGan <= queryParamFormType &&
+          FORM_TYPES.WORK_IN_GAN <= queryParamFormType &&
           queryParamFormType <= FORM_TYPES.general
         ) {
           setFormType(queryParamFormType);
@@ -74,12 +78,12 @@ export default function Contact() {
           <ReasonBtn
             active={formType === 1}
             content="בא לי לעבוד אתכם"
-            onClick={() => setFormType(FORM_TYPES.workInGan)}
+            onClick={() => setFormType(FORM_TYPES.WORK_IN_GAN)}
           />
           <ReasonBtn
             active={formType === 2}
             content="אני מתעניינ.ת בקורסים והרצאות שלכם"
-            onClick={() => setFormType(FORM_TYPES.getProducts)}
+            onClick={() => setFormType(FORM_TYPES.GET_PRODUCTS)}
           />
           <ReasonBtn
             active={formType === 3}
