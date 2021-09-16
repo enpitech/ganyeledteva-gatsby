@@ -11,9 +11,6 @@ export default { classNames };
 export const formatDate = (date, format = siteConfig.dateFormat) => {
   return moment(date).format(format);
 };
-export const formatScreenSizeStringToNumber = (string) => {
-  return Number(string.slice(0, -2));
-};
 
 /**
  * Extract the video ID after the "watch?v=" from YouTube video URL
