@@ -6,7 +6,6 @@ import Page from "../../Page/Page";
 import PageHeader from "../../Page/PageHeader";
 import SEO from "../../SEO";
 import TextTitle from "../../TextTitle";
-import { FORM_TYPES as CONTACT_FORM_TYPES } from "~src/components/Contact";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -117,7 +116,7 @@ function FAQ() {
 
         <div className="text-center mt-20">
           <div className="text-xl">{contactText}</div>
-          <Link to={`/contact/?formType=${CONTACT_FORM_TYPES.GENERAL}`}>
+          <Link to={"/contact"}>
             <div className="mt-5 inline-block rounded-full text-2xl text-center py-1 px-3 border-2 border-black bg-red-link text-white">
               ליצירת קשר
             </div>
