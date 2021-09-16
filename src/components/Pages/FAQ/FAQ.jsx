@@ -6,6 +6,7 @@ import Page from "../../Page/Page";
 import PageHeader from "../../Page/PageHeader";
 import SEO from "../../SEO";
 import TextTitle from "../../TextTitle";
+import { FORM_TYPES as CONTACT_FORM_TYPES } from "../Contact";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
