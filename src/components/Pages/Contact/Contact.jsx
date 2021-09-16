@@ -10,7 +10,7 @@ import SEO from "../../SEO/SEO";
 const FORM_TYPES = Object.freeze({
   WORK_IN_GAN: 1,
   GET_PRODUCTS: 2,
-  general: 3,
+  GENERAL: 3,
 });
 
 export default function Contact() {
