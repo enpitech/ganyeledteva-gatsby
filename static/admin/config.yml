@@ -228,6 +228,13 @@ collections:
             fields:
               - { label: "שאלה", name: "question", widget: "string" }
               - { label: "תשובה", name: "answer", widget: "markdown" }
+              - label: "קישורים"
+                name: "links"
+                widget: "list"
+                require: false
+                fields:
+                  - { label: "טקסט קישור", name: "linkTitle", widget: "string" }
+                  - { label: "הקישור עצמו", name: "linkHref", widget: "string" }
 
   - name: "work-in-gan"
     label: "לעבוד בגן ילדי הטבע"

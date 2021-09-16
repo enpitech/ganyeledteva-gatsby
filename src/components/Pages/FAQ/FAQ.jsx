@@ -29,6 +29,10 @@ function FAQ() {
                 faqs {
                   question
                   answer
+                  links {
+                    linkTitle
+                    linkHref
+                  }
                 }
               }
             }
@@ -67,6 +71,7 @@ function FAQ() {
       </Page.Header>
       <Page.Main className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
         {faqsSections.map(({ section_title: sectionTitle, faqs }) => {
+          const { links } = faqs;
           return (
             <div key={sectionTitle}>
               <TextTitle
@@ -100,9 +105,22 @@ function FAQ() {
                             </Disclosure.Button>
                           </dt>
                           <Disclosure.Panel as="dd" className="mt-2 pl-12">
-                            <p className="text-right text-gray-500 whitespace-pre-wrap">
-                              {item.answer}
-                            </p>
+                            <div>
+                              <p className="text-right text-gray-500 whitespace-pre-wrap">
+                                {item.answer}
+                              </p>
+                              <div>
+                                {links?.map(
+                                  ({ linkTitle, linkHref }, index) => {
+                                    return (
+                                      <a href={linkHref}>
+                                        {index}. {linkTitle}
+                                      </a>
+                                    );
+                                  }
+                                )}
+                              </div>
+                            </div>
                           </Disclosure.Panel>
                         </>
                       )}
