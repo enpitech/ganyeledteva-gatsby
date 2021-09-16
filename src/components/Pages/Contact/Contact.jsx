@@ -7,7 +7,7 @@ import _ from "lodash";
 import ReasonBtn from "./ReasonBtn";
 import SEO from "../../SEO/SEO";
 
-const FORM_TYPES = Object.freeze({
+export const FORM_TYPES = Object.freeze({
   WORK_IN_GAN: 1,
   GET_PRODUCTS: 2,
   GENERAL: 3,
