@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}"],
+  purge: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -11,77 +11,78 @@ module.exports = {
         patt5: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23ffffff' fill-opacity='0.2'%3E%3Cpath fill-rule='evenodd' d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0l28-28v2L54 40h-2zm4 0l24-24v2L58 40h-2zm4 0l20-20v2L62 40h-2zm4 0l16-16v2L66 40h-2zm4 0l12-12v2L70 40h-2zm4 0l8-8v2l-6 6h-2zm4 0l4-4v2l-2 2h-2z'/%3E%3C/g%3E%3C/svg%3E")`,
       }),
       fontFamily: {
-        heebo: ["Heebo"],
+        heebo: ['Heebo'],
       },
 
       colors: {
         purple: {
-          border: "#f7479e",
-          "light-border": "#ff2b56",
+          border: '#f7479e',
+          'light-border': '#ff2b56',
         },
-        pink: { header: "#ff2b56" },
+        pink: { header: '#ff2b56' },
 
         red: {
-          link: "#ff3860",
+          link: '#ff3860',
         },
         turquoise: {
-          "signup-page-header1": "#8cf8e7",
-          "signup-page-header2": "#8ddad5",
+          'signup-page-header1': '#8cf8e7',
+          'signup-page-header2': '#8ddad5',
         },
         green: {
-          "weekly-page-header1": "#8cf8e7",
-          "weekly-page-header2": "#8ddad5",
-          "gan-section-header": "#96e6a1",
+          'weekly-page-header1': '#8cf8e7',
+          'weekly-page-header2': '#8ddad5',
+          'gan-section-header': '#96e6a1',
         },
         yellow: {
-          "gan-page-header": "#fff797",
-          "gan-section-header": "#d4fc79",
-          "gan-section-header-border": "#fdffa8",
+          'gan-page-header': '#4B2AC8',
+          'gan-section-header': '#d4fc79',
+          'gan-section-header-border': '#fdffa8',
         },
         blue: {
-          "democ-educ-header": "#4b2ac8",
-          fb: "#4266b2",
-          "faq-page-header1": "#a1c4fd",
-          "faq-page-header2": "#c2e9fb",
+          'democ-educ-header': '#8DE0D9',
+          'contact-page-header': '#8DE0D9',
+          fb: '#4266b2',
+          'faq-page-header1': '#a1c4fd',
+          'faq-page-header2': '#c2e9fb',
         },
         orange: {
-          "work-in-gan-page-header": "#f36c4f",
+          'work-in-gan-page-header': '#f36c4f',
         },
       },
       boxShadow: {
-        img: "0 0 14px -3px rgba(0,0,0,.67)",
+        img: '0 0 14px -3px rgba(0,0,0,.67)',
       },
       screens: {
-        sm: "640px",
+        sm: '640px',
         // => @media (min-width: 640px) { ... }
 
-        md: "769px",
+        md: '769px',
         // => @media (min-width: 768px) { ... }
 
-        lg: "1024px",
+        lg: '1024px',
         // => @media (min-width: 1024px) { ... }
 
-        xl: "1280px",
+        xl: '1280px',
         // => @media (min-width: 1280px) { ... }
 
-        "2xl": "1536px",
+        '2xl': '1536px',
         // => @media (min-width: 1536px) { ... }
       },
       width: {
-        "1/7": "14.2857143%",
-        "2/7": "28.5714286%",
-        "3/7": "42.8571429%",
-        "4/7": "57.1428571%",
-        "5/7": "71.4285714%",
-        "6/7": "85.7142857%",
+        '1/7': '14.2857143%',
+        '2/7': '28.5714286%',
+        '3/7': '42.8571429%',
+        '4/7': '57.1428571%',
+        '5/7': '71.4285714%',
+        '6/7': '85.7142857%',
       },
       height: {
-        128: "32rem",
+        128: '32rem',
       },
     },
     variants: {
       extend: {},
     },
   },
-  plugins: [require("@tailwindcss/forms"), require("tailwindcss-rtl")],
+  plugins: [require('@tailwindcss/forms'), require('tailwindcss-rtl')],
 };

@@ -69,7 +69,7 @@ export default function Contact() {
         <PageHeader
           title={title}
           subtitle={subtitle || `${placeAddress},  ${placePhone}`}
-          backgroundColorClass="bg-yellow-gan-page-header"
+          backgroundColorClass="bg-blue-contact-page-header"
           backgroundPatternClass="bg-patt1"
         />
       </Page.Header>

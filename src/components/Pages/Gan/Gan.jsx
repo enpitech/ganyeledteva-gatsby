@@ -1,12 +1,12 @@
-import React from "react";
-import { Helmet } from "react-helmet";
-import { graphql } from "gatsby";
-import Page from "../../Page/Page";
-import PageHeader from "../../Page/PageHeader";
-import Layout from "../../../layout";
-import SEO from "../../SEO";
-import config from "../../../../data/SiteConfig";
-import SectionCard from "../../SectionCard";
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { graphql } from 'gatsby';
+import Page from '../../Page/Page';
+import PageHeader from '../../Page/PageHeader';
+import Layout from '../../../layout';
+import SEO from '../../SEO';
+import config from '../../../../data/SiteConfig';
+import SectionCard from '../../SectionCard';
 
 const headerMdFileName = config.ganMainPageDataMdFileName;
 
@@ -52,6 +52,7 @@ function Gan({ data }) {
             subtitle={mainPageHeader.subtitle}
             backgroundColorClass="bg-yellow-gan-page-header"
             backgroundPatternClass="bg-patt1"
+            textWhite
           />
         </Page.Header>
         <Page.Main>
