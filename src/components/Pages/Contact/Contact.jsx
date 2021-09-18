@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import Page from "../../Page/Page";
-import PageHeader from "../../Page/PageHeader";
-import ContactForm from "./ContactForm";
-import _ from "lodash";
-import ReasonBtn from "./ReasonBtn";
-import SEO from "../../SEO/SEO";
+import React, { useState, useEffect } from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import Page from '../../Page/Page';
+import PageHeader from '../../Page/PageHeader';
+import ContactForm from './ContactForm';
+import _ from 'lodash';
+import ReasonBtn from './ReasonBtn';
+import SEO from '../../SEO/SEO';
 
 const FORM_TYPES = Object.freeze({
   WORK_IN_GAN: 1,
@@ -38,7 +38,7 @@ export default function Contact() {
   const pageSEOData = {
     title,
     description: undefined, // description to be added later by Tzachi
-    pagePath: "contact",
+    pagePath: 'contact',
   };
 
   const [formType, setFormType] = useState(FORM_TYPES.WORK_IN_GAN);
@@ -47,17 +47,17 @@ export default function Contact() {
     try {
       if (!_.isNil(window)) {
         const urlParams = new URLSearchParams(window.location.search);
-        const queryParamFormType = Number(urlParams.get("formType"));
+        const queryParamFormType = Number(urlParams.get('formType'));
         if (
           !_.isNil(queryParamFormType) &&
           FORM_TYPES.WORK_IN_GAN <= queryParamFormType &&
-          queryParamFormType <= FORM_TYPES.general
+          queryParamFormType <= FORM_TYPES.GENERAL
         ) {
           setFormType(queryParamFormType);
         }
       }
     } catch {
-      console.log("error in contact query params");
+      console.log('error in contact query params');
     }
   }, []);
 
