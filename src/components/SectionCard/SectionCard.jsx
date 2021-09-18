@@ -23,7 +23,7 @@ const SectionCard = ({
       </Link>
     </div>
     <div className="flex justify-center items-center md:w-6/12  mt-16 md:mt-0 ">
-      <img className="m-auto shadow-img" alt={imgAlt} src={img} />
+      <img className="m-auto shadow-img" alt={imgAlt} src={img} width="468" />
     </div>
   </div>
 );
