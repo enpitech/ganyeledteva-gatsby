@@ -75,7 +75,14 @@ export default function GanSectionTemplate({ data, pageContext }) {
         </Page.Header>
         <Page.Main>
           <div className="md:flex justify-center md:pb-20">
-            <div className="md:w-3/7 ml-10">
+            {isRecommendationSection ? (
+              <div className="block md:hidden">
+                <RecommendationButtons
+                  recommendationButtonsData={recommendationButtonsData}
+                />
+              </div>
+            ) : null}
+            <div className="mx-10 md:w-3/7 md:ml-10">
               <MDXRenderer>{sectionsNode.body}</MDXRenderer>
             </div>
             <div className="md:w-2/7 mt-4 ">
@@ -90,10 +97,10 @@ export default function GanSectionTemplate({ data, pageContext }) {
                     </div>
                   ))}
               {isRecommendationSection ? (
-                <div className="flex flex-col justify-center md:sticky top-1/2 w-2/3 md:w-full m-auto lg:mr-14">
-                  {recommendationButtonsData.map(({ title, href }) => (
-                    <RecommendationButton title={title} href={href} />
-                  ))}
+                <div className="hidden md:block">
+                  <RecommendationButtons
+                    recommendationButtonsData={recommendationButtonsData}
+                  />
                 </div>
               ) : null}
             </div>
@@ -104,10 +111,10 @@ export default function GanSectionTemplate({ data, pageContext }) {
                 <TextTitle title={videoTitle} className="text-center" />
               ) : null}
               <iframe
-                className="m-auto py-10 w-5/6 h-screen"
+                className="m-auto h-auto py-10 w-5/6 sm:h-screen"
                 src={`https://www.youtube.com/embed/${getVideoIdFromYoutubeUrl(
                   youtubeVideoUrl
-                )}`}
+                )}?autoplay=1&loop=1&rel=0&modestbranding=1&autohide=1&showinfo=0&mute=1`}
                 title={videoTitle || ""}
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -118,7 +125,7 @@ export default function GanSectionTemplate({ data, pageContext }) {
           {foodMenuFileLink ? (
             <div className="m-auto w-1/2 text-center">
               <a href={foodMenuFileLink} target="_blank">
-                <div className="inline-block my-4 px-2 py-1 rounded-full w-1/2 text-center border-2 border-black hover:bg-red-link hover:text-white">
+                <div className="inline-block my-4 px-2 py-1 rounded-full w-11/12 sm:w-1/2 text-center border-2 border-black hover:bg-red-link hover:text-white">
                   {foodMenuLinkTitle ? foodMenuLinkTitle : "לחצו כאן"}
                 </div>
               </a>
@@ -161,6 +168,14 @@ const BottomNavMenu = ({ sectionsData, activeSectionTitle }) => {
     </div>
   );
 };
+
+const RecommendationButtons = ({ recommendationButtonsData }) => (
+  <div className="flex flex-col justify-center md:sticky top-1/2 w-2/3 md:w-full m-auto lg:mr-14">
+    {recommendationButtonsData.map(({ title, href }) => (
+      <RecommendationButton title={title} href={href} />
+    ))}
+  </div>
+);
 
 const RecommendationButton = (props) => (
   <a
