@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { navigate } from 'gatsby-link';
+import _ from 'lodash';
 import SuccessAlert from '../../Alerts/SuccessAlert';
 
 function encode(data) {
@@ -20,6 +21,12 @@ export default function ContactForm({ formType }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
+    const services = [];
+    document
+      .querySelectorAll('input[name=services]:checked')
+      .forEach((serviceCheckbox) => {
+        services.push(serviceCheckbox.parentElement.textContent);
+      });
 
     fetch('/', {
       method: 'POST',
@@ -27,6 +34,7 @@ export default function ContactForm({ formType }) {
       body: encode({
         'form-name': form.getAttribute('name'),
         ...formValues,
+        services: _.toString(services),
       }),
     })
       .then(() => {
@@ -164,7 +172,7 @@ function ServicesForm({ handleInputChange }) {
                 id="managers"
                 value="managers"
                 name="service"
-                type="radio"
+                type="checkbox"
                 className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                 onChange={handleInputChange}
               />
@@ -179,7 +187,7 @@ function ServicesForm({ handleInputChange }) {
                 id="parents_school"
                 value="parents_school"
                 name="service"
-                type="radio"
+                type="checkbox"
                 className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                 onChange={handleInputChange}
               />
@@ -194,7 +202,7 @@ function ServicesForm({ handleInputChange }) {
                 id="lectures"
                 values="lectures"
                 name="service"
-                type="radio"
+                type="checkbox"
                 className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                 onChange={handleInputChange}
               />
@@ -209,7 +217,7 @@ function ServicesForm({ handleInputChange }) {
                 id="other"
                 value="other"
                 name="service"
-                type="radio"
+                type="checkbox"
                 className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                 onChange={handleInputChange}
               />
