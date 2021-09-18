@@ -200,7 +200,7 @@ function ServicesForm({ handleInputChange }) {
             <div className="flex items-center">
               <input
                 id="lectures"
-                values="lectures"
+                value="lectures"
                 name="service"
                 type="checkbox"
                 className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
