@@ -52,8 +52,8 @@ function DemocraticEducation() {
           textWhite
         />
       </Page.Header>
-      <Page.Main className="md:flex justify-center">
-        <div className="md:w-3/7 ml-10">
+      <Page.Main className="flex flex-col md:flex-row justify-center">
+        <div className="mx-10 md:w-3/7 md:ml-10">
           <MDXRenderer>{body}</MDXRenderer>
         </div>
         <div className="md:w-2/7 mt-4">

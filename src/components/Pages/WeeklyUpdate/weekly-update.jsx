@@ -51,20 +51,24 @@ function WeeklyUpdate({ data }) {
           textWhite
         ></PageHeader>
         <Page.Main>
-          <div className="md:grid grid-cols-9 gap-2 mr-3">
+          <div className="flex flex-col items-center sm:items-start md:grid grid-cols-9 gap-2 mr-3">
             <div className="col-span-9 h-6" />
-            <div className="md:col-span-5 lg:col-span-4 lg:col-start-2">
+            <div className="w-2/3 md:col-span-5 lg:col-span-4 lg:col-start-2">
               <FirstPost firstPost={firstPost} />
             </div>
             <div className="hidden md:block col-span-4 h-60">
               <Logo className="h-5/6 mx-auto my-5" />
             </div>
             <div className="col-span-9 h-24" />
-            <div className="md:col-span-full lg:col-span-6 lg:col-start-2 border-r-4 border-purple-border mb-4">
+            <div className="hidden sm:block sm:col-span-full lg:col-span-6 lg:col-start-2 border-r-4 border-purple-border mb-4">
               <h2 className="pr-5 my-2 ">עדכונים קודמים</h2>
             </div>
+
             <div className="lg:col-span-7 lg:col-start-2 md:col-span-full">
-              <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 pb-12">
+              <div className="flex flex-col items-center sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 pb-12">
+                <div className="block sm:hidden w-2/3 border-r-4 border-purple-border mb-4">
+                  <h2 className="pr-5 my-2 ">עדכונים קודמים</h2>
+                </div>
                 {restPostList.map(
                   (post, index) =>
                     index < 8 && (

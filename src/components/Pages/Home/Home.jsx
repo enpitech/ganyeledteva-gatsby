@@ -22,6 +22,16 @@ import arrowLeftIcon from "~static/img/pics/icons/arrow_left.svg";
 
 import "./Home.css";
 import TadmitVideo from "../../TadmitVideo";
+import tailwindConfig from "../../../../tailwind.config";
+import { formatScreenSizeStringToNumber } from "../../../utils";
+
+const screensSizes = tailwindConfig.theme.extend.screens;
+
+const BREAK_POINTS = {
+  lg: formatScreenSizeStringToNumber(screensSizes.lg),
+  md: formatScreenSizeStringToNumber(screensSizes.md),
+  sm: formatScreenSizeStringToNumber(screensSizes.sm),
+};
 
 function Home() {
   const data = useStaticQuery(graphql`
