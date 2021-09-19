@@ -12,20 +12,6 @@ import TadmitVideo from "../../TadmitVideo";
 export default function WorkInGan() {
   const data = useStaticQuery(graphql`
     query workInGanAndteamImagesQuery {
-      teamMdx: allMdx(filter: { fields: { dir: { eq: "team" } } }) {
-        edges {
-          node {
-            frontmatter {
-              img
-              title
-              firstname
-              lastname
-              index
-            }
-            body
-          }
-        }
-      }
       workInGanMdx: allMdx(filter: { fields: { dir: { eq: "work-in-gan" } } }) {
         edges {
           node {
@@ -38,6 +24,15 @@ export default function WorkInGan() {
               tadmitVideo
               tadmitVideoTitle
               teamGalleryTitle
+              teamList {
+                img
+                title
+                firstName
+                lastName
+                index
+                description
+                role
+              }
             }
           }
         }
@@ -64,18 +59,6 @@ export default function WorkInGan() {
     });
   }, [workInGanTeamTitle]);
 
-  const teamDataEdges = data.teamMdx.edges;
-  const teamData = teamDataEdges.map((employee) => ({
-    imageSrc: employee.node.frontmatter.img,
-    imageAlt: employee.node.frontmatter.title,
-    firstName: employee.node.frontmatter.firstname,
-    lastName: employee.node.frontmatter.lastname,
-    descriptionAsMD: employee.node.body,
-    index: employee.node.frontmatter.index,
-  }));
-
-  teamData.sort((a, b) => (a.index > b.index ? 1 : b.index > a.index ? -1 : 0));
-
   const workInGanMdxData = data.workInGanMdx.edges[0].node;
   const {
     title,
@@ -83,7 +66,10 @@ export default function WorkInGan() {
     tadmitVideo,
     tadmitVideoTitle,
     teamGalleryTitle,
+    teamList,
   } = workInGanMdxData.frontmatter;
+
+  teamList.sort((a, b) => (a.index > b.index ? 1 : b.index > a.index ? -1 : 0));
 
   const currentPageRouteObject = siteRoutes.filter(
     (route) => route.href === `/${workInGanMdxData.fields.dir}`
@@ -133,7 +119,7 @@ export default function WorkInGan() {
             title={teamGalleryTitle || "המחנכות מספרות על העבודה בגן"}
             className="text-center py-10"
           />
-          <TeamGallery teamData={teamData} />{" "}
+          <TeamGallery teamList={teamList} />{" "}
         </div>
         {showStickyFooter ? (
           <StickyFooter
@@ -148,30 +134,33 @@ export default function WorkInGan() {
   );
 }
 
-const TeamGallery = ({ teamData }) => {
+const TeamGallery = ({ teamList }) => {
   return (
     <ul
       role="list"
       className="space-y-12 sm:divide-y sm:divide-gray-200 sm:space-y-0 sm:-mt-8 lg:gap-x-8 lg:space-y-0"
     >
-      {teamData.map((employee, index) => (
+      {teamList.map((employee, index) => (
         <li key={employee.firstName + index} className="sm:py-8">
-          <div className="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 items-center ">
-            <div className="aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4 ">
+          <div className="space-y-4 sm:grid sm:grid-cols-2 sm:gap-0 sm:space-y-0 items-center ">
+            <div className="aspect-w-3 aspect-h-2  sm:aspect-h-4 ">
               <img
-                className="object-cover h-80 w-96 shadow-lg rounded-lg"
-                src={employee.imageSrc}
-                alt={employee.imageAlt}
+                className="object-cover h-80 shadow-lg rounded-lg"
+                src={employee.img}
+                alt={employee.title}
               />
             </div>
             <div className="space-y-4">
               <div className="text-3xl font-bold leading-6 font-medium space-y-1">
                 <h3>
                   {employee.firstName} {employee.lastName}
+                  <p className="text-indigo-600 text-xl my-1">
+                    {employee.role}
+                  </p>
                 </h3>
               </div>
               <div className="text-lg">
-                <MDXRenderer>{employee.descriptionAsMD}</MDXRenderer>
+                <p>{employee.description}</p>
               </div>
             </div>
           </div>
