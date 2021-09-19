@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: github
   repo: nir2002/ganyeledteva-gatsby # Path to your Github repository
   branch: main # Branch to update
   base_url: https://api.netlify.com
@@ -255,6 +255,16 @@ collections:
           widget: "text",
           required: false,
         }
+      - name: "teamList"
+        label: "הצוות"
+        widget: list
+        fields:
+          - { label: "שם פנימי", name: "title", widget: "string" }
+          - { label: "שם", name: "firstname", widget: "string" }
+          - { label: "שם משפחה", name: "lastname", widget: "string" }
+          - { label: "תמונה", name: "img", widget: "image" }
+          - { label: "מיקום", name: "index", widget: "number" }
+          - { label: "טקסט", name: "body", widget: "markdown" }
   - name: "products"
     label: "מוצרים חינוכיים"
     folder: "content/products"

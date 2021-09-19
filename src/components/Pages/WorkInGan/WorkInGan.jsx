@@ -12,20 +12,6 @@ import TadmitVideo from "../../TadmitVideo";
 export default function WorkInGan() {
   const data = useStaticQuery(graphql`
     query workInGanAndteamImagesQuery {
-      teamMdx: allMdx(filter: { fields: { dir: { eq: "team" } } }) {
-        edges {
-          node {
-            frontmatter {
-              img
-              title
-              firstname
-              lastname
-              index
-            }
-            body
-          }
-        }
-      }
       workInGanMdx: allMdx(filter: { fields: { dir: { eq: "work-in-gan" } } }) {
         edges {
           node {
@@ -38,6 +24,13 @@ export default function WorkInGan() {
               tadmitVideo
               tadmitVideoTitle
               teamGalleryTitle
+              teamList {
+                img
+                title
+                firstname
+                lastname
+                index
+              }
             }
           }
         }
@@ -64,18 +57,6 @@ export default function WorkInGan() {
     });
   }, [workInGanTeamTitle]);
 
-  const teamDataEdges = data.teamMdx.edges;
-  const teamData = teamDataEdges.map((employee) => ({
-    imageSrc: employee.node.frontmatter.img,
-    imageAlt: employee.node.frontmatter.title,
-    firstName: employee.node.frontmatter.firstname,
-    lastName: employee.node.frontmatter.lastname,
-    descriptionAsMD: employee.node.body,
-    index: employee.node.frontmatter.index,
-  }));
-
-  teamData.sort((a, b) => (a.index > b.index ? 1 : b.index > a.index ? -1 : 0));
-
   const workInGanMdxData = data.workInGanMdx.edges[0].node;
   const {
     title,
@@ -83,7 +64,19 @@ export default function WorkInGan() {
     tadmitVideo,
     tadmitVideoTitle,
     teamGalleryTitle,
+    teamList,
   } = workInGanMdxData.frontmatter;
+
+  const teamData = teamList.map((employee) => ({
+    imageSrc: employee.img,
+    imageAlt: employeetitle,
+    firstName: employee.firstname,
+    lastName: employee.lastname,
+    descriptionAsMD: employee.body,
+    index: employee.index,
+  }));
+
+  teamData.sort((a, b) => (a.index > b.index ? 1 : b.index > a.index ? -1 : 0));
 
   const currentPageRouteObject = siteRoutes.filter(
     (route) => route.href === `/${workInGanMdxData.fields.dir}`
