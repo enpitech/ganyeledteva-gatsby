@@ -23,8 +23,6 @@ const BREAK_POINTS = {
   sm: formatScreenSizeStringToNumber(screensSizes.sm),
 };
 
-console.log({ BREAK_POINTS });
-
 function Home() {
   const data = useStaticQuery(graphql`
     query HomeQuery {
