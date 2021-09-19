@@ -48,7 +48,7 @@ function DemocraticEducation() {
           title={title}
           subtitle={subtitle}
           backgroundColorClass="bg-blue-democ-educ-header"
-          backgroundPatternClass="bg-patt2"
+          backgroundPatternClass="bg-patt1"
           textWhite
         />
       </Page.Header>
