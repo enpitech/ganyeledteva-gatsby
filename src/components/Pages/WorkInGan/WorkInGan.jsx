@@ -27,10 +27,11 @@ export default function WorkInGan() {
               teamList {
                 img
                 title
-                firstname
-                lastname
+                firstName
+                lastName
                 index
                 description
+                role
               }
             }
           }
@@ -68,16 +69,7 @@ export default function WorkInGan() {
     teamList,
   } = workInGanMdxData.frontmatter;
 
-  const teamData = teamList.map((employee) => ({
-    imageSrc: employee.img,
-    imageAlt: employee.title,
-    firstName: employee.firstname,
-    lastName: employee.lastname,
-    description: employee.description,
-    index: employee.index,
-  }));
-
-  teamData.sort((a, b) => (a.index > b.index ? 1 : b.index > a.index ? -1 : 0));
+  teamList.sort((a, b) => (a.index > b.index ? 1 : b.index > a.index ? -1 : 0));
 
   const currentPageRouteObject = siteRoutes.filter(
     (route) => route.href === `/${workInGanMdxData.fields.dir}`
@@ -127,7 +119,7 @@ export default function WorkInGan() {
             title={teamGalleryTitle || "המחנכות מספרות על העבודה בגן"}
             className="text-center py-10"
           />
-          <TeamGallery teamData={teamData} />{" "}
+          <TeamGallery teamList={teamList} />{" "}
         </div>
         {showStickyFooter ? (
           <StickyFooter
@@ -142,26 +134,29 @@ export default function WorkInGan() {
   );
 }
 
-const TeamGallery = ({ teamData }) => {
+const TeamGallery = ({ teamList }) => {
   return (
     <ul
       role="list"
       className="space-y-12 sm:divide-y sm:divide-gray-200 sm:space-y-0 sm:-mt-8 lg:gap-x-8 lg:space-y-0"
     >
-      {teamData.map((employee, index) => (
+      {teamList.map((employee, index) => (
         <li key={employee.firstName + index} className="sm:py-8">
-          <div className="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 items-center ">
-            <div className="aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4 ">
+          <div className="space-y-4 sm:grid sm:grid-cols-2 sm:gap-0 sm:space-y-0 items-center ">
+            <div className="aspect-w-3 aspect-h-2  sm:aspect-h-4 ">
               <img
-                className="object-cover h-80 w-96 shadow-lg rounded-lg"
-                src={employee.imageSrc}
-                alt={employee.imageAlt}
+                className="object-cover h-80 shadow-lg rounded-lg"
+                src={employee.img}
+                alt={employee.title}
               />
             </div>
             <div className="space-y-4">
               <div className="text-3xl font-bold leading-6 font-medium space-y-1">
                 <h3>
                   {employee.firstName} {employee.lastName}
+                  <p className="text-indigo-600 text-xl my-1">
+                    {employee.role}
+                  </p>
                 </h3>
               </div>
               <div className="text-lg">
