@@ -70,7 +70,7 @@ export default function GanSectionTemplate({ data, pageContext }) {
           <PageHeader
             title={title}
             backgroundColorClass="bg-gradient-to-r from-yellow-gan-section-header to-green-gan-section-header"
-            backgroundPatternClass="bg-patt2"
+            backgroundPatternClass="bg-patt1"
           />
         </Page.Header>
         <Page.Main>
