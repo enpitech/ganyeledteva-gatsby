@@ -55,6 +55,10 @@ export default function MainLayout({ children }) {
     ({ name, href }) => !footerMenuIgnoredRoutes?.includes(href)
   );
 
+  const signupToGanNavItem = { name: "לרישום לגן", href: "/signup" };
+
+  const mobileNavBarMenuItems = navigation.concat(signupToGanNavItem);
+
   const location = useLocation();
 
   return (
@@ -67,12 +71,18 @@ export default function MainLayout({ children }) {
       <Disclosure as="nav" className="bg-white shadow-sm">
         {({ open }) => (
           <>
-            <div className="mx-auto px-4 md:px-6 lg:px-8">
-              <div className="flex flex-row-reverse md:flex-row justify-between h-16">
+            <div className="mx-auto pr-4 pl-2 md:pxpx-4 md:px-6 lg:px-8">
+              <div className="flex flex-row-reverse md:flex-row justify-between h-16 items-center">
                 <div className="flex">
-                  <div className="flex-shrink-0 flex items-center">
+                  <div className="flex-shrink-0 hidden md:flex items-center">
                     <Logo className="h-12 w-auto my-auto" alt="navLogo" />
                   </div>
+                  <div className="block md:hidden">
+                    <EnquireNavBarButtons
+                      signupToGanNavItem={signupToGanNavItem}
+                    />
+                  </div>
+
                   <div className="hidden md:-my-px md:ms-6 md:flex">
                     {navBarMenuItems.map((item) => {
                       const isActive = item.href === location.pathname;
@@ -99,30 +109,10 @@ export default function MainLayout({ children }) {
                     })}
                   </div>
                 </div>
-                <div className="text-sm my-auto hidden md:flex flex-row">
-                  <EnquireNavButton
-                    className="h-4/5 w-9"
-                    linkTo="https://www.youtube.com/user/0542318413"
-                    target="_blank"
-                  >
-                    <FontAwesomeIcon icon={faYoutube} className="text-black" />
-                  </EnquireNavButton>
-                  <EnquireNavButton
-                    className=" h-4/5 w-9"
-                    linkTo="https://www.facebook.com/yaldeyhateva/"
-                    target="_blank"
-                  >
-                    <FontAwesomeIcon
-                      icon={faFacebookF}
-                      className="text-black"
-                      // style={{ color: 'black' }}
-                    />
-                  </EnquireNavButton>
-                  <EnquireNavButton
-                    title="רישום לגן"
-                    className="bg-red-link"
-                    linkTo="/signup"
-                  ></EnquireNavButton>
+                <div className="hidden md:block">
+                  <EnquireNavBarButtons
+                    signupToGanNavItem={signupToGanNavItem}
+                  />{" "}
                 </div>
 
                 <div className="-mr-2 flex items-center md:hidden">
@@ -141,7 +131,7 @@ export default function MainLayout({ children }) {
 
             <Disclosure.Panel className="md:hidden">
               <div className="pt-2 pb-3 space-y-1">
-                {navigation.map((item) => (
+                {mobileNavBarMenuItems.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
@@ -182,3 +172,33 @@ const EnquireNavButton = ({ title, linkTo, className, target, children }) => (
     {title}
   </a>
 );
+
+const EnquireNavBarButtons = ({ signupToGanNavItem }) => {
+  return (
+    <div className="text-sm my-auto flex flex-row">
+      <EnquireNavButton
+        className="h-4/5 w-4"
+        linkTo="https://www.youtube.com/user/0542318413"
+        target="_blank"
+      >
+        <FontAwesomeIcon icon={faYoutube} className="text-black" />
+      </EnquireNavButton>
+      <EnquireNavButton
+        className=" h-4/5 w-4"
+        linkTo="https://www.facebook.com/yaldeyhateva/"
+        target="_blank"
+      >
+        <FontAwesomeIcon
+          icon={faFacebookF}
+          className="text-black"
+          // style={{ color: 'black' }}
+        />
+      </EnquireNavButton>
+      <EnquireNavButton
+        title={signupToGanNavItem.name}
+        className="bg-red-link"
+        linkTo={signupToGanNavItem.href}
+      ></EnquireNavButton>
+    </div>
+  );
+};
