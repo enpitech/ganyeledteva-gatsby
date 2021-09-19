@@ -66,17 +66,20 @@ function Home() {
   useLayoutEffect(() => {
     setScreenWidth(window.innerWidth);
 
-    window.addEventListener('scroll', () => {
+    const autoplayTadmitVideo = () => {
       // will trigger when your element comes into viewport
       const hT = document.getElementById('tadmit-video-container').offsetTop;
       const hH = document.getElementById('tadmit-video-container').offsetHeight;
       const wH = window.innerWidth;
       const wS = window.scrollY;
 
-      if (wS > hT + hH - wH && !playTadmitVideo) {
+      if (!playTadmitVideo && wS > hT + hH - wH) {
+        window.removeEventListener('scroll', autoplayTadmitVideo);
         setPlayTadmitVideo(true);
       }
-    });
+    };
+
+    window.addEventListener('scroll', autoplayTadmitVideo);
   }, []);
 
   const carouselSettings = {
@@ -126,12 +129,14 @@ function Home() {
         </div>
         <TeamGrid />
         <div id="tadmit-video-container" className="mt-20 md:mt-48 w-full">
-          <TadmitVideo
-            tadmitVideo={tadmitVideoYoutubeUrl}
-            className="w-11/12 rounded-xl md:rounded-none md:w-full "
-            mute
-            autoplay={playTadmitVideo}
-          />
+          {playTadmitVideo && (
+            <TadmitVideo
+              tadmitVideo={tadmitVideoYoutubeUrl}
+              className="w-11/12 rounded-xl md:rounded-none md:w-full "
+              mute
+              autoplay
+            />
+          )}
         </div>
         <div className="mt-20 md:mt-40">
           <TextTitle title="אנחנו בתקשורת" className="text-center" />
