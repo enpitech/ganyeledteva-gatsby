@@ -28,7 +28,7 @@ export default function WeeklyUpdatePostTemplate({ data, pageContext }) {
           title={post.title}
           subtitle={formatDate(post.date)}
           backgroundColorClass="bg-gradient-to-r from-yellow-200 to-green-300"
-          backgroundPatternClass="bg-patt2"
+          backgroundPatternClass="bg-patt1"
         />
         <Page.Main>
           <div className="flex justify-between">
