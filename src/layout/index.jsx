@@ -55,8 +55,6 @@ export default function MainLayout({ children }) {
     ({ name, href }) => !footerMenuIgnoredRoutes?.includes(href)
   );
 
-  const mobileNavBarMenuItems = navigation.push();
-
   const location = useLocation();
 
   return (
