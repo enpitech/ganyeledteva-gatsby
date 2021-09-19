@@ -264,7 +264,7 @@ collections:
           - { label: "שם משפחה", name: "lastname", widget: "string" }
           - { label: "תמונה", name: "img", widget: "image" }
           - { label: "מיקום", name: "index", widget: "number" }
-          - { label: "טקסט", name: "body", widget: "markdown" }
+          - { label: "טקסט", name: "description", widget: "text" }
   - name: "products"
     label: "מוצרים חינוכיים"
     folder: "content/products"

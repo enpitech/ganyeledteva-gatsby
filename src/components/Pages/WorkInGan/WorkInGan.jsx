@@ -30,6 +30,7 @@ export default function WorkInGan() {
                 firstname
                 lastname
                 index
+                description
               }
             }
           }
@@ -69,10 +70,10 @@ export default function WorkInGan() {
 
   const teamData = teamList.map((employee) => ({
     imageSrc: employee.img,
-    imageAlt: employeetitle,
+    imageAlt: employee.title,
     firstName: employee.firstname,
     lastName: employee.lastname,
-    descriptionAsMD: employee.body,
+    description: employee.description,
     index: employee.index,
   }));
 
@@ -164,7 +165,7 @@ const TeamGallery = ({ teamData }) => {
                 </h3>
               </div>
               <div className="text-lg">
-                <MDXRenderer>{employee.descriptionAsMD}</MDXRenderer>
+                <p>{employee.description}</p>
               </div>
             </div>
           </div>
