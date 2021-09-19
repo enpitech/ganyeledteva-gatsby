@@ -1,11 +1,11 @@
-import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import { MDXRenderer } from "gatsby-plugin-mdx";
-import SEO from "../../SEO";
-import Page from "../../Page/Page";
-import { MDXProvider } from "@mdx-js/react";
-import TadmitVideo from "../../TadmitVideo";
-import { mdStyleWithInternalLinks } from "../../../styles/mdxStyles";
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { MDXProvider } from '@mdx-js/react';
+import SEO from '../../SEO';
+import Page from '../../Page/Page';
+import TadmitVideo from '../../TadmitVideo';
+import { mdStyleWithInternalLinks } from '../../../styles/mdxStyles';
 
 function DemocraticCenter() {
   const data = useStaticQuery(graphql`
@@ -47,7 +47,7 @@ function DemocraticCenter() {
       <SEO pageSEOData={pageSEOData} />
       <Page.Header>
         <div className="text-center flex flex-col justify-center relative">
-          <TadmitVideo tadmitVideo={tadmitVideo} className="w-full" />
+          <TadmitVideo tadmitVideo={tadmitVideo} className="w-full" autoplay />
           <div className="absolute bg-blue-300 inset-0 opacity-50 full" />
           <div className="absolute md:top-1/3 text-white text-3xl sm:text-4xl md:text-5xl w-full m-auto">
             {title}

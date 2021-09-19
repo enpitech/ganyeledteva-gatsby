@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import HomeHeader from "./HomeHeader";
-import Page from "../../Page/Page";
-import SectionCard from "../../SectionCard";
-import TextTitle from "../../TextTitle";
-import SEO from "../../SEO";
-import TeamGrid from "../../TeamGrid";
-import "./Home.css";
-import _ from "lodash";
-import TadmitVideo from "../../TadmitVideo";
-import tailwindConfig from "../../../../tailwind.config";
-import { formatScreenSizeStringToNumber } from "../../../utils";
+import React, { useState, useLayoutEffect } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import _ from 'lodash';
+import HomeHeader from './HomeHeader';
+import Page from '../../Page/Page';
+import SectionCard from '../../SectionCard';
+import TextTitle from '../../TextTitle';
+import SEO from '../../SEO';
+import TeamGrid from '../../TeamGrid';
+import './Home.css';
+import TadmitVideo from '../../TadmitVideo';
+import tailwindConfig from '../../../../tailwind.config';
+import { formatScreenSizeStringToNumber } from '../../../utils';
 
 const screensSizes = tailwindConfig.theme.extend.screens;
 
@@ -61,9 +61,25 @@ function Home() {
   } = frontmatter;
 
   const [screenWidth, setScreenWidth] = useState(0);
+  const [playTadmitVideo, setPlayTadmitVideo] = useState(false);
 
-  useEffect(() => {
-    _.isNil(window) ? null : setScreenWidth(window.innerWidth);
+  useLayoutEffect(() => {
+    setScreenWidth(window.innerWidth);
+
+    const autoplayTadmitVideo = () => {
+      // will trigger when your element comes into viewport
+      const hT = document.getElementById('tadmit-video-container').offsetTop;
+      const hH = document.getElementById('tadmit-video-container').offsetHeight;
+      const wH = window.innerWidth;
+      const wS = window.scrollY;
+
+      if (!playTadmitVideo && wS > hT + hH - wH) {
+        window.removeEventListener('scroll', autoplayTadmitVideo);
+        setPlayTadmitVideo(true);
+      }
+    };
+
+    window.addEventListener('scroll', autoplayTadmitVideo);
   }, []);
 
   const carouselSettings = {
@@ -85,7 +101,7 @@ function Home() {
     <Page
       style={{
         background: "#fff url('img/backgrounds/back.png')",
-        backgroundSize: "cover",
+        backgroundSize: 'cover',
       }}
     >
       <SEO />
@@ -99,7 +115,7 @@ function Home() {
             return (
               <SectionCard
                 className={`flex flex-col ${
-                  index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
+                  index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'
                 } justify-between mt-20`}
                 key={title}
                 title={title}
@@ -112,12 +128,15 @@ function Home() {
           })}
         </div>
         <TeamGrid />
-        <div className="mt-20 md:mt-48 w-full">
-          <TadmitVideo
-            tadmitVideo={tadmitVideoYoutubeUrl}
-            className="w-11/12 rounded-xl md:rounded-none md:w-full "
-            mute
-          />
+        <div id="tadmit-video-container" className="mt-20 md:mt-48 w-full">
+          {playTadmitVideo && (
+            <TadmitVideo
+              tadmitVideo={tadmitVideoYoutubeUrl}
+              className="w-11/12 rounded-xl md:rounded-none md:w-full "
+              mute
+              autoplay
+            />
+          )}
         </div>
         <div className="mt-20 md:mt-40">
           <TextTitle title="אנחנו בתקשורת" className="text-center" />

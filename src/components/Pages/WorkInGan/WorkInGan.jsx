@@ -1,13 +1,13 @@
-import React, { useState, useLayoutEffect, useRef } from "react";
-import Page from "~src/components/Page/Page";
-import PageHeader from "~src/components/Page/PageHeader";
-import SEO from "~src/components/SEO";
-import { useStaticQuery, graphql, Link } from "gatsby";
-import TextTitle from "~src/components/TextTitle";
-import { siteRoutes } from "../../../../data/SiteConfig";
-import StickyFooter from "../../StickyFooter";
-import { MDXRenderer } from "gatsby-plugin-mdx";
-import TadmitVideo from "../../TadmitVideo";
+import React, { useState, useLayoutEffect, useRef } from 'react';
+import Page from '~src/components/Page/Page';
+import PageHeader from '~src/components/Page/PageHeader';
+import SEO from '~src/components/SEO';
+import { useStaticQuery, graphql, Link } from 'gatsby';
+import TextTitle from '~src/components/TextTitle';
+import { siteRoutes } from '../../../../data/SiteConfig';
+import StickyFooter from '../../StickyFooter';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import TadmitVideo from '../../TadmitVideo';
 
 export default function WorkInGan() {
   const data = useStaticQuery(graphql`
@@ -43,7 +43,7 @@ export default function WorkInGan() {
   const [showStickyFooter, setShowStickyFooter] = useState(false);
   const workInGanTeamTitle = useRef(null);
   useLayoutEffect(() => {
-    document.addEventListener("scroll", function (e) {
+    document.addEventListener('scroll', function (e) {
       if (workInGanTeamTitle.current === null) {
         return;
       }
@@ -75,7 +75,7 @@ export default function WorkInGan() {
     (route) => route.href === `/${workInGanMdxData.fields.dir}`
   )[0];
 
-  const currentPageTitle = currentPageRouteObject?.name || "לעבוד בגן";
+  const currentPageTitle = currentPageRouteObject?.name || 'לעבוד בגן';
 
   const pageSEOData = {
     title: currentPageTitle,
@@ -110,16 +110,17 @@ export default function WorkInGan() {
             <TadmitVideo
               tadmitVideo={tadmitVideo}
               className="mt-10 sm:mt-0 sm:h-128 sm:w-screen "
+              autoplay
               mute
             />
           </div>
         ) : null}
         <div className="m-auto pb-20 w-5/6" ref={workInGanTeamTitle}>
           <TextTitle
-            title={teamGalleryTitle || "המחנכות מספרות על העבודה בגן"}
+            title={teamGalleryTitle || 'המחנכות מספרות על העבודה בגן'}
             className="text-center py-10"
           />
-          <TeamGallery teamList={teamList} />{" "}
+          <TeamGallery teamList={teamList} />{' '}
         </div>
         {showStickyFooter ? (
           <StickyFooter
