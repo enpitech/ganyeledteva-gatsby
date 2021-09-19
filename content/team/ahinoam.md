@@ -2,7 +2,7 @@
 title: אחינועם
 firstname: אחינועם
 lastname: חנניה
-img: /assets/pics/uploads/ahinoam.jpg
+img: /assets/pics/uploads/גן_ילדי_הטבע_הדמוקרטי_צוות_צעירים_-_צילום_לנס_הפקות_17-2-.jpg
 index: 2
 ---
 
