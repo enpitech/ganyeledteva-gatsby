@@ -67,6 +67,12 @@ function Home() {
     setScreenWidth(window.innerWidth);
 
     const autoplayTadmitVideo = () => {
+      const tadmitVideoContainer = document.getElementById(
+        'tadmit-video-container'
+      );
+      if (_.isNil(tadmitVideoContainer)) {
+        return;
+      }
       // will trigger when your element comes into viewport
       const hT = document.getElementById('tadmit-video-container').offsetTop;
       const hH = document.getElementById('tadmit-video-container').offsetHeight;
