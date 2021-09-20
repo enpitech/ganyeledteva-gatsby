@@ -1,14 +1,14 @@
-import React from "react";
-import { useStaticQuery, graphql, Link } from "gatsby";
-import { Disclosure } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/outline";
-import Page from "../../Page/Page";
-import PageHeader from "../../Page/PageHeader";
-import SEO from "../../SEO";
-import TextTitle from "../../TextTitle";
+import React from 'react';
+import { useStaticQuery, graphql, Link } from 'gatsby';
+import { Disclosure } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/outline';
+import Page from '../../Page/Page';
+import PageHeader from '../../Page/PageHeader';
+import SEO from '../../SEO';
+import TextTitle from '../../TextTitle';
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 
 function FAQ() {
@@ -29,6 +29,10 @@ function FAQ() {
                 faqs {
                   question
                   answer
+                  links {
+                    link_text
+                    link_url
+                  }
                 }
               }
             }
@@ -91,8 +95,8 @@ function FAQ() {
                               <span className="ml-6 h-7 flex items-center">
                                 <ChevronDownIcon
                                   className={classNames(
-                                    open ? "-rotate-180" : "rotate-0",
-                                    "h-6 w-6 transform"
+                                    open ? '-rotate-180' : 'rotate-0',
+                                    'h-6 w-6 transform'
                                   )}
                                   aria-hidden="true"
                                 />
@@ -102,6 +106,17 @@ function FAQ() {
                           <Disclosure.Panel as="dd" className="mt-2 pl-12">
                             <p className="text-right text-gray-500 whitespace-pre-wrap">
                               {item.answer}
+                              {item.links
+                                ? item.links.map((link) => {
+                                    return (
+                                      <p>
+                                        <a href={link.link_url}>
+                                          {link.link_text}
+                                        </a>
+                                      </p>
+                                    );
+                                  })
+                                : null}
                             </p>
                           </Disclosure.Panel>
                         </>
@@ -116,7 +131,7 @@ function FAQ() {
 
         <div className="text-center mt-20">
           <div className="text-xl">{contactText}</div>
-          <Link to={"/contact/?formType=3"}>
+          <Link to={'/contact/?formType=3'}>
             <div className="mt-5 inline-block rounded-full text-2xl text-center py-1 px-3 border-2 border-black bg-red-link text-white">
               ליצירת קשר
             </div>
