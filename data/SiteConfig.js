@@ -5,8 +5,9 @@ const config = {
   siteLogo: '/logos/logo.png', // Logo used for SEO and manifest.
   siteUrl: 'http://www.ganyeledteva.co.il', // Domain of your website without pathPrefix.
   pathPrefix: '/', // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
-  siteDescription: 'A GatsbyJS starter with Advanced design in mind.', // Website description used for RSS feeds/meta description tag.
-  siteRssTitle: '', // Title of the RSS feed
+  siteDescription:
+    'גן ילדי הטבע הוקם בשנת 2009 בשכונת נחלת יצחק מתוך חזון של יצירת שינוי תפיסת תפקיד הגן בחייהם של הילדים והילדות עד גיל 3.', // Website description used for RSS feeds/meta description tag.
+  siteRssTitle: 'גן ילדי הטבע', // Title of the RSS feed
   siteRss: '',
   siteFBAppID: '', // FB Application ID for using app insights
   googleAnalyticsID: 'DUMMY_ID', // GA tracking ID. uses dummy id to compile
