@@ -106,17 +106,19 @@ function FAQ() {
                           <Disclosure.Panel as="dd" className="mt-2 pl-12">
                             <p className="text-right text-gray-500 whitespace-pre-wrap">
                               {item.answer}
-                              {item.links
-                                ? item.links.map((link) => {
-                                    return (
-                                      <p>
-                                        <a href={link.link_url}>
-                                          {link.link_text}
-                                        </a>
-                                      </p>
-                                    );
-                                  })
-                                : null}
+                              <div className="mt-8">
+                                {item.links
+                                  ? item.links.map((link) => {
+                                      return (
+                                        <p>
+                                          <a href={link.link_url}>
+                                            {link.link_text}
+                                          </a>
+                                        </p>
+                                      );
+                                    })
+                                  : null}
+                              </div>
                             </p>
                           </Disclosure.Panel>
                         </>
