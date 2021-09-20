@@ -1,10 +1,10 @@
-import React, { useState, Fragment } from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import { Dialog, Transition } from "@headlessui/react";
-import { XIcon } from "@heroicons/react/outline";
-import { MDXRenderer } from "gatsby-plugin-mdx";
+import React, { useState, Fragment } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { Dialog, Transition } from '@headlessui/react';
+import { XIcon } from '@heroicons/react/outline';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-const mainEmptyDiamondTitle = "צוות הגן";
+const mainEmptyDiamondTitle = 'צוות הגן';
 const diamondSideEdgeLength = 27;
 
 export default function TeamGrid() {
@@ -52,7 +52,7 @@ export default function TeamGrid() {
   let teamListDesktop = prepareTeamListForDiamondGrid(teamList);
 
   return (
-    <div className="mt-10">
+    <div className="mt-10" id="team-grid">
       <div className="hidden md:block w-full -mb-20 ">
         {teamListDesktop.map((singleSplittedTeamList, index) => {
           return (
@@ -62,7 +62,7 @@ export default function TeamGrid() {
               style={{
                 marginTop:
                   index === 0
-                    ? "auto"
+                    ? 'auto'
                     : `-${(diamondSideEdgeLength - 1) / 2}vw`,
               }}
             >
@@ -91,10 +91,10 @@ const EmployeeCardDesktop = ({ data }) => {
     <div
       className="inline-block text-white hover:text-red-link md:text-3xl lg:text-3xl xl:text-5xl text-center mx-4"
       style={{
-        clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+        clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
         backgroundImage: `url(${imgPath})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
     >
       <button onClick={() => setOpen(!open)} className="focus:outline-none">
@@ -110,8 +110,8 @@ const EmployeeCardDesktop = ({ data }) => {
               <div
                 className={`h-full w-full absolute  ${
                   title === mainEmptyDiamondTitle
-                    ? "text-red-link top-1/3"
-                    : "top-2/3"
+                    ? 'text-red-link top-1/3'
+                    : 'top-2/3'
                 }`}
               >
                 <div className=" flex flex-col justify-center">{title}</div>
@@ -143,7 +143,7 @@ const EmployeeCardMobile = ({ data }) => {
         className="w-full h-24 "
         style={{
           backgroundImage: `url(${imgPath})`,
-          backgroundSize: "cover",
+          backgroundSize: 'cover',
         }}
       >
         <EmployeeModal
@@ -181,10 +181,10 @@ const EmployeeModal = ({
           <div
             className="hidden md:block m-auto bg-red-100 text-center"
             style={{
-              clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+              clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
               backgroundImage: `url(${imgPath})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
               width: `${diamondSideEdgeLength}vw`,
               height: `${diamondSideEdgeLength}vw`,
             }}
@@ -247,7 +247,7 @@ const prepareTeamListForDiamondGrid = (teamList) => {
  * assumptions: @param:teamListSplitToSubArrs length >= 2, meaning there are at least 3 .md file of gan's workers
  */
 const fillInEmptyDiamondsIfNeeded = (teamListSplitToSubArrs) => {
-  const placeholderEmptyDiamond = { title: "", isEmpty: true };
+  const placeholderEmptyDiamond = { title: '', isEmpty: true };
   const oneBeforeLastRowLen =
     teamListSplitToSubArrs[teamListSplitToSubArrs.length - 2].length;
   const lastRowLen =
