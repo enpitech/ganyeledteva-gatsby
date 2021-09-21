@@ -111,10 +111,13 @@ function FAQ() {
                                 {item.links
                                   ? item.links.map((link) => {
                                       return (
-                                        <p>
-                                          <a href={link.link_url}>
-                                            {link.link_text}
-                                          </a>
+                                        <p
+                                          className="cursor-pointer underline text-purple-700"
+                                          onClick={() => {
+                                            navigate(link.link_url);
+                                          }}
+                                        >
+                                          {link.link_text}
                                         </p>
                                       );
                                     })
