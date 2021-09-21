@@ -1,7 +1,8 @@
 import React from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import { useStaticQuery, graphql, Link, navigate } from 'gatsby';
 import { Disclosure } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
+
 import Page from '../../Page/Page';
 import PageHeader from '../../Page/PageHeader';
 import SEO from '../../SEO';
@@ -133,11 +134,14 @@ function FAQ() {
 
         <div className="text-center mt-20">
           <div className="text-xl">{contactText}</div>
-          <Link to={'/contact?formType=3'}>
-            <div className="mt-5 inline-block rounded-full text-2xl text-center py-1 px-3 border-2 border-black bg-red-link text-white">
-              ליצירת קשר
-            </div>
-          </Link>
+          <div
+            onClick={() => {
+              navigate('/contact?formType=3');
+            }}
+            className="cursor-pointer	mt-5 inline-block rounded-full text-2xl text-center py-1 px-3 border-2 border-black bg-red-link text-white"
+          >
+            ליצירת קשר
+          </div>
         </div>
       </Page.Main>
     </Page>
