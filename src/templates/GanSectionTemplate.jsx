@@ -1,20 +1,20 @@
-import React from "react";
-import { Helmet } from "react-helmet";
-import { graphql, Link } from "gatsby";
-import Layout from "../layout";
-import SEO from "../components/SEO/SEO";
-import config from "../../data/SiteConfig";
-import PageHeader from "../components/Page/PageHeader";
-import Page from "../components/Page/Page";
-import { MDXRenderer } from "gatsby-plugin-mdx";
-import TextTitle from "./../components/TextTitle/TextTitle";
-import { getVideoIdFromYoutubeUrl } from "../utils";
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { graphql, Link } from 'gatsby';
+import Layout from '../layout';
+import SEO from '../components/SEO/SEO';
+import config from '../../data/SiteConfig';
+import PageHeader from '../components/Page/PageHeader';
+import Page from '../components/Page/Page';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import TextTitle from './../components/TextTitle/TextTitle';
+import { getVideoIdFromYoutubeUrl } from '../utils';
 const headerMdFileName = config.ganMainPageDataMdFileName;
-const recommendationFileName = "recommendations";
+const recommendationFileName = 'recommendations';
 const defaultFacebookRecommendationUrl =
-  "https://www.facebook.com/yaldeyhateva/reviews/?ref=page_internal";
+  'https://www.facebook.com/yaldeyhateva/reviews/?ref=page_internal';
 const defaultGoogleRecommendationUrl =
-  "https://www.google.com/search?q=%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91%D7%A2+%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99&rlz=1C1SQJL_iwIL939IL939&oq=%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91&aqs=chrome.0.69i59j69i57j35i39j69i61l3j69i65l2.3577j0j7&sourceid=chrome&ie=UTF-8#lrd=0x151d4ba3aaaaaaab:0xaf0631a83792f010,1,,,";
+  'https://www.google.com/search?q=%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91%D7%A2+%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99&rlz=1C1SQJL_iwIL939IL939&oq=%D7%99%D7%9C%D7%93%D7%99+%D7%94%D7%98%D7%91&aqs=chrome.0.69i59j69i57j35i39j69i61l3j69i65l2.3577j0j7&sourceid=chrome&ie=UTF-8#lrd=0x151d4ba3aaaaaaab:0xaf0631a83792f010,1,,,';
 
 export default function GanSectionTemplate({ data, pageContext }) {
   const { mdx: activeGanSection, allMdx: ganSections } = data;
@@ -46,11 +46,11 @@ export default function GanSectionTemplate({ data, pageContext }) {
 
   const recommendationButtonsData = [
     {
-      title: "ממליצים עלינו בגוגל",
+      title: 'ממליצים עלינו בגוגל',
       href: googleRecommendationUrl || defaultGoogleRecommendationUrl,
     },
     {
-      title: "ממליצים עלינו בפייסבוק",
+      title: 'ממליצים עלינו בפייסבוק',
       href: facebookRecommendationUrl || defaultFacebookRecommendationUrl,
     },
   ];
@@ -76,7 +76,7 @@ export default function GanSectionTemplate({ data, pageContext }) {
         <Page.Main>
           <div className="md:flex justify-center md:pb-20">
             {isRecommendationSection ? (
-              <div className="block md:hidden">
+              <div className="block md:hidden ">
                 <RecommendationButtons
                   recommendationButtonsData={recommendationButtonsData}
                 />
@@ -115,7 +115,7 @@ export default function GanSectionTemplate({ data, pageContext }) {
                 src={`https://www.youtube.com/embed/${getVideoIdFromYoutubeUrl(
                   youtubeVideoUrl
                 )}?autoplay=1&loop=1&rel=0&modestbranding=1&autohide=1&showinfo=0&mute=1`}
-                title={videoTitle || ""}
+                title={videoTitle || ''}
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
@@ -123,10 +123,10 @@ export default function GanSectionTemplate({ data, pageContext }) {
             </>
           ) : null}
           {foodMenuFileLink ? (
-            <div className="m-auto w-1/2 text-center">
+            <div className="m-auto w-1/5 text-center">
               <a href={foodMenuFileLink} target="_blank">
                 <div className="inline-block my-4 px-2 py-1 rounded-full w-11/12 sm:w-1/2 text-center border-2 border-black hover:bg-red-link hover:text-white">
-                  {foodMenuLinkTitle ? foodMenuLinkTitle : "לחצו כאן"}
+                  {foodMenuLinkTitle ? foodMenuLinkTitle : 'לחצו כאן'}
                 </div>
               </a>
             </div>
@@ -142,8 +142,8 @@ export default function GanSectionTemplate({ data, pageContext }) {
 }
 
 const BottomNavMenu = ({ sectionsData, activeSectionTitle }) => {
-  const activeSectionStyle = "text-purple-light-border opacity-40";
-  const nonActiveSectionStyle = "hover:text-purple-border";
+  const activeSectionStyle = 'text-purple-light-border opacity-40';
+  const nonActiveSectionStyle = 'hover:text-purple-border';
   return (
     <div className="border-t-2 pt-4 mt-6 md:w-5/7  m-auto">
       <div className="text-red-link text-3xl">עוד בנושא...</div>
@@ -170,7 +170,7 @@ const BottomNavMenu = ({ sectionsData, activeSectionTitle }) => {
 };
 
 const RecommendationButtons = ({ recommendationButtonsData }) => (
-  <div className="flex flex-col justify-center md:sticky top-1/2 w-2/3 md:w-full m-auto lg:mr-14">
+  <div className="flex flex-col justify-center md:sticky top-1/2 w-2/5  m-auto lg:mr-14">
     {recommendationButtonsData.map(({ title, href }) => (
       <RecommendationButton title={title} href={href} />
     ))}
