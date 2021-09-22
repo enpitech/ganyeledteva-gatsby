@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { CheckIcon } from '@heroicons/react/outline';
+import { XCircleIcon } from '@heroicons/react/outline';
 
-export default function SuccessAlert({
+export default function ErrorAlert({
   open,
   title,
   content,
@@ -50,9 +50,9 @@ export default function SuccessAlert({
           >
             <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
               <div>
-                <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
-                  <CheckIcon
-                    className="h-6 w-6 text-green-600"
+                <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-gray-100">
+                  <XCircleIcon
+                    className="h-10 w-10 text-red-600"
                     aria-hidden="true"
                   />
                 </div>

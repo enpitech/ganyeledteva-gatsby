@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Page from '../../Page/Page';
 import PageHeader from '../../Page/PageHeader';
 import ContactForm from './ContactForm';
@@ -19,6 +20,7 @@ export default function Contact() {
       allMdx(filter: { fields: { dir: { eq: "contact" } } }) {
         edges {
           node {
+            body
             frontmatter {
               title
               subtitle
@@ -33,7 +35,7 @@ export default function Contact() {
   `);
 
   const pageNode = data.allMdx.edges[0].node;
-  const { frontmatter } = pageNode;
+  const { frontmatter, body } = pageNode;
   const { title, subtitle, placeAddress, placePhone } = frontmatter;
   const pageSEOData = {
     title,
@@ -74,6 +76,9 @@ export default function Contact() {
         />
       </Page.Header>
       <Page.Main className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
+        <div style={{ margin: '30px 0' }}>
+          <MDXRenderer>{body}</MDXRenderer>
+        </div>
         <div className="flex flex-col md:flex-row justify-between h-96 md:h-36">
           <ReasonBtn
             active={formType === 1}

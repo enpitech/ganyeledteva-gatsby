@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useRef } from 'react';
 import { navigate } from 'gatsby-link';
+import moment from 'moment';
 import { SubmitBtn, FullName, Email, Phone, TextBox } from '../../Inputs';
 import SuccessAlert from '../../Alerts/SuccessAlert';
+import ErrorAlert from '../../Alerts/ErrorAlert';
 
 function encode(data) {
   return Object.keys(data)
@@ -28,6 +30,7 @@ function getAgeInSepInMonths(date) {
 export default function SignupForm() {
   const [formValues, setFormValues] = useState({});
   const [formSent, setFormSent] = useState(false);
+  const [error, setError] = useState();
   const formRef = useRef(null);
 
   const handleInputChange = ({ target }) => {
@@ -37,6 +40,16 @@ export default function SignupForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = formRef.current;
+
+    const { date_of_birth: dateOfBirth } = formValues;
+
+    if (!moment(dateOfBirth, 'YYYY-MM-DD', true).isValid()) {
+      setError({
+        title: 'התאריך שהכנסתם לא טוב',
+        content: 'שימו לב שהתאריך לידה בפורמט וטווח תקינים',
+      });
+      return;
+    }
 
     fetch('/', {
       method: 'POST',
@@ -53,6 +66,16 @@ export default function SignupForm() {
 
   return (
     <>
+      <ErrorAlert
+        open={!!error}
+        title={error && error.title}
+        content={error && error.content}
+        onClose={() => {
+          setError(false);
+        }}
+        actionText="הבנתי"
+        actionOnClick={() => setError(false)}
+      />
       <SuccessAlert
         open={formSent}
         title="הטופס נשלח בהצלחה 🎉"
