@@ -59,7 +59,7 @@ us_on_media:
       htm?fbclid=IwAR1gC9UGLGtNS86b_ylXhzgUoRWU4IOMqG3LlGqjMhUhAgSLDabWSQZL1n4"
     img: /assets/pics/uploads/4-גודל-מותאם-אתר.jpg
   - link_to_article: " https://www.facebook.com/tzachi.hananya/posts/10215767496489903"
-    img: /assets/pics/uploads/5.jpg
+    img: /assets/pics/uploads/5-גודל-מותאם-אתר.jpg
   - link_to_article: " https://www.facebook.com/tzachi.hananya/posts/10215822315860353"
     img: /assets/pics/uploads/6.png
 ---
