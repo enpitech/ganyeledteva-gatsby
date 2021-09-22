@@ -123,7 +123,7 @@ export default function GanSectionTemplate({ data, pageContext }) {
             </>
           ) : null}
           {foodMenuFileLink ? (
-            <div className="m-auto w-1/5 text-center">
+            <div className="m-auto md:w-1/5 text-center">
               <a href={foodMenuFileLink} target="_blank">
                 <div className="inline-block my-4 px-2 py-1 rounded-full w-11/12 sm:w-1/2 text-center border-2 border-black hover:bg-red-link hover:text-white">
                   {foodMenuLinkTitle ? foodMenuLinkTitle : 'לחצו כאן'}
