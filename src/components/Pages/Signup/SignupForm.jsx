@@ -41,13 +41,13 @@ export default function SignupForm() {
     e.preventDefault();
     const form = formRef.current;
 
-    const { date_of_birth: dateOfBirth } = formValues;
+    // const { date_of_birth: dateOfBirth } = formValues;
+    const dateOfBirthDay = document.getElementsByName('day')[0].value;
+    const dateOfBirthMonth = document.getElementsByName('month')[0].value;
+    const dateOfBirthYear = document.getElementsByName('year')[0].value;
 
-    if (
-      !moment(dateOfBirth, 'DD/MM/YYYY', true).isValid() &&
-      !moment(dateOfBirth, 'DD-MM/-YYYY', true).isValid() &&
-      !moment(dateOfBirth, 'DD.MM.YYYY', true).isValid()
-    ) {
+    const dateOfBirth = `${dateOfBirthDay}/${dateOfBirthMonth}/${dateOfBirthYear}`;
+    if (!moment(dateOfBirth, 'DD/MM/YYYY', true).isValid()) {
       setError({
         title: 'התאריך שהכנסתם לא טוב',
         content: 'שימו לב שהתאריך לידה בפורמט וטווח תקינים',
@@ -93,6 +93,7 @@ export default function SignupForm() {
       <form
         className="space-y-8"
         name="signup"
+        id="signup"
         method="post"
         // action="/signup/"
         data-netlify="true"
@@ -156,16 +157,71 @@ function RegistrationForm({ handleInputChange }) {
           תאריך לידה של הילד/ה
         </label>
         <div className="mt-1 sm:mt-0 sm:col-span-2">
-          <input
-            type="text"
-            name="date_of_birth"
-            id="date_of_birth"
-            autoComplete="bday"
-            placeholder="dd/mm/yyyy"
-            className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-            onChange={handleInputChange}
-            required
-          />
+          <span>
+            <select name="year">
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
+              <option value="2020">2020</option>
+              <option value="2019">2019</option>
+              <option value="2018">2018</option>
+              <option value="2017">2017</option>
+            </select>
+          </span>
+
+          <span>
+            <select name="month">
+              <option value="01">ינואר</option>
+              <option value="02">פברואר</option>
+              <option value="03">מרץ</option>
+              <option value="04">אפריל</option>
+              <option value="05">מאי</option>
+              <option value="06">יוני</option>
+              <option value="07">יולי</option>
+              <option value="08">אוגוסט</option>
+              <option value="09">ספטמבר</option>
+              <option value="10">אוקטובר</option>
+              <option value="11">נובמבר</option>
+              <option value="12">דצמבר</option>
+            </select>
+          </span>
+
+          <span>
+            <select name="day">
+              <option value="01">1</option>
+              <option value="02">2</option>
+              <option value="03">3</option>
+              <option value="04">4</option>
+              <option value="05">5</option>
+              <option value="06">6</option>
+              <option value="07">7</option>
+              <option value="08">8</option>
+              <option value="09">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+            </select>
+          </span>
         </div>
       </div>
       <p hidden>
