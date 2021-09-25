@@ -43,7 +43,11 @@ export default function SignupForm() {
 
     const { date_of_birth: dateOfBirth } = formValues;
 
-    if (!moment(dateOfBirth, 'YYYY-MM-DD', true).isValid()) {
+    if (
+      !moment(dateOfBirth, 'DD/MM/YYYY', true).isValid() &&
+      !moment(dateOfBirth, 'DD-MM/-YYYY', true).isValid() &&
+      !moment(dateOfBirth, 'DD.MM.YYYY', true).isValid()
+    ) {
       setError({
         title: 'התאריך שהכנסתם לא טוב',
         content: 'שימו לב שהתאריך לידה בפורמט וטווח תקינים',
@@ -153,10 +157,11 @@ function RegistrationForm({ handleInputChange }) {
         </label>
         <div className="mt-1 sm:mt-0 sm:col-span-2">
           <input
-            type="date"
+            type="text"
             name="date_of_birth"
             id="date_of_birth"
             autoComplete="bday"
+            placeholder="dd/mm/yyyy"
             className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
             onChange={handleInputChange}
             required
