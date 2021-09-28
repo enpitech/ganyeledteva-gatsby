@@ -41,7 +41,6 @@ export default function SignupForm() {
     e.preventDefault();
     const form = formRef.current;
 
-    // const { date_of_birth: dateOfBirth } = formValues;
     const dateOfBirthDay = document.getElementsByName('day')[0].value;
     const dateOfBirthMonth = document.getElementsByName('month')[0].value;
     const dateOfBirthYear = document.getElementsByName('year')[0].value;
@@ -62,6 +61,7 @@ export default function SignupForm() {
         'form-name': form.getAttribute('name'),
         ...formValues,
         age_in_sept: getAgeInSepInMonths(formValues.date_of_birth),
+        date_of_birth: dateOfBirth,
       }),
     }).catch();
 
