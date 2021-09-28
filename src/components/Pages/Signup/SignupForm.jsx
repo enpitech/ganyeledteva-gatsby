@@ -57,15 +57,17 @@ export default function SignupForm() {
       return;
     }
 
+    const ageInMonths = getAgeInSepInMonths(
+      `${dateOfBirthMonth}/${dateOfBirthDay}/${dateOfBirthYear}`
+    );
+    const ageInSept = `${Math.floor(ageInMonths / 12)}.${ageInMonths % 12}`;
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         'form-name': form.getAttribute('name'),
         ...formValues,
-        age_in_sept: getAgeInSepInMonths(
-          `${dateOfBirthMonth}/${dateOfBirthDay}/${dateOfBirthYear}`
-        ),
+        age_in_sept: ageInSept,
         date_of_birth: dateOfBirth,
       }),
     }).catch();
