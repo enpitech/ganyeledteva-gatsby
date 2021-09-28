@@ -14,10 +14,13 @@ function encode(data) {
 
 function getAgeInSepInMonths(date) {
   const currentDate = new Date();
+
+  const currentMonth = currentDate.getMonth() + 1; // date months are 0 based
   let nextSeptYear = currentDate.getFullYear();
-  if (currentDate.getMonth() >= 9 && currentDate.getMonth() <= 12) {
+  if (currentMonth >= 9 && currentMonth <= 12) {
     nextSeptYear += 1;
   }
+
   const diff = new Date(`09/01/${nextSeptYear}`) - new Date(date);
 
   const precentAge = diff / 1000 / 60 / 60 / 24 / 365;
@@ -60,7 +63,9 @@ export default function SignupForm() {
       body: encode({
         'form-name': form.getAttribute('name'),
         ...formValues,
-        age_in_sept: getAgeInSepInMonths(formValues.date_of_birth),
+        age_in_sept: getAgeInSepInMonths(
+          `${dateOfBirthMonth}/${dateOfBirthDay}/${dateOfBirthYear}`
+        ),
         date_of_birth: dateOfBirth,
       }),
     }).catch();
