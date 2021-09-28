@@ -167,6 +167,9 @@ function RegistrationForm({ handleInputChange }) {
         <div className="mt-1 sm:mt-0 sm:col-span-2">
           <span>
             <select name="year">
+              <option disabled selected value>
+                שנה
+              </option>
               <option value="2024">2024</option>
               <option value="2023">2023</option>
               <option value="2022">2022</option>
@@ -180,6 +183,10 @@ function RegistrationForm({ handleInputChange }) {
 
           <span>
             <select name="month">
+              <option disabled selected value>
+                חודש
+              </option>
+
               <option value="01">ינואר</option>
               <option value="02">פברואר</option>
               <option value="03">מרץ</option>
@@ -197,6 +204,10 @@ function RegistrationForm({ handleInputChange }) {
 
           <span>
             <select name="day">
+              <option disabled selected value>
+                יום
+              </option>
+
               <option value="01">1</option>
               <option value="02">2</option>
               <option value="03">3</option>
