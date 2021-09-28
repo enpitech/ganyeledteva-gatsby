@@ -234,6 +234,11 @@ function RegistrationForm({ handleInputChange }) {
       </div>
       <p hidden>
         <label>
+          Age In September In Months: <input name="age_in_sept_in_months" />
+        </label>
+      </p>
+      <p hidden>
+        <label>
           Age In September: <input name="age_in_sept" />
         </label>
       </p>
