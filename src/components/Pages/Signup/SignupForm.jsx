@@ -67,6 +67,7 @@ export default function SignupForm() {
       body: encode({
         'form-name': form.getAttribute('name'),
         ...formValues,
+        age_in_sept_in_months: ageInMonths,
         age_in_sept: ageInSept,
         date_of_birth: dateOfBirth,
       }),
