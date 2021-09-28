@@ -253,6 +253,11 @@ function RegistrationForm({ handleInputChange }) {
           Age In September: <input name="age_in_sept" />
         </label>
       </p>
+      <p hidden>
+        <label>
+          Date Of Birth: <input name="date_of_birth" />
+        </label>
+      </p>
 
       <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <legend className="block text-sm font-medium text-gray-700">
