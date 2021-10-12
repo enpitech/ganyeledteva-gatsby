@@ -114,6 +114,12 @@ module.exports = {
         publicPath: 'admin',
         htmlTitle: 'Content Manager',
         includeRobots: false,
+        headers: {
+          '/weekly-update': [
+            // matching headers (by type) are replaced by Netlify with more specific routes
+            'cache-control: public, max-age=0, must-revalidate',
+          ],
+        },
       },
     },
     'gatsby-plugin-remove-fingerprints',
