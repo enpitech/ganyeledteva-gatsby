@@ -115,9 +115,31 @@ module.exports = {
         htmlTitle: 'Content Manager',
         includeRobots: false,
         headers: {
+          '/**/*.html': [
+            'cache-control: public',
+            'cache-control: max-age=0',
+            'cache-control: must-revalidate',
+          ],
+          '/page-data/*.json': [
+            'cache-control: public',
+            'cache-control: max-age=0',
+            'cache-control: must-revalidate',
+          ],
+          '/app-data.json': [
+            'cache-control: public',
+            'cache-control: max-age=0',
+            'cache-control: must-revalidate',
+          ],
+          '/static/*': [
+            'cache-control: public',
+            'cache-control: max-age=31536000',
+            'cache-control: immutable',
+          ],
           '/weekly-update': [
             // matching headers (by type) are replaced by Netlify with more specific routes
-            'cache-control: public, max-age=0, must-revalidate',
+            'cache-control: public',
+            'cache-control: max-age=0',
+            'cache-control: must-revalidate',
           ],
         },
       },
