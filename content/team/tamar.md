@@ -3,7 +3,7 @@ title: תמר
 firstname: תמר
 lastname: טגסט אסנקאו
 img: /img/pics/tamar.jpg
-index: 10
+index: 11
 ---
 
 **תמר אסנקאו, בת 31 - מחנכת מחליפה **
