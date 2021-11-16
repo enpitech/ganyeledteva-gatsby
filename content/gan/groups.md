@@ -7,7 +7,7 @@ subtitle: "שתי שכבות הגיל, הצעירים והבוגרים, חיות
 link: קראו עוד על קבוצות הגן
 bg: ""
 img: ""
-index: 1
+index: 2
 images:
   - alt: בפינת הירק
     src: /img/pics/more1.jpg
