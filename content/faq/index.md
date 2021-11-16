@@ -179,7 +179,7 @@ faqs_sections:
 
         links:
           - link_text: "למעבר לצפייה בסרטון "
-            link_url: https://www.youtube.com/watch?v=v6T_omQejcw&ab_channel=%D7%92%D7%9F%D7%99%D7%9C%D7%93%D7%99%D7%94%D7%98%D7%91%D7%A2%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99
+            link_url: https://www.youtube.com/watch?v=v6T_omQejcw&list=PL7AGXgqxnFnm3Okpj3Hkqy5ZfDfQQq0Nc&index=2&t=3s
   - section_title: תזונה ובריאות
     faqs:
       - question: מה אוכלים בגן?
