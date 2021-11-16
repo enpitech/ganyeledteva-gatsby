@@ -4,7 +4,7 @@ subtitle: " "
 index: 0
 images:
   - alt: אחינועם מרצה
-    src: /img/pics/center.jpg
+    src: /assets/pics/uploads/1.jpg
 youtubeVideoUrl: https://www.youtube.com/watch?v=SjA_iOhWHe4
 ---
 ## על המרכז
