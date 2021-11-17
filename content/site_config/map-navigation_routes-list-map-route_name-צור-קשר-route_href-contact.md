@@ -7,7 +7,6 @@ nav_menu_routes_to_ignore:
 footer_menu_routes_to_ignore:
   - href: /dummy-content-do-not-delete!
   - href: /products
-  - href: /democratic-center
 navigation_routes:
   - name: דף הבית
     href: /
@@ -23,4 +22,6 @@ navigation_routes:
     href: /weekly-update
   - name: צור קשר
     href: /contact
+  - href: /democratic-center
+    name: מוצרים ושירותים חינוכיים
 ---
