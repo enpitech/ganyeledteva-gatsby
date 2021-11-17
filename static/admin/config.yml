@@ -4,329 +4,338 @@ backend:
   branch: main # Branch to update
   base_url: https://api.netlify.com
   auth_endpoint: auth
-media_folder: '/assets/files/uploads' # Media files will be stored in the repo under static/images/uploads
-public_folder: '/assets/pics/uploads' # The src attribute for uploaded media will begin with /images/uploads
+media_folder: "/assets/files/uploads" # Media files will be stored in the repo under static/images/uploads
+public_folder: "/assets/pics/uploads" # The src attribute for uploaded media will begin with /images/uploads
 # publish_mode: editorial_workflow
 collections:
-  - name: 'weekly-update'
-    label: 'עדכון שבועי'
-    folder: 'content/weekly-update'
+  - name: "weekly-update"
+    label: "עדכון שבועי"
+    folder: "content/weekly-update"
     create: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     fields:
-      - { label: 'כותרת', name: 'title', widget: 'string' }
-      - { label: 'תאריך', name: 'date', widget: 'datetime', required: false }
-      - { label: 'תת כותרת', name: 'subtitle', widget: 'text', required: false }
-      - { label: 'תמונה', name: 'img', widget: 'image', required: false }
-      - { label: 'טקסט', name: 'body', widget: 'markdown', required: false }
+      - { label: "כותרת", name: "title", widget: "string" }
+      - { label: "תאריך", name: "date", widget: "datetime", required: false }
+      - { label: "תת כותרת", name: "subtitle", widget: "text", required: false }
+      - { label: "תמונה", name: "img", widget: "image", required: false }
+      - { label: "טקסט", name: "body", widget: "markdown", required: false }
 
-  - name: 'home'
-    label: 'דף הבית - אנחנו בתקשורת'
-    folder: 'content/home'
+  - name: "home"
+    label: "דף הבית"
+    folder: "content/home"
     create: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     fields:
       - {
-          label: 'סרטון תדמית - קישור לסרטון יוטיוב ',
-          name: 'tadmit_video_youtube_url',
-          widget: 'text',
+          label: "סרטון תדמית - קישור לסרטון יוטיוב ",
+          name: "tadmit_video_youtube_url",
+          widget: "text",
           required: false,
         }
       - name: us_on_media
         label: אנחנו בתקשורת
         widget: list
         fields:
-          - { label: 'קישור לכתבה', name: 'link_to_article', widget: 'string' }
-          - { label: 'תמונה', name: 'img', widget: 'image' }
+          - { label: "קישור לכתבה", name: "link_to_article", widget: "string" }
+          - { label: "תמונה", name: "img", widget: "image" }
+      - name: stories
+        label: סקשנים בעמוד הראשי
+        widget: list
+        fields:
+          - { label: "כותרת", name: "title", widget: "string" }
+          - { label: "תוכן", name: "subtitle", widget: "string" }
+          - { label: "כותרת כפתור קישור", name: "link", widget: "string" }
+          - { label: "סיומת קישור לעמוד", name: "url", widget: "string" }
+          - { label: "תמונה", name: "img", widget: "image" }
 
-  - name: 'team'
-    label: 'הצוות'
-    folder: 'content/team'
+  - name: "team"
+    label: "הצוות"
+    folder: "content/team"
     create: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     fields:
-      - { label: 'שם פנימי', name: 'title', widget: 'string' }
-      - { label: 'שם', name: 'firstname', widget: 'string' }
-      - { label: 'שם משפחה', name: 'lastname', widget: 'string' }
-      - { label: 'תמונה', name: 'img', widget: 'image' }
-      - { label: 'מיקום', name: 'index', widget: 'number' }
-      - { label: 'טקסט', name: 'body', widget: 'markdown' }
+      - { label: "שם פנימי", name: "title", widget: "string" }
+      - { label: "שם", name: "firstname", widget: "string" }
+      - { label: "שם משפחה", name: "lastname", widget: "string" }
+      - { label: "תמונה", name: "img", widget: "image" }
+      - { label: "מיקום", name: "index", widget: "number" }
+      - { label: "טקסט", name: "body", widget: "markdown" }
 
-  - name: 'democraticeducation'
-    label: 'הגישה הדמוקרטית'
-    folder: 'content/democraticeducation'
+  - name: "democraticeducation"
+    label: "הגישה הדמוקרטית"
+    folder: "content/democraticeducation"
     create: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     fields:
-      - { label: 'כותרת', name: 'title', widget: 'string' }
-      - { label: 'תת כותרת', name: 'subtitle', widget: 'text', required: false }
+      - { label: "כותרת", name: "title", widget: "string" }
+      - { label: "תת כותרת", name: "subtitle", widget: "text", required: false }
       - {
-          label: 'תת כותרת 2 - לא חובה',
-          name: 'subtitle 2',
-          widget: 'text',
+          label: "תת כותרת 2 - לא חובה",
+          name: "subtitle 2",
+          widget: "text",
           required: false,
         }
       - {
-          label: 'תמונת רקע - לא חובה',
-          name: 'bg',
-          widget: 'image',
+          label: "תמונת רקע - לא חובה",
+          name: "bg",
+          widget: "image",
           required: false,
         }
       - {
-          label: 'תמונה ראשית - לא חובה',
-          name: 'img',
-          widget: 'image',
+          label: "תמונה ראשית - לא חובה",
+          name: "img",
+          widget: "image",
           required: false,
         }
-      - { label: 'מיקום', name: 'index', widget: 'number', required: false }
+      - { label: "מיקום", name: "index", widget: "number", required: false }
       - name: images
         label: תמונות
         widget: list
         fields:
-          - { label: 'תמונה', name: 'src', widget: 'image' }
-          - { label: 'כיתוב תמונה', name: 'alt', widget: 'string' }
-      - { label: 'טקסט', name: 'body', widget: 'markdown' }
+          - { label: "תמונה", name: "src", widget: "image" }
+          - { label: "כיתוב תמונה", name: "alt", widget: "string" }
+      - { label: "טקסט", name: "body", widget: "markdown" }
 
-  - name: 'gan'
-    label: 'הגן'
-    folder: 'content/gan'
+  - name: "gan"
+    label: "הגן"
+    folder: "content/gan"
     create: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     fields:
-      - { label: 'כותרת', name: 'title', widget: 'string' }
-      - { label: 'תת כותרת', name: 'subtitle', widget: 'text' }
+      - { label: "כותרת", name: "title", widget: "string" }
+      - { label: "תת כותרת", name: "subtitle", widget: "text" }
       - {
-          label: 'כותרת קישור לתפריט תזונה',
-          name: 'foodMenuLinkTitle',
-          widget: 'string',
+          label: "כותרת קישור לתפריט תזונה",
+          name: "foodMenuLinkTitle",
+          widget: "string",
           required: false,
         }
       - {
-          label: 'קישור לעמוד המלצות - גוגל',
-          name: 'google_recommendation_url',
-          widget: 'string',
+          label: "קישור לעמוד המלצות - גוגל",
+          name: "google_recommendation_url",
+          widget: "string",
           required: false,
         }
       - {
-          label: 'קישור לעמוד המלצות - פייסבוק',
-          name: 'facebook_recommendation_url',
-          widget: 'string',
+          label: "קישור לעמוד המלצות - פייסבוק",
+          name: "facebook_recommendation_url",
+          widget: "string",
           required: false,
         }
       - {
-          label: 'תת כותרת 2 - לא חובה',
-          name: 'subtitle 2',
-          widget: 'text',
+          label: "תת כותרת 2 - לא חובה",
+          name: "subtitle 2",
+          widget: "text",
           required: false,
         }
       - {
-          label: 'תמונת רקע - לא חובה',
-          name: 'bg',
-          widget: 'image',
+          label: "תמונת רקע - לא חובה",
+          name: "bg",
+          widget: "image",
           required: false,
         }
       - {
-          label: 'תמונה ראשית - לא חובה',
-          name: 'img',
-          widget: 'image',
+          label: "תמונה ראשית - לא חובה",
+          name: "img",
+          widget: "image",
           required: false,
         }
-      - { label: 'מיקום', name: 'index', widget: 'number' }
+      - { label: "מיקום", name: "index", widget: "number" }
       - name: images
         label: תמונות
         widget: list
         fields:
-          - { label: 'תמונה', name: 'src', widget: 'image' }
-          - { label: 'כיתוב תמונה', name: 'alt', widget: 'string' }
-      - { label: 'טקסט', name: 'body', widget: 'markdown' }
+          - { label: "תמונה", name: "src", widget: "image" }
+          - { label: "כיתוב תמונה", name: "alt", widget: "string" }
+      - { label: "טקסט", name: "body", widget: "markdown" }
       - {
-          label: 'כותרת סרטון',
-          name: 'video_title',
-          widget: 'string',
+          label: "כותרת סרטון",
+          name: "video_title",
+          widget: "string",
           required: false,
         }
       - {
-          label: 'לינק לסרטון יוטיוב',
-          name: 'youtubeVideoUrl',
-          widget: 'string',
+          label: "לינק לסרטון יוטיוב",
+          name: "youtubeVideoUrl",
+          widget: "string",
           required: false,
         }
       - {
-          label: 'קובץ תפריט תזונה',
-          name: 'foodMenuFileLink',
-          widget: 'file',
+          label: "קובץ תפריט תזונה",
+          name: "foodMenuFileLink",
+          widget: "file",
           required: false,
         }
 
-  - name: 'democratic-center'
-    label: 'המרכז הדמוקרטי'
-    folder: 'content/democratic-center'
+  - name: "democratic-center"
+    label: "המרכז הדמוקרטי"
+    folder: "content/democratic-center"
     create: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     fields:
-      - { label: 'כותרת', name: 'title', widget: 'string' }
-      - { label: 'תת כותרת', name: 'subtitle', widget: 'text' }
+      - { label: "כותרת", name: "title", widget: "string" }
+      - { label: "תת כותרת", name: "subtitle", widget: "text" }
       - {
-          label: 'תת כותרת 2 - לא חובה',
-          name: 'subtitle 2',
-          widget: 'text',
+          label: "תת כותרת 2 - לא חובה",
+          name: "subtitle 2",
+          widget: "text",
           required: false,
         }
       - {
-          label: 'תמונת רקע - לא חובה',
-          name: 'bg',
-          widget: 'image',
+          label: "תמונת רקע - לא חובה",
+          name: "bg",
+          widget: "image",
           required: false,
         }
       - {
-          label: 'תמונה ראשית - לא חובה',
-          name: 'img',
-          widget: 'image',
+          label: "תמונה ראשית - לא חובה",
+          name: "img",
+          widget: "image",
           required: false,
         }
-      - { label: 'מיקום', name: 'index', widget: 'number' }
+      - { label: "מיקום", name: "index", widget: "number" }
       - name: images
         label: תמונות
         widget: list
         fields:
-          - { label: 'תמונה', name: 'src', widget: 'image' }
-          - { label: 'כיתוב תמונה', name: 'alt', widget: 'string' }
-      - { label: 'טקסט', name: 'body', widget: 'markdown' }
+          - { label: "תמונה", name: "src", widget: "image" }
+          - { label: "כיתוב תמונה", name: "alt", widget: "string" }
+      - { label: "טקסט", name: "body", widget: "markdown" }
       - {
-          label: 'לינק לסרטון יוטיוב',
-          name: 'youtubeVideoUrl',
-          widget: 'string',
+          label: "לינק לסרטון יוטיוב",
+          name: "youtubeVideoUrl",
+          widget: "string",
         }
 
-  - name: 'signup'
-    label: 'רישום לגן'
-    folder: 'content/signup'
+  - name: "signup"
+    label: "רישום לגן"
+    folder: "content/signup"
     create: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     fields:
-      - { label: 'כותרת', name: 'title', widget: 'string' }
-      - { label: 'תת כותרת', name: 'subtitle', widget: 'text' }
-      - { label: 'טקסט', name: 'body', widget: 'markdown' }
+      - { label: "כותרת", name: "title", widget: "string" }
+      - { label: "תת כותרת", name: "subtitle", widget: "text" }
+      - { label: "טקסט", name: "body", widget: "markdown" }
 
-  - name: 'faq'
-    label: 'שאלות ותשובות'
-    folder: 'content/faq'
+  - name: "faq"
+    label: "שאלות ותשובות"
+    folder: "content/faq"
     create: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     fields:
-      - { label: 'כותרת', name: 'title', widget: 'string' }
-      - { label: 'תת כותרת', name: 'subtitle', widget: 'text' }
-      - { label: 'טקסט צור קשר', name: 'contact_text', widget: 'markdown' }
+      - { label: "כותרת", name: "title", widget: "string" }
+      - { label: "תת כותרת", name: "subtitle", widget: "text" }
+      - { label: "טקסט צור קשר", name: "contact_text", widget: "markdown" }
       - name: faqs_sections
         label: נושאים לשאלות ותשובות
         widget: list
         fields:
-          - { label: 'כותרת נושא', name: 'section_title', widget: 'string' }
+          - { label: "כותרת נושא", name: "section_title", widget: "string" }
           - name: faqs
             label: שאלות ותשובות
             widget: list
             fields:
-              - { label: 'שאלה', name: 'question', widget: 'string' }
-              - { label: 'תשובה', name: 'answer', widget: 'markdown' }
+              - { label: "שאלה", name: "question", widget: "string" }
+              - { label: "תשובה", name: "answer", widget: "markdown" }
               - name: links
                 label: קישורים
                 widget: list
                 fields:
-                  - { label: 'טקסט קישור', name: 'link_text', widget: 'string' }
-                  - { label: 'קישור', name: 'link_url', widget: 'string' }
+                  - { label: "טקסט קישור", name: "link_text", widget: "string" }
+                  - { label: "קישור", name: "link_url", widget: "string" }
 
-  - name: 'work-in-gan'
-    label: 'לעבוד בגן ילדי הטבע'
-    folder: 'content/work-in-gan'
+  - name: "work-in-gan"
+    label: "לעבוד בגן ילדי הטבע"
+    folder: "content/work-in-gan"
     create: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     fields:
-      - { label: 'כותרת דף', name: 'title', widget: 'string' }
-      - { label: 'תת כותרת', name: 'subtitle', widget: 'text', required: false }
+      - { label: "כותרת דף", name: "title", widget: "string" }
+      - { label: "תת כותרת", name: "subtitle", widget: "text", required: false }
       - {
-          label: 'סרטון תדמית',
-          name: 'tadmitVideo',
-          widget: 'text',
+          label: "סרטון תדמית",
+          name: "tadmitVideo",
+          widget: "text",
           required: false,
         }
       - {
-          label: 'כותרת סרטון',
-          name: 'tadmitVideoTitle',
-          widget: 'text',
+          label: "כותרת סרטון",
+          name: "tadmitVideoTitle",
+          widget: "text",
           required: false,
         }
       - {
-          label: 'כותרת גלריית צוות',
-          name: 'teamGalleryTitle',
-          widget: 'text',
+          label: "כותרת גלריית צוות",
+          name: "teamGalleryTitle",
+          widget: "text",
           required: false,
         }
-      - name: 'teamList'
-        label: 'הצוות'
+      - name: "teamList"
+        label: "הצוות"
         widget: list
         fields:
-          - { label: 'שם פנימי', name: 'title', widget: 'string' }
-          - { label: 'שם', name: 'firstName', widget: 'string' }
-          - { label: 'שם משפחה', name: 'lastName', widget: 'string' }
-          - { label: 'תמונה', name: 'img', widget: 'image' }
-          - { label: 'מיקום', name: 'index', widget: 'number' }
-          - { label: 'תפקיד', name: 'role', widget: 'string' }
-          - { label: 'טקסט', name: 'description', widget: 'text' }
-  - name: 'products'
-    label: 'מוצרים חינוכיים'
-    folder: 'content/products'
+          - { label: "שם פנימי", name: "title", widget: "string" }
+          - { label: "שם", name: "firstName", widget: "string" }
+          - { label: "שם משפחה", name: "lastName", widget: "string" }
+          - { label: "תמונה", name: "img", widget: "image" }
+          - { label: "מיקום", name: "index", widget: "number" }
+          - { label: "תפקיד", name: "role", widget: "string" }
+          - { label: "טקסט", name: "description", widget: "text" }
+  - name: "products"
+    label: "מוצרים חינוכיים"
+    folder: "content/products"
     create: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     fields:
-      - { label: 'כותרת דף', name: 'title', widget: 'string' }
-      - { label: 'תת כותרת', name: 'subtitle', widget: 'text', required: false }
-      - { label: 'טקסט', name: 'body', widget: 'markdown' }
+      - { label: "כותרת דף", name: "title", widget: "string" }
+      - { label: "תת כותרת", name: "subtitle", widget: "text", required: false }
+      - { label: "טקסט", name: "body", widget: "markdown" }
 
       - {
-          label: 'כותרת לתמונות וסרטונים',
-          name: 'imgs_and_vids_title',
-          widget: 'string',
+          label: "כותרת לתמונות וסרטונים",
+          name: "imgs_and_vids_title",
+          widget: "string",
         }
       - name: products_images
         label: תמונות מוצרים
         widget: list
         fields:
-          - { label: 'תמונה', name: 'src', widget: 'image' }
-          - { label: 'כיתוב תמונה', name: 'alt', widget: 'string' }
+          - { label: "תמונה", name: "src", widget: "image" }
+          - { label: "כיתוב תמונה", name: "alt", widget: "string" }
       - name: products_videos
         label: סרטוני מוצרים
         widget: list
         fields:
           - {
-              label: 'כותרת לסרטון',
-              name: 'video_title',
-              widget: 'string',
+              label: "כותרת לסרטון",
+              name: "video_title",
+              widget: "string",
               required: false,
             }
-          - { label: 'סרטון', name: 'video', widget: 'file' }
-  - name: 'site_config'
-    label: 'הגדרות אתר'
-    folder: 'content/site_config'
+          - { label: "סרטון", name: "video", widget: "file" }
+  - name: "site_config"
+    label: "הגדרות אתר"
+    folder: "content/site_config"
     create: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     fields:
       - name: nav_menu_routes_to_ignore
         label: כתובות עמודים שלא יופיעו בתפריט העליון
         widget: list
         fields:
-          - { label: 'כתובת עמוד', name: 'href', widget: 'string' }
+          - { label: "כתובת עמוד", name: "href", widget: "string" }
       - name: footer_menu_routes_to_ignore
         label: כתובות עמודים שלא יופיעו בתפריט התחתון
         widget: list
         fields:
-          - { label: 'כתובת עמוד', name: 'href', widget: 'string' }
+          - { label: "כתובת עמוד", name: "href", widget: "string" }
       - name: navigation_routes
         label: שמות עמודים
         widget: list
         fields:
-          - { label: 'שם עמוד', name: 'name', widget: 'string' }
+          - { label: "שם עמוד", name: "name", widget: "string" }
           - {
-              label: 'כתובת עמוד - לא לשנות ערך זה!',
-              name: 'href',
-              widget: 'string',
+              label: "כתובת עמוד - לא לשנות ערך זה!",
+              name: "href",
+              widget: "string",
             }
