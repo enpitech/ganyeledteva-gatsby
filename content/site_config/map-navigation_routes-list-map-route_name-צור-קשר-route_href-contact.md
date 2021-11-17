@@ -13,6 +13,8 @@ navigation_routes:
     href: /democraticeducation
   - name: הגן
     href: /gan
+  - href: /democratic-center
+    name: מוצרים ושירותים חינוכיים
   - name: לעבוד בגן
     href: /work-in-gan
   - name: שאלות ותשובות
@@ -21,6 +23,4 @@ navigation_routes:
     href: /weekly-update
   - name: צור קשר
     href: /contact
-  - href: /democratic-center
-    name: מוצרים ושירותים חינוכיים
 ---
