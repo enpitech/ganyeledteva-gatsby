@@ -13,6 +13,10 @@ images:
     src: /img/pics/ekronot1.jpg
   - alt: ילדימות מקשיבים
     src: /img/pics/ekronot3.jpg
+  - src: /assets/pics/uploads/רכבת-מעבר.jpg
+    alt: נכנסים לגן ברכבת
+  - src: /assets/pics/uploads/מזרנים.jpg
+    alt: הילדימות מסדרים את המזרנים בכיתה
 video_title: 5 ערכי העבודה החינוכיים בגן שלנו
 youtubeVideoUrl: https://www.youtube.com/watch?v=2IiNEMEFF0o
 link: עוד על עקרונות הגן
