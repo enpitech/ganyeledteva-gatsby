@@ -10,7 +10,7 @@ images:
     src: /img/pics/food1.jpg
   - alt: " "
     src: /img/pics/food2.jpg
-foodMenuFileLink: /assets/pics/uploads/תפריט-שנת-הלימודים-תשפב.pdf
+foodMenuFileLink: /assets/pics/uploads/תפריט-תשפ״ב.docx.pdf
 link: עוד על התזונה בגן
 foodMenu: /assets/pics/uploads/menu.pdf
 ---
