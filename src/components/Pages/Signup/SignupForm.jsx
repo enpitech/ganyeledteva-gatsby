@@ -153,8 +153,8 @@ function RegistrationForm({ handleInputChange }) {
                 סניף
               </option>
 
-              <option value="סניף 1">סניף 1</option>
-              <option value="סניף 2">סניף 2</option>
+              <option value="נחלת יצחק">נחלת יצחק</option>
+              <option value="בבלי">בבלי</option>
             </select>
           </span>
 
