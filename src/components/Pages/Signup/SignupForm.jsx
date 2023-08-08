@@ -48,6 +48,8 @@ export default function SignupForm() {
     const dateOfBirthMonth = document.getElementsByName('month')[0].value;
     const dateOfBirthYear = document.getElementsByName('year')[0].value;
 
+    const nurserySchoolBranch = document.getElementsByName('branch')[0].value;
+
     const dateOfBirth = `${dateOfBirthDay}/${dateOfBirthMonth}/${dateOfBirthYear}`;
     if (!moment(dateOfBirth, 'DD/MM/YYYY', true).isValid()) {
       setError({
@@ -70,6 +72,7 @@ export default function SignupForm() {
         age_in_sept_in_months: ageInMonths,
         age_in_sept: ageInSept,
         date_of_birth: dateOfBirth,
+        nursery_school_branch: nurserySchoolBranch,
       }),
     }).catch();
 
@@ -136,6 +139,29 @@ export default function SignupForm() {
 function RegistrationForm({ handleInputChange }) {
   return (
     <>
+      <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label
+          htmlFor="date_of_birth"
+          className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+        >
+          סניף הגן
+        </label>
+        <div className="mt-1 sm:mt-0 sm:col-span-2">
+          <span>
+            <select name="branch">
+              <option disabled selected value>
+                סניף
+              </option>
+
+              <option value="סניף 1">סניף 1</option>
+              <option value="סניף 2">סניף 2</option>
+            </select>
+          </span>
+
+        </div>
+      </div>
+
+
       <FullName label="שם מלא של ההורה" onChange={handleInputChange} required />
 
       <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
