@@ -141,7 +141,7 @@ function RegistrationForm({ handleInputChange }) {
     <>
       <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <label
-          htmlFor="date_of_birth"
+          htmlFor="nursery_school_branch"
           className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
         >
           סניף הגן
@@ -160,6 +160,11 @@ function RegistrationForm({ handleInputChange }) {
 
         </div>
       </div>
+      <p hidden>
+        <label>
+          nursery school branch: <input name="nursery_school_branch" />
+        </label>
+      </p>
 
 
       <FullName label="שם מלא של ההורה" onChange={handleInputChange} required />
