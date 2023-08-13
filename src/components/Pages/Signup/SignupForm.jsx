@@ -148,11 +148,8 @@ function RegistrationForm({ handleInputChange }) {
         </label>
         <div className="mt-1 sm:mt-0 sm:col-span-2">
           <span>
-            <select name="branch">
-              <option disabled selected value>
-                סניף
-              </option>
-
+            <select name="branch" required>
+              <option />
               <option value="נחלת יצחק">נחלת יצחק</option>
               <option value="בבלי">בבלי</option>
             </select>
