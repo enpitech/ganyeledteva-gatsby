@@ -116,8 +116,8 @@ function Home() {
         <HomeHeader />
       </Page.Header>
       <Page.Main className="md:flex md:flex-col justify-center items-center">
-        {/* <div className="md:w-9/12">
-          <div className="rounded-md bg-blue-50 p-4 mt-8">
+        <div className="md:w-9/12">
+          {/* <div className="rounded-md bg-blue-50 p-4 mt-8">
             <div className="flex">
               <div className="flex-shrink-0">
                 <InformationCircleIcon className="h-5 w-5 text-blue-400" aria-hidden="true" />
