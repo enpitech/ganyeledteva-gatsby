@@ -117,27 +117,25 @@ function Home() {
       </Page.Header>
       <Page.Main className="md:flex md:flex-col justify-center items-center">
         <div className="md:w-9/12">
-
-    <div className="rounded-md bg-blue-50 p-4 mt-8">
-      <div className="flex">
-        <div className="flex-shrink-0">
-          <InformationCircleIcon className="h-5 w-5 text-blue-400" aria-hidden="true" />
-        </div>
-        <div className="ml-3 flex-1 md:flex md:justify-between">
-          <p className="text-sm text-blue-700">
-            <span className="font-bold">הורים מתעניינים יקרים, כמה עדכונים חשובים:</span>
-            <br/>
-              מקווים שאנחנו מוצאים אותכם בטוב בתקופה הזו ושולחים לכם חיבוק גדול מאיתנו .
-              המלחמה הביאה את כולנו לימים מאתגרים רגשית ופיזית, גם אנחנו בגן שלנו התמודדנו עם מעבר לעבודה במקלטים וחסרונו של מנהל הגן עומרי שגוייס בצו 8.
-              אנחנו עושים כל שביכולתנו על מנת לפתוח את תהליך ההרשמה לגן בסוף ינואר-תחילת פברואר.
-              תהליך הרשמה לגן יהיה  כפי שרשום באתר שלנו .
-              אנחנו מזכירים שמי שכבר מילאו פרטים באתר החל מספטמבר 23 וקיבל מייל חוזר שהרשמה נקלטה , אין צורך למלא אותם שוב או לברר טלפונית האם הם קיימים, הכל רשום אצלנו:)
-              תודה על ההבנה, שנדע ימים שקטים
-          </p>
-        </div>
-      </div>
-    </div>
-
+          <div className="rounded-md bg-blue-50 p-4 mt-8">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <InformationCircleIcon className="h-5 w-5 text-blue-400" aria-hidden="true" />
+              </div>
+              {/* <div className="ml-3 flex-1 md:flex md:justify-between">
+                <p className="text-sm text-blue-700">
+                  <span className="font-bold">הורים מתעניינים יקרים, כמה עדכונים חשובים:</span>
+                  <br/>
+                    מקווים שאנחנו מוצאים אותכם בטוב בתקופה הזו ושולחים לכם חיבוק גדול מאיתנו .
+                    המלחמה הביאה את כולנו לימים מאתגרים רגשית ופיזית, גם אנחנו בגן שלנו התמודדנו עם מעבר לעבודה במקלטים וחסרונו של מנהל הגן עומרי שגוייס בצו 8.
+                    אנחנו עושים כל שביכולתנו על מנת לפתוח את תהליך ההרשמה לגן בסוף ינואר-תחילת פברואר.
+                    תהליך הרשמה לגן יהיה  כפי שרשום באתר שלנו .
+                    אנחנו מזכירים שמי שכבר מילאו פרטים באתר החל מספטמבר 23 וקיבל מייל חוזר שהרשמה נקלטה , אין צורך למלא אותם שוב או לברר טלפונית האם הם קיימים, הכל רשום אצלנו:)
+                    תודה על ההבנה, שנדע ימים שקטים
+                </p>
+              </div> */}
+            </div>
+          </div>
 
           {stories.map((story, index) => {
             const { title, subtitle, link, img, url } = story;
