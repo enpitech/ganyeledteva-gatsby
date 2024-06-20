@@ -8,7 +8,7 @@ import config from "../../data/SiteConfig";
 import { classNames } from "../utils";
 import Footer from "../components/Footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faFacebookF, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import Logo from "../components/Logo/Logo";
 import favicon from "~static/logos/favicon.png";
 import { useStaticQuery, graphql } from "gatsby";
@@ -176,6 +176,13 @@ const EnquireNavButton = ({ title, linkTo, className, target, children }) => (
 const EnquireNavBarButtons = ({ signupToGanNavItem }) => {
   return (
     <div className="text-sm my-auto flex flex-row">
+      <EnquireNavButton
+        className="h-4/5 w-4"
+        linkTo="https://www.instagram.com/yaldey_hateva"
+        target="_blank"
+      >
+        <FontAwesomeIcon icon={faInstagram} className="text-black" />
+      </EnquireNavButton>
       <EnquireNavButton
         className="h-4/5 w-4"
         linkTo="https://www.youtube.com/user/0542318413"
