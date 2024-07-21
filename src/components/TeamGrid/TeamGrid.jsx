@@ -6,6 +6,8 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 const mainEmptyDiamondTitle = 'צוות הגן';
 const diamondSideEdgeLength = 27;
+const maximumAmountOfEmployeesDisplayed = 7;
+const mobileMaximumAmountOfEmployeesDisplayed = 8;
 
 export default function TeamGrid() {
   const data = useStaticQuery(graphql`
@@ -49,7 +51,7 @@ export default function TeamGrid() {
 
   teamList.sort((a, b) => (a.index > b.index ? 1 : -1));
 
-  let teamListDesktop = prepareTeamListForDiamondGrid(teamList);
+  let teamListDesktop = prepareTeamListForDiamondGrid(teamList.slice(0, maximumAmountOfEmployeesDisplayed));
 
   return (
     <div className="mt-10" id="team-grid">
@@ -75,7 +77,7 @@ export default function TeamGrid() {
       </div>
 
       <div className="block md:hidden w-full grid grid-cols-2 gap-2 text-center px-2">
-        {teamList.map((employeeData, index) => {
+        {teamList.slice(0, mobileMaximumAmountOfEmployeesDisplayed).map((employeeData, index) => {
           return <EmployeeCardMobile key={index} data={employeeData} />;
         })}
       </div>
