@@ -1,9 +1,9 @@
-const urljoin = require('url-join');
-const path = require('path');
-const config = require('./data/SiteConfig');
+const urljoin = require("url-join");
+const path = require("path");
+const config = require("./data/SiteConfig");
 
 // Make sure that pathPrefix is not empty
-const validatedPathPrefix = config.pathPrefix === '' ? '/' : config.pathPrefix;
+const validatedPathPrefix = config.pathPrefix === "" ? "/" : config.pathPrefix;
 
 module.exports = {
   pathPrefix: validatedPathPrefix,
@@ -22,67 +22,72 @@ module.exports = {
     },
   },
   plugins: [
-    'gatsby-plugin-netlify',
-    'gatsby-plugin-postcss',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-lodash',
+    "gatsby-plugin-netlify",
+    "gatsby-plugin-postcss",
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-lodash",
+    "gatsby-plugin-decap-cms",
 
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'assets',
+        name: "assets",
         path: `${__dirname}/static/`,
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'posts',
+        name: "posts",
         path: `${__dirname}/content/`,
       },
     },
     {
-      resolve: 'gatsby-plugin-mdx',
+      resolve: "gatsby-plugin-mdx",
       options: {
         extensions: [`.md`, `.mdx`],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-relative-images`,
+            options: {
+              staticFolderName: "static",
+              include: ["content"], // Adjust based on your project structure
+            },
           },
           {
-            resolve: 'gatsby-remark-images',
+            resolve: "gatsby-remark-images",
             options: {
               maxWidth: 690,
             },
           },
           {
-            resolve: 'gatsby-remark-responsive-iframe',
+            resolve: "gatsby-remark-responsive-iframe",
           },
-          'gatsby-remark-copy-linked-files',
-          'gatsby-remark-prismjs',
+          "gatsby-remark-copy-linked-files",
+          "gatsby-remark-prismjs",
         ],
       },
     },
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: config.googleAnalyticsID,
       },
     },
     {
-      resolve: 'gatsby-plugin-nprogress',
+      resolve: "gatsby-plugin-nprogress",
       options: {
         color: config.themeColor,
       },
     },
-    'gatsby-plugin-image',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-catch-links',
-    'gatsby-plugin-twitter',
-    'gatsby-plugin-sitemap',
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-catch-links",
+    "gatsby-plugin-twitter",
+    "gatsby-plugin-sitemap",
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: "gatsby-plugin-manifest",
       options: {
         name: config.siteTitle,
         short_name: config.siteTitleShort,
@@ -90,66 +95,66 @@ module.exports = {
         start_url: validatedPathPrefix,
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
-        display: 'minimal-ui',
+        display: "minimal-ui",
         icons: [
           {
-            src: '/logos/logo-192.png',
-            sizes: '192x192',
-            type: 'image/png',
+            src: "/logos/logo-192.png",
+            sizes: "192x192",
+            type: "image/png",
           },
           {
-            src: '/logos/logo-512.png',
-            sizes: '512x512',
-            type: 'image/png',
+            src: "/logos/logo-512.png",
+            sizes: "512x512",
+            type: "image/png",
           },
         ],
       },
     },
-    'gatsby-plugin-offline',
+    "gatsby-plugin-offline",
     {
-      resolve: 'gatsby-plugin-netlify-cms',
+      resolve: "gatsby-plugin-decap-cms",
       options: {
-        modulePath: path.resolve('src/netlifycms/index.js'), // default: undefined
+        modulePath: path.resolve("src/decapcms/index.js"), // default: undefined
         enableIdentityWidget: true,
-        publicPath: 'admin',
-        htmlTitle: 'Content Manager',
+        publicPath: "admin",
+        htmlTitle: "Content Manager",
         includeRobots: false,
         headers: {
-          '/**/*.html': [
-            'cache-control: public',
-            'cache-control: max-age=0',
-            'cache-control: must-revalidate',
+          "/**/*.html": [
+            "cache-control: public",
+            "cache-control: max-age=0",
+            "cache-control: must-revalidate",
           ],
-          '/page-data/*.json': [
-            'cache-control: public',
-            'cache-control: max-age=0',
-            'cache-control: must-revalidate',
+          "/page-data/*.json": [
+            "cache-control: public",
+            "cache-control: max-age=0",
+            "cache-control: must-revalidate",
           ],
-          '/app-data.json': [
-            'cache-control: public',
-            'cache-control: max-age=0',
-            'cache-control: must-revalidate',
+          "/app-data.json": [
+            "cache-control: public",
+            "cache-control: max-age=0",
+            "cache-control: must-revalidate",
           ],
-          '/static/*': [
-            'cache-control: public',
-            'cache-control: max-age=31536000',
-            'cache-control: immutable',
+          "/static/*": [
+            "cache-control: public",
+            "cache-control: max-age=31536000",
+            "cache-control: immutable",
           ],
-          '/weekly-update': [
+          "/weekly-update": [
             // matching headers (by type) are replaced by Netlify with more specific routes
-            'cache-control: public',
-            'cache-control: max-age=0',
-            'cache-control: must-revalidate',
+            "cache-control: public",
+            "cache-control: max-age=0",
+            "cache-control: must-revalidate",
           ],
         },
       },
     },
-    'gatsby-plugin-remove-fingerprints',
+    "gatsby-plugin-remove-fingerprints",
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         // The property ID; the tracking code won't be generated without it
-        trackingId: 'UA-113179272-1',
+        trackingId: "UA-113179272-1",
         // Defines where to place the tracking script - `true` in the head and `false` in the body
         head: true,
 
@@ -161,7 +166,7 @@ module.exports = {
         // Any additional optional fields
         sampleRate: 5,
         siteSpeedSampleRate: 10,
-        cookieDomain: 'vanywhere.com',
+        cookieDomain: "vanywhere.com",
         // defaults to false
         enableWebVitalsTracking: true,
       },

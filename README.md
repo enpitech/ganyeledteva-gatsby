@@ -200,7 +200,7 @@ module.exports = {
 If want to customize Netlify CMS, e.g. registering custom widgets or styling the preview pane, you can do so by editing `src/netlifycms/index.js`:
 
 ```js
-import CMS from 'netlify-cms-app';
+import CMS from 'decap-cms-app';
 
 CMS.init({
   config: {
